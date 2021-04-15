@@ -7,31 +7,13 @@
     <title>sipena</title>
     <link rel="stylesheet" href="<?= base_url('assets/user/') ?>bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/user/') ?>fonts/ionicons.min.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Animated-gradient-background-1.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Animated-gradient-background-2.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Animated-gradient-background.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Animated-Pretty-Product-List-v12.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Animated-Type-Heading.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Article-Cards.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Article-List.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/best-carousel-slide.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Carousel-Hero-1.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Carousel-Hero.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Corporate-Footer-Clean.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Floating-Up--Down-Animation.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Footer-Clean.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Footer-Dark.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/styles.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Map-Clean.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Navigation-Clean.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Navigation-with-Button.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/Navigation-with-Search.css">
-    <link rel="stylesheet" href="<?= base_url('assets/user/') ?>css/styles.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md fixed-top fade-up navigation-clean-button" style="padding-bottom: 3px;padding-top: 11px;">
+    <nav class="navbar navbar-light navbar-expand-md fixed-top pulse animated navigation-clean-button" style="padding-bottom: 3px;padding-top: 11px;">
         <div class="container"><a class="navbar-brand" href="#"><img class="img-fluid pulse animated infinite" src="<?= base_url('assets/user/') ?>img/4849339.png" style="width: 72px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mr-auto">
@@ -39,7 +21,7 @@
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                </ul><span class="navbar-text actions"> <a data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/Admin') ?>">Log In</a><a class="btn btn-light action-button" role="button" data-bss-hover-animate="pulse" href="#">Sign Up</a></span>
+                </ul><span class="navbar-text actions"> <a data-bss-hover-animate="pulse" class="login" href="#">Log In</a><a class="btn btn-light action-button" role="button" data-bss-hover-animate="pulse" href="#">Sign Up</a></span>
             </div>
         </div>
     </nav>
@@ -139,11 +121,8 @@
     </footer>
     <script src="<?= base_url('assets/user/') ?>js/jquery.min.js"></script>
     <script src="<?= base_url('assets/user/') ?>bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?= base_url('assets/user/') ?>js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="<?= base_url('assets/user/') ?>js/Animated-gradient-background.js"></script>
-    <script src="<?= base_url('assets/user/') ?>js/Animated-Pretty-Product-List-v12.js"></script>
-    <script src="<?= base_url('assets/user/') ?>js/Animated-Type-Heading.js"></script>
+    <script src="<?= base_url('assets/user/') ?>js/script.min.js"></script>
 </body>
 
 </html>
