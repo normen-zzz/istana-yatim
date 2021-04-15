@@ -31,7 +31,7 @@
               </a>
               <div class="dropdown-divider"></div>
               <a href="<?= base_url('Auth/logout') ?>" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"></i> Logout
+                <i class="fas fa-sign-out-alt" onclick="return confirm('kamu yakin akan logout  ?');"></i> Logout
               </a>
             </div>
           </li>

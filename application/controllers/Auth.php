@@ -57,7 +57,7 @@ class Auth extends CI_Controller
     {
         $this->session->unset_userdata('email');
         $this->session->set_flashdata('success-logout', 'Berhasil!');
-        redirect(base_url('Auth/admin'));
+        redirect(base_url('User'));
     }
 
 
