@@ -11,8 +11,8 @@
               <li class="nav-item dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Index</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="index-0.html">Slide Foto</a></li>
-                  <li class="active"><a class="nav-link" href="index.html">Menu</a></li>
+                  <li><a class="nav-link" href="<?= base_url('Cms') ?>">Slide Foto</a></li>
+                  <li class="active"><a class="nav-link" href="<?= base_url('Cms/menu') ?>">Menu</a></li>
                    <li class="active"><a class="nav-link" href="index.html">Donasi</a></li>
                     <li class="active"><a class="nav-link" href="index.html">Footer</a></li>
                 </ul>

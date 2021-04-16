@@ -13,7 +13,11 @@ class User extends CI_Controller {
 
 	public function index()
 	{
-
-		$this->load->view('user/index');
+		$this->load->model('M_menu');
+		$this->load->model('M_slidefoto');
+		$data['active'] = 'active';
+		$data['slidefoto'] = $this->M_slidefoto->tampil_data()->result_array();
+		$data['menu'] = $this->M_menu->tampil_data()->result_array();
+		$this->load->view('user/index',$data);
 	}
 }

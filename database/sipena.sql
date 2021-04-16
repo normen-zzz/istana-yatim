@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2021 at 05:03 AM
+-- Generation Time: Apr 16, 2021 at 08:54 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -66,6 +66,29 @@ CREATE TABLE `donatur` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `menu`
+--
+
+CREATE TABLE `menu` (
+  `id_menu` int(11) NOT NULL,
+  `judul_menu` varchar(30) NOT NULL,
+  `text_menu` varchar(40) NOT NULL,
+  `tombol_menu` varchar(30) NOT NULL,
+  `tgl_menu` datetime DEFAULT NULL,
+  `img_menu` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`id_menu`, `judul_menu`, `text_menu`, `tombol_menu`, `tgl_menu`, `img_menu`) VALUES
+(1, 'Artikel', 'isinya artikel', 'Selengkapnya', '2021-04-16 13:26:26', '7ced1543ad423eacb5c9b3058998a668.png'),
+(2, 'Cerita Santri', 'Berisi Tentang Cerita Para Santri', 'Selengkapnya', '2021-04-16 13:44:47', 'b6ee660667088e598eb706d87e45b704.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `metode`
 --
 
@@ -117,6 +140,26 @@ CREATE TABLE `santri` (
   `role` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slidefoto`
+--
+
+CREATE TABLE `slidefoto` (
+  `id_slidefoto` int(11) NOT NULL,
+  `img_slidefoto` varchar(100) NOT NULL,
+  `tgl_slidefoto` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `slidefoto`
+--
+
+INSERT INTO `slidefoto` (`id_slidefoto`, `img_slidefoto`, `tgl_slidefoto`) VALUES
+(1, '9dc20e81829e8836c6ac197dfb434f3d.jpg', '2021-04-16 11:44:34'),
+(2, '00a032d35a2d392fdcf1d0a11b5bbc83.PNG', '2021-04-16 11:47:06');
+
 --
 -- Indexes for dumped tables
 --
@@ -140,6 +183,12 @@ ALTER TABLE `donatur`
   ADD PRIMARY KEY (`id_donatur`);
 
 --
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id_menu`);
+
+--
 -- Indexes for table `metode`
 --
 ALTER TABLE `metode`
@@ -158,6 +207,12 @@ ALTER TABLE `santri`
   ADD PRIMARY KEY (`id_santri`);
 
 --
+-- Indexes for table `slidefoto`
+--
+ALTER TABLE `slidefoto`
+  ADD PRIMARY KEY (`id_slidefoto`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -174,6 +229,12 @@ ALTER TABLE `donatur`
   MODIFY `id_donatur` int(8) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `pengurus`
 --
 ALTER TABLE `pengurus`
@@ -184,6 +245,12 @@ ALTER TABLE `pengurus`
 --
 ALTER TABLE `santri`
   MODIFY `id_santri` int(8) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `slidefoto`
+--
+ALTER TABLE `slidefoto`
+  MODIFY `id_slidefoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

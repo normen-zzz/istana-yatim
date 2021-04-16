@@ -21,44 +21,45 @@
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                </ul><span class="navbar-text actions"> <a data-bss-hover-animate="pulse" class="login" href="#">Log In</a><a class="btn btn-light action-button" role="button" data-bss-hover-animate="pulse" href="#">Sign Up</a></span>
+                </ul><span class="navbar-text actions"> <a data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Log In</a><a class="btn btn-light action-button" role="button" data-bss-hover-animate="pulse" href="#">Sign Up</a></span>
             </div>
         </div>
     </nav>
-    <div class="carousel slide" data-ride="carousel" id="carousel-1">
+    <div style="margin-top: 75px;" class="carousel slide" data-ride="carousel" id="carousel-1">
         <div class="carousel-inner">
-            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="<?= base_url('assets/user/') ?>img/building.jpg" style="width: 1159px;height: 600px;"></div>
-            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="<?= base_url('assets/user/') ?>img/5f095d2e52278.jpg" style="width: 1159px;height: 600px;"></div>
-            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="<?= base_url('assets/user/') ?>img/Adaptasi-Kebiasaan-Baru-Santri-Pondok-Pesantren-AlHasanah-Benteng-2-1040x675.jpeg" style="width: 1159px;height: 600px;"></div>
+            <?php $counter = 0; ?>
+            <?php foreach ($slidefoto as $s) {?>
+            <div class="carousel-item <?= ($counter == 0) ? "active" : "" ?>"><img class="img-fluid w-100 d-block" src="<?= base_url('assets/images/slidefoto/'). $s['img_slidefoto'] ?>" style="width: 1159px;height: 600px;"></div>
+
+            <?php $counter++; } ?> 
         </div>
+
         <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
         <ol class="carousel-indicators">
-            <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-1" data-slide-to="1"></li>
-            <li data-target="#carousel-1" data-slide-to="2"></li>
+            <?php $counterslide = 0; ?>
+            <?php foreach ($slidefoto as $a) { ?>
+            <li data-target="#carousel-1" data-slide-to="$counterslide" class="<?= ($counter == 0) ? "active" : "" ?>"></li>
+        <?php $counterslide++; } ?>
         </ol>
     </div>
     <section>
         <div class="container">
             <div class="row">
                 <div class="col" data-aos="fade-up" data-aos-duration="500" style="text-align: center;">
-                    <h1 style="text-align: center;">Heading</h1>
+                    <h1 style="text-align: center;">Menu</h1>
                     <p>Paragraph</p>
                 </div>
             </div>
-            <div class="row" style="padding-top: 26px;">
-                <div class="col text-center" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/user/') ?>img/4849339.png" style="width: 150px;">
-                    <h1>Profil</h1>
-                    <p>Paragraph</p><a class="btn btn-light action-button" role="button" href="#" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
+            <div class="row" style="padding-top: 20px;">
+                <?php foreach ($menu as $m) { ?>
+
+                <div class="col text-center" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/') . $m['img_menu'] ?>" style="width: 150px;">
+                    <h1><?= $m['judul_menu'] ?></h1>
+                    <p><?= $m['text_menu'] ?></p><a class="btn btn-light action-button" role="button" href="#" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong><?= $m['tombol_menu'] ?></strong></a>
                 </div>
-                <div class="col text-center" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/user/') ?>img/4849339.png" style="width: 150px;">
-                    <h1>Artikel</h1>
-                    <p>Paragraph</p><a class="btn btn-light action-button" role="button" href="#" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
-                </div>
-                <div class="col text-center" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/user/') ?>img/4849339.png" style="width: 150px;">
-                    <h1>Cerita Santri</h1>
-                    <p>Paragraph</p><a class="btn btn-light action-button" role="button" href="#" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
-                </div>
+
+            <?php } ?>
+                
             </div>
         </div>
     </section>
