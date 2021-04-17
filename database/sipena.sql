@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2021 at 08:54 AM
+-- Generation Time: Apr 17, 2021 at 04:37 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -29,12 +29,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `artikel` (
-  `kd_artikel` int(20) NOT NULL,
-  `tanggal` date NOT NULL,
+  `id_artikel` int(20) NOT NULL,
+  `tgl_artikel` datetime NOT NULL,
   `judul_artikel` varchar(123) NOT NULL,
   `isi_artikel` text NOT NULL,
-  `penulis_artikel` varchar(20) NOT NULL
+  `img_artikel` varchar(100) NOT NULL,
+  `jenis_artikel` varchar(50) NOT NULL,
+  `penulis_artikel` varchar(20) NOT NULL,
+  `slug_artikel` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `artikel`
+--
+
+INSERT INTO `artikel` (`id_artikel`, `tgl_artikel`, `judul_artikel`, `isi_artikel`, `img_artikel`, `jenis_artikel`, `penulis_artikel`, `slug_artikel`) VALUES
+(1, '2021-04-17 14:59:49', 'Coba Artikel Gan', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n', '106eaf0e0f3acdccaab335d4d4813c9c.jpg', 'Coba', 'Normen', 'coba-artikel-gan'),
+(2, '0000-00-00 00:00:00', 'cobaan lagi', '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\r\n', '017000a4d1a7937412870734f4ba7e6f.PNG', 'Percobaan', 'Normenardian', 'cobaan-lagi');
 
 -- --------------------------------------------------------
 
@@ -168,7 +179,7 @@ INSERT INTO `slidefoto` (`id_slidefoto`, `img_slidefoto`, `tgl_slidefoto`) VALUE
 -- Indexes for table `artikel`
 --
 ALTER TABLE `artikel`
-  ADD PRIMARY KEY (`kd_artikel`);
+  ADD PRIMARY KEY (`id_artikel`);
 
 --
 -- Indexes for table `donasi`
@@ -220,7 +231,7 @@ ALTER TABLE `slidefoto`
 -- AUTO_INCREMENT for table `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `kd_artikel` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_artikel` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `donatur`
