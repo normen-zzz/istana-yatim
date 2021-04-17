@@ -21,7 +21,11 @@
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                </ul><span class="navbar-text actions"> <a data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Log In</a><a class="btn btn-light action-button" role="button" data-bss-hover-animate="pulse" href="#">Sign Up</a></span>
+                </ul>
+                <span class="navbar-text actions"> 
+                    <a data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Masuk</a>
+                    <a class="btn btn-success action-button" role="button" data-bss-hover-animate="pulse" href="#">Daftar</a>
+                </span>
             </div>
         </div>
     </nav>
@@ -71,7 +75,10 @@
                 </div>
             </div>
             <div class="row" data-aos="fade-up" data-aos-duration="800" style="padding-top: 0px;padding-bottom: 65px;">
-                <div class="col text-center" style="padding-top: 35px;"><a href="#" style="border-style: solid;border-color: rgb(255,255,255);color: rgb(255,255,255);border-radius: 10px;padding: 3px;margin: 5px;">Yuk Donasi...</a></div>
+                <div class="col text-center" style="padding-top: 35px;">
+                    <button type="button" class="btn btn-light" style="color: #000000;border-radius: 10px;padding: 10px;">Mari Berdonasi</button>
+                    <!-- <a href="#" style="border-style: solid;border-color: rgb(255,255,255);color: rgb(255,255,255);border-radius: 10px;padding: 3px;margin: 5px;">Yuk Donasi...</a> -->
+                </div>
             </div>
         </div>
     </section>
