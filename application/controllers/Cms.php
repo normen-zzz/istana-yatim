@@ -162,7 +162,7 @@ class Cms extends CI_Controller {
         public function deletemenu($id)
     {
         $this->load->model('M_menu');
-        $data['slidefoto'] = $this->M_menu->menuWhere(['id_menu' => $this->uri->segment(3)])->row_array();
+        $data['menu'] = $this->M_menu->menuWhere(['id_menu' => $this->uri->segment(3)])->row_array();
         $gambar_lama = $data['menu']['img_menu'];
         unlink(FCPATH . 'assets/images/menu/' . $gambar_lama);
         $where = array('id_menu' => $id);
