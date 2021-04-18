@@ -14,7 +14,7 @@
           <li><a class="nav-link" href="<?= base_url('Cms') ?>">Slide Foto</a></li>
           <li class="active"><a class="nav-link" href="<?= base_url('Cms/menu') ?>">Menu</a></li>
           <li class="active"><a class="nav-link" href="index.html">Donasi</a></li>
-          <li class="active"><a class="nav-link" href="index.html">Footer</a></li>
+          <li class="active"><a class="nav-link" href="<?= base_url('Cms/footer') ?>">Footer</a></li>
         </ul>
       </li>
 
