@@ -171,16 +171,19 @@ class Cms extends CI_Controller {
         redirect('Cms/menu');
     }
 
-    // yang asep tambahin //
+
+
 	 public function footer()
     {
+        $this->load->model('M_footer');
 		 $data['title'] = 'Footer';
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['footer'] = $this->M_footer->tampil_data()->result_array();
 		$this->load->view('admin/cms/footer/footer', $data);
     }
     public function tambahfooter()
         {
-            $data['title'] = 'Tambah Foter';
+            $data['title'] = 'Tambah Footer';
             $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
 
             $this->load->view('admin/cms/footer/tambahfooter',$data);

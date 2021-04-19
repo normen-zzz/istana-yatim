@@ -15,7 +15,6 @@
           </div>
           <div class="row">
               <div class="col">
-                <a style="margin-bottom: 20px" href="<?= base_url('cms/tambahfooter') ?>" class="btn btn-primary">Tambah Footer</a>
                 <div class="card">
                   <div class="card-header">
                     <h4>List</h4>
@@ -25,22 +24,23 @@
                       <table class="table table-bordered table-md">
                         <tr>
                           <th>#</th>
-                          <th>Heading</th>
-                          <th>Paragraph</th>
-                          <th>Foto</th>
-                          <th>Tgl Dibuat</th>
+                          <th>Facebook</th>
+                          <th>Twitter</th>
+                          <th>Instagram</th>
+                          <th>Copyright</th>
                           <th>Action</th>
                         </tr>
-                       <!-- <?php foreach ($menu as $m) { ?>
+                      <?php foreach ($footer as $f) { ?>
                         <tr>
-                          <td><?= $m['id_menu'] ?></td>
-                          <td><?= $m['judul_menu'] ?></td>
-                          <td><?= $m['text_menu'] ?></td>
-                          <td><img style="width: 200px" src="<?= base_url('assets/images/menu/') . $m['img_menu'] ?>"></td>
-                          <td><a href="#" class="btn btn-success">Ubah</a> <a href="<?= base_url('Cms/deletemenu/') . $m['id_menu'] ?>" class="btn btn-danger">Hapus</a></td>
+                          <td><?= $f['id_footer'] ?></td>
+                          <td><?= $f['link_facebook'] ?></td>
+                          <td><?= $f['link_twitter'] ?></td>
+                          <td><?= $f['link_instagram'] ?></td>
+                          <td><?= $f['text_copyright'] ?></td>
+                          <td><a href="#" class="btn btn-success">Ubah</a></td>
                           
                         </tr>
-                      <?php } ?> -->
+                      <?php } ?> 
                         
                       </table>
                     </div>

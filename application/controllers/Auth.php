@@ -39,7 +39,7 @@ class Auth extends CI_Controller
 
                 ];
                 $this->session->set_userdata($data);
-                redirect(base_url('admin'));
+                redirect(base_url('Admin'));
             } else {
 
                 $this->session->set_flashdata('fail-pass', 'Gagal!');

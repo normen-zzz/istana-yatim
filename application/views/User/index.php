@@ -94,38 +94,16 @@
             </div>
         </div>
     </section>
-    <footer class="footer-clean" style="margin-top: 35px;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#">Web design</a></li>
-                        <li><a href="#">Development</a></li>
-                        <li><a href="#">Hosting</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="#">Company</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Legacy</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>Careers</h3>
-                    <ul>
-                        <li><a href="#">Job openings</a></li>
-                        <li><a href="#">Employee success</a></li>
-                        <li><a href="#">Benefits</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
-                    <p class="copyright">Company Name © 2017</p>
-                </div>
-            </div>
-        </div>
+    <footer class="footer-basic">
+        <div class="social"><a href="<?= $footer['link_instagram'] ?>"><i class="icon ion-social-instagram"></i></a><a href="<?= $footer['link_twitter'] ?>"><i class="icon ion-social-twitter"></i></a><a href="<?= $footer['link_facebook'] ?>"><i class="icon ion-social-facebook"></i></a></div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Home</a></li>
+            <li class="list-inline-item"><a href="#">Services</a></li>
+            <li class="list-inline-item"><a href="#">About</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+        </ul>
+        <p class="copyright"><?= $footer['text_copyright'] ?></p>
     </footer>
     <script src="<?= base_url('assets/user/') ?>js/jquery.min.js"></script>
     <script src="<?= base_url('assets/user/') ?>bootstrap/js/bootstrap.min.js"></script>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2021 at 04:37 PM
+-- Generation Time: Apr 19, 2021 at 08:04 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -73,6 +73,27 @@ CREATE TABLE `donatur` (
   `password_donatur` text NOT NULL,
   `role` int(11) NOT NULL DEFAULT '2'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `footer`
+--
+
+CREATE TABLE `footer` (
+  `id_footer` int(11) NOT NULL,
+  `link_facebook` varchar(50) NOT NULL,
+  `link_twitter` varchar(50) NOT NULL,
+  `link_instagram` varchar(50) NOT NULL,
+  `text_copyright` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `footer`
+--
+
+INSERT INTO `footer` (`id_footer`, `link_facebook`, `link_twitter`, `link_instagram`, `text_copyright`) VALUES
+(1, 'www.facebook.com', 'www.twitter.com', 'www.instagram.com', 'copyright@anu2021');
 
 -- --------------------------------------------------------
 
@@ -194,6 +215,12 @@ ALTER TABLE `donatur`
   ADD PRIMARY KEY (`id_donatur`);
 
 --
+-- Indexes for table `footer`
+--
+ALTER TABLE `footer`
+  ADD PRIMARY KEY (`id_footer`);
+
+--
 -- Indexes for table `menu`
 --
 ALTER TABLE `menu`
@@ -238,6 +265,12 @@ ALTER TABLE `artikel`
 --
 ALTER TABLE `donatur`
   MODIFY `id_donatur` int(8) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `footer`
+--
+ALTER TABLE `footer`
+  MODIFY `id_footer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `menu`
