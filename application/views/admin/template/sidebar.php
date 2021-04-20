@@ -22,7 +22,7 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Artikel</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="<?= base_url('Artikel') ?>">Artikel</a></li>
-                  <li><a class="nav-link" href="layout-transparent.html">Cerita Santri</a></li>
+                  <li><a class="nav-link" href="<?= base_url('Ceritasantri') ?>">Cerita Santri</a></li>
                 </ul>
               </li>
 
