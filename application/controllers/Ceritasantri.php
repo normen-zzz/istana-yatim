@@ -88,5 +88,18 @@ class Ceritasantri extends CI_Controller {
             }
 
     }
+         public function delete_ceritasantri($id)
+    {
+        $this->load->model('M_ceritasantri');
+        $data['ceritasantri'] = $this->M_ceritasantri->ceritasantriWhere(['id_ceritasantri' => $this->uri->segment(3)])->row_array();
+        $gambar_lama = $data['ceritasantri']['img_ceritasantri'];
+        unlink(FCPATH . 'assets/images/ceritasantri/' . $gambar_lama);
+        $where = array('id_ceritasantri' => $id);
+        $this->M_ceritasantri->delete_ceritasantri($where, 'ceritasantri');
+        $this->session->set_flashdata('user-delete', 'berhasil');
+        redirect('Ceritasantri');
+    }
+
+        
 
 }
