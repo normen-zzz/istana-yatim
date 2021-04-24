@@ -49,7 +49,7 @@
                     </div>
                   </div>
                   <div class="card-footer text-right">
-                    <button class="btn btn-primary mr-1 tambah"  type="submit">tambah</button>
+                    <button class="btn btn-primary mr-1 tambahsantri"  type="submit">tambah</button>
                     <!-- <button class="btn btn-secondary" type="reset">Reset</button> -->
                   </div>
                 </form>
@@ -73,7 +73,7 @@
      <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 
-  $('.tambah').click(function (e){
+  $('.tambahsantri').click(function (e){
     e.preventDefault();
     let form = $(this).parents('form');
     swal({

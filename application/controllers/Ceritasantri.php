@@ -81,7 +81,7 @@ class Ceritasantri extends CI_Controller {
                     $this->session->set_flashdata('success-input', 'berhasil');
                     redirect('Ceritasantri');
                 }else{  
-                    redirect('Ceritasantri/tambahceritasantri');
+                    redirect('Ceritasantri/tambahceritasantriAct');
                 }
 
             }else{
