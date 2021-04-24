@@ -11,45 +11,47 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Artikel</h1>
+            <h1>ceritasantri</h1>
           </div>
           <div class="row">
               <div class="col">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Tambah Artikel</h4>
+                    <h4>Ubah ceritasantri</h4>
                   </div>
                   
                   <div class="card-body">
 
-                    <form method="POST" id="myForm" action="<?= base_url('Artikel/tambahartikelAct') ?>" enctype="multipart/form-data">
+                    <form method="POST" id="myForm" action="<?= base_url('Ceritasantri/ubahceritasantriAct') ?>" enctype="multipart/form-data">
+                      <input type="number" name="id" value="<?= $ceritasantri['id_ceritasantri'] ?>" hidden>
                     <div class="form-group">
                       <label>Judul</label>
-                      <input type="text" name="judul" class="form-control">
+                      <input type="text" name="judul" value="<?= $ceritasantri['judul_ceritasantri'] ?>" class="form-control">
                     </div>
 
                     <div class="form-group">
                       <label>isi</label>
-                      <textarea id="ckeditor" name="artikel" class="form-control" placeholder="anu" ></textarea><br/>
+                      <textarea id="ckeditor" name="ceritasantri" class="form-control"  ><?= $ceritasantri['isi_ceritasantri'] ?></textarea><br/>
                     </div>
 
                     <div class="form-group">
-                      <label>Foto Artikel</label>
+                      <label>Foto ceritasantri</label>
+                      <img width="200px" style="margin-bottom: 5px" src="<?= base_url('assets/images/ceritasantri/'). $ceritasantri['img_ceritasantri'] ?>">
                       <input type="file" name="filefoto" class="form-control">
                     </div>
 
                     <div class="form-group">
-                      <label>Jenis Artikel</label>
-                      <input type="text" name="jenis" class="form-control">
+                      <label>Jenis ceritasantri</label>
+                      <input type="text" name="jenis" value="<?= $ceritasantri['jenis_ceritasantri'] ?>" class="form-control">
                     </div>
 
                     <div class="form-group">
                       <label>Penulis</label>
-                      <input type="text" name="penulis" class="form-control">
+                      <input type="text" name="penulis" value="<?= $ceritasantri['penulis_ceritasantri'] ?>" class="form-control">
                     </div>
                   </div>
                   <div class="card-footer text-right">
-                    <button class="btn btn-primary mr-1 tambahsantri"  type="submit">tambah</button>
+                    <button class="btn btn-primary mr-1 tambah" type="submit">Ubah</button>
                     <!-- <button class="btn btn-secondary" type="reset">Reset</button> -->
                   </div>
                 </form>
@@ -69,11 +71,10 @@
       });
     </script>
 
-
-     <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 
-  $('.tambahsantri').click(function (e){
+  $('.tambah').click(function (e){
     e.preventDefault();
     let form = $(this).parents('form');
     swal({

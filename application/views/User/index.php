@@ -59,7 +59,7 @@
 
                 <div class="col text-center" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/') . $m['img_menu'] ?>" style="width: 150px;">
                     <h1><?= $m['judul_menu'] ?></h1>
-                    <p><?= $m['text_menu'] ?></p><a class="btn btn-light action-button" role="button" href="#" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong><?= $m['tombol_menu'] ?></strong></a>
+                    <p><?= $m['text_menu'] ?></p><a class="btn btn-light action-button" role="button" href="<?= base_url('User/') . $m['link'] ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong><?= $m['tombol_menu'] ?></strong></a>
                 </div>
 
             <?php } ?>
@@ -109,6 +109,18 @@
     <script src="<?= base_url('assets/user/') ?>bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="<?= base_url('assets/user/') ?>js/script.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php if ($this->session->flashdata('success-logout')): ?>
+  <script>
+    swal({
+      icon: 'success',
+      title: 'Anda berhasil Logout',
+      text: 'Anda Berhasil logout',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  </script>
+<?php endif;?>
 </body>
 
 </html>

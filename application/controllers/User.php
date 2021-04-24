@@ -19,4 +19,28 @@ class User extends CI_Controller {
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();
 		$this->load->view('user/index',$data);
 	}
+
+
+
+	public function artikel(){
+		$this->load->model('M_footer');
+		$this->load->model('M_artikel');
+		$data['active'] = 'active';
+		$data['title'] = 'Artikel';
+		$data['artikel'] = $this->M_artikel->tampil_data()->result_array();
+		$data['footer'] = $this->M_footer->tampil_data()->row_array();
+		$this->load->view('user/artikel/artikel',$data);
+	}
+
+	public function detailartikel(){
+		$this->load->model('M_footer');
+		$this->load->model('M_artikel');
+		$data['active'] = 'active';
+		$data['title'] = 'Artikel';
+		$data['artikel'] = $this->M_artikel->artikelWhere(['slug_artikel' => $this->uri->segment(3)])->row();
+		$data['footer'] = $this->M_footer->tampil_data()->row_array();
+		$this->load->view('user/artikel/detailartikel',$data);
+	}
+
+
 }
