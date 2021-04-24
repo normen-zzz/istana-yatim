@@ -109,6 +109,18 @@
     <script src="<?= base_url('assets/user/') ?>bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="<?= base_url('assets/user/') ?>js/script.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php if ($this->session->flashdata('success-logout')): ?>
+  <script>
+    swal({
+      icon: 'success',
+      title: 'Anda berhasil Logout',
+      text: 'Anda Berhasil logout',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  </script>
+<?php endif;?>
 </body>
 
 </html>

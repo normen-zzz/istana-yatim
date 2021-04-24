@@ -30,8 +30,8 @@
                 <i class="far fa-user"></i> Profile
               </a>
               <div class="dropdown-divider"></div>
-              <a href="<?= base_url('Auth/logout') ?>" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt" onclick="return confirm('kamu yakin akan logout  ?');"></i> Logout
+              <a onclick="return confirm('kamu yakin akan logout  ?');" href="<?= base_url('Auth/logout') ?>" class="dropdown-item has-icon text-danger">
+                <i class="fas fa-sign-out-alt" ></i> Logout
               </a>
             </div>
           </li>

@@ -37,7 +37,7 @@
                           <td><?= $m['judul_menu'] ?></td>
                           <td><?= $m['text_menu'] ?></td>
                           <td><img style="width: 200px" src="<?= base_url('assets/images/menu/') . $m['img_menu'] ?>"></td>
-                          <td><a href="#" class="btn btn-success">Ubah</a> <a href="<?= base_url('Cms/deletemenu/') . $m['id_menu'] ?>" class="btn btn-danger">Hapus</a></td>
+                          <td><a href="#" class="btn btn-success">Ubah</a> <a href="<?= base_url('Cms/deletemenu/') . $m['id_menu'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a></td>
                           
                         </tr>
                       <?php } ?>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title><?= $title ?></title>
+    <title>sipena</title>
     <link rel="stylesheet" href="<?= base_url('assets/user/') ?>bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="<?= base_url('assets/user/') ?>fonts/font-awesome.min.css">
@@ -15,7 +16,7 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" style="padding-bottom: 3px;padding-top: 11px;">
-        <div class="container"><a class="navbar-brand" href="#"><img class="img-fluid pulse animated infinite" src="<?= base_url('assets/user/') ?>img/4849339.png" style="width: 72px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="#"><img class="img-fluid pulse animated infinite" src="assets/img/4849339.png" style="width: 72px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"></li>
@@ -28,37 +29,28 @@
     </nav>
     <div class="container" style="margin-top: 41px;">
         <div class="row">
-            <div class="col" style="padding-top: 1px;">
-                <h1 align="center">Artikel</h1>
-                <form class="search-form">
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" placeholder="Saya Mencari..">
-                        <div class="input-group-append"><button class="btn btn-light" type="button" style="border-style: solid;border-color: rgb(136,144,152);">Cari</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="row" style="padding-top: 0px;">
-            <div class="col-md-9" style="margin-top: 56px;">
-                <?php foreach ($artikel as $a) { ?>
-                <div class="row"  style="padding-top: 10px;border-right: 2px solid rgb(172,174,177) ;">
-                    <div class="col-xl-9 offset-xl-1" style="padding-top: 0px;">
-                        <div class="card-group">
-                            <div class="card"><a href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>"><img class="img-fluid card-img-top w-100 d-block" src="<?= base_url('assets/images/artikel/') . $a['img_artikel'] ?>" style="height: 247.797px;"></a>
-                                <div class="card-body">
-                                    <a style="color: black" href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>"><h4 class="card-title"><?= $a['judul_artikel'] ?></h4></a>
-                                    <p class="d-xl-flex justify-content-xl-end card-text"><?= $a['isi_artikel'] ?></p><label class="d-xl-flex justify-content-xl-end align-items-xl-center" style="text-align: right;">Penulis: <?= $a['penulis_artikel'] ?></label><label class="d-xl-flex justify-content-xl-end align-items-xl-center"><i class="fa fa-eye"></i>&nbsp; 800</label>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-md-9">
+                <div class="row" style="padding-top: 12px;">
+                    <div class="col" style="padding-top: 0px;">
+                        <h1><?= $artikel->judul_artikel ?></h1>
+                        <div><i class="fa fa-clock-o"></i><label style="margin-left: 6px;"><?= $artikel->tgl_artikel ?></label><i class="fa fa-user" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->penulis_artikel ?></label><i class="fa fa-folder" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->jenis_artikel ?></label><i class="fa fa-eye" style="margin-left: 14px;"></i><label style="margin-left: 6px;">Label</label><i class="fa fa-comment" style="margin-left: 14px;"></i><label style="margin-left: 6px;">Label</label></div>
                     </div>
                 </div>
-            
-
-            <?php } ?>
-               
+                <div class="row">
+                    <div class="col" style="padding-top: 0px;"><img class="img-fluid" src="<?= base_url('assets/images/artikel/') . $artikel->img_artikel ?>" style="width: 671px;"></div>
+                </div>
+                <div class="row">
+                    <div class="col" style="padding-top: 0px;">
+                        <p><?= $artikel->isi_artikel ?></p>
+                    </div>
+                </div><label>Share:&nbsp;</label>
+                <div class="row" style="padding-top: 10px;">
+                    <div class="col-xl-1" style="margin-top: 5px;"><a href="#"><img src="<?= base_url('assets/user/') ?>img/twitter.png" style="width: 41px;margin-top: 0px;"></a></div>
+                    <div class="col-xl-1" style="margin-top: 5px;"><a href="#"><img src="<?= base_url('assets/user/') ?>img/facebook.png" style="width: 41px;"></a></div>
+                    <div class="col-xl-1" style="margin-top: 5px;"><a href="#"><img src="<?= base_url('assets/user/') ?>img/ig.png" style="width: 41px;"></a></div>
+                </div>
             </div>
-            <div class="col" style="padding-top: 0px;padding-left: 21px;">
+            <div class="col" style="padding-top: 0px;">
                 <div class="row">
                     <div class="col" style="padding-top: 0px;border-bottom: 1px dashed rgb(97,99,101) ;">
                         <h3>Artikel Terbaru</h3>
@@ -92,21 +84,6 @@
                         <p>Paragraph</p>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-6 offset-xl-1" style="padding-top: 0px;">
-                <nav>
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </div>
