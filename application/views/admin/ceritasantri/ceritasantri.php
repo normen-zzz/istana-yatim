@@ -53,7 +53,11 @@
                           <td><?= $c['tgl_ceritasantri'] ?></td>
                           <td><?= $c['jenis_ceritasantri'] ?></td>
                           <td><?= $c['penulis_ceritasantri'] ?></td>
-                          <td><a href="#" class="btn btn-success">Ubah</a> <a href="<?= base_url('Ceritasantri/delete_ceritasantri/') . $c['id_ceritasantri'] ?>" class="btn btn-danger">Hapus</a></td>
+
+                         <!-- <td><a href="#" class="btn btn-success">Ubah</a> <a href="<?= base_url('Ceritasantri/delete_ceritasantri/') . $c['id_ceritasantri'] ?>" class="btn btn-danger">Hapus</a></td> -->
+
+                          <td><a style="margin-bottom: 5px" href="<?= base_url('Ceritasantri/ubahceritasantri/') . $c['slug_ceritasantri'] ?>" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()" class="btn btn-danger">Hapus</a></td>
+
                           
                         </tr>
                       <?php } ?>
@@ -72,6 +76,7 @@
 
   <?php $this->load->view('admin/template/footer') ?>
   <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></script> -->
+
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
   <script type="text/javascript">
@@ -79,3 +84,34 @@
     $('#myTable').DataTable();
 } );
   </script>
+
+
+ 
+<script type="text/javascript">
+  function confir(){
+    swal({
+      title: "Hapus Artikel Ini?",
+      text: "Data Tidak bisa kembali jika sudah dihapus",
+      icon: "warning",
+      buttons: true,
+      dangerMode: "true",
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal({ title: "Hapus Artikel Berhasil",
+          icon: "success"}).then(okay => {
+            if (okay) {
+              window.location.href = "<?= base_url('Ceritasantri/deleteceritasantri/') . $c['slug_ceritasantri'] ?>";
+            }
+          });
+
+        } else {
+          swal({
+            title: "Artikel Tidak Terhapus",
+            icon: "error",
+
+          });
+        }
+      });
+  }
+</script>

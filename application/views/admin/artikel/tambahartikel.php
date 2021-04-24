@@ -22,7 +22,7 @@
                   
                   <div class="card-body">
 
-                    <form method="POST" action="<?= base_url('Artikel/tambahartikelAct') ?>" enctype="multipart/form-data">
+                    <form method="POST" id="myForm" action="<?= base_url('Artikel/tambahartikelAct') ?>" enctype="multipart/form-data">
                     <div class="form-group">
                       <label>Judul</label>
                       <input type="text" name="judul" class="form-control">
@@ -49,7 +49,7 @@
                     </div>
                   </div>
                   <div class="card-footer text-right">
-                    <button class="btn btn-primary mr-1" type="submit">Submit</button>
+                    <button class="btn btn-primary mr-1 tambah"  type="submit">tambah</button>
                     <!-- <button class="btn btn-secondary" type="reset">Reset</button> -->
                   </div>
                 </form>
@@ -68,3 +68,23 @@
         CKEDITOR.replace('ckeditor');
       });
     </script>
+
+
+     <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+
+  $('.tambah').click(function (e){
+    e.preventDefault();
+    let form = $(this).parents('form');
+    swal({
+        title: 'Apakah Anda yakin?',
+        text: 'Sebelum submit pastikan data sudah terisi dan terisi dengan benar',
+        icon: 'warning',
+        buttons: ["Batal", "Submit!"],
+    }).then(function(value) {
+        if(value){
+            $('#myForm').submit();
+        }
+    });
+});
+</script>

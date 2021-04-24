@@ -29,5 +29,45 @@
 
   <!-- Page Specific JS File -->
   <script src="<?= base_url('assets/') ?>js/page/index.js"></script>
+
+  <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php if ($this->session->flashdata('success-input')): ?>
+  <script>
+    swal({
+      icon: 'success',
+      title: 'Kamu berhasil Input!',
+      text: 'Anda Berhasil Input Data',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  </script>
+<?php endif;?>
+
+<?php if ($this->session->flashdata('success-edit')): ?>
+  <script>
+    swal({
+      icon: 'success',
+      title: 'Kamu berhasil Edit!',
+      text: 'Anda Berhasil ubah Data',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  </script>
+<?php endif;?>
+
+<?php if ($this->session->flashdata('user-delete')): ?>
+  <script>
+    swal({
+      icon: 'success',
+      title: 'Kamu berhasil Hapus!',
+      text: 'Anda Berhasil Hapus Data',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  </script>
+<?php endif;?>
+
+
+
 </body>
 </html>
