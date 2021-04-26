@@ -49,7 +49,7 @@
                     </div>
                   </div>
                   <div class="card-footer text-right">
-                    <button class="btn btn-primary mr-1 tambah" type="submit">Submit</button>
+                    <button class="btn btn-primary mr-1 tambah"  type="submit">Tambah</button>
                     <!-- <button class="btn btn-secondary" type="reset">Reset</button> -->
                   </div>
                 </form>
@@ -69,7 +69,7 @@
       });
     </script>
 
-  <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+     <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 
   $('.tambah').click(function (e){
