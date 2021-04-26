@@ -11,6 +11,7 @@ class Admin extends CI_Controller {
         if (!$this->session->userdata('email')) {
             redirect('Auth/Admin');
         }
+        
     }
 
 

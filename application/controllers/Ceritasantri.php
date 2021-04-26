@@ -29,7 +29,7 @@ class Ceritasantri extends CI_Controller {
 
     public function tambahceritasantri()
     {
-        $data['title'] = 'Cerita Santril';
+        $data['title'] = 'Cerita Santri';
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
         $this->load->view('admin/ceritasantri/tambahceritasantri',$data);
     }
@@ -94,6 +94,7 @@ class Ceritasantri extends CI_Controller {
     public function ubahceritasantri()
     {
         $this->load->model('M_ceritasantri');
+        $data['title'] = 'Ubah Cerita Santri';
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
         $data['ceritasantri'] = $this->M_ceritasantri->ceritasantriWhere(['slug_ceritasantri' => $this->uri->segment(3)])->row_array();
         $this->load->view('admin/ceritasantri/ubahceritasantri', $data);
