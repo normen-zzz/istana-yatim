@@ -19,12 +19,15 @@
       </li>
 
       <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Artikel</span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="<?= base_url('Artikel') ?>">Artikel</a></li>
-                  <li><a class="nav-link" href="<?= base_url('Ceritasantri') ?>">Cerita Santri</a></li>
-                </ul>
-              </li>
+        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Artikel</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="<?= base_url('Artikel') ?>">Artikel</a></li>
+          <li><a class="nav-link" href="<?= base_url('Ceritasantri') ?>">Cerita Santri</a></li>
+        </ul>
+      </li>
+
+      <li class="menu-header">Event</li>
+      <li><a class="nav-link" href="<?= base_url('Acara') ?>"><i class="fas fa-pencil-ruler"></i> <span>Acara</span></a></li>
 
 
       <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
