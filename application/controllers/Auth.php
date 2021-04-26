@@ -5,6 +5,7 @@ class Auth extends CI_Controller
 {
 
 
+
     public function admin()
     {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
