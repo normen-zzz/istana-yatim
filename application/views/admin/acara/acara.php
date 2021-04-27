@@ -39,6 +39,7 @@
                           <td><?= $a['tema_acara'] ?></td>
                           <td><?= $a['tgl_acara'] ?></td>
                           <td><img src="<?= base_url('assets/images/acara/'). $a['img_acara'] ?>"></td>
+                          <td><a href="" class="btn btn-primary">Form</a> <a href="" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>
                         </tr>
                      <?php } ?>
                         
@@ -71,3 +72,32 @@
   </div>
 
   <?php $this->load->view('admin/template/footer') ?>
+
+  <script type="text/javascript">
+  function confir(){
+    swal({
+      title: "Hapus Data Ini?",
+      text: "Data Tidak bisa kembali jika sudah dihapus",
+      icon: "warning",
+      buttons: true,
+      dangerMode: "true",
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal({ title: "Hapus Data Berhasil",
+          icon: "success"}).then(okay => {
+            if (okay) {
+              window.location.href = "<?= base_url('Acara/deleteacara/') . $a['id_acara'] ?>";
+            }
+          });
+
+        } else {
+          swal({
+            title: "Data Tidak Terhapus",
+            icon: "error",
+
+          });
+        }
+      });
+  }
+</script>
