@@ -25,12 +25,17 @@
                     <input type="number" name="id" value="<?= $menu['id_menu'] ?>" hidden>
                     <div class="form-group">
                       <label>Judul</label>
-                      <input type="text" class="form-control" value="<?= $menu['judul_menu'] ?>">
+                      <input type="text" name="judul_menu" class="form-control" value="<?= $menu['judul_menu'] ?>">
                     </div>
 
                     <div class="form-group">
                       <label>Text</label>
-                      <input type="text" class="form-control" value="<?= $menu['text_menu'] ?>">
+                      <input type="text" name="text_menu" class="form-control" value="<?= $menu['text_menu'] ?>">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Tombol</label>
+                      <input type="text" name="tombol_menu" class="form-control" value="<?= $menu['tombol_menu'] ?>">
                     </div>
 
                     <div class="alert alert-info">
@@ -39,7 +44,7 @@
                     <div class="form-group">
                       <label>Logo</label>
                       <img width="200px" style="margin-bottom: 5px" src="<?= base_url('assets/images/menu/'). $menu['img_menu'] ?>">
-                      <input type="file" class="form-control">
+                      <input type="file" name="filefoto" class="form-control">
                     </div>
                   </div>
 

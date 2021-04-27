@@ -15,7 +15,7 @@
           </div>
           <div class="row">
               <div class="col">
-                <a style="margin-bottom: 20px" href="<?= base_url('cms/tambahmenu') ?>" class="btn btn-primary">Tambah Menu</a>               
+               <!-- <a style="margin-bottom: 20px" href="<?= base_url('cms/tambahmenu') ?>" class="btn btn-primary">Tambah Menu</a> -->             
                 <div class="card">
                   <div class="card-header">
                     <h4>List Menu</h4>
