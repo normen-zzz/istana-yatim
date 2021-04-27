@@ -15,7 +15,7 @@
           </div>
           <div class="row">
               <div class="col">
-                <a style="margin-bottom: 20px" href="<?= base_url('cms/tambahmenu') ?>" class="btn btn-primary">Tambah Menu</a>
+                <a style="margin-bottom: 20px" href="<?= base_url('cms/tambahmenu') ?>" class="btn btn-primary">Tambah Menu</a>               
                 <div class="card">
                   <div class="card-header">
                     <h4>List Menu</h4>
@@ -28,7 +28,7 @@
                           <th>Heading</th>
                           <th>Paragraph</th>
                           <th>Foto</th>
-                          <th>Tgl Dibuat</th>
+                          <!--<th>Tgl Dibuat</th> -->
                           <th>Action</th>
                         </tr>
                         <?php foreach ($menu as $m) { ?>
@@ -37,7 +37,7 @@
                           <td><?= $m['judul_menu'] ?></td>
                           <td><?= $m['text_menu'] ?></td>
                           <td><img style="width: 200px" src="<?= base_url('assets/images/menu/') . $m['img_menu'] ?>"></td>
-                          <td><a href="#" class="btn btn-success">Ubah</a> <a href="<?= base_url('Cms/deletemenu/') . $m['id_menu'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a></td>
+                          <td><a href="<?= base_url('Cms/ubahmenu/') . $m['id_menu'] ?>" class="btn btn-success">Ubah</a> <a href="<?= base_url('Cms/deletemenu/') . $m['id_menu'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a></td>
                           
                         </tr>
                       <?php } ?>

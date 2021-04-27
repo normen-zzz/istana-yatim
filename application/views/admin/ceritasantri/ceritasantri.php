@@ -89,7 +89,7 @@
 <script type="text/javascript">
   function confir(){
     swal({
-      title: "Hapus Artikel Ini?",
+      title: "Hapus Cerita Santri?",
       text: "Data Tidak bisa kembali jika sudah dihapus",
       icon: "warning",
       buttons: true,
@@ -97,7 +97,7 @@
     })
     .then((willDelete) => {
       if (willDelete) {
-        swal({ title: "Hapus Artikel Berhasil",
+        swal({ title: "Hapus Cerita Santri Berhasil",
           icon: "success"}).then(okay => {
             if (okay) {
               window.location.href = "<?= base_url('Ceritasantri/deleteceritasantri/') . $c['slug_ceritasantri'] ?>";
@@ -106,7 +106,7 @@
 
         } else {
           swal({
-            title: "Artikel Tidak Terhapus",
+            title: "Cerita Santri Tidak Terhapus",
             icon: "error",
 
           });
