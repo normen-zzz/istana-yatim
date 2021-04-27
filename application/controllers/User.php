@@ -43,4 +43,24 @@ class User extends CI_Controller {
 	}
 
 
+	public function acara(){
+		$this->load->model('M_footer');
+		$this->load->model('M_acara');
+		$data['title'] = 'Acara';
+		$data['acara'] = $this->M_acara->tampil_data()->result_array();
+		$data['footer'] = $this->M_footer->tampil_data()->row_array();
+		$this->load->view('user/acara/acara',$data);
+	}
+
+	public function detailacara(){
+		$this->load->model('M_footer');
+		$this->load->model('M_acara');
+		$data['active'] = 'active';
+		$data['title'] = 'Acara';
+		$data['acara'] = $this->M_acara->acaraWhere(['id_acara' => $this->uri->segment(3)])->row();
+		$data['footer'] = $this->M_footer->tampil_data()->row_array();
+		$this->load->view('user/acara/detailacara',$data);
+	}
+
+
 }
