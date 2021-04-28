@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2021 at 02:51 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Waktu pembuatan: 28 Apr 2021 pada 16.19
+-- Versi server: 10.1.38-MariaDB
+-- Versi PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `acara`
+-- Struktur dari tabel `acara`
 --
 
 CREATE TABLE `acara` (
@@ -37,7 +37,7 @@ CREATE TABLE `acara` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `acara`
+-- Dumping data untuk tabel `acara`
 --
 
 INSERT INTO `acara` (`id_acara`, `tgl_acara`, `nama_acara`, `tema_acara`, `img_acara`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `acara` (`id_acara`, `tgl_acara`, `nama_acara`, `tema_acara`, `img_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artikel`
+-- Struktur dari tabel `artikel`
 --
 
 CREATE TABLE `artikel` (
@@ -62,11 +62,11 @@ CREATE TABLE `artikel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `artikel`
+-- Dumping data untuk tabel `artikel`
 --
 
 INSERT INTO `artikel` (`id_artikel`, `tgl_artikel`, `judul_artikel`, `isi_artikel`, `img_artikel`, `jenis_artikel`, `penulis_artikel`, `slug_artikel`) VALUES
-(1, '2021-04-25 16:31:12', 'cobaa', '<p>cobaan</p>\r\n', '36759fda5f1245f502840f733bf749df.png', 'dcoba', 'cobaan', 'cobaa'),
+(1, '2021-04-28 14:43:15', 'cobaa', '<p>cobaanini</p>\r\n', '36759fda5f1245f502840f733bf749df.png', 'dcoba', 'cobaan', 'cobaa'),
 (2, '2021-04-24 03:31:09', 'test', '<p>test</p>\r\n', 'b6d90a6529e9ef7c4aac643722bcc202.png', 'coba', 'coba', 'test'),
 (3, '2021-04-24 03:34:10', 'lagi', '<p>lagi</p>\r\n', '1a634bb8c9dd212816891332f54e3e2c.png', 'lagi', 'danlagi', 'lagi'),
 (4, '2021-04-24 17:54:39', 'sdisjdi', '<p>snkdsnkdkn</p>\r\n', 'ba7826f98864150f1de8dc5aa4bb837f.png', 'sjdsjn', 'djsndskn', 'sdisjdi'),
@@ -75,7 +75,27 @@ INSERT INTO `artikel` (`id_artikel`, `tgl_artikel`, `judul_artikel`, `isi_artike
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ceritasantri`
+-- Struktur dari tabel `bank`
+--
+
+CREATE TABLE `bank` (
+  `id_bank` int(11) NOT NULL,
+  `bank` varchar(150) NOT NULL,
+  `nama` varchar(150) NOT NULL,
+  `norek` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `bank`
+--
+
+INSERT INTO `bank` (`id_bank`, `bank`, `nama`, `norek`) VALUES
+(1, 'Mandiri', 'Asep', '007001');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ceritasantri`
 --
 
 CREATE TABLE `ceritasantri` (
@@ -90,7 +110,7 @@ CREATE TABLE `ceritasantri` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ceritasantri`
+-- Dumping data untuk tabel `ceritasantri`
 --
 
 INSERT INTO `ceritasantri` (`id_ceritasantri`, `tgl_ceritasantri`, `judul_ceritasantri`, `isi_ceritasantri`, `img_ceritasantri`, `jenis_ceritasantri`, `penulis_ceritasantri`, `slug_ceritasantri`) VALUES
@@ -99,20 +119,30 @@ INSERT INTO `ceritasantri` (`id_ceritasantri`, `tgl_ceritasantri`, `judul_cerita
 -- --------------------------------------------------------
 
 --
--- Table structure for table `donasi`
+-- Struktur dari tabel `donasi`
 --
 
 CREATE TABLE `donasi` (
-  `no.invoice` int(20) NOT NULL,
-  `tanggal` date NOT NULL,
-  `jumlah` int(13) NOT NULL,
-  `bukti` text NOT NULL
+  `id_donasi` int(20) NOT NULL,
+  `id_bank` int(11) NOT NULL,
+  `tanggal` datetime NOT NULL,
+  `nama` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `nowa` varchar(150) CHARACTER SET latin1 NOT NULL,
+  `jumlah` double NOT NULL,
+  `bukti` varchar(100) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `donasi`
+--
+
+INSERT INTO `donasi` (`id_donasi`, `id_bank`, `tanggal`, `nama`, `nowa`, `jumlah`, `bukti`) VALUES
+(3, 0, '2021-04-28 19:06:14', 'yuuji', '0888888888', 1000000, 'a2ab909789bffe397276df833740ee22.PNG');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `donatur`
+-- Struktur dari tabel `donatur`
 --
 
 CREATE TABLE `donatur` (
@@ -126,7 +156,7 @@ CREATE TABLE `donatur` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `footer`
+-- Struktur dari tabel `footer`
 --
 
 CREATE TABLE `footer` (
@@ -138,7 +168,7 @@ CREATE TABLE `footer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `footer`
+-- Dumping data untuk tabel `footer`
 --
 
 INSERT INTO `footer` (`id_footer`, `link_facebook`, `link_twitter`, `link_instagram`, `text_copyright`) VALUES
@@ -147,7 +177,7 @@ INSERT INTO `footer` (`id_footer`, `link_facebook`, `link_twitter`, `link_instag
 -- --------------------------------------------------------
 
 --
--- Table structure for table `form`
+-- Struktur dari tabel `form`
 --
 
 CREATE TABLE `form` (
@@ -159,7 +189,7 @@ CREATE TABLE `form` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `form`
+-- Dumping data untuk tabel `form`
 --
 
 INSERT INTO `form` (`id_form`, `nama_form`, `nomor_form`, `kelamin_form`, `acara_form`) VALUES
@@ -170,7 +200,7 @@ INSERT INTO `form` (`id_form`, `nama_form`, `nomor_form`, `kelamin_form`, `acara
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
+-- Struktur dari tabel `menu`
 --
 
 CREATE TABLE `menu` (
@@ -184,7 +214,7 @@ CREATE TABLE `menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `menu`
+-- Dumping data untuk tabel `menu`
 --
 
 INSERT INTO `menu` (`id_menu`, `judul_menu`, `text_menu`, `tombol_menu`, `link`, `tgl_menu`, `img_menu`) VALUES
@@ -195,7 +225,7 @@ INSERT INTO `menu` (`id_menu`, `judul_menu`, `text_menu`, `tombol_menu`, `link`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `metode`
+-- Struktur dari tabel `metode`
 --
 
 CREATE TABLE `metode` (
@@ -206,7 +236,7 @@ CREATE TABLE `metode` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengurus`
+-- Struktur dari tabel `pengurus`
 --
 
 CREATE TABLE `pengurus` (
@@ -221,7 +251,7 @@ CREATE TABLE `pengurus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengurus`
+-- Dumping data untuk tabel `pengurus`
 --
 
 INSERT INTO `pengurus` (`id_pengurus`, `nm_pengurus`, `umur_pengurus`, `alamat_pengurus`, `no.telp`, `foto_pengurus`, `email_pengurus`, `password_pengurus`) VALUES
@@ -230,7 +260,7 @@ INSERT INTO `pengurus` (`id_pengurus`, `nm_pengurus`, `umur_pengurus`, `alamat_p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `santri`
+-- Struktur dari tabel `santri`
 --
 
 CREATE TABLE `santri` (
@@ -249,7 +279,7 @@ CREATE TABLE `santri` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slidefoto`
+-- Struktur dari tabel `slidefoto`
 --
 
 CREATE TABLE `slidefoto` (
@@ -259,7 +289,7 @@ CREATE TABLE `slidefoto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `slidefoto`
+-- Dumping data untuk tabel `slidefoto`
 --
 
 INSERT INTO `slidefoto` (`id_slidefoto`, `img_slidefoto`, `tgl_slidefoto`) VALUES
@@ -271,137 +301,155 @@ INSERT INTO `slidefoto` (`id_slidefoto`, `img_slidefoto`, `tgl_slidefoto`) VALUE
 --
 
 --
--- Indexes for table `acara`
+-- Indeks untuk tabel `acara`
 --
 ALTER TABLE `acara`
   ADD PRIMARY KEY (`id_acara`);
 
 --
--- Indexes for table `artikel`
+-- Indeks untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
   ADD PRIMARY KEY (`id_artikel`);
 
 --
--- Indexes for table `ceritasantri`
+-- Indeks untuk tabel `bank`
+--
+ALTER TABLE `bank`
+  ADD PRIMARY KEY (`id_bank`);
+
+--
+-- Indeks untuk tabel `ceritasantri`
 --
 ALTER TABLE `ceritasantri`
   ADD PRIMARY KEY (`id_ceritasantri`);
 
 --
--- Indexes for table `donasi`
+-- Indeks untuk tabel `donasi`
 --
 ALTER TABLE `donasi`
-  ADD PRIMARY KEY (`no.invoice`);
+  ADD PRIMARY KEY (`id_donasi`);
 
 --
--- Indexes for table `donatur`
+-- Indeks untuk tabel `donatur`
 --
 ALTER TABLE `donatur`
   ADD PRIMARY KEY (`id_donatur`);
 
 --
--- Indexes for table `footer`
+-- Indeks untuk tabel `footer`
 --
 ALTER TABLE `footer`
   ADD PRIMARY KEY (`id_footer`);
 
 --
--- Indexes for table `form`
+-- Indeks untuk tabel `form`
 --
 ALTER TABLE `form`
   ADD PRIMARY KEY (`id_form`);
 
 --
--- Indexes for table `menu`
+-- Indeks untuk tabel `menu`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`id_menu`);
 
 --
--- Indexes for table `metode`
+-- Indeks untuk tabel `metode`
 --
 ALTER TABLE `metode`
   ADD PRIMARY KEY (`id_metode`);
 
 --
--- Indexes for table `pengurus`
+-- Indeks untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
   ADD PRIMARY KEY (`id_pengurus`);
 
 --
--- Indexes for table `santri`
+-- Indeks untuk tabel `santri`
 --
 ALTER TABLE `santri`
   ADD PRIMARY KEY (`id_santri`);
 
 --
--- Indexes for table `slidefoto`
+-- Indeks untuk tabel `slidefoto`
 --
 ALTER TABLE `slidefoto`
   ADD PRIMARY KEY (`id_slidefoto`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `acara`
+-- AUTO_INCREMENT untuk tabel `acara`
 --
 ALTER TABLE `acara`
   MODIFY `id_acara` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `artikel`
+-- AUTO_INCREMENT untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
   MODIFY `id_artikel` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `ceritasantri`
+-- AUTO_INCREMENT untuk tabel `bank`
+--
+ALTER TABLE `bank`
+  MODIFY `id_bank` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `ceritasantri`
 --
 ALTER TABLE `ceritasantri`
   MODIFY `id_ceritasantri` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `donatur`
+-- AUTO_INCREMENT untuk tabel `donasi`
+--
+ALTER TABLE `donasi`
+  MODIFY `id_donasi` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `donatur`
 --
 ALTER TABLE `donatur`
   MODIFY `id_donatur` int(8) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `footer`
+-- AUTO_INCREMENT untuk tabel `footer`
 --
 ALTER TABLE `footer`
   MODIFY `id_footer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `form`
+-- AUTO_INCREMENT untuk tabel `form`
 --
 ALTER TABLE `form`
   MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `menu`
+-- AUTO_INCREMENT untuk tabel `menu`
 --
 ALTER TABLE `menu`
   MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `pengurus`
+-- AUTO_INCREMENT untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
   MODIFY `id_pengurus` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `santri`
+-- AUTO_INCREMENT untuk tabel `santri`
 --
 ALTER TABLE `santri`
   MODIFY `id_santri` int(8) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `slidefoto`
+-- AUTO_INCREMENT untuk tabel `slidefoto`
 --
 ALTER TABLE `slidefoto`
   MODIFY `id_slidefoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;

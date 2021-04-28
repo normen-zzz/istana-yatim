@@ -18,14 +18,14 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Donasi</h1>
+            <h1>Bank</h1>
           </div>
           <div class="row">
             <div class="col">
-              <a style="margin-bottom: 20px" href="<?= base_url('Cms/tambahdonasi') ?>" class="btn btn-primary">Tambah Donasi</a>
+              <a style="margin-bottom: 20px" href="<?= base_url('Cms/tambahbank') ?>" class="btn btn-primary">Tambah Bank</a>
               <div class="card">
                 <div class="card-header">
-                  <h4>List Donasi</h4>
+                  <h4>List Bank</h4>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
@@ -34,27 +34,24 @@
                         <tr>
                           <th>#</th>
                                      
-                          <th>Tanggal Donasi</th>
-                          <th>Nama</th>
-                          <th>NO WA</th>
-                          <th>Jumlah</th>
-                          <th>Bank</th>
-                          <th>Bukti Donasi</th>
+                          <th>Nama Bank</th>
+                          <th>Atas Nama</th>
+                          <th>No Rekening</th>
                           <th>Action</th>
+                        
                         </tr>
                       </thead>
 
                       <tbody>
-                        <?php foreach ($donasi as $d) { ?>
+                        <?php foreach ($bank as $b) { ?>
                           <tr>
-                            <td><?= $d['id_donasi'] ?></td>
-                            <td><?= $d['tanggal'] ?></td>
-                            <td><?= $d['nama'] ?></td>
-                            <td><?= $d['nowa'] ?></td>
-                            <td><?= $d['jumlah'] ?></td>
-                            <td><?= $d['id_bank'] ?></td>
-                            <td><img style="width: 200px" src="<?= base_url('assets/images/donasi/') . $d['bukti'] ?>"></td>
-                            <td><a href="<?= base_url('Cms/ubahdonasi/'). $d['id_donasi'] ?>" class="btn btn-success">Ubah</a> <a href="<?= base_url('Cms/deletedonasi/') . $d['id_donasi'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a></td>
+                            <td><?= $b['id_bank'] ?></td>
+                            <td><?= $b['bank'] ?></td>
+                            <td><?= $b['nama'] ?></td>
+                            <td><?= $b['norek'] ?></td>
+                            
+                            <!--<td><img style="width: 200px" src="<?= base_url('assets/images/donasi/') . $d['bukti'] ?>"></td> -->
+                            <td><a href="<?= base_url('Cms/ubahbank/'). $b['id_bank'] ?>" class="btn btn-success">Ubah</a> <a href="<?= base_url('Cms/deletebank/') . $b['id_bank'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a></td>
 
               </tr>
             <?php } ?>

@@ -2,7 +2,7 @@
 
 class M_donasi extends CI_Model
 {
-    public function tampil_data()
+    public function tampil_data() //menampilkan data
     {
         return $this->db->get('donasi');
     }
