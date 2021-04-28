@@ -124,6 +124,18 @@ c,<!DOCTYPE html>
     })
   </script>
 <?php endif;?>
+
+<?php if ($this->session->flashdata('success-donasi')): ?>
+  <script>
+    swal({
+      icon: 'success',
+      title: 'Anda berhasil Donasi',
+      text: 'Anda Berhasil Melakukan Donasi',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  </script>
+<?php endif;?>
 </body>
 
 </html>
@@ -143,7 +155,7 @@ c,<!DOCTYPE html>
         </button>
       </div>
       <div class="modal-body">
-         <?php echo form_open_multipart('Cms/tambahdonasiAct'); ?>
+         <?php echo form_open_multipart('user/tambahdonasiAct'); ?>
                     <div class="form-group">
                       <label>Nama</label>
                       <input type="" name="nama" class="form-control" required>
@@ -161,11 +173,11 @@ c,<!DOCTYPE html>
 
                      <div class="form-group">
                       <label>Bank</label>
-                      <select name ="" class="form-control">
+                      <select name ="bank" class="form-control">
                         <option selected>Pilih Bank</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <?php foreach ($bank as $b) { ?>
+                        <option value="<?= $b['id_bank'] ?>"><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama'] ?></option>
+                    <?php } ?>
                       </select>
                       
                     </div>
