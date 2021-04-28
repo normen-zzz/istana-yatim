@@ -21,15 +21,21 @@
                   </div>
                   
                   <div class="card-body">
-
+                    <form method="POST" id="myForm" action="<?= base_url('Cms/ubahmenuAct') ?>" enctype="multipart/form-data">
+                    <input type="number" name="id" value="<?= $menu['id_menu'] ?>" hidden>
                     <div class="form-group">
                       <label>Judul</label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="judul_menu" class="form-control" value="<?= $menu['judul_menu'] ?>">
                     </div>
 
                     <div class="form-group">
                       <label>Text</label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="text_menu" class="form-control" value="<?= $menu['text_menu'] ?>">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Tombol</label>
+                      <input type="text" name="tombol_menu" class="form-control" value="<?= $menu['tombol_menu'] ?>">
                     </div>
 
                     <div class="alert alert-info">
@@ -37,12 +43,14 @@
                     </div>
                     <div class="form-group">
                       <label>Logo</label>
-                      <input type="file" class="form-control">
+                      <img width="200px" style="margin-bottom: 5px" src="<?= base_url('assets/images/menu/'). $menu['img_menu'] ?>">
+                      <input type="file" name="filefoto" class="form-control">
                     </div>
                   </div>
+
                   <div class="card-footer text-right">
-                    <button class="btn btn-primary mr-1" type="submit">Submit</button>
-                    <button class="btn btn-secondary" type="reset">Reset</button>
+                    <button class="btn btn-primary mr-1 ubah"  type="submit">Ubah</button>
+                    <!-- <button class="btn btn-secondary" type="reset">Reset</button> -->
                   </div>
                 </div>
               </div>

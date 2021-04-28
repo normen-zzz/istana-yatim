@@ -21,15 +21,17 @@
                   </div>
                   
                   <div class="card-body">
+                    <form method="POST" id="myForm" action="<?= base_url('Cms/ubahslidefotoAct') ?>" enctype="multipart/form-data">
+                      <input type="number" name="id" value="<?= $slidefoto['id_slidefoto'] ?>" hidden>
                     <div class="alert alert-info">
                       <b>Perhatian!</b> Harap Masukan Foto Resolusi bla bla bla.
                     </div>
                     <label>Foto Sebelumnya: </label>
-                    <img style="width: 200px; margin-bottom: 20px;" src="<?= base_url('assets/user/') ?>img/building.jpg">
+                    <img style="width: 200px; margin-bottom: 20px;" src="<?= base_url('assets/images/slidefoto/'). $slidefoto['img_slidefoto'] ?>">
                     <div class="form-group">
 
                       <label>File</label>
-                      <input type="file" class="form-control">
+                      <input type="file" name="filefoto" class="form-control">
                     </div>
                   </div>
                   <div class="card-footer text-right">
@@ -45,3 +47,4 @@
   </div>
 
   <?php $this->load->view('admin/template/footer') ?>
+  

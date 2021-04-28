@@ -53,7 +53,10 @@
                           <td><?= $c['tgl_ceritasantri'] ?></td>
                           <td><?= $c['jenis_ceritasantri'] ?></td>
                           <td><?= $c['penulis_ceritasantri'] ?></td>
+
+                          
                           <td><a style="margin-bottom: 5px" href="<?= base_url('Ceritasantri/ubahceritasantri/') . $c['slug_ceritasantri'] ?>" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()" class="btn btn-danger">Hapus</a></td>
+
                           
                         </tr>
                       <?php } ?>
@@ -86,7 +89,7 @@
 <script type="text/javascript">
   function confir(){
     swal({
-      title: "Hapus Artikel Ini?",
+      title: "Hapus Cerita Santri?",
       text: "Data Tidak bisa kembali jika sudah dihapus",
       icon: "warning",
       buttons: true,
@@ -94,7 +97,7 @@
     })
     .then((willDelete) => {
       if (willDelete) {
-        swal({ title: "Hapus Artikel Berhasil",
+        swal({ title: "Hapus Cerita Santri Berhasil",
           icon: "success"}).then(okay => {
             if (okay) {
               window.location.href = "<?= base_url('Ceritasantri/deleteceritasantri/') . $c['slug_ceritasantri'] ?>";
@@ -103,7 +106,7 @@
 
         } else {
           swal({
-            title: "Artikel Tidak Terhapus",
+            title: "Cerita Santri Tidak Terhapus",
             icon: "error",
 
           });

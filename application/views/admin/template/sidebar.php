@@ -13,7 +13,7 @@
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="<?= base_url('Cms') ?>">Slide Foto</a></li>
           <li><a class="nav-link" href="<?= base_url('Cms/menu') ?>">Menu</a></li>
-          <li><a class="nav-link" href="index.html">Donasi</a></li>
+          <li><a class="nav-link" href="<?= base_url('Cms/donasi') ?>">Donasi</a></li>
           <li><a class="nav-link" href="<?= base_url('Cms/footer') ?>">Footer</a></li>
         </ul>
       </li>

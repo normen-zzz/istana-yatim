@@ -37,7 +37,7 @@
                           <td><?= $f['link_twitter'] ?></td>
                           <td><?= $f['link_instagram'] ?></td>
                           <td><?= $f['text_copyright'] ?></td>
-                          <td><a href="#" class="btn btn-success">Ubah</a></td>
+                          <td><a href="<?= base_url('Cms/ubahfooter/').$f['id_footer'] ?>" class="btn btn-success">Ubah</a></td>
                           
                         </tr>
                       <?php } ?> 
