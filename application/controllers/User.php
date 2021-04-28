@@ -66,6 +66,7 @@ class User extends CI_Controller {
 
 	public function tambahdonasiAct()
     {
+    	$this->load->model('Kirim');
         $config['upload_path'] = './assets/images/donasi/'; //path folder
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
             $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
@@ -100,6 +101,7 @@ class User extends CI_Controller {
 
                     $this->db->insert('donasi', $data);
                     $this->session->set_flashdata('success-donasi', 'berhasil');
+                    $this->Kirim->kirimWablas($this->input->post('nowa'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Melakukan Donasi Sebesar '. $this->input->post('jumlah'));
                     redirect('User');
                 }else{  
                     redirect('user');
