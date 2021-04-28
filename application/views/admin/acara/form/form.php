@@ -11,14 +11,14 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Acara</h1>
+            <h1>Form</h1>
           </div>
           <div class="row">
               <div class="col">
                 <a style="margin-bottom: 20px" href="<?= base_url('Acara/tambahacara') ?>" class="btn btn-primary">Tambah Acara</a>
                 <div class="card">
                   <div class="card-header">
-                    <h4>List Acara</h4>
+                    <h4>List Form Acara <?= $acara->nama_acara ?></h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -26,20 +26,18 @@
                         <tr>
                           <th>#</th>
                           <th>Nama</th>
-                          <th>Tema</th>
-                          <th>Tanggal</th>
-                          <th>Poster</th>
+                          <th>Nomor</th>
+                          <th>Jenis Kelamin</th>
                           <th>Action</th>
                         </tr>
                         
-                        <?php foreach ($acara as $a) { ?>
+                        <?php foreach ($form as $f) { ?>
                         <tr>
-                          <td><?= $a['id_acara'] ?></td>
-                          <td><?= $a['nama_acara'] ?></td>
-                          <td><?= $a['tema_acara'] ?></td>
-                          <td><?= $a['tgl_acara'] ?></td>
-                          <td><img src="<?= base_url('assets/images/acara/'). $a['img_acara'] ?>"></td>
-                          <td><a href="<?= base_url('Form/tampilform/'). $a['id_acara'] ?>" class="btn btn-primary">Form</a> <a href="" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>
+                          <td><?= $f['id_form'] ?></td>
+                          <td><?= $f['nama_form'] ?></td>
+                          <td><?= $f['nomor_form'] ?></td>
+                          <td><?= $f['kelamin_form'] ?></td>
+                          <td> <a href="" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>
                         </tr>
                      <?php } ?>
                         

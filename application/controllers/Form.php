@@ -16,13 +16,15 @@ class Form extends CI_Controller {
     }
 
 
-    public function index()
+    public function tampilform()
     {
-        $data['title'] = 'Slide Foto';
+        $this->load->model('M_acara');
+        $data['title'] = 'Form Acara';
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-        $data['slidefoto'] = $this->db->get('slidefoto')->result_array();
+        $data['form'] = $this->db->get_where('form',['acara_form' => $this->uri->segment(3)])->result_array();
+        $data['acara'] = $this->M_acara->acaraWhere(['id_acara' => $this->uri->segment(3)])->row();
 
-        $this->load->view('admin/cms/slidefoto/slidefoto',$data);
+        $this->load->view('admin/acara/form/form',$data);
     }
 
     public function tambahformAct()
