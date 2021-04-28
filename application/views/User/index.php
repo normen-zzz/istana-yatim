@@ -73,10 +73,13 @@
                 <div class="col text-center" style="color: rgb(255,255,255);padding: 73px 15px 0px;padding-top: 0px;">
                     <h1>Donasi</h1>
                 </div>
+
             </div>
             <div class="row" data-aos="fade-up" data-aos-duration="800" style="padding-top: 0px;padding-bottom: 65px;">
                 <div class="col text-center" style="padding-top: 35px;">
-                    <button type="button" class="btn btn-light" style="color: #000000;border-radius: 10px;padding: 10px;">Mari Berdonasi</button>
+                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
+                        Mari Berdonasi
+                    </button>
                     <!-- <a href="#" style="border-style: solid;border-color: rgb(255,255,255);color: rgb(255,255,255);border-radius: 10px;padding: 3px;margin: 5px;">Yuk Donasi...</a> -->
                 </div>
             </div>
@@ -124,3 +127,63 @@
 </body>
 
 </html>
+
+<!--Modal Untuk Tambah Data-->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title text-center" id="exampleModalLabel">AYO DONASI</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <?php echo form_open_multipart('Cms/tambahdonasiAct'); ?>
+                    <div class="form-group">
+                      <label>Nama</label>
+                      <input type="" name="nama" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>No Whatssapp</label>
+                      <input type="" name="nowa" class="form-control" placeholder="628123445xx" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Jumlah</label>
+                      <input type="" name="jumlah" class="form-control">
+                    </div>
+
+                     <div class="form-group">
+                      <label>Bank</label>
+                      <select name ="" class="form-control">
+                        <option selected>Pilih Bank</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                      
+                    </div>
+
+                    <div class="form-group">
+                      <label>Bukti Donasi</label>
+                      <input type="file" name="filebukti" class="form-control">
+                    </div>
+
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        <?php echo form_close() ?>
+      </div>
+  </form>
+    </div>
+  </div>
+</div>
+
+<!-- Akhir Modal -->
