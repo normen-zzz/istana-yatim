@@ -82,17 +82,17 @@ class Cms extends CI_Controller {
             $data['slidefoto'] = $this->M_slidefoto->slidefotoWhere(['id_slidefoto' => $this->uri->segment(3)])->row_array();
             $this->load->view('admin/cms/slidefoto/ubahslidefoto',$data);
         }
-         public function ubahslidefotoAct()
-    {
-        $this->load->model('M_slidefoto');
-        
-        $id = $this->input->post('id',true);
-        
-        
-        $gambar = $_FILES['filefoto']['name'];
-        $data['slidefoto'] = $this->M_slidefoto->slidefotoWhere(['id_slidefoto' => $id])->row_array();
+        public function ubahslidefotoAct()
+        {
+            $this->load->model('M_slidefoto');
 
-        
+            $id = $this->input->post('id',true);
+
+
+            $gambar = $_FILES['filefoto']['name'];
+            $data['slidefoto'] = $this->M_slidefoto->slidefotoWhere(['id_slidefoto' => $id])->row_array();
+
+
 
         $config['upload_path'] = './assets/images/slidefoto/'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
@@ -102,22 +102,22 @@ class Cms extends CI_Controller {
         $gambarLama = $data['slidefoto']['img_slidefoto'];
         //berhasil
         if ($this->upload->do_upload('filefoto')) {
-            
+
 
             unlink(FCPATH . 'assets/images/slidefoto/' . $gambarLama);
             $gambarBaru = $this->upload->data();
             // unlink(FCPATH . 'assets/images/ceritasantri/' . $gambar_lama);
             $config['image_library']='gd2';
-                $config['source_image']='./assets/images/slidefoto/'.$gambarBaru['file_name'];
-                $config['create_thumb']= FALSE;
-                $config['maintain_ratio']= FALSE;
-                $config['quality']= '60%';
-                $config['width']= 710;
-                $config['height']= 420;
-                $config['new_image']= './assets/images/slidefoto/'.$gambarBaru['file_name'];
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
-                $gbr = $gambarBaru['file_name'];
+            $config['source_image']='./assets/images/slidefoto/'.$gambarBaru['file_name'];
+            $config['create_thumb']= FALSE;
+            $config['maintain_ratio']= FALSE;
+            $config['quality']= '60%';
+            $config['width']= 710;
+            $config['height']= 420;
+            $config['new_image']= './assets/images/slidefoto/'.$gambarBaru['file_name'];
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
+            $gbr = $gambarBaru['file_name'];
             // $this->db->set('ceritasantri_img', $gambarBaru);
         } 
 
@@ -144,8 +144,8 @@ class Cms extends CI_Controller {
         redirect('cms/index');
     }
 
-        
-        public function deleteslidefoto($id)
+
+    public function deleteslidefoto($id)
     {
         $this->load->model('M_slidefoto');
         $data['slidefoto'] = $this->M_slidefoto->slidefotoWhere(['id_slidefoto' => $this->uri->segment(3)])->row_array();
@@ -157,25 +157,25 @@ class Cms extends CI_Controller {
         redirect('Cms');
     }
 
-        public function menu()
-        {
-            $this->load->model('M_menu');
-            $data['title'] = 'Menu';
-            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-            $data['menu'] = $this->M_menu->tampil_data()->result_array();
+    public function menu()
+    {
+        $this->load->model('M_menu');
+        $data['title'] = 'Menu';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['menu'] = $this->M_menu->tampil_data()->result_array();
 
-            $this->load->view('admin/cms/menu/menu',$data);
-        }
+        $this->load->view('admin/cms/menu/menu',$data);
+    }
 
-        public function tambahmenu()
-        {
-            $data['title'] = 'Tambah Menu';
-            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+    public function tambahmenu()
+    {
+        $data['title'] = 'Tambah Menu';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
 
-            $this->load->view('admin/cms/menu/tambahmenu',$data);
-        }
+        $this->load->view('admin/cms/menu/tambahmenu',$data);
+    }
 
-        public function tambahmenuAct()
+    public function tambahmenuAct()
     {
         $config['upload_path'] = './assets/images/menu/'; //path folder
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
@@ -220,29 +220,29 @@ class Cms extends CI_Controller {
             }
         }
 
-       public function ubahmenu()
-    {
-        $this->load->model('M_menu');
-        $data['title'] = 'Ubah Menu';
-        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-        $data['menu'] = $this->M_menu->menuWhere(['id_menu' => $this->uri->segment(3)])->row_array();
-        $this->load->view('admin/cms/menu/ubahmenu', $data);
-    }
+        public function ubahmenu()
+        {
+            $this->load->model('M_menu');
+            $data['title'] = 'Ubah Menu';
+            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+            $data['menu'] = $this->M_menu->menuWhere(['id_menu' => $this->uri->segment(3)])->row_array();
+            $this->load->view('admin/cms/menu/ubahmenu', $data);
+        }
 
-    
-    public function ubahmenuAct()
-    {
-        $this->load->model('M_menu');
-        
-        $id = $this->input->post('id',true);
-        $judul_menu= $this->input->post('judul_menu');
-        $text_menu= $this->input->post('text_menu');
-        
-        $tombol_menu = $this->input->post('tombol_menu');
-        $gambar = $_FILES['filefoto']['name'];
-        $data['menu'] = $this->M_menu->menuWhere(['id_menu' => $id])->row_array();
 
-        
+        public function ubahmenuAct()
+        {
+            $this->load->model('M_menu');
+
+            $id = $this->input->post('id',true);
+            $judul_menu= $this->input->post('judul_menu');
+            $text_menu= $this->input->post('text_menu');
+
+            $tombol_menu = $this->input->post('tombol_menu');
+            $gambar = $_FILES['filefoto']['name'];
+            $data['menu'] = $this->M_menu->menuWhere(['id_menu' => $id])->row_array();
+
+
 
         $config['upload_path'] = './assets/images/menu/'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
@@ -252,22 +252,22 @@ class Cms extends CI_Controller {
         $gambarLama = $data['menu']['img_menu'];
         //berhasil
         if ($this->upload->do_upload('filefoto')) {
-            
+
 
             unlink(FCPATH . 'assets/images/menu/' . $gambarLama);
             $gambarBaru = $this->upload->data();
             // unlink(FCPATH . 'assets/images/ceritasantri/' . $gambar_lama);
             $config['image_library']='gd2';
-                $config['source_image']='./assets/images/menu/'.$gambarBaru['file_name'];
-                $config['create_thumb']= FALSE;
-                $config['maintain_ratio']= FALSE;
-                $config['quality']= '60%';
-                $config['width']= 710;
-                $config['height']= 420;
-                $config['new_image']= './assets/images/menu/'.$gambarBaru['file_name'];
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
-                $gbr = $gambarBaru['file_name'];
+            $config['source_image']='./assets/images/menu/'.$gambarBaru['file_name'];
+            $config['create_thumb']= FALSE;
+            $config['maintain_ratio']= FALSE;
+            $config['quality']= '60%';
+            $config['width']= 710;
+            $config['height']= 420;
+            $config['new_image']= './assets/images/menu/'.$gambarBaru['file_name'];
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
+            $gbr = $gambarBaru['file_name'];
             // $this->db->set('ceritasantri_img', $gambarBaru);
         } 
 
@@ -296,7 +296,7 @@ class Cms extends CI_Controller {
         redirect('cms/menu');
     }
 
-        public function deletemenu($id)
+    public function deletemenu($id)
     {
         $this->load->model('M_menu');
         $data['menu'] = $this->M_menu->menuWhere(['id_menu' => $this->uri->segment(3)])->row_array();
@@ -310,13 +310,13 @@ class Cms extends CI_Controller {
 
 
 
-	 public function footer()
+    public function footer()
     {
         $this->load->model('M_footer');
-		 $data['title'] = 'Footer';
+        $data['title'] = 'Footer';
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
         $data['footer'] = $this->M_footer->tampil_data()->result_array();
-		$this->load->view('admin/cms/footer/footer', $data);
+        $this->load->view('admin/cms/footer/footer', $data);
     }
     
     public function ubahfooter()
@@ -336,10 +336,10 @@ class Cms extends CI_Controller {
         $link_twitter = $this->input->post('link_twitter');
         $link_instagram = $this->input->post('link_instagram');
         $text_copyright = $this->input->post('text_copyright');
-      
+
         $data['footer'] = $this->M_footer->footerWhere(['id_footer' => $id])->row_array();
 
-       $where = array(
+        $where = array(
             'id_footer' => $id,
         );
 
@@ -358,17 +358,17 @@ class Cms extends CI_Controller {
         redirect('cms/footer');
     }
 
-     public function donasi()
-        {
-            $this->load->model('M_donasi');
-            $this->load->model('M_bank');
-            $data['title'] = 'Donasi';
-            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-            $data['donasi'] = $this->M_donasi->tampil_data()->result_array();
-            $data['bank'] = $this->M_bank->tampil_data()->result_array();
+    public function donasi()
+    {
+        $this->load->model('M_donasi');
+        $this->load->model('M_bank');
+        $data['title'] = 'Donasi';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['donasi'] = $this->M_donasi->tampil_data()->result_array();
+        $data['bank'] = $this->M_bank->tampil_data()->result_array();
 
-            $this->load->view('admin/cms/donasi/donasi',$data);
-        }
+        $this->load->view('admin/cms/donasi/donasi',$data);
+    }
     public function tambahdonasi()
     {
         $data['title'] = 'Tambah Donasi';
@@ -392,7 +392,7 @@ class Cms extends CI_Controller {
                     $config['create_thumb']= FALSE;
                     $config['maintain_ratio']= FALSE;
                     $config['quality']= '100%';
-                     $config['width']= 710;
+                    $config['width']= 710;
                     $config['height']= 420;
                     $config['new_image']= './assets/images/donasi/'.$gbr['file_name'];
                     $this->load->library('image_lib', $config);
@@ -420,19 +420,19 @@ class Cms extends CI_Controller {
                 redirect('acara/tambahdonasi');
             }
         }
-         public function deletedonasi($id)
-    {
-        $this->load->model('M_donasi');
-        $data['donasi'] = $this->M_donasi->donasiWhere(['id_donasi' => $this->uri->segment(3)])->row_array();
-        $gambar_lama = $data['donasi']['bukti'];
-        unlink(FCPATH . 'assets/images/donasi/' . $gambar_lama);
-        $where = array('id_donasi' => $id);
-        $this->M_donasi->delete_donasi($where, 'donasi');
-        $this->session->set_flashdata('user-delete', 'berhasil');
-        redirect('Cms/donasi');
-    }
+        public function deletedonasi($id)
+        {
+            $this->load->model('M_donasi');
+            $data['donasi'] = $this->M_donasi->donasiWhere(['id_donasi' => $this->uri->segment(3)])->row_array();
+            $gambar_lama = $data['donasi']['bukti'];
+            unlink(FCPATH . 'assets/images/donasi/' . $gambar_lama);
+            $where = array('id_donasi' => $id);
+            $this->M_donasi->delete_donasi($where, 'donasi');
+            $this->session->set_flashdata('user-delete', 'berhasil');
+            redirect('Cms/donasi');
+        }
 
-    public function bank()
+        public function bank()
         {
             $this->load->model('M_bank');
             $data['title'] = 'Daftar Bank';
@@ -441,59 +441,30 @@ class Cms extends CI_Controller {
 
             $this->load->view('admin/cms/bank/bank',$data);
         }
-    public function tambahbank()
-    {
-        $data['title'] = 'Tambah Bank';
-        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-        $this->load->view('admin/cms/bank/tambahbank',$data);
-    }
-    public function tambahbankAct()
-    {
-        $config['upload_path'] = './assets/images/donasi/'; //path folder
-            $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-            $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
-
-            $this->upload->initialize($config);
-            if(!empty($_FILES['filebukti']['name'])){
-                if ($this->upload->do_upload('filebukti')){
-                    $gbr = $this->upload->data();
-                    //Compress Image
-                    $config['image_library']='gd2';
-                    $config['source_image']='./assets/images/donasi/'.$gbr['file_name'];
-                    $config['create_thumb']= FALSE;
-                    $config['maintain_ratio']= FALSE;
-                    $config['quality']= '100%';
-                     $config['width']= 710;
-                    $config['height']= 420;
-                    $config['new_image']= './assets/images/donasi/'.$gbr['file_name'];
-                    $this->load->library('image_lib', $config);
-                    $this->image_lib->resize();
-
-                    $gambar=$gbr['file_name'];
-
-                    $data = [
-                        'bank' => $this->input->post('bank'),
-                        'nama' => $this->input->post('nama'),
-                        'norek' => $this->input->post('norek'),
-                        
-                    ];
-
-                    $this->db->insert('bank', $data);
-                    $this->session->set_flashdata('success-input', 'berhasil');
-                    redirect('Cms/bank');
-                }else{  
-                    redirect('cms/tambahbank');
-                }
-
-            }else{
-                redirect('cms/tambahbank');
-            }
+        public function tambahbank()
+        {
+            $data['title'] = 'Tambah Bank';
+            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+            $this->load->view('admin/cms/bank/tambahbank',$data);
         }
+        public function tambahbankAct()
+        {
+            $data = [
+                'bank' => $this->input->post('bank'),
+                'nama' => $this->input->post('nama'),
+                'norek' => $this->input->post('norek'),
+
+            ];
+
+            $this->db->insert('bank', $data);
+            $this->session->set_flashdata('success-input', 'berhasil');
+            redirect('Cms/bank');
+}
 
 
 }
-    
 
 
-    
+
+
 

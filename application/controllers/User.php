@@ -14,6 +14,7 @@ class User extends CI_Controller {
 		$this->load->model('M_slidefoto');
 		$this->load->model('M_footer');
 		$this->load->model('M_bank');
+		
 		$data['active'] = 'active';
 		$data['slidefoto'] = $this->M_slidefoto->tampil_data()->result_array();
 		$data['menu'] = $this->M_menu->tampil_data()->result_array();

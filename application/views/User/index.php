@@ -71,14 +71,17 @@ c,<!DOCTYPE html>
         <div class="container-fluid" style="background: #1f7c4d;">
             <div class="row" data-aos="fade-up" data-aos-duration="800" style="background: rgba(31,124,77,0);">
                 <div class="col text-center" style="color: rgb(255,255,255);padding: 73px 15px 0px;padding-top: 0px;">
-                    <h1>Donasi</h1>
+                    <h1>Yuk Donasi</h1>
+                    <?php foreach ($bank as $b) {?>
+                    <p><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama'] ?></p>
+                <?php } ?>
                 </div>
 
             </div>
             <div class="row" data-aos="fade-up" data-aos-duration="800" style="padding-top: 0px;padding-bottom: 65px;">
                 <div class="col text-center" style="padding-top: 35px;">
                     <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
-                        Mari Berdonasi
+                        Konfirmasi Donasi
                     </button>
                     <!-- <a href="#" style="border-style: solid;border-color: rgb(255,255,255);color: rgb(255,255,255);border-radius: 10px;padding: 3px;margin: 5px;">Yuk Donasi...</a> -->
                 </div>
@@ -93,7 +96,7 @@ c,<!DOCTYPE html>
                 </div>
             </div>
             <div class="row" style="padding-top: 12px;">
-                <div class="col"><iframe allowfullscreen="" frameborder="0" src="https://cdn.bootstrapstudio.io/placeholders/map.html" data-aos="zoom-in" data-aos-delay="300" width="100%" height="400"></iframe></div>
+                <div class="col text-center"><a  href="https://goo.gl/maps/RJkbBXQ1Mb62WS8YA" target="_blank"><img width="1000px" src="<?= base_url('assets/images/maps/maps.png') ?>"></a></div>
             </div>
         </div>
     </section>
