@@ -59,28 +59,28 @@
                 <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
                     <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
                     <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Menjadi Yateam Yang baik dan benar</h5>
+                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
                         <p>Paragraph</p>
                     </div>
                 </div>
                 <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
                     <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
                     <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Menjadi Yateam Yang baik dan benar</h5>
+                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
                         <p>Paragraph</p>
                     </div>
                 </div>
                 <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
                     <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
                     <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Menjadi Yateam Yang baik dan benar</h5>
+                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
                         <p>Paragraph</p>
                     </div>
                 </div>
                 <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
                     <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
                     <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Menjadi Yateam Yang baik dan benar</h5>
+                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
                         <p>Paragraph</p>
                     </div>
                 </div>
