@@ -15,7 +15,7 @@
           </div>
           <div class="row">
               <div class="col">
-                <a style="margin-bottom: 20px" href="<?= base_url('cms/tambahslidefoto') ?>" class="btn btn-primary">Tambah Slide Foto</a>
+                <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Slide Foto</button>
                 <div class="card">
                   <div class="card-header">
                     <h4>List Slide Foto</h4>
@@ -65,6 +65,39 @@
         </section>
       </div>
       
+  </div>
+
+
+   <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title text-center" id="exampleModalLabel">Tambah Slide Foto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <?php echo form_open_multipart('cms/tambahslidefotoAct'); ?>
+             <div class="alert alert-info">
+                      <b>Perhatian!</b> Harap Masukan Foto Dengan Maksimal Ukuran 1,8MB.
+                    </div>
+             <div class="form-group">
+                      <label>File</label>
+                      <input type="file" name="filefoto" class="form-control">
+                    </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <?php echo form_close() ?>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <?php $this->load->view('admin/template/footer') ?>

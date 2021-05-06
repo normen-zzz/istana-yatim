@@ -13,6 +13,7 @@ class User extends CI_Controller {
 	public function index(){
 		$this->load->library('leaflet');
 		$this->load->model('M_menu');
+		$this->load->model('M_artikel');
 		$this->load->model('M_slidefoto');
 		$this->load->model('M_footer');
 		$this->load->model('M_bank');
@@ -31,6 +32,7 @@ class User extends CI_Controller {
 		$data['map'] =  $this->leaflet->create_map();
 		$data['active'] = 'active';
 		$data['slidefoto'] = $this->M_slidefoto->tampil_data()->result_array();
+		$data['artikel'] = $this->M_artikel->tampil_data()->result_array();
 		$data['menu'] = $this->M_menu->tampil_data()->result_array();
 		$data['bank'] = $this->M_bank->tampil_data()->result_array();
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();

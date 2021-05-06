@@ -35,7 +35,7 @@ class Acara extends CI_Controller {
 
      public function tambahacaraAct()
     {
-        $config['upload_path'] = './assets/images/acara/'; //path folder
+            $config['upload_path'] = './assets/images/acara/'; //path folder
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
             $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
 
@@ -49,7 +49,7 @@ class Acara extends CI_Controller {
                     $config['create_thumb']= FALSE;
                     $config['maintain_ratio']= FALSE;
                     $config['quality']= '100%';
-                     $config['width']= 710;
+                    $config['width']= 710;
                     $config['height']= 420;
                     $config['new_image']= './assets/images/acara/'.$gbr['file_name'];
                     $this->load->library('image_lib', $config);
