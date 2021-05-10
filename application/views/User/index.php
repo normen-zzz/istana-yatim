@@ -101,6 +101,61 @@
       </section>
 
 
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title text-center" id="exampleModalLabel">AYO DONASI</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <?php echo form_open_multipart('user/tambahdonasiAct'); ?>
+             <div class="form-group">
+              <label>Nama</label>
+              <input type="" name="nama" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label>No Whatssapp</label>
+              <input type="" name="nowa" class="form-control" placeholder="" required>
+            </div>
+
+            <div class="form-group">
+              <label>Jumlah</label>
+              <input type="" name="jumlah" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label>Bank</label>
+              <select name ="bank" class="form-control">
+                <option selected>Pilih Bank</option>
+                <?php foreach ($bank as $b) { ?>
+                  <option value="<?= $b['id_bank'] ?>"><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama'] ?></option>
+                <?php } ?>
+              </select>
+
+            </div>
+
+            <div class="form-group">
+              <label>Bukti Donasi</label>
+              <input type="file" name="filebukti" class="form-control">
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <?php echo form_close() ?>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
          <?php function limit_text($text, $limit) {
         if (str_word_count($text, 0) > $limit) {
           $words = str_word_count($text, 2);
@@ -167,59 +222,7 @@
       </footer>
 
 
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header text-center">
-              <h5 class="modal-title text-center" id="exampleModalLabel">AYO DONASI</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-             <?php echo form_open_multipart('user/tambahdonasiAct'); ?>
-             <div class="form-group">
-              <label>Nama</label>
-              <input type="" name="nama" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label>No Whatssapp</label>
-              <input type="" name="nowa" class="form-control" placeholder="" required>
-            </div>
-
-            <div class="form-group">
-              <label>Jumlah</label>
-              <input type="" name="jumlah" class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>Bank</label>
-              <select name ="bank" class="form-control">
-                <option selected>Pilih Bank</option>
-                <?php foreach ($bank as $b) { ?>
-                  <option value="<?= $b['id_bank'] ?>"><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama'] ?></option>
-                <?php } ?>
-              </select>
-
-            </div>
-
-            <div class="form-group">
-              <label>Bukti Donasi</label>
-              <input type="file" name="filebukti" class="form-control">
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-            <button type="submit" class="btn btn-primary">Simpan</button>
-            <?php echo form_close() ?>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+      
 
 
 
