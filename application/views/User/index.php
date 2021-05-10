@@ -64,7 +64,7 @@
             <div class="row" style="padding-top: 5px;">
               <?php foreach ($menu as $m) { ?>
 
-                <div class="col text-center" style="padding-bottom: 150px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/') . $m['img_menu'] ?>" style="width: 150px;">
+                <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/') . $m['img_menu'] ?>" style="width: 150px;">
                   <h3 style="padding-top: 20px;"><?= $m['judul_menu'] ?></h3>
                   <a class="btn btn-light action-button" role="button" href="<?= base_url('User/') . $m['link'] ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong><?= $m['tombol_menu'] ?></strong></a>
                 </div>
@@ -110,7 +110,7 @@
         return $text;
       } ?>
       <!-- Set up your HTML -->
-      <div class="container">
+      <div class="container" data-aos="fade-up" data-aos-duration="850">
         <div class="row">
           <div class="col">
             <h1 align="center" style="color: rgb(106,110,115);"><strong>Artikel</strong></h1>
@@ -142,7 +142,7 @@
         </div>
 
         <section>
-          <div class="container-fluid">
+          <div class="container-fluid" data-aos="fade-up" data-aos-duration="850">
             <div class="row">
               <div class="col">
                 <h1 data-aos="zoom-in" data-aos-duration="500" style="text-align: center;color: rgb(106,110,115);"><strong>Lokasi</strong></h1>
