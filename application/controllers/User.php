@@ -115,7 +115,7 @@ public function detailacara(){
 
 public function tambahdonasiAct()
 {
-	$this->load->model('Kirim');
+	$this->load->model('Waapi');
         $config['upload_path'] = './assets/images/donasi/'; //path folder
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
             $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
@@ -150,7 +150,7 @@ public function tambahdonasiAct()
 
             		$this->db->insert('donasi', $data);
             		$this->session->set_flashdata('success-donasi', 'berhasil');
-            		$this->Kirim->kirimWablas($this->input->post('nowa'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Melakukan Donasi Sebesar '. $this->input->post('jumlah'));
+            		$this->Waapi->kirimWablas($this->input->post('nowa'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Melakukan Donasi Sebesar '. $this->input->post('jumlah'));
             		redirect('User');
             	}else{  
             		redirect('user');
