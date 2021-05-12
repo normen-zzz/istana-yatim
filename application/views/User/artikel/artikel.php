@@ -57,7 +57,7 @@
                             <div class="card"><a href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>"><img class="img-fluid card-img-top w-100 d-block" src="<?= base_url('assets/images/artikel/') . $a['img_artikel'] ?>" style="height: 247.797px;"></a>
                                 <div class="card-body">
                                     <a style="color: black" href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>"><h4 class="card-title"><?= $a['judul_artikel'] ?></h4></a>
-                                    <p class="d-xl-flex justify-content-xl-end card-text"><?= limit_text($a['isi_artikel'], 30) ?><a style="color: grey;" href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>">Selengkapnya</a></p><label class="d-xl-flex justify-content-xl-end align-items-xl-center" style="text-align: right;">Penulis: <?= $a['penulis_artikel'] ?></label><label class="d-xl-flex justify-content-xl-end align-items-xl-center"><i class="fa fa-eye"></i>&nbsp; <?= $a['lihat_artikel'] ?></label>
+                                    <p class="d-xl-flex justify-content-xl-end card-text"><?= limit_text($a['isi_artikel'], 30) ?><a style="color: grey;" href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>">Selengkapnya</a></p><label class="d-xl-flex justify-content-xl-end align-items-xl-center" style="text-align: right;">Penulis: <?= $a['penulis_artikel'] ?></label><label class="d-xl-flex justify-content-xl-end align-items-xl-center"> Dilihat <i class="fa fa-eye"></i>&nbsp; <?= $a['lihat_artikel'] ?></label>
                                 </div>
                             </div>
                         </div>

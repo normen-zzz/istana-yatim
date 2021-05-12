@@ -37,6 +37,7 @@
     </div>
   </nav>
 
+
   
   <div style="margin-top: 75px;" class="carousel slide" data-ride="carousel" id="carousel-1">
     <div class="carousel-inner">
@@ -55,6 +56,8 @@
           <?php $counterslide++; } ?>
         </ol>
       </div>
+
+
 
       
 
@@ -77,12 +80,26 @@
 
         
 
+        <?php 
+
+        function rupiah($angka){
+  
+        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
+ 
+        }
+
+        ?>
 
         <section id="donasi" >
         <div class="container-fluid" style="background: #1f7c4d;">
           <div class="row" data-aos="fade-up" data-aos-duration="800" style="background: rgba(31,124,77,0);">
             <div class="col text-center" style="color: rgb(255,255,255);padding: 73px 15px 0px;padding-top: 0px;">
+              <marquee><?php foreach ($donasi as $d) {
+  echo '  ' .$d['nama'] . ': ' . rupiah($d['jumlah']).' ||';
+} ?></marquee>
               <h1>Yuk Donasi</h1>
+
               <?php foreach ($bank as $b) {?>
                 <p><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama'] ?></p>
               <?php } ?>

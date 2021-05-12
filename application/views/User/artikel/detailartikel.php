@@ -41,7 +41,7 @@
                 <div class="row" style="padding-top: 12px;">
                     <div class="col" style="padding-top: 0px;">
                         <h1><?= $artikel->judul_artikel ?></h1>
-                        <div><i class="fa fa-clock-o"></i><label style="margin-left: 6px;"><?= $artikel->tgl_artikel ?></label><i class="fa fa-user" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->penulis_artikel ?></label><i class="fa fa-folder" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->jenis_artikel ?></label><i class="fa fa-eye" style="margin-left: 14px;"></i><label style="margin-left: 6px;">Label</label><i class="fa fa-comment" style="margin-left: 14px;"></i><label style="margin-left: 6px;">Label</label></div>
+                        <div><i class="fa fa-clock-o"></i><label style="margin-left: 6px;"><?= $artikel->tgl_artikel ?></label><i class="fa fa-user" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->penulis_artikel ?></label><i class="fa fa-folder" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->jenis_artikel ?></label><i class="fa fa-eye" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->lihat_artikel ?></label><i class="fa fa-comment" style="margin-left: 14px;"></i><label style="margin-left: 6px;">Label</label></div>
                     </div>
                 </div>
                 <div class="row">
