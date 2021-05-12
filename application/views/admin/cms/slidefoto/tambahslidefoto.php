@@ -22,7 +22,7 @@
                   
                   <div class="card-body">
                     <div class="alert alert-info">
-                      <b>Perhatian!</b> Harap Masukan Foto Resolusi bla bla bla.
+                      <b>Perhatian!</b> Harap Masukan Foto Dengan Maksimal Ukuran 1,8MB.
                     </div>
                     <form method="POST" action="<?= base_url('cms/tambahslidefotoAct') ?>" enctype="multipart/form-data">
                     <div class="form-group">

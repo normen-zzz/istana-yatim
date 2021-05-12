@@ -38,6 +38,16 @@
                 </form>
             </div>
         </div>
+
+         <?php function limit_text($text, $limit) {
+        if (str_word_count($text, 0) > $limit) {
+          $words = str_word_count($text, 2);
+          $pos   = array_keys($words);
+          $text  = substr($text, 0, $pos[$limit]) . '....';
+        }
+        return $text;
+      } ?>
+
         <div class="row" style="padding-top: 0px;">
             <div class="col-md-9" style="margin-top: 56px;">
                 <?php foreach ($artikel as $a) { ?>
@@ -47,7 +57,7 @@
                             <div class="card"><a href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>"><img class="img-fluid card-img-top w-100 d-block" src="<?= base_url('assets/images/artikel/') . $a['img_artikel'] ?>" style="height: 247.797px;"></a>
                                 <div class="card-body">
                                     <a style="color: black" href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>"><h4 class="card-title"><?= $a['judul_artikel'] ?></h4></a>
-                                    <p class="d-xl-flex justify-content-xl-end card-text"><?= $a['isi_artikel'] ?></p><label class="d-xl-flex justify-content-xl-end align-items-xl-center" style="text-align: right;">Penulis: <?= $a['penulis_artikel'] ?></label><label class="d-xl-flex justify-content-xl-end align-items-xl-center"><i class="fa fa-eye"></i>&nbsp; 800</label>
+                                    <p class="d-xl-flex justify-content-xl-end card-text"><?= limit_text($a['isi_artikel'], 30) ?><a style="color: grey;" href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>">Selengkapnya</a></p><label class="d-xl-flex justify-content-xl-end align-items-xl-center" style="text-align: right;">Penulis: <?= $a['penulis_artikel'] ?></label><label class="d-xl-flex justify-content-xl-end align-items-xl-center"> Dilihat <i class="fa fa-eye"></i>&nbsp; <?= $a['lihat_artikel'] ?></label>
                                 </div>
                             </div>
                         </div>
@@ -61,37 +71,21 @@
             <div class="col" style="padding-top: 0px;padding-left: 21px;">
                 <div class="row">
                     <div class="col" style="padding-top: 0px;border-bottom: 1px dashed rgb(97,99,101) ;">
-                        <h3>Artikel Terbaru</h3>
+                        <h3>Artikel Terpopuler</h3>
                     </div>
                 </div>
+                <?php foreach ($artikelpopuler as $p) { ?>
+
                 <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
-                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
+                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="<?= base_url('assets/images/artikel/'). $p['img_artikel'] ?>"></div>
                     <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
-                        <p>Paragraph</p>
+                        <h5><?= limit_text($p['judul_artikel'], 5) ?></h5>
+                        <p style="color: grey">Dibaca <?= $p['lihat_artikel'] ?> kali</p>
                     </div>
                 </div>
-                <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
-                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
-                    <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
-                        <p>Paragraph</p>
-                    </div>
-                </div>
-                <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
-                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
-                    <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
-                        <p>Paragraph</p>
-                    </div>
-                </div>
-                <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
-                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
-                    <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
-                        <p>Paragraph</p>
-                    </div>
-                </div>
+
+            <?php } ?>
+
             </div>
         </div>
         <div class="row">

@@ -37,4 +37,26 @@ class M_artikel extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+
+    public function update_counter($slug) {
+    // return current article views 
+    $this->db->where('slug_artikel', urldecode($slug));
+    $this->db->select('lihat_artikel');
+    $count = $this->db->get('artikel')->row();
+    // then increase by one 
+    $this->db->where('slug_artikel', urldecode($slug));
+    $this->db->set('lihat_artikel', ($count->lihat_artikel + 1));
+    $this->db->update('artikel');
+    }
+
+    public function artikel_populer(){
+
+    $this->db->from('artikel');
+    $this->db->order_by("lihat_artikel", "desc");
+    $this->db->limit('4');
+    return $this->db->get(); 
+
+    }
+
 }

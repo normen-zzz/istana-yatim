@@ -36,8 +36,8 @@ class Cms extends CI_Controller {
     public function tambahslidefotoAct()
     {
         $config['upload_path'] = './assets/images/slidefoto/'; //path folder
-            $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-            $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
 
             $this->upload->initialize($config);
             if(!empty($_FILES['filefoto']['name'])){
@@ -47,8 +47,7 @@ class Cms extends CI_Controller {
                     $config['image_library']='gd2';
                     $config['source_image']='./assets/images/slidefoto/'.$gbr['file_name'];
                     $config['create_thumb']= FALSE;
-                    $config['maintain_ratio']= FALSE;
-                    $config['quality']= '100%';
+
                     $config['width']= 1159;
                     $config['height']= 600;
                     $config['new_image']= './assets/images/slidefoto/'.$gbr['file_name'];

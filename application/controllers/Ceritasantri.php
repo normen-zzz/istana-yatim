@@ -89,7 +89,7 @@ class Ceritasantri extends CI_Controller {
             }
 
     }
-         public function delete_ceritasantri($id)
+    public function delete_ceritasantri($id)
     {
         $this->load->model('M_ceritasantri');
         $data['ceritasantri'] = $this->M_ceritasantri->ceritasantriWhere(['id_ceritasantri' => $this->uri->segment(3)])->row_array();

@@ -15,6 +15,14 @@
 </head>
 
 <body>
+    <?php function limit_text($text, $limit) {
+        if (str_word_count($text, 0) > $limit) {
+          $words = str_word_count($text, 2);
+          $pos   = array_keys($words);
+          $text  = substr($text, 0, $pos[$limit]) . '....';
+        }
+        return $text;
+      } ?>
     <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" style="padding-bottom: 3px;padding-top: 11px;">
         <div class="container"><a class="navbar-brand" href="#"><img class="img-fluid pulse animated infinite" src="assets/img/4849339.png" style="width: 72px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -33,7 +41,7 @@
                 <div class="row" style="padding-top: 12px;">
                     <div class="col" style="padding-top: 0px;">
                         <h1><?= $artikel->judul_artikel ?></h1>
-                        <div><i class="fa fa-clock-o"></i><label style="margin-left: 6px;"><?= $artikel->tgl_artikel ?></label><i class="fa fa-user" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->penulis_artikel ?></label><i class="fa fa-folder" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->jenis_artikel ?></label><i class="fa fa-eye" style="margin-left: 14px;"></i><label style="margin-left: 6px;">Label</label><i class="fa fa-comment" style="margin-left: 14px;"></i><label style="margin-left: 6px;">Label</label></div>
+                        <div><i class="fa fa-clock-o"></i><label style="margin-left: 6px;"><?= $artikel->tgl_artikel ?></label><i class="fa fa-user" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->penulis_artikel ?></label><i class="fa fa-folder" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->jenis_artikel ?></label><i class="fa fa-eye" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->lihat_artikel ?></label><i class="fa fa-comment" style="margin-left: 14px;"></i><label style="margin-left: 6px;">Label</label></div>
                     </div>
                 </div>
                 <div class="row">
@@ -50,40 +58,24 @@
                     <div class="col-xl-1" style="margin-top: 5px;"><a href="#"><img src="<?= base_url('assets/user/') ?>img/ig.png" style="width: 41px;"></a></div>
                 </div>
             </div>
-            <div class="col" style="padding-top: 0px;">
+            <div class="col" style="padding-top: 0px">
                 <div class="row">
                     <div class="col" style="padding-top: 0px;border-bottom: 1px dashed rgb(97,99,101) ;">
-                        <h3>Artikel Terbaru</h3>
+                        <h3>Artikel Terpopuler</h3>
                     </div>
                 </div>
+                <?php foreach ($artikelpopuler as $p) { ?>
+
                 <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
-                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
+                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="<?= base_url('assets/images/artikel/'). $p['img_artikel'] ?>"></div>
                     <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
-                        <p>Paragraph</p>
+                        <h5><?= limit_text($p['judul_artikel'], 5) ?></h5>
+                        <p style="color: grey">Dibaca <?= $p['lihat_artikel'] ?> kali</p>
                     </div>
                 </div>
-                <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
-                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
-                    <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
-                        <p>Paragraph</p>
-                    </div>
-                </div>
-                <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
-                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
-                    <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
-                        <p>Paragraph</p>
-                    </div>
-                </div>
-                <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
-                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="assets/img/hero-background-technology.jpg"></div>
-                    <div class="col" style="padding-top: 15px;">
-                        <h5>Cara Meningkatkan Iman dan Taqwa</h5>
-                        <p>Paragraph</p>
-                    </div>
-                </div>
+
+            <?php } ?>
+
             </div>
         </div>
     </div>
