@@ -37,4 +37,8 @@ class M_acara extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+    public function hitung_acara(){
+        return $this->db->count_all_results('acara');
+    }
 }

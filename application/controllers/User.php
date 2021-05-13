@@ -14,6 +14,8 @@ class User extends CI_Controller {
 		$this->load->library('leaflet');
 		$this->load->model('M_menu');
 		$this->load->model('M_artikel');
+		$this->load->model('M_ceritasantri');
+		$this->load->model('M_acara');
 		$this->load->model('M_donasi');
 		$this->load->model('M_slidefoto');
 		$this->load->model('M_footer');
@@ -34,6 +36,9 @@ class User extends CI_Controller {
 		$data['active'] = 'active';
 		$data['slidefoto'] = $this->M_slidefoto->tampil_data()->result_array();
 		$data['artikel'] = $this->M_artikel->tampil_data()->result_array();
+		$data['hitungartikel'] = $this->M_artikel->hitung_artikel();
+		$data['hitungceritasantri'] = $this->M_ceritasantri->hitung_ceritasantri();
+		$data['hitungacara'] = $this->M_acara->hitung_acara();
 		$data['menu'] = $this->M_menu->tampil_data()->result_array();
 		$data['bank'] = $this->M_bank->tampil_data()->result_array();
 		$data['donasi'] = $this->M_donasi->tampil_data()->result_array();

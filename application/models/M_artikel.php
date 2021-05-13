@@ -59,4 +59,8 @@ class M_artikel extends CI_Model
 
     }
 
+    public function hitung_artikel(){
+        return $this->db->count_all_results('artikel');
+    }
+
 }

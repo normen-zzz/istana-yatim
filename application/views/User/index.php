@@ -65,18 +65,31 @@
         <section>
           <div class="container">
             <div class="row" style="padding-top: 5px;">
-              <?php foreach ($menu as $m) { ?>
 
-                <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/') . $m['img_menu'] ?>" style="width: 150px;">
-                  <h3 style="padding-top: 20px;"><?= $m['judul_menu'] ?></h3>
-                  <a class="btn btn-light action-button" role="button" href="<?= base_url('User/') . $m['link'] ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong><?= $m['tombol_menu'] ?></strong></a>
+                <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
+                  <h3 style="padding-top: 20px;">Artikel</h3>
+                  <p><?= $hitungartikel ?> Artikel</p>
+                  <a class="btn btn-light action-button" role="button" href="<?= base_url('User/artikel') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
                 </div>
 
-              <?php } ?>
+                <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
+                  <h3 style="padding-top: 20px;">Cerita Santri</h3>
+                  <p><?= $hitungceritasantri ?> Cerita</p>
+                  <a class="btn btn-light action-button" role="button" href="<?= base_url('User/ceritasantri') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
+                </div>
+
+                <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
+                  <h3 style="padding-top: 20px;">Acara</h3>
+                  <p><?= $hitungacara ?> Acara Aktifz</p>
+                  <a class="btn btn-light action-button" role="button" href="<?= base_url('User/Acara') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
+                </div>
+
 
             </div>
           </div>
         </section>
+
+        
 
         
 
