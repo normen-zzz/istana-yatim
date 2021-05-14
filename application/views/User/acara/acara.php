@@ -31,7 +31,7 @@
         <h1 style="text-align: center;">Event</h1>
         <div class="row" style="padding-left: 0px;margin-left: 0px;">
             <?php foreach ($acara as $a) { ?>
-            <div class="col-xl-3"><a href="<?= base_url('User/detailacara/'). $a['id_acara'] ?>"><img class="img-fluid" src="<?= base_url('assets/images/acara/'). $a['img_acara'] ?>">
+            <div class="col-xl-3"><a href="<?= base_url('User/detailacara/'). $a['slug_acara'] ?>"><img class="img-fluid" src="<?= base_url('assets/images/acara/'). $a['img_acara'] ?>">
                     <h1 class="text-center" style="padding-top: 24px;color: rgb(14,14,14);"><?= $a['nama_acara'] ?></h1>
                     <p class="text-center" style="color: rgb(93,98,102);"><?= $a['tgl_acara'] ?></p>
                 </a></div>

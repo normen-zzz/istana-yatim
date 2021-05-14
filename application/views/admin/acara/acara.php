@@ -28,6 +28,7 @@
                           <th>Nama</th>
                           <th>Tema</th>
                           <th>Tanggal</th>
+                          <td>Slug</td>
                           <th>Poster</th>
                           <th>Action</th>
                         </tr>
@@ -38,6 +39,7 @@
                           <td><?= $a['nama_acara'] ?></td>
                           <td><?= $a['tema_acara'] ?></td>
                           <td><?= $a['tgl_acara'] ?></td>
+                          <td><?= $a['slug_acara'] ?></td>
                           <td><img style="width: 200px" src="<?= base_url('assets/images/acara/'). $a['img_acara'] ?>"></td>
                           <td><a href="<?= base_url('Form/tampilform/'). $a['id_acara'] ?>" class="btn btn-primary">Form</a> <a href="" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>
                         </tr>

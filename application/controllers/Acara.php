@@ -56,6 +56,10 @@ class Acara extends CI_Controller {
                     $this->image_lib->resize();
 
                     $gambar=$gbr['file_name'];
+                    $namaacara = $this->input->post('nama');
+                    $title = trim(strtolower($namaacara));
+                    $out = explode(" ",$title);
+                    $slug = implode("-",$out);
 
                     $data = [
 
@@ -63,6 +67,7 @@ class Acara extends CI_Controller {
                         'tema_acara' => $this->input->post('tema'),
                         'tgl_acara' => date("Y-m-d H:i:s"),
                         'img_acara' => $gambar,
+                        'slug_acara' => $slug,
                         
                     ];
 
@@ -77,5 +82,19 @@ class Acara extends CI_Controller {
                 redirect('acara/tambahacara');
             }
         }
+
+
+        public function deleteacara($id)
+    {
+        $this->load->model('M_acara');
+        $data['acara'] = $this->M_acara->acaraWhere(['id_acara' => $this->uri->segment(3)])->row_array();
+        $gambar_lama = $data['acara']['img_acara'];
+        unlink(FCPATH . 'assets/images/acara/' . $gambar_lama);
+        $where = array('id_acara' => $id);
+        $this->M_acara->delete_acara($where, 'acara');
+        $this->session->set_flashdata('user-delete', 'berhasil');
+        redirect('Acara');
+    }
+
 
 }

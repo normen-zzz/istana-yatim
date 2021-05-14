@@ -39,9 +39,23 @@ class Form extends CI_Controller {
 
     $this->db->insert('form', $data);
     $this->Kirim->kirimWablas($this->input->post('nomor'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Mendaftar Event '. $this->input->post('judul'));
-    redirect('user/detailacara/'. $this->input->post('acara'));
+    redirect('user/detailacara/'. $this->input->post('slug'));
 
-}
+        }
+
+
+
+    public function reminder()
+    {
+        $this->load->model('M_form');
+        $this->load->model('Waapi');
+
+        $orang = $this->db->get_where('form',['acara_form' => $this->uri->segment(3)])->result_array();
+
+        foreach ($orang as $o) {
+            $this->Waapi->kirimWablas($o['nomor_form'], 'Assalamualaikum '.$o['nama_form'].' DIingatkan kembali untuk acara ');
+        }
+    }
 
 
 

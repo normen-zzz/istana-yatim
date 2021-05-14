@@ -48,13 +48,13 @@
                 <form method="post" action="<?= base_url('Form/tambahformAct') ?>" enctype="multipart/form-data" style="text-align: center;">
                     <input type="number" name="acara" value="<?= $acara->id_acara ?>" hidden>
                     <input type="text" name="judul" value="<?= $acara->tema_acara ?>" hidden>
+                    <input type="text" name="slug" value="<?= $acara->slug_acara ?>" hidden>
                     <label for="nama" style="margin-right: 5px;"><strong>Nama</strong>
                         <input class="form-control" type="text" name="nama"></label>
                     <label for="kelamin" style="margin-right: 5px;"><strong>Jenis Kelamin</strong>
                         <input class="form-control" type="text" name="kelamin"></label>
                     <label for="nomor" style="margin-right: 5px;"><strong>No. Whatsapp</strong><br>
-                        <p>Harap Ganti Awalan 0 dengan Angka 62</p>
-                        <input class="form-control" type="text" placeholder="628123445xxx" name="nomor"></label>
+                        <input class="form-control" type="text" placeholder="08123445xxx" name="nomor"></label>
                     <div class="form-row">
                         <div class="col" style="padding-top: 9px;"><button class="btn btn-primary" type="submit">Tambah</button></div>
                     </div>

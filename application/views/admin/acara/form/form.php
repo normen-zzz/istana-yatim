@@ -15,7 +15,7 @@
           </div>
           <div class="row">
               <div class="col">
-                <a style="margin-bottom: 20px" href="<?= base_url('Acara/tambahacara') ?>" class="btn btn-primary">Tambah Acara</a>
+                <a style="margin-bottom: 20px" href="<?= base_url('Form/reminder/'). $this->uri->segment('3') ?>" class="btn btn-primary">Reminder</a>
                 <div class="card">
                   <div class="card-header">
                     <h4>List Form Acara <?= $acara->nama_acara ?></h4>
@@ -24,7 +24,7 @@
                     <div class="table-responsive">
                       <table class="table table-bordered table-md">
                         <tr>
-                          <th>#</th>
+                          <!-- <th>#</th> -->
                           <th>Nama</th>
                           <th>Nomor</th>
                           <th>Jenis Kelamin</th>
@@ -33,7 +33,7 @@
                         
                         <?php foreach ($form as $f) { ?>
                         <tr>
-                          <td><?= $f['id_form'] ?></td>
+                          <!-- <td><?= $f['id_form'] ?></td> -->
                           <td><?= $f['nama_form'] ?></td>
                           <td><?= $f['nomor_form'] ?></td>
                           <td><?= $f['kelamin_form'] ?></td>

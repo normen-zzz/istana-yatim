@@ -32,7 +32,7 @@
           <li class="nav-item"></li>
           <li class="nav-item"></li>
           <li class="nav-item"></li>
-        </ul><span class="navbar-text actions"> <a data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Masuk</a><a class="btn btn-light action-button" role="button" data-bss-hover-animate="pulse" href="#donasi">Donasi</a></span>
+        </ul><span class="navbar-text actions"> <a target="_blank" data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Masuk</a><a class="btn btn-light action-button" role="button" data-bss-hover-animate="pulse" href="#donasi">Donasi</a></span>
       </div>
     </div>
   </nav>
