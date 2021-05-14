@@ -80,6 +80,20 @@ class Form extends CI_Controller {
 
 
 
+     public function pemberitahuan()
+    {
+        $this->load->model('M_form');
+        $this->load->model('Waapi');
+
+        $orang = $this->M_form->duplikatForm()->result_array();
+
+        foreach ($orang as $o) {
+            $this->Waapi->kirimWablas($o['nomor_form'], 'Assalamualaikum '.$o['nama_form'].' Test Pemberitahuan ');
+        }
+        $this->session->set_flashdata('success-input', 'berhasil');
+        redirect('Form');
+    }
+
 
 
 }

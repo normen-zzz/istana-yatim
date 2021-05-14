@@ -15,7 +15,7 @@
           </div>
           <div class="row">
               <div class="col">
-                <!-- <a onclick="return confirm('Apakah Anda Yakin Ingin Mengirim Reminder..?')" style="margin-bottom: 20px" href="<?= base_url('Form/reminder/'). $this->uri->segment('3') ?>" class="btn btn-primary">Kirim Reminder</a> -->
+                <a onclick="return confirm('Apakah Anda Yakin Ingin Mengirim Pemberitahuan..?')" style="margin-bottom: 20px" href="<?= base_url('Form/pemberitahuan') ?>" class="btn btn-primary">Kirim Pemberitahuan</a>
                 <div class="card">
                   <div class="card-header">
                     <h4>List All Form</h4>
