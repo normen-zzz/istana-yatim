@@ -29,6 +29,7 @@
 
       <li class="menu-header">Event</li>
       <li><a class="nav-link" href="<?= base_url('Acara') ?>"><i class="fas fa-pencil-ruler"></i> <span>Acara</span></a></li>
+      <li><a class="nav-link" href="<?= base_url('Form') ?>"><i class="fas fa-pencil-ruler"></i> <span>Form</span></a></li>
 
 
       <div class="mt-4 mb-4 p-3 hide-sidebar-mini">

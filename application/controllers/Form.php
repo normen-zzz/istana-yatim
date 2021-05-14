@@ -15,6 +15,16 @@ class Form extends CI_Controller {
         }
     }
 
+    public function index(){
+
+        $this->load->model('M_form');
+        $data['title'] = 'Form Acara';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['form'] = $this->M_form->duplikatForm()->result_array();
+
+        $this->load->view('Admin/acara/form/form',$data);
+    }
+
 
     public function tampilform()
     {
@@ -24,7 +34,7 @@ class Form extends CI_Controller {
         $data['form'] = $this->db->get_where('form',['acara_form' => $this->uri->segment(3)])->result_array();
         $data['acara'] = $this->M_acara->acaraWhere(['id_acara' => $this->uri->segment(3)])->row();
 
-        $this->load->view('admin/acara/form/form',$data);
+        $this->load->view('admin/acara/form/detailform',$data);
     }
 
     public function tambahformAct()
@@ -42,6 +52,17 @@ class Form extends CI_Controller {
     redirect('user/detailacara/'. $this->input->post('slug'));
 
         }
+
+
+        public function deleteform($id)
+    {
+        $this->load->model('M_form');
+        $data['slidefoto'] = $this->M_form->formWhere(['id_form' => $this->uri->segment(3)])->row_array();
+        $where = array('id_form' => $id);
+        $this->M_form->delete_form($where, 'form');
+        $this->session->set_flashdata('user-delete', 'berhasil');
+        redirect('Form');
+    }
 
 
 

@@ -46,4 +46,11 @@ class M_form extends CI_Model
         $this->db->join('acara','acara.id_acara = form.acara_form');
         return $this->db->get();
     }
+
+
+    public function duplikatForm(){
+        $this->db->select('DISTINCT(nomor_form), nama_form, id_form, kelamin_form');
+        $this->db->group_by('nomor_form'); 
+        return $this->db->get('form');
+    }
 }

@@ -15,16 +15,16 @@
           </div>
           <div class="row">
               <div class="col">
-                <!-- <a onclick="return confirm('Apakah Anda Yakin Ingin Mengirim Reminder..?')" style="margin-bottom: 20px" href="<?= base_url('Form/reminder/'). $this->uri->segment('3') ?>" class="btn btn-primary">Kirim Reminder</a> -->
+                <a onclick="return confirm('Apakah Anda Yakin Ingin Mengirim Reminder..?')" style="margin-bottom: 20px" href="<?= base_url('Form/reminder/'). $this->uri->segment('3') ?>" class="btn btn-primary">Kirim Reminder</a>
                 <div class="card">
                   <div class="card-header">
-                    <h4>List All Form</h4>
+                    <h4>List Form Acara <?= $acara->nama_acara ?></h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-bordered table-md">
                         <tr>
-                          <th>#</th>
+                          <!-- <th>#</th> -->
                           <th>Nama</th>
                           <th>Nomor</th>
                           <th>Jenis Kelamin</th>
@@ -33,7 +33,7 @@
                         
                         <?php foreach ($form as $f) { ?>
                         <tr>
-                          <td><?= $f['id_form'] ?></td>
+                          <!-- <td><?= $f['id_form'] ?></td> -->
                           <td><?= $f['nama_form'] ?></td>
                           <td><?= $f['nomor_form'] ?></td>
                           <td><?= $f['kelamin_form'] ?></td>
@@ -85,7 +85,7 @@
         swal({ title: "Hapus Data Berhasil",
           icon: "success"}).then(okay => {
             if (okay) {
-              window.location.href = "<?= base_url('Form/deleteform/') . $f['id_form'] ?>";
+              window.location.href = "<?= base_url('Acara/deleteacara/') . $a['id_acara'] ?>";
             }
           });
 
