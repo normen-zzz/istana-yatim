@@ -29,7 +29,7 @@ class Form extends CI_Controller {
 
     public function tambahformAct()
     {
-        $this->load->model('Kirim');
+        $this->load->model('Waapi');
         $data = [
            'nama_form' => $this->input->post('nama'),
            'nomor_form' => $this->input->post('nomor', true),
@@ -38,7 +38,7 @@ class Form extends CI_Controller {
        ];
 
     $this->db->insert('form', $data);
-    $this->Kirim->kirimWablas($this->input->post('nomor'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Mendaftar Event '. $this->input->post('judul'));
+    $this->Waapi->kirimWablas($this->input->post('nomor'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Mendaftar Event '. $this->input->post('judul'));
     redirect('user/detailacara/'. $this->input->post('slug'));
 
         }
