@@ -66,21 +66,23 @@
           <div class="container">
             <div class="row" style="padding-top: 5px;">
 
-                <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/berkah.png') ?>" style="width: 150px;">
+                <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
                   <h3 style="padding-top: 20px;">Berkah</h3>
                   <h3 style="padding-top: 20px;">"Bersemangat Sedekah"</h3>
                   <p><?= $hitungberkah ?> berkah</p>
                   <a class="btn btn-light action-button" role="button" href="<?= base_url('User/berkah') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
                 </div>
 
-                <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/berkah.png') ?>" style="width: 150px;">
-                  <h3 style="padding-top: 20px;">Cerita Santri</h3>
+                <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
+                  <h3 style="padding-top: 20px;">Cerri</h3>
+                  <h3 style="padding-top: 20px;">"Cerita Santri"</h3>
                   <p><?= $hitungceritasantri ?> Cerita</p>
                   <a class="btn btn-light action-button" role="button" href="<?= base_url('User/ceritasantri') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
                 </div>
 
-                <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/berkah.png') ?>" style="width: 150px;">
+                <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
                   <h3 style="padding-top: 20px;">Acara</h3>
+                  <h3 style="padding-top: 20px;"><br></h3>
                   <p><?= $hitungacara ?> Acara Aktifz</p>
                   <a class="btn btn-light action-button" role="button" href="<?= base_url('User/Acara') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
                 </div>
@@ -220,7 +222,7 @@
                 </div>
               </div>
               <div class="row" style="padding-top: 0px;">
-                <div class="col" style="padding-top: 0px;text-align: center;padding-bottom: 15px;"><a class="btn btn-secondary" href="<?= base_url('User/detailartikel/'). $b['slug_berkah'] ?>" style="width: 168.5px;background: rgba(4,143,131,0);color: rgb(17,156,15);border: 1px solid rgb(17,156,15);box-shadow: 0px 0px 4px 0px;border-radius: 24px;">Selengkapnya</a></div>
+                <div class="col" style="padding-top: 0px;text-align: center;padding-bottom: 15px;"><a class="btn btn-secondary" href="<?= base_url('User/detailberkah/'). $b['slug_berkah'] ?>" style="width: 168.5px;background: rgba(4,143,131,0);color: rgb(17,156,15);border: 1px solid rgb(17,156,15);box-shadow: 0px 0px 4px 0px;border-radius: 24px;">Selengkapnya</a></div>
               </div>
             </div>
             <!-- akhir -->
