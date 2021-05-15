@@ -31,7 +31,7 @@
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                </ul><span class="navbar-text actions"> <a data-bss-hover-animate="pulse" class="login" href="#">Log In</a><a class="btn btn-light action-button" role="button" data-bss-hover-animate="pulse" href="#">Sign Up</a></span>
+                </ul><span class="navbar-text actions"> <a data-bss-hover-animate="pulse" class="login" href="#">Log In</a><a class="btn btn-light action-button" role="button" data-bss-hover-animate="pulse" href="http://localhost/yatim/">Sign Up</a></span>
             </div>
         </div>
     </nav>
@@ -40,16 +40,16 @@
             <div class="col-md-9">
                 <div class="row" style="padding-top: 12px;">
                     <div class="col" style="padding-top: 0px;">
-                        <h1><?= $artikel->judul_artikel ?></h1>
-                        <div><i class="fa fa-clock-o"></i><label style="margin-left: 6px;"><?= $artikel->tgl_artikel ?></label><i class="fa fa-user" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->penulis_artikel ?></label><i class="fa fa-folder" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->jenis_artikel ?></label><i class="fa fa-eye" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $artikel->lihat_artikel ?></label><i class="fa fa-comment" style="margin-left: 14px;"></i><label style="margin-left: 6px;">Label</label></div>
+                        <h1><?= $ceritasantri->judul_ceritasantri ?></h1>
+                        <div><i class="fa fa-clock-o"></i><label style="margin-left: 6px;"><?= $ceritasantri->tgl_ceritasantri ?></label><i class="fa fa-user" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $ceritasantri->penulis_ceritasantri ?></label><i class="fa fa-folder" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $ceritasantri->jenis_ceritasantri ?></label><i class="fa fa-eye" style="margin-left: 14px;"></i><label style="margin-left: 6px;"><?= $ceritasantri->lihat_ceritasantri ?></label><i class="fa fa-comment" style="margin-left: 14px;"></i><label style="margin-left: 6px;">Label</label></div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col" style="padding-top: 0px;"><img class="img-fluid" src="<?= base_url('assets/images/artikel/') . $artikel->img_artikel ?>" style="width: 671px;"></div>
+                    <div class="col" style="padding-top: 0px;"><img class="img-fluid" src="<?= base_url('assets/images/ceritasantri/') . $ceritasantri->img_ceritasantri ?>" style="width: 671px;"></div>
                 </div>
                 <div class="row">
                     <div class="col" style="padding-top: 0px;">
-                        <p><?= $artikel->isi_artikel ?></p>
+                        <p><?= $ceritasantri->isi_ceritasantri ?></p>
                     </div>
                 </div><label>Share:&nbsp;</label>
                 <div class="row" style="padding-top: 10px;">
@@ -61,16 +61,16 @@
             <div class="col" style="padding-top: 0px">
                 <div class="row">
                     <div class="col" style="padding-top: 0px;border-bottom: 1px dashed rgb(97,99,101) ;">
-                        <h3>Artikel Terpopuler</h3>
+                        <h3>Cerita Santri Terpopuler</h3>
                     </div>
                 </div>
-                <?php foreach ($artikelpopuler as $p) { ?>
+                <?php foreach ($ceritasantripopuler as $p) { ?>
 
                 <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
-                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="<?= base_url('assets/images/artikel/'). $p['img_artikel'] ?>"></div>
+                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="<?= base_url('assets/images/ceritasantri/'). $p['img_ceritasantri'] ?>"></div>
                     <div class="col" style="padding-top: 15px;">
-                        <h5><?= limit_text($p['judul_artikel'], 5) ?></h5>
-                        <p style="color: grey">Dibaca <?= $p['lihat_artikel'] ?> kali</p>
+                        <h5><?= limit_text($p['judul_ceritasantri'], 5) ?></h5>
+                        <p style="color: grey">Dibaca <?= $p['lihat_ceritasantri'] ?> kali</p>
                     </div>
                 </div>
 

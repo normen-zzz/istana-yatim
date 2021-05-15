@@ -11,43 +11,43 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Artikel</h1>
+            <h1>berkah</h1>
           </div>
           <div class="row">
               <div class="col">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Ubah Artikel</h4>
+                    <h4>Ubah berkah</h4>
                   </div>
                   
                   <div class="card-body">
 
-                    <form method="POST" id="myForm" action="<?= base_url('Artikel/ubahartikelAct') ?>" enctype="multipart/form-data">
-                      <input type="number" name="id" value="<?= $artikel['id_artikel'] ?>" hidden>
+                    <form method="POST" id="myForm" action="<?= base_url('berkah/ubahberkahAct') ?>" enctype="multipart/form-data">
+                      <input type="number" name="id" value="<?= $berkah['id_artikel'] ?>" hidden>
                     <div class="form-group">
                       <label>Judul</label>
-                      <input type="text" name="judul" value="<?= $artikel['judul_artikel'] ?>" class="form-control">
+                      <input type="text" name="judul" value="<?= $berkah['judul_berkah'] ?>" class="form-control">
                     </div>
 
                     <div class="form-group">
                       <label>isi</label>
-                      <textarea id="ckeditor" name="artikel" class="form-control"  ><?= $artikel['isi_artikel'] ?></textarea><br/>
+                      <textarea id="ckeditor" name="berkah" class="form-control"  ><?= $berkah['isi_berkah'] ?></textarea><br/>
                     </div>
 
                     <div class="form-group">
-                      <label>Foto Artikel</label>
-                      <img width="200px" style="margin-bottom: 5px" src="<?= base_url('assets/images/artikel/'). $artikel['img_artikel'] ?>">
+                      <label>Foto berkah</label>
+                      <img width="200px" style="margin-bottom: 5px" src="<?= base_url('assets/images/berkah/'). $berkah['img_berkah'] ?>">
                       <input type="file" name="filefoto" class="form-control">
                     </div>
 
                     <div class="form-group">
-                      <label>Jenis Artikel</label>
-                      <input type="text" name="jenis" value="<?= $artikel['jenis_artikel'] ?>" class="form-control">
+                      <label>Jenis berkah</label>
+                      <input type="text" name="jenis" value="<?= $berkah['jenis_berkah'] ?>" class="form-control">
                     </div>
 
                     <div class="form-group">
                       <label>Penulis</label>
-                      <input type="text" name="penulis" value="<?= $artikel['penulis_artikel'] ?>" class="form-control">
+                      <input type="text" name="penulis" value="<?= $berkah['penulis_berkah'] ?>" class="form-control">
                     </div>
                   </div>
                   <div class="card-footer text-right">
