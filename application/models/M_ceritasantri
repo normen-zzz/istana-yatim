@@ -37,4 +37,30 @@ class M_ceritasantri extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+
+    public function update_counter($slug) {
+    // return current article views 
+    $this->db->where('slug_ceritasantri', urldecode($slug));
+    $this->db->select('lihat_ceritasantri');
+    $count = $this->db->get('ceritasantri')->row();
+    // then increase by one 
+    $this->db->where('slug_ceritasantri', urldecode($slug));
+    $this->db->set('lihat_ceritasantri', ($count->lihat_ceritasantri + 1));
+    $this->db->update('ceritasantri');
+    }
+
+    public function ceritasantri_populer(){
+
+    $this->db->from('ceritasantri');
+    $this->db->order_by("lihat_ceritasantri", "desc");
+    $this->db->limit('4');
+    return $this->db->get(); 
+
+    }
+
+    public function hitung_ceritasantri(){
+        return $this->db->count_all_results('ceritasantri');
+    }
+
 }

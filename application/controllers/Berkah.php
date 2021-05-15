@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
 
-class Artikel extends CI_Controller {
+class Berkah extends CI_Controller {
 
 
 	public function __construct()
@@ -19,29 +19,29 @@ class Artikel extends CI_Controller {
 
     public function index()
     {
-        $this->load->model('M_artikel');
+        $this->load->model('M_berkah');
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-        $data['title'] = 'Artikel';
-        $data['artikel'] = $this->M_artikel->tampil_data()->result_array();
+        $data['title'] = 'berkah';
+        $data['berkah'] = $this->M_berkah->tampil_data()->result_array();
 
-        $this->load->view('admin/artikel/artikel',$data);
+        $this->load->view('admin/berkah/berkah',$data);
     }
 
-    public function tambahartikel()
+    public function tambahberkah()
     {
-        $data['title'] = 'Tambah Artikel';
+        $data['title'] = 'Tambah berkah';
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-        $this->load->view('admin/artikel/tambahartikel',$data);
+        $this->load->view('admin/berkah/tambahberkah',$data);
     }
 
-    public function tambahartikelAct()
+    public function tambahberkahAct()
     {
 
         $this->form_validation->set_rules('judul', 'Judul', 'required', [
             'required' => 'judul harus diisi',
         ]);
 
-            $config['upload_path'] = './assets/images/artikel/'; //path folder
+            $config['upload_path'] = './assets/images/berkah/'; //path folder
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
             $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
 
@@ -51,58 +51,58 @@ class Artikel extends CI_Controller {
                     $gbr = $this->upload->data();
                     //Compress Image
                     $config['image_library']='gd2';
-                    $config['source_image']='./assets/images/artikel/'.$gbr['file_name'];
+                    $config['source_image']='./assets/images/berkah/'.$gbr['file_name'];
                     $config['create_thumb']= FALSE;
                     $config['maintain_ratio']= FALSE;
                     $config['quality']= '60%';
                     $config['width']= 710;
                     $config['height']= 420;
-                    $config['new_image']= './assets/images/artikel/'.$gbr['file_name'];
+                    $config['new_image']= './assets/images/berkah/'.$gbr['file_name'];
                     $this->load->library('image_lib', $config);
                     $this->image_lib->resize();
 
                     $gambar=$gbr['file_name'];
                     $jdl=$this->input->post('judul');
-                    $artikel=$this->input->post('artikel',true);
+                    $berkah=$this->input->post('berkah',true);
                     $title = trim(strtolower($jdl));
                     $out = explode(" ",$title);
                     $slug = implode("-",$out);
                     $data = [
-                        'judul_artikel' => htmlspecialchars($jdl,true),
-                        'isi_artikel' => $artikel,
-                        'img_artikel' => $gambar,
-                        'jenis_artikel' => $this->input->post('jenis'),
-                        'penulis_artikel' => $this->input->post('penulis'),
-                        'slug_artikel' => $slug,
-                        'tgl_artikel' => date("Y-m-d H:i:s"),
+                        'judul_berkah' => htmlspecialchars($jdl,true),
+                        'isi_berkah' => $berkah,
+                        'img_berkah' => $gambar,
+                        'jenis_berkah' => $this->input->post('jenis'),
+                        'penulis_berkah' => $this->input->post('penulis'),
+                        'slug_berkah' => $slug,
+                        'tgl_berkah' => date("Y-m-d H:i:s"),
                     ];
 
-                    $this->db->insert('artikel', $data);
+                    $this->db->insert('berkah', $data);
                     $this->session->set_flashdata('success-input', 'berhasil');
-                    redirect('Artikel');
+                    redirect('berkah');
                 }else{  
-                    redirect('Artikel/tambahartikel');
+                    redirect('berkah/tambahberkah');
                 }
 
             }else{
-                redirect('artikel/tambahartikel');
+                redirect('berkah/tambahberkah');
             }
 
     }
 
 
-    public function ubahartikel()
+    public function ubahberkah()
     {
-        $this->load->model('M_artikel');
-        $data['title'] = 'Ubah Artikel';
+        $this->load->model('M_berkah');
+        $data['title'] = 'Ubah berkah';
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-        $data['artikel'] = $this->M_artikel->artikelWhere(['slug_artikel' => $this->uri->segment(3)])->row_array();
-        $this->load->view('admin/artikel/ubahartikel', $data);
+        $data['berkah'] = $this->M_berkah->berkahWhere(['slug_berkah' => $this->uri->segment(3)])->row_array();
+        $this->load->view('admin/berkah/ubahberkah', $data);
     }
 
-    public function ubahartikelAct()
+    public function ubahberkahAct()
     {
-        $this->load->model('M_artikel');
+        $this->load->model('M_berkah');
         
         $id = $this->input->post('id',true);
         $judul = $this->input->post('judul');
@@ -111,33 +111,33 @@ class Artikel extends CI_Controller {
         $slug = implode("-",$out);
         $jenis = $this->input->post('jenis');
         $penulis = $this->input->post('penulis');
-        $artikel = $this->input->post('artikel');
+        $berkah = $this->input->post('berkah');
         $gambar = $_FILES['filefoto']['name'];
-        $data['artikel'] = $this->M_artikel->artikelWhere(['id_artikel' => $id])->row_array();
+        $data['berkah'] = $this->M_berkah->berkahWhere(['id_berkah' => $id])->row_array();
 
         
 
-        $config['upload_path'] = './assets/images/artikel/'; //path folder
+        $config['upload_path'] = './assets/images/berkah/'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
 
         $this->upload->initialize($config);
-        $gambarLama = $data['artikel']['img_artikel'];
+        $gambarLama = $data['berkah']['img_berkah'];
         //berhasil
         if ($this->upload->do_upload('filefoto')) {
             
 
-            unlink(FCPATH . 'assets/images/artikel/' . $gambarLama);
+            unlink(FCPATH . 'assets/images/berkah/' . $gambarLama);
             $gambarBaru = $this->upload->data();
-            // unlink(FCPATH . 'assets/images/artikel/' . $gambar_lama);
+            // unlink(FCPATH . 'assets/images/berkah/' . $gambar_lama);
             $config['image_library']='gd2';
-                $config['source_image']='./assets/images/artikel/'.$gambarBaru['file_name'];
+                $config['source_image']='./assets/images/berkah/'.$gambarBaru['file_name'];
                 $config['create_thumb']= FALSE;
                 $config['maintain_ratio']= FALSE;
                 $config['quality']= '60%';
                 $config['width']= 710;
                 $config['height']= 420;
-                $config['new_image']= './assets/images/artikel/'.$gambarBaru['file_name'];
+                $config['new_image']= './assets/images/berkah/'.$gambarBaru['file_name'];
                 $this->load->library('image_lib', $config);
                 $this->image_lib->resize();
                 $gbr = $gambarBaru['file_name'];
@@ -150,38 +150,38 @@ class Artikel extends CI_Controller {
 
 
         $where = array(
-            'id_artikel' => $id,
+            'id_berkah' => $id,
         );
 
         $data = array(
-            'id_artikel' => $id,
-            'tgl_artikel' => date("Y-m-d H:i:s"),
-            'judul_artikel' => $judul,
-            'isi_artikel' => $artikel,
-            'img_artikel' => $gbr,
-            'jenis_artikel' => $jenis,
-            'penulis_artikel' => $penulis,
-            'slug_artikel' => $slug,
+            'id_berkah' => $id,
+            'tgl_berkah' => date("Y-m-d H:i:s"),
+            'judul_berkah' => $judul,
+            'isi_berkah' => $berkah,
+            'img_berkah' => $gbr,
+            'jenis_berkah' => $jenis,
+            'penulis_berkah' => $penulis,
+            'slug_berkah' => $slug,
 
         );
 
-        $this->M_artikel->update_data($where, $data, 'artikel');
+        $this->M_berkah->update_data($where, $data, 'berkah');
         $this->session->set_flashdata('success-edit', 'berhasil');
-        redirect('artikel');
+        redirect('berkah');
     }
 
 
 
     public function deleteartikel($slug)
     {
-        $this->load->model('M_artikel');
-        $data['artikel'] = $this->M_artikel->artikelWhere(['slug_artikel' => $this->uri->segment(3)])->row_array();
-        $gambar_lama = $data['artikel']['img_artikel'];
-        unlink(FCPATH . 'assets/images/artikel/' . $gambar_lama);
-        $where = array('slug_artikel' => $slug);
-        $this->M_artikel->delete_artikel($where, 'artikel');
+        $this->load->model('M_berkah');
+        $data['berkah'] = $this->M_berkah->berkahWhere(['slug_berkah' => $this->uri->segment(3)])->row_array();
+        $gambar_lama = $data['berkah']['img_berkah'];
+        unlink(FCPATH . 'assets/images/berkah/' . $gambar_lama);
+        $where = array('slug_berkah' => $slug);
+        $this->M_berkah->delete_artikel($where, 'berkah');
         $this->session->set_flashdata('user-delete', 'berhasil');
-        redirect('artikel');
+        redirect('berkah');
     }
 
 

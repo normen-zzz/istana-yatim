@@ -13,7 +13,7 @@ class User extends CI_Controller {
 	public function index(){
 		$this->load->library('leaflet');
 		$this->load->model('M_menu');
-		$this->load->model('M_artikel');
+		$this->load->model('M_berkah');
 		$this->load->model('M_ceritasantri');
 		$this->load->model('M_acara');
 		$this->load->model('M_donasi');
@@ -35,8 +35,8 @@ class User extends CI_Controller {
 		$data['map'] =  $this->leaflet->create_map();
 		$data['active'] = 'active';
 		$data['slidefoto'] = $this->M_slidefoto->tampil_data()->result_array();
-		$data['artikel'] = $this->M_artikel->tampil_data()->result_array();
-		$data['hitungartikel'] = $this->M_artikel->hitung_artikel();
+		$data['berkah'] = $this->M_berkah->tampil_data()->result_array();
+		$data['hitungberkah'] = $this->M_berkah->hitung_berkah();
 		$data['hitungceritasantri'] = $this->M_ceritasantri->hitung_ceritasantri();
 		$data['hitungacara'] = $this->M_acara->hitung_acara();
 		$data['menu'] = $this->M_menu->tampil_data()->result_array();
@@ -48,33 +48,33 @@ class User extends CI_Controller {
 
 
 
-	public function artikel(){
+	public function berkah(){
 		$this->load->model('M_footer');
-		$this->load->model('M_artikel');
+		$this->load->model('M_berkah');
 		$data['active'] = 'active';
-		$data['title'] = 'Artikel';
-		$data['artikel'] = $this->M_artikel->tampil_data()->result_array();
-		$data['artikelpopuler'] = $this->M_artikel->artikel_populer()->result_array();
+		$data['title'] = 'berkah';
+		$data['berkah'] = $this->M_berkah->tampil_data()->result_array();
+		$data['berkahpopuler'] = $this->M_berkah->berkah_populer()->result_array();
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();
-		$this->load->view('user/artikel/artikel',$data);
+		$this->load->view('user/berkah/berkah',$data);
 	}
 
-	public function detailartikel(){
+	public function detailberkah(){
 		$this->load->model('M_footer');
-		$this->load->model('M_artikel');
+		$this->load->model('M_berkah');
 		$data['active'] = 'active';
-		$data['title'] = 'Artikel';
-		$data['artikel'] = $this->M_artikel->artikelWhere(['slug_artikel' => $this->uri->segment(3)])->row();
-		$data['artikelpopuler'] = $this->M_artikel->artikel_populer()->result_array();
+		$data['title'] = 'berkah';
+		$data['berkah'] = $this->M_berkah->berkahWhere(['slug_berkah' => $this->uri->segment(3)])->row();
+		$data['berkahpopuler'] = $this->M_berkah->berkah_populer()->result_array();
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();
-		$this->load->view('user/artikel/detailartikel',$data);
+		$this->load->view('user/berkah/detailberkah',$data);
 		$this->add_count($this->uri->segment(3));
 	}
 
 	// This is the counter function.. 
 	private function add_count($slug)
 	{
-		$this->load->model('M_artikel');
+		$this->load->model('M_berkah');
 	// load cookie helper
 		$this->load->helper('cookie');
 	// this line will return the cookie which has slug name
@@ -93,7 +93,56 @@ class User extends CI_Controller {
 				"secure" => false
 			);
 			$this->input->set_cookie($cookie);
-			$this->M_artikel->update_counter(urldecode($slug));
+			$this->M_berkah->update_counter(urldecode($slug));
+		}
+	}
+
+	public function ceritasantri(){
+		$this->load->model('M_footer');
+		$this->load->model('M_ceritasantri');
+		$data['active'] = 'active';
+		$data['title'] = 'Cerita Santri';
+		$data['ceritasantri'] = $this->M_ceritasantri->tampil_data()->result_array();
+		$data['ceritasantripopuler'] = $this->M_ceritasantri->ceritasantri_populer()->result_array();
+		$data['footer'] = $this->M_footer->tampil_data()->row_array();
+		$this->load->view('user/ceritasantri/ceritasantri',$data);
+	}
+
+	public function detailceritasantri(){
+		$this->load->model('M_footer');
+		$this->load->model('M_ceritasantri');
+		$data['active'] = 'active';
+		$data['title'] = 'Cerita Santri';
+		$data['ceritasantri'] = $this->M_ceritasantri->ceritasantriWhere(['slug_ceritasantri' => $this->uri->segment(3)])->row();
+		$data['ceritasantripopuler'] = $this->M_ceritasantri->ceritasantri_populer()->result_array();
+		$data['footer'] = $this->M_footer->tampil_data()->row_array();
+		$this->load->view('user/ceritasantri/detailceritasantri',$data);
+		$this->add_counting($this->uri->segment(3));
+	}
+
+	// This is the counter function.. 
+	private function add_counting($slug)
+	{
+		$this->load->model('M_ceritasantri');
+	// load cookie helper
+		$this->load->helper('cookie');
+	// this line will return the cookie which has slug name
+		$check_visitor = $this->input->cookie(urldecode($slug), FALSE);
+	// this line will return the visitor ip address
+		$ip = $this->input->ip_address();
+	// if the visitor visit this article for first time then //
+	//set new cookie and update article_views column  ..
+	//you might be notice we used slug for cookie name and ip 
+	//address for value to distinguish between articles  views
+		if ($check_visitor == false) {
+			$cookie = array(
+				"name"   => urldecode($slug),
+				"value"  => "$ip",
+				"expire" =>  time() + 7200,
+				"secure" => false
+			);
+			$this->input->set_cookie($cookie);
+			$this->M_ceritasantri->update_counter(urldecode($slug));
 		}
 	}
 
@@ -117,6 +166,7 @@ public function detailacara(){
 	$data['footer'] = $this->M_footer->tampil_data()->row_array();
 	$this->load->view('user/acara/detailacara',$data);
 }
+
 
 public function tambahdonasiAct()
 {

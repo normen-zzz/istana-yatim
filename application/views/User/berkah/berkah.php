@@ -29,7 +29,7 @@
     <div class="container" style="margin-top: 41px;">
         <div class="row">
             <div class="col" style="padding-top: 1px;">
-                <h1 align="center">Artikel</h1>
+                <h1 align="center">berkah</h1>
                 <form class="search-form">
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" placeholder="Saya Mencari..">
@@ -50,14 +50,14 @@
 
         <div class="row" style="padding-top: 0px;">
             <div class="col-md-9" style="margin-top: 56px;">
-                <?php foreach ($artikel as $a) { ?>
+                <?php foreach ($berkah as $b) { ?>
                 <div class="row"  style="padding-top: 10px;border-right: 2px solid rgb(172,174,177) ;">
                     <div class="col-xl-9 offset-xl-1" style="padding-top: 0px;">
                         <div class="card-group">
-                            <div class="card"><a href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>"><img class="img-fluid card-img-top w-100 d-block" src="<?= base_url('assets/images/artikel/') . $a['img_artikel'] ?>" style="height: 247.797px;"></a>
+                            <div class="card"><a href="<?= base_url('User/detailberkah/') . $b['slug_berkah']  ?>"><img class="img-fluid card-img-top w-100 d-block" src="<?= base_url('assets/images/berkah/') . $b['img_berkah'] ?>" style="height: 247.797px;"></a>
                                 <div class="card-body">
-                                    <a style="color: black" href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>"><h4 class="card-title"><?= $a['judul_artikel'] ?></h4></a>
-                                    <p class="d-xl-flex justify-content-xl-end card-text"><?= limit_text($a['isi_artikel'], 30) ?><a style="color: grey;" href="<?= base_url('User/detailartikel/') . $a['slug_artikel']  ?>">Selengkapnya</a></p><label class="d-xl-flex justify-content-xl-end align-items-xl-center" style="text-align: right;">Penulis: <?= $a['penulis_artikel'] ?></label><label class="d-xl-flex justify-content-xl-end align-items-xl-center"> Dilihat <i class="fa fa-eye"></i>&nbsp; <?= $a['lihat_artikel'] ?></label>
+                                    <a style="color: black" href="<?= base_url('User/detailberkah/') . $b['slug_berkah']  ?>"><h4 class="card-title"><?= $b['judul_berkah'] ?></h4></a>
+                                    <p class="d-xl-flex justify-content-xl-end card-text"><?= limit_text($b['isi_berkah'], 30) ?><a style="color: grey;" href="<?= base_url('User/detailberkah/') . $b['slug_berkah']  ?>">Selengkapnya</a></p><label class="d-xl-flex justify-content-xl-end align-items-xl-center" style="text-align: right;">Penulis: <?= $b['penulis_berkah'] ?></label><label class="d-xl-flex justify-content-xl-end align-items-xl-center"> Dilihat <i class="fa fa-eye"></i>&nbsp; <?= $b['lihat_berkah'] ?></label>
                                 </div>
                             </div>
                         </div>
@@ -71,16 +71,16 @@
             <div class="col" style="padding-top: 0px;padding-left: 21px;">
                 <div class="row">
                     <div class="col" style="padding-top: 0px;border-bottom: 1px dashed rgb(97,99,101) ;">
-                        <h3>Artikel Terpopuler</h3>
+                        <h3>berkah Terpopuler</h3>
                     </div>
                 </div>
-                <?php foreach ($artikelpopuler as $p) { ?>
+                <?php foreach ($berkahpopuler as $p) { ?>
 
                 <div class="row" style="padding-top: 0px;border-bottom: 1px solid rgb(163,164,164) ;">
-                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="<?= base_url('assets/images/artikel/'). $p['img_artikel'] ?>"></div>
+                    <div class="col-xl-4" style="padding-top: 38px;"><img class="img-fluid" src="<?= base_url('assets/images/berkah/'). $p['img_berkah'] ?>"></div>
                     <div class="col" style="padding-top: 15px;">
-                        <h5><?= limit_text($p['judul_artikel'], 5) ?></h5>
-                        <p style="color: grey">Dibaca <?= $p['lihat_artikel'] ?> kali</p>
+                        <h5><?= limit_text($p['judul_berkah'], 5) ?></h5>
+                        <p style="color: grey">Dibaca <?= $p['lihat_berkah'] ?> kali</p>
                     </div>
                 </div>
 

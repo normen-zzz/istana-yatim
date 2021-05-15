@@ -1,0 +1,66 @@
+<?php
+
+class M_berkah extends CI_Model
+{
+    public function tampil_data()
+    {
+        return $this->db->get('berkah');
+    }
+
+    public function detail_berkah($id = null)
+    {
+        $query = $this->db->get_where('berkah', array('id' => $id))->row();
+        return $query;
+    }
+
+    public function berkahWhere($where)
+    { 
+        return $this->db->get_where('berkah', $where);
+    }
+
+    public function delete_berkah($where, $table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
+        $this->db->query("SET @num := 0;");
+        $this->db->query("UPDATE berkah SET id_berkah = @num := (@num+1);");
+        $this->db->query("ALTER TABLE berkah AUTO_INCREMENT = 1;");
+    }
+
+    public function update_berkah($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
+
+    public function update_data($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
+
+
+    public function update_counter($slug) {
+    // return current article views 
+    $this->db->where('slug_berkah', urldecode($slug));
+    $this->db->select('lihat_berkah');
+    $count = $this->db->get('berkah')->row();
+    // then increase by one 
+    $this->db->where('slug_berkah', urldecode($slug));
+    $this->db->set('lihat_berkah', ($count->lihat_berkah + 1));
+    $this->db->update('berkah');
+    }
+
+    public function berkah_populer(){
+
+    $this->db->from('berkah');
+    $this->db->order_by("lihat_berkah", "desc");
+    $this->db->limit('4');
+    return $this->db->get(); 
+
+    }
+
+    public function hitung_berkah(){
+        return $this->db->count_all_results('berkah');
+    }
+
+}

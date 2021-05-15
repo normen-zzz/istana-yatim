@@ -459,6 +459,15 @@ class Cms extends CI_Controller {
             $this->session->set_flashdata('success-input', 'berhasil');
             redirect('Cms/bank');
 }
+        public function deletebank($id)
+        {
+            $this->load->model('M_bank');
+            $data['donasi'] = $this->M_bank->bankWhere(['id_bank' => $this->uri->segment(3)])->row_array();
+            $where = array('id_bank' => $id);
+            $this->M_bank->delete_bank($where, 'bank');
+            $this->session->set_flashdata('user-delete', 'berhasil');
+            redirect('Cms/bank');
+        }
 
 
 }

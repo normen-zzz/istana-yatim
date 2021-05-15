@@ -11,18 +11,18 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Artikel</h1>
+            <h1>berkah</h1>
           </div>
           <div class="row">
               <div class="col">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Tambah Artikel</h4>
+                    <h4>Tambah berkah</h4>
                   </div>
                   
                   <div class="card-body">
 
-                    <form method="POST" id="myForm" action="<?= base_url('Artikel/tambahartikelAct') ?>" enctype="multipart/form-data">
+                    <form method="POST" id="myForm" action="<?= base_url('berkah/tambahberkahAct') ?>" enctype="multipart/form-data">
                     <div class="form-group">
                       <label>Judul</label>
                       <input type="text" name="judul" class="form-control">
@@ -30,16 +30,16 @@
 
                     <div class="form-group">
                       <label>isi</label>
-                      <textarea id="ckeditor" name="artikel" class="form-control" placeholder="anu" ></textarea><br/>
+                      <textarea id="ckeditor" name="berkah" class="form-control" placeholder="anu" ></textarea><br/>
                     </div>
 
                     <div class="form-group">
-                      <label>Foto Artikel</label>
+                      <label>Foto berkah</label>
                       <input type="file" name="filefoto" class="form-control">
                     </div>
 
                     <div class="form-group">
-                      <label>Jenis Artikel</label>
+                      <label>Jenis berkah</label>
                       <input type="text" name="jenis" class="form-control">
                     </div>
 
