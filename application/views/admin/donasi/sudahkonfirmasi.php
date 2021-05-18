@@ -11,6 +11,17 @@
         $words = explode(" "  ,$string);
         return implode(" ",array_splice($words,0,$word_limit));
       } ?>
+
+       <?php 
+
+        function rupiah($angka){
+  
+        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
+ 
+        }
+
+        ?>
       
       <?php $this->load->view('admin/template/sidebar') ?>
 
@@ -25,7 +36,7 @@
               <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Donasi</button>
               <div class="card">
                 <div class="card-header">
-                  <h4>List Donasi</h4>
+                  <h4>List Donasi Sudah Terkonfirmasi</h4>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
@@ -51,10 +62,11 @@
                             <td><?= $d['tanggal'] ?></td>
                             <td><?= $d['nama'] ?></td>
                             <td><?= $d['nowa'] ?></td>
-                            <td><?= $d['jumlah'] ?></td>
-                            <td><?= $d['id_bank'] ?></td>
-                            <td><img style="width: 200px" src="<?= base_url('assets/images/donasi/') . $d['bukti'] ?>"></td>
-                            <td><a href="<?= base_url('Cms/ubahdonasi/'). $d['id_donasi'] ?>" class="btn btn-success">Ubah</a> <a href="<?= base_url('Cms/deletedonasi/') . $d['id_donasi'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a></td>
+                            <td><?= rupiah($d['jumlah']) ?></td>
+                            <td><?= $d['bank'] ?></td>
+                            <td><a href="" onclick="window.open('<?= base_url('assets/images/donasi/') . $d['bukti'] ?>','targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1090px, height=550px, top=25px left=120px'); return false;"><img style="width: 200px" src="<?= base_url('assets/images/donasi/') . $d['bukti'] ?>"></a> </td>
+                            <!-- <td><img style="width: 200px" src="<?= base_url('assets/images/donasi/') . $d['bukti'] ?>"></td> -->
+                            <td> <a href="<?= base_url('Donasi/konfirmasi/'). $d['id_donasi'] ?>" class="btn btn-success">Konfirmasi</a> <a href="<?= base_url('Donasi/deletedonasi/') . $d['id_donasi'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a>   </td>
 
               </tr>
             <?php } ?>
@@ -129,6 +141,21 @@
     </div>
   </div>
 
+
+  <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<?php if ($this->session->flashdata('success-konfirmasi')): ?>
+  <script>
+    swal({
+      icon: 'success',
+      title: 'Anda berhasil Konfirmasi',
+      text: 'Anda Berhasil Melakukan Konfirmasi Donasi',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  </script>
+<?php endif;?>
+
 <?php $this->load->view('admin/template/footer') ?>
 <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></script> -->
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
@@ -153,7 +180,7 @@
         swal({ title: "Hapus Donasi Berhasil",
           icon: "success"}).then(okay => {
             if (okay) {
-              window.location.href = "<?= base_url('Cms/deletedonasi/') . $d['id_donasi'] ?>";
+              window.location.href = "<?= base_url('Donasi/deletedonasi/') . $d['id_donasi'] ?>";
             }
           });
 
@@ -167,4 +194,5 @@
       });
   }
 </script>
+
 

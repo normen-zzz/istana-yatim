@@ -41,21 +41,21 @@ class Form extends CI_Controller {
     {
         $this->load->model('Waapi');
         $data = [
-         'nama_form' => $this->input->post('nama'),
-         'nomor_form' => $this->input->post('nomor', true),
-         'kelamin_form' => $this->input->post('kelamin'),
-         'acara_form' => $this->input->post('acara'),
-     ];
+           'nama_form' => $this->input->post('nama'),
+           'nomor_form' => $this->input->post('nomor', true),
+           'kelamin_form' => $this->input->post('kelamin'),
+           'acara_form' => $this->input->post('acara'),
+       ];
 
-     $this->db->insert('form', $data);
-     $this->Waapi->kirimWablas($this->input->post('nomor'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Mendaftar Event '. $this->input->post('judul'));
-     redirect('user/detailacara/'. $this->input->post('slug'));
+       $this->db->insert('form', $data);
+       $this->Waapi->kirimWablas($this->input->post('nomor'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Mendaftar Event '. $this->input->post('judul'));
+       redirect('user/detailacara/'. $this->input->post('slug'));
 
- }
+   }
 
 
- public function deleteform($id)
- {
+   public function deleteform($id)
+   {
     $this->load->model('M_form');
     $data['slidefoto'] = $this->M_form->formWhere(['id_form' => $this->uri->segment(3)])->row_array();
     $where = array('id_form' => $id);
@@ -86,9 +86,10 @@ public function pemberitahuan()
     $this->load->model('Waapi');
 
     $orang = $this->M_form->duplikatForm()->result_array();
+    $teks = $this->input->post('text');
 
     foreach ($orang as $o) {
-        $this->Waapi->kirimWablas($o['nomor_form'], 'Assalamualaikum '.$o['nama_form'].' Test Pemberitahuan ');
+        $this->Waapi->kirimWablas($o['nomor_form'], 'Assalamualaikum '.$o['nama_form'].' '. $teks);
     }
     $this->session->set_flashdata('success-input', 'berhasil');
     redirect('Form');
@@ -101,35 +102,15 @@ public function pemberitahuanfile()
 
     $orang = $this->M_form->duplikatForm()->result_array();
     $pesan = $this->input->post('pesan');
+    $gambar = $this->input->post('link');
 
-            $config['upload_path'] = './assets/images/wa/'; //path folder
-            $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-             //nama yang terupload nantinya
-
-            $this->upload->initialize($config);
-            if(!empty($_FILES['filefoto']['name'])){
-                if ($this->upload->do_upload('filefoto')){
-                    $gbr = $this->upload->data();
-                    $gambar=$gbr['file_name'];
-                    
-
-                    foreach ($orang as $o) {
-                        $this->Waapi->kirimWablasfile($o['nomor_form'], 'Assalamualaikum', base_url('assets/images/wa/') . $gambar);
-                    }
-                    $this->session->set_flashdata('success-input', 'berhasil');
-                    redirect('Form');
-                }else{  
-                    redirect('Form');
-                }
-
-            }else{
-                redirect('Form');
-            }
-
-
-
-        }
-
-
-
+    foreach ($orang as $o) {
+        $this->Waapi->kirimWablasfile($o['nomor_form'], 'Assalamualaikum '. $o['nama_form'].' '. $pesan,$gambar);
     }
+    $this->session->set_flashdata('success-input', 'berhasil');
+    redirect('Form');
+
+
+}
+
+}

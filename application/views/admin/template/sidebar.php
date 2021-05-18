@@ -8,11 +8,11 @@
     </div>
     <ul class="sidebar-menu">
       <li class="menu-header">CMS</li>
-      <li class="nav-item dropdown active">
+      <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Index</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="<?= base_url('Cms') ?>">Slide Foto</a></li>
-          <li><a class="nav-link" href="<?= base_url('Cms/donasi') ?>">Donasi</a></li>
+          <!-- <li><a class="nav-link" href="<?= base_url('Cms/donasi') ?>">Donasi</a></li> -->
           <li><a class="nav-link" href="<?= base_url('Cms/bank') ?>">Bank</a></li>
           <li><a class="nav-link" href="<?= base_url('Cms/footer') ?>">Footer</a></li>
         </ul>
@@ -25,6 +25,18 @@
           <li><a class="nav-link" href="<?= base_url('Ceritasantri') ?>">Cerita Santri</a></li>
         </ul>
       </li>
+
+      <li class="menu-header">Form Donasi</li>
+       <li class="nav-item dropdown">
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Donasi</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="<?= base_url('donasi/belumkonfirmasi') ?>">Belum Terkonfirmasi</a></li>
+          <li><a class="nav-link" href="<?= base_url('donasi/sudahkonfirmasi') ?>">Sudah Terkonfirmasi</a></li>
+          <!-- <li><a class="nav-link" href="#">Grafik</a></li> -->
+        </ul>
+      </li>
+
+
 
       <li class="menu-header">Event</li>
       <li><a class="nav-link" href="<?= base_url('Acara') ?>"><i class="fas fa-pencil-ruler"></i> <span>Acara</span></a></li>

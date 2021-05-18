@@ -40,7 +40,7 @@ class User extends CI_Controller {
 		$data['hitungceritasantri'] = $this->M_ceritasantri->hitung_ceritasantri();
 		$data['hitungacara'] = $this->M_acara->hitung_acara();
 		$data['bank'] = $this->M_bank->tampil_data()->result_array();
-		$data['donasi'] = $this->M_donasi->tampil_data()->result_array();
+		$data['donasi'] = $this->M_donasi->joinBank(['konfirmasi' =>'1'])->result_array();
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();
 		$this->load->view('user/index',$data);
 	}
@@ -165,7 +165,16 @@ public function detailacara(){
 	$data['footer'] = $this->M_footer->tampil_data()->row_array();
 	$this->load->view('user/acara/detailacara',$data);
 }
+ 
 
+       private function rupiah($angka){
+  
+        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
+ 
+        }
+
+        
 
 public function tambahdonasiAct()
 {
@@ -204,7 +213,7 @@ public function tambahdonasiAct()
 
             		$this->db->insert('donasi', $data);
             		$this->session->set_flashdata('success-donasi', 'berhasil');
-            		$this->Waapi->kirimWablas($this->input->post('nowa'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Melakukan Donasi Sebesar '. $this->input->post('jumlah'));
+            		$this->Waapi->kirimWablas($this->input->post('nowa'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Melakukan Donasi Sebesar '. ("Rp " . number_format($this->input->post('jumlah'),2,',','.')));
             		redirect('User');
             	}else{  
             		redirect('user');

@@ -24,7 +24,7 @@
 
 <body>
 
-  <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" style="padding-bottom: 0px;padding-top: 0px;">
+  <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" style="padding-bottom: 0px;padding-top: 0px; border-bottom-style: solid;border-bottom-color: #EBF2F7;">
     <div class="container"><a class="navbar-brand" href="#"><img class="img-fluid pulse animated infinite" src="<?= base_url('assets/images/logo/') ?>istanayatim.png" style="width: 60px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navcol-1">
         <ul class="navbar-nav mr-auto">
@@ -32,14 +32,14 @@
           <li class="nav-item"></li>
           <li class="nav-item"></li>
           <li class="nav-item"></li>
-        </ul><span class="navbar-text actions"> <a target="_blank" data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Masuk</a><a class="btn btn-light action-button" role="button" data-bss-hover-animate="pulse" href="#donasi">Donasi</a></span>
+        </ul><span class="navbar-text actions"> <a target="_blank" data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Masuk</a><a class="btn btn-light action-button pulse animated infinite action-button" role="button"  href="#donasi">Donasi</a></span>
       </div>
     </div>
   </nav>
 
 
   
-  <div style="margin-top: 75px;" class="carousel slide" data-ride="carousel" id="carousel-1">
+  <div style="margin-top: 75px;" class="carousel slide" data-ride="carousel" data-interval="2000" data-pause="false" id="carousel-1">
     <div class="carousel-inner">
       <?php $counter = 0; ?>
       <?php foreach ($slidefoto as $s) {?>
@@ -68,22 +68,22 @@
 
                 <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
                   <h3 style="padding-top: 20px;">Berkah</h3>
-                  <h3 style="padding-top: 20px;">"Bersemangat Sedekah"</h3>
+                  <h4>"Bersemangat Sedekah"</h4>
                   <p><?= $hitungberkah ?> berkah</p>
                   <a class="btn btn-light action-button" role="button" href="<?= base_url('User/berkah') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
                 </div>
 
                 <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
                   <h3 style="padding-top: 20px;">Cerri</h3>
-                  <h3 style="padding-top: 20px;">"Cerita Santri"</h3>
+                  <h4>"Cerita Santri"</h4>
                   <p><?= $hitungceritasantri ?> Cerita</p>
                   <a class="btn btn-light action-button" role="button" href="<?= base_url('User/ceritasantri') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
                 </div>
 
                 <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
                   <h3 style="padding-top: 20px;">Acara</h3>
-                  <h3 style="padding-top: 20px;"><br></h3>
-                  <p><?= $hitungacara ?> Acara Aktifz</p>
+                  <h4>"Paragraph"</h4>
+                  <p><?= $hitungacara ?> Acara Aktif</p>
                   <a class="btn btn-light action-button" role="button" href="<?= base_url('User/Acara') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
                 </div>
 
@@ -117,7 +117,7 @@
               <h1>Yuk Donasi</h1>
 
               <?php foreach ($bank as $b) {?>
-                <p><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama'] ?></p>
+                <p><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama_bank'] ?></p>
               <?php } ?>
             </div>
 
@@ -148,17 +148,17 @@
              <?php echo form_open_multipart('user/tambahdonasiAct'); ?>
              <div class="form-group">
               <label>Nama</label>
-              <input type="" name="nama" class="form-control" required>
+              <input type="text" name="nama" class="form-control" required>
             </div>
 
             <div class="form-group">
               <label>No Whatssapp</label>
-              <input type="" name="nowa" class="form-control" placeholder="" required>
+              <input type="text" name="nowa" class="form-control" placeholder="" required>
             </div>
 
             <div class="form-group">
               <label>Jumlah</label>
-              <input type="" name="jumlah" class="form-control">
+              <input type="text" name="jumlah" class="form-control">
             </div>
 
             <div class="form-group">
@@ -166,7 +166,7 @@
               <select name ="bank" class="form-control">
                 <option selected>Pilih Bank</option>
                 <?php foreach ($bank as $b) { ?>
-                  <option value="<?= $b['id_bank'] ?>"><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama'] ?></option>
+                  <option value="<?= $b['id_bank'] ?>"><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama_bank'] ?></option>
                 <?php } ?>
               </select>
 
@@ -198,10 +198,10 @@
         return $text;
       } ?>
       <!-- Set up your HTML -->
-      <div class="container" data-aos="fade-up" data-aos-duration="850">
+      <div class="container" data-aos="fade-up" data-aos-duration="500" data-aos-delay="500">
         <div class="row">
           <div class="col">
-            <h1 align="center" style="color: rgb(106,110,115);"><strong>berkah</strong></h1>
+            <h1 align="center" style="color: rgb(106,110,115);"><strong>Berkah</strong></h1>
           </div>
         </div>
         <div class="row owl-carousel">
@@ -230,7 +230,7 @@
         </div>
 
         <section>
-          <div class="container-fluid" data-aos="fade-up" data-aos-duration="850">
+          <div class="container-fluid"data-aos="fade-up" data-aos-duration="500" data-aos-delay="500">
             <div class="row">
               <div class="col">
                 <h1 data-aos="zoom-in" data-aos-duration="500" style="text-align: center;color: rgb(106,110,115);"><strong>Lokasi</strong></h1>

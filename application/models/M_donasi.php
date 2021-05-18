@@ -37,4 +37,14 @@ class M_donasi extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+
+     public function joinBank($where)
+    {
+        $this->db->select('*');
+        $this->db->from('donasi');
+        $this->db->where($where);
+        $this->db->join('bank','bank.id_bank = donasi.id_bank');
+        return $this->db->get();
+    }
 }

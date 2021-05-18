@@ -38,7 +38,7 @@ class Waapi extends CI_Model
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => 'POST',
-      CURLOPT_POSTFIELDS => array('number' => $phone,'caption' => $msg,'file'=> new CURLFILE($file)),
+      CURLOPT_POSTFIELDS => array('number' => $phone,'caption' => $msg,'file' => $file),
     ));
 
     $response = curl_exec($curl);

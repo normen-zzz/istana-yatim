@@ -47,7 +47,7 @@
                           <tr>
                             <td><?= $b['id_bank'] ?></td>
                             <td><?= $b['bank'] ?></td>
-                            <td><?= $b['nama'] ?></td>
+                            <td><?= $b['nama_bank'] ?></td>
                             <td><?= $b['norek'] ?></td>
                             
                             <!--<td><img style="width: 200px" src="<?= base_url('assets/images/donasi/') . $d['bukti'] ?>"></td> -->
