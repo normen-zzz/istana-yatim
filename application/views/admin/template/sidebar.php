@@ -33,8 +33,10 @@
           <li><a class="nav-link" href="<?= base_url('donasi/belumkonfirmasi') ?>">Belum Terkonfirmasi</a></li>
           <li><a class="nav-link" href="<?= base_url('donasi/sudahkonfirmasi') ?>">Sudah Terkonfirmasi</a></li>
           <!-- <li><a class="nav-link" href="#">Grafik</a></li> -->
+          <li><a class="nav-link" href="<?= base_url('donasi/pengeluaran_donasi') ?>">Pengeluaran</a></li>
         </ul>
       </li>
+
 
 
 
