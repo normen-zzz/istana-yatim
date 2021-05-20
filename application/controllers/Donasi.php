@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+date_default_timezone_set('Asia/Jakarta');
 class Donasi extends CI_Controller {
+
 
 	public function __construct()
     {
@@ -113,7 +115,7 @@ class Donasi extends CI_Controller {
             $where = array('id_donasi' => $this->uri->segment(3));
             $this->M_donasi->delete_donasi($where, 'donasi');
             $this->session->set_flashdata('user-delete', 'berhasil');
-            redirect('donasi/belumkonfirmasi');
+            redirect($_SERVER['HTTP_REFERER']);
         }
 
 }
