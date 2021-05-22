@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Bulan Mei 2021 pada 17.55
+-- Waktu pembuatan: 22 Bulan Mei 2021 pada 02.39
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.2
 
@@ -241,23 +241,24 @@ CREATE TABLE `metode` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengeluaran`
+-- Struktur dari tabel `pengeluaran_donasi`
 --
 
-CREATE TABLE `pengeluaran` (
+CREATE TABLE `pengeluaran_donasi` (
   `id_pengeluaran` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
+  `tanggal` datetime NOT NULL,
   `judul_pengeluaran` varchar(255) NOT NULL,
   `jumlah_pengeluaran` double NOT NULL,
   `ket` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pengeluaran`
+-- Dumping data untuk tabel `pengeluaran_donasi`
 --
 
-INSERT INTO `pengeluaran` (`id_pengeluaran`, `tanggal`, `judul_pengeluaran`, `jumlah_pengeluaran`, `ket`) VALUES
-(1, '2021-05-20', 'apayaaa', 100000, 'didonasikan');
+INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `tanggal`, `judul_pengeluaran`, `jumlah_pengeluaran`, `ket`) VALUES
+(1, '2021-05-20 00:00:00', 'apayaaa', 100000, 'didonasikan'),
+(2, '2021-05-21 13:30:37', 'apayaaa', 100000, 'didonasikan');
 
 -- --------------------------------------------------------
 
@@ -387,9 +388,9 @@ ALTER TABLE `metode`
   ADD PRIMARY KEY (`id_metode`);
 
 --
--- Indeks untuk tabel `pengeluaran`
+-- Indeks untuk tabel `pengeluaran_donasi`
 --
-ALTER TABLE `pengeluaran`
+ALTER TABLE `pengeluaran_donasi`
   ADD PRIMARY KEY (`id_pengeluaran`);
 
 --
@@ -469,10 +470,10 @@ ALTER TABLE `menu`
   MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `pengeluaran`
+-- AUTO_INCREMENT untuk tabel `pengeluaran_donasi`
 --
-ALTER TABLE `pengeluaran`
-  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `pengeluaran_donasi`
+  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengurus`

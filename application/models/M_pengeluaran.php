@@ -4,18 +4,18 @@ class M_pengeluaran extends CI_Model
 {
     public function tampil_data()
     {
-        return $this->db->get('pengeluaran');
+        return $this->db->get('pengeluaran_donasi');
     }
 
     public function detail_bank($id = null)
     {
-        $query = $this->db->get_where('pengeluaran', array('id' => $id))->row();
+        $query = $this->db->get_where('pengeluaran_donasi', array('id' => $id))->row();
         return $query;
     }
 
     public function pengeluaranWhere($where)
     { 
-        return $this->db->get_where('pengeluaran', $where);
+        return $this->db->get_where('pengeluaran_donasi', $where);
     }
 
     public function delete_bank($where, $table)
@@ -23,8 +23,8 @@ class M_pengeluaran extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
         $this->db->query("SET @num := 0;");
-        $this->db->query("UPDATE pengeluaran SET id_pengeluaran = @num := (@num+1);");
-        $this->db->query("ALTER TABLE pengeluaran AUTO_INCREMENT = 1;");
+        $this->db->query("UPDATE pengeluaran_donasi SET id_pengeluaran = @num := (@num+1);");
+        $this->db->query("ALTER TABLE pengeluaran_donasi AUTO_INCREMENT = 1;");
     }
 
     public function update_pengeluaran($where, $table)
