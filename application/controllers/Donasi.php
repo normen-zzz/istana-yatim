@@ -19,13 +19,19 @@ class Donasi extends CI_Controller {
 
     public function konfirmasi(){
         $this->load->model('M_donasi');
+        $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
+        $data['donasi'] = $this->db->get_where('donasi',['id_donasi' => $this->uri->segment(3)])->row_array();
+        $penjumlahan = $data['update_donasi']['jumlah_update'] + $data['donasi']['jumlah'];
 
-        $data = array(
+
+        $update = array(
             'konfirmasi' => 1,
             
         );
 
-        $this->M_donasi->update_data(['id_donasi' => $this->uri->segment(3)], $data, 'donasi');
+        $this->M_donasi->update_data(['id_donasi' => $this->uri->segment(3)], $update, 'donasi');
+        $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
+
         $this->session->set_flashdata('user-konfirmasi', 'berhasil');
         redirect('Donasi/belumkonfirmasi');
     }
