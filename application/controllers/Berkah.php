@@ -172,7 +172,7 @@ class Berkah extends CI_Controller {
 
 
 
-    public function deleteartikel($slug)
+    public function deleteberkah($slug)
     {
         $this->load->model('M_berkah');
         $data['berkah'] = $this->M_berkah->berkahWhere(['slug_berkah' => $this->uri->segment(3)])->row_array();
