@@ -138,17 +138,20 @@ class Donasi extends CI_Controller {
             $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
             $this->load->view('admin/donasi/tambahpengeluaran',$data);
         }
-        public function tambahpengeluaranAct()
-        {
-            $data = [
+        public function tambahpengeluaranAct(){
+            $this->load->model('M_donasi');
+            $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
+            $penjumlahan = $data['update_donasi']['jumlah_update'] - $this->input->post('jumlah_pengeluaran');
+            $tambah = [
                 'judul_pengeluaran' => $this->input->post('judul_pengeluaran'),
                 'jumlah_pengeluaran' => $this->input->post('jumlah_pengeluaran'),
                 'ket' => $this->input->post('ket'),
                 'tanggal'=>date("Y-m-d H:i:s")
             ];
 
-            $this->db->insert('pengeluaran', $data);
+            $this->db->insert('pengeluaran_donasi', $tambah);
+            $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
             $this->session->set_flashdata('success-input', 'berhasil');
-            redirect('donasi/penggeluaran_donasi');
+            redirect('donasi/pengeluaran_donasi');
 }
 }
