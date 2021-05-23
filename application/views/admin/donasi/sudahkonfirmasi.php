@@ -1,5 +1,5 @@
 <?php $this->load->view('admin/template/header') ?>
-<link rel="stylesheet" type="text/css" href="">
+
 
 <?php $this->load->view('admin/template/topbar') ?>
 
@@ -51,8 +51,8 @@
                           <th>NO WA</th>
                           <th>Jumlah</th>
                           <th>Bank</th>
-                          <th>Bukti Donasi</th>
-                          <th>Action</th>
+                          <th class='notexport'>Bukti Donasi</th>
+                          <th class='notexport'>Action</th>
                         </tr>
                       </thead>
 
@@ -174,8 +174,38 @@
     $('#myTable').DataTable( {
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            {
+        extend: 'excel',
+        text: 'excel',
+        className: 'btn btn-primary',
+        exportOptions: {
+            columns: ':not(.notexport)'
+        }
+        },
+
+        {
+        extend: 'pdf',
+        text: 'pdf',
+        className: 'btn btn-primary',
+        exportOptions: {
+            columns: ':not(.notexport)'
+        }
+        },
+
+        {
+        extend: 'csv',
+        text: 'csv',
+        className: 'btn btn-primary',
+        exportOptions: {
+            columns: ':not(.notexport)'
+        }
+        }
+
+
+
+
         ]
+
     } );
 } );
 </script>
