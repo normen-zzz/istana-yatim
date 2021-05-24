@@ -49,7 +49,7 @@ class Cms extends CI_Controller {
                     $config['create_thumb']= FALSE;
 
                     $config['width']= 1159;
-                    $config['height']= 600;
+                    $config['height']= 500;
                     $config['new_image']= './assets/images/slidefoto/'.$gbr['file_name'];
                     $this->load->library('image_lib', $config);
                     $this->image_lib->resize();
