@@ -59,7 +59,7 @@
                         <?php foreach ($donasi as $d) { ?>
                           <tr>
                             <td><?= $d['id_donasi'] ?></td>
-                            <td><?= date('d-m-Y H:i:s', strtotime($d['tanggal'])) ?></td>
+                            <td><?= strftime("%A %d-%h-%Y %T", strtotime($d['tanggal'])) ?></td>
                             <td><?= $d['nama'] ?></td>
                             <td><?= $d['nowa'] ?></td>
                             <td><?= rupiah($d['jumlah']) ?></td>

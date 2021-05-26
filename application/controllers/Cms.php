@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
+setlocale(LC_TIME, 'id-ID');
+
 
 class Cms extends CI_Controller {
 

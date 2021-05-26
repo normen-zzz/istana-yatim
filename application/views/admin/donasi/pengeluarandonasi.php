@@ -45,7 +45,7 @@
                         <?php foreach ($pengeluaran as $p) { ?>
                         <tr>
                           <td><?= $p['id_pengeluaran'] ?></td>
-                          <td><?= $p['tanggal'] ?></td>
+                          <td><?= strftime("%A %d-%h-%Y %T", strtotime($p['tanggal'])) ?></td>
                           <td><?= $p['judul_pengeluaran'] ?></td>
                           <td><?= $p['jumlah_pengeluaran'] ?></td>
                           <td><?= limit_words($p['ket'],15) ?> .........</td>

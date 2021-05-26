@@ -37,7 +37,7 @@
             <div class="col-xl-8 offset-xl-2"><img class="img-fluid" src="<?= base_url('assets/images/acara/'). $acara->img_acara ?>">
                 <h1 class="text-center" style="padding-top: 21px;"><?= $acara->nama_acara ?></h1>
                 <p style="text-align: center;"><?= $acara->tema_acara ?> </p>
-                <p style="text-align: right;"><?= $acara->tgl_acara ?></p>
+                <p style="text-align: center;"><?= strftime("%A %d-%h-%Y %T", strtotime($acara->tgl_acara)) ?></p>
             </div>
         </div>
     </div>
