@@ -34,6 +34,11 @@
                       <input type="" name="jumlah_pengeluaran" class="form-control" required="">
                     </div>
 
+                    <div class="form-group">
+                      <label>Foto</label>
+                      <input type="file" name="foto_pengeluaran" class="form-control" required="">
+                    </div>
+
 
                     <div class="form-group">
                       <label>Keterangan</label>

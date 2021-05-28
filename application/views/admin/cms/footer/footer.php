@@ -70,4 +70,7 @@
       
   </div>
 
+
+  
+
   <?php $this->load->view('admin/template/footer') ?>

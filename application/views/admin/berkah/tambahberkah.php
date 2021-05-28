@@ -30,7 +30,7 @@
 
                     <div class="form-group">
                       <label>isi</label>
-                      <textarea id="ckeditor" name="berkah" class="form-control" placeholder="anu" ></textarea><br/>
+                      <textarea id="ckeditor" name="berkah" class="form-control" required="" ></textarea><br/>
                     </div>
 
                     <div class="form-group">

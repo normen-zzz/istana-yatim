@@ -27,22 +27,22 @@
                     <div class="form-group">
                     <div class="form-group">
                       <label>Link Facebook</label>
-                      <input type="text" name="link_facebook" class="form-control" value="<?= $footer['link_facebook'] ?>">
+                      <input type="text" name="link_facebook" class="form-control" value="<?= $footer['link_facebook'] ?>" required>
                     </div>
 
                     <div class="form-group">
                       <label>Link Twiiter</label>
-                      <input type="text" name="link_twitter" class="form-control" value="<?= $footer['link_twitter'] ?>">
+                      <input type="text" name="link_twitter" class="form-control" value="<?= $footer['link_twitter'] ?>" required>
                     </div>
 
                     <div class="form-group">
                       <label>Link Instagramr</label>
-                      <input type="text" name="link_instagram" class="form-control" value="<?= $footer['link_instagram'] ?>">
+                      <input type="text" name="link_instagram" class="form-control" value="<?= $footer['link_instagram'] ?>" required>
                     </div>
 
                     <div class="form-group">
                       <label>Copyright</label>
-                      <input type="text" name="text_copyright" class="form-control" value="<?= $footer['text_copyright'] ?>">
+                      <input type="text" name="text_copyright" class="form-control" value="<?= $footer['text_copyright'] ?>" required>
                     </div>
 
 
@@ -50,8 +50,9 @@
                     
                   </div>
                   <div class="card-footer text-right">
-                    <button class="btn btn-primary mr-1" type="submit">Submit</button>
-                    <!-- <button class="btn btn-secondary" type="reset">Reset</button> -->
+                    <a href="<?= base_url('Cms/footer') ?>" class="btn btn-secondary">Cancel</a>
+                    <button class="btn btn-primary mr-1" type="submit">Ubah</button>
+                    
                   </div>
                 </form>
                 </div>
@@ -63,13 +64,7 @@
   </div>
 
   <?php $this->load->view('admin/template/footer') ?>
-  <script src="<?php echo base_url().'assets/ckeditor/ckeditor.js'?>"></script>
-    <script type="text/javascript">
-      $(function () {
-        CKEDITOR.replace('ckeditor');
-      });
-    </script>
-
+ 
    <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 

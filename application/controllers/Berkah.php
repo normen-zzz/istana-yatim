@@ -181,7 +181,7 @@ class Berkah extends CI_Controller {
         $gambar_lama = $data['berkah']['img_berkah'];
         unlink(FCPATH . 'assets/images/berkah/' . $gambar_lama);
         $where = array('slug_berkah' => $slug);
-        $this->M_berkah->delete_artikel($where, 'berkah');
+        $this->M_berkah->delete_berkah($where, 'berkah');
         $this->session->set_flashdata('user-delete', 'berhasil');
         redirect('berkah');
     }

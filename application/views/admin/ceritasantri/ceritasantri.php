@@ -50,7 +50,7 @@
                           <td><?= $c['judul_ceritasantri'] ?></td>
                           <td><?= limit_words($c['isi_ceritasantri'],15) ?> .........</td>
                           <td><img style="width: 200px" src="<?= base_url('assets/images/ceritasantri/') . $c['img_ceritasantri'] ?>"></td>
-                          <td><?= strftime("%A %d-%h-%Y %T", strtotime($c['tgl_ceritasantri'])) ?></td>
+                          <td><?= strftime("%A | %d %h %Y %T", strtotime($c['tgl_ceritasantri'])) ?></td>
                           <td><?= $c['jenis_ceritasantri'] ?></td>
                           <td><?= $c['penulis_ceritasantri'] ?></td>
 

@@ -23,36 +23,37 @@
                   <div class="card-body">
 
                     <form method="POST" id="myForm" action="<?= base_url('berkah/ubahberkahAct') ?>" enctype="multipart/form-data">
-                      <input type="number" name="id" value="<?= $berkah['id_artikel'] ?>" hidden>
+                      <input type="number" name="id" value="<?= $berkah['id_berkah'] ?>" hidden>
                     <div class="form-group">
                       <label>Judul</label>
-                      <input type="text" name="judul" value="<?= $berkah['judul_berkah'] ?>" class="form-control">
+                      <input type="text" name="judul" value="<?= $berkah['judul_berkah'] ?>" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                       <label>isi</label>
-                      <textarea id="ckeditor" name="berkah" class="form-control"  ><?= $berkah['isi_berkah'] ?></textarea><br/>
+                      <textarea id="ckeditor" name="berkah" class="form-control" required=""  ><?= $berkah['isi_berkah'] ?></textarea><br/ >
                     </div>
 
                     <div class="form-group">
                       <label>Foto berkah</label>
-                      <img width="200px" style="margin-bottom: 5px" src="<?= base_url('assets/images/berkah/'). $berkah['img_berkah'] ?>">
+                      <img width="200px" style="margin-bottom: 5px" src="<?= base_url('assets/images/berkah/'). $berkah['img_berkah'] ?>" required>
                       <input type="file" name="filefoto" class="form-control">
                     </div>
 
                     <div class="form-group">
                       <label>Jenis berkah</label>
-                      <input type="text" name="jenis" value="<?= $berkah['jenis_berkah'] ?>" class="form-control">
+                      <input type="text" name="jenis" value="<?= $berkah['jenis_berkah'] ?>" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                       <label>Penulis</label>
-                      <input type="text" name="penulis" value="<?= $berkah['penulis_berkah'] ?>" class="form-control">
+                      <input type="text" name="penulis" value="<?= $berkah['penulis_berkah'] ?>" class="form-control" required>
                     </div>
                   </div>
                   <div class="card-footer text-right">
+                    <a href="<?= base_url('Berkah') ?>" class="btn btn-secondary">Cancel</a>
                     <button class="btn btn-primary mr-1 ubah"  type="submit">Ubah</button>
-                    <!-- <button class="btn btn-secondary" type="reset">Reset</button> -->
+                    
                   </div>
                 </form>
                 </div>

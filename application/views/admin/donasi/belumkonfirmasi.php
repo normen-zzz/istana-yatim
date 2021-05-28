@@ -33,7 +33,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Donasi</button>
+              <!-- <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Donasi</button> -->
               <div class="card">
                 <div class="card-header">
                   <h4>List Donasi Belum Terkonfirmasi</h4>

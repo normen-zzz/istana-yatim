@@ -17,33 +17,32 @@
               <div class="col">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Tambah Bank</h4>
+                    <h4>Ubah Bank</h4>
                   </div>
                   
                   <div class="card-body">
 
-                    <form method="POST" id="myForm" action="<?= base_url('Cms/tambahbankAct') ?>" enctype="multipart/form-data">
-
+                    <form method="POST" id="myForm" action="<?= base_url('Cms/ubahbankAct') ?>" enctype="multipart/form-data">
+                      <input type="number" name="id" value="<?= $bank['id_bank'] ?>" hidden>
+                    <div class="form-group">
                     <div class="form-group">
                       <label>Nama Bank</label>
-                      <input type="" name="bank" class="form-control" required="">
+                      <input type="text" name="bank" class="form-control" value="<?= $bank['bank'] ?>" required>
                     </div>
 
                     <div class="form-group">
                       <label>Atas Nama</label>
-                      <input type="" name="nama" class="form-control" required="">
+                      <input type="text" name="nama" class="form-control" value="<?= $bank['nama_bank'] ?>" required>
                     </div>
-
 
                     <div class="form-group">
                       <label>No Rekening</label>
-                      <input type="" name="norek" class="form-control">
-                    </div>
+                      <input type="text" name="norek" class="form-control" value="<?= $bank['norek'] ?>" required>
+                    </div>                    
                     
-
-                   
+                  </div>
                   <div class="card-footer text-right">
-                    <button class="btn btn-primary mr-1 tambah"  type="submit">Tambah</button>
+                    <button class="btn btn-primary mr-1" type="submit">Ubah</button>
                     <!-- <button class="btn btn-secondary" type="reset">Reset</button> -->
                   </div>
                 </form>
@@ -63,10 +62,10 @@
       });
     </script>
 
-     <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 
-  $('.tambah').click(function (e){
+  $('.ubah').click(function (e){
     e.preventDefault();
     let form = $(this).parents('form');
     swal({

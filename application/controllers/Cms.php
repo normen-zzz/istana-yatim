@@ -41,57 +41,57 @@ class Cms extends CI_Controller {
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
          $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
 
-            $this->upload->initialize($config);
-            if(!empty($_FILES['filefoto']['name'])){
-                if ($this->upload->do_upload('filefoto')){
-                    $gbr = $this->upload->data();
+         $this->upload->initialize($config);
+         if(!empty($_FILES['filefoto']['name'])){
+            if ($this->upload->do_upload('filefoto')){
+                $gbr = $this->upload->data();
                     //Compress Image
-                    $config['image_library']='gd2';
-                    $config['source_image']='./assets/images/slidefoto/'.$gbr['file_name'];
-                    $config['create_thumb']= FALSE;
+                $config['image_library']='gd2';
+                $config['source_image']='./assets/images/slidefoto/'.$gbr['file_name'];
+                $config['create_thumb']= FALSE;
 
-                    $config['width']= 1159;
-                    $config['height']= 500;
-                    $config['new_image']= './assets/images/slidefoto/'.$gbr['file_name'];
-                    $this->load->library('image_lib', $config);
-                    $this->image_lib->resize();
+                $config['width']= 1159;
+                $config['height']= 500;
+                $config['new_image']= './assets/images/slidefoto/'.$gbr['file_name'];
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
 
-                    $gambar=$gbr['file_name'];
+                $gambar=$gbr['file_name'];
 
-                    $data = [
+                $data = [
 
-                        'img_slidefoto' => $gambar,
-                        'tgl_slidefoto' => date("Y-m-d H:i:s"),
-                    ];
+                    'img_slidefoto' => $gambar,
+                    'tgl_slidefoto' => date("Y-m-d H:i:s"),
+                ];
 
-                    $this->db->insert('slidefoto', $data);
-                    redirect('Cms');
-                }else{  
-                    redirect('cms/tambahslidefoto');
-                }
-
-            }else{
+                $this->db->insert('slidefoto', $data);
+                redirect('Cms');
+            }else{  
                 redirect('cms/tambahslidefoto');
             }
+
+        }else{
+            redirect('cms/tambahslidefoto');
         }
+    }
 
-        public function ubahslidefoto()
-        {
-            $this->load->model('M_slidefoto');
-            $data['title'] = 'Ubah Slide Foto';
-            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-            $data['slidefoto'] = $this->M_slidefoto->slidefotoWhere(['id_slidefoto' => $this->uri->segment(3)])->row_array();
-            $this->load->view('admin/cms/slidefoto/ubahslidefoto',$data);
-        }
-        public function ubahslidefotoAct()
-        {
-            $this->load->model('M_slidefoto');
+    public function ubahslidefoto()
+    {
+        $this->load->model('M_slidefoto');
+        $data['title'] = 'Ubah Slide Foto';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['slidefoto'] = $this->M_slidefoto->slidefotoWhere(['id_slidefoto' => $this->uri->segment(3)])->row_array();
+        $this->load->view('admin/cms/slidefoto/ubahslidefoto',$data);
+    }
+    public function ubahslidefotoAct()
+    {
+        $this->load->model('M_slidefoto');
 
-            $id = $this->input->post('id',true);
+        $id = $this->input->post('id',true);
 
 
-            $gambar = $_FILES['filefoto']['name'];
-            $data['slidefoto'] = $this->M_slidefoto->slidefotoWhere(['id_slidefoto' => $id])->row_array();
+        $gambar = $_FILES['filefoto']['name'];
+        $data['slidefoto'] = $this->M_slidefoto->slidefotoWhere(['id_slidefoto' => $id])->row_array();
 
 
 
@@ -209,43 +209,111 @@ class Cms extends CI_Controller {
 
     
 
-        public function bank()
-        {
-            $this->load->model('M_bank');
-            $data['title'] = 'Daftar Bank';
-            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-            $data['bank'] = $this->M_bank->tampil_data()->result_array();
+    public function bank()
+    {
+        $this->load->model('M_bank');
+        $data['title'] = 'Daftar Bank';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['bank'] = $this->M_bank->tampil_data()->result_array();
 
-            $this->load->view('admin/cms/bank/bank',$data);
-        }
-        public function tambahbank()
-        {
-            $data['title'] = 'Tambah Bank';
-            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-            $this->load->view('admin/cms/bank/tambahbank',$data);
-        }
-        public function tambahbankAct()
-        {
-            $data = [
-                'bank' => $this->input->post('bank'),
-                'nama_bank' => $this->input->post('nama'),
-                'norek' => $this->input->post('norek'),
+        $this->load->view('admin/cms/bank/bank',$data);
+    }
+    public function tambahbank()
+    {
+        $data['title'] = 'Tambah Bank';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $this->load->view('admin/cms/bank/tambahbank',$data);
+    }
+    public function tambahbankAct()
+    {
 
-            ];
+        $this->load->model('M_bank');
+        $data['title'] = 'Daftar Bank';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['bank'] = $this->M_bank->tampil_data()->result_array();
+        $data['modal'] = "$('#exampleModal').modal('show');";
 
-            $this->db->insert('bank', $data);
-            $this->session->set_flashdata('success-input', 'berhasil');
-            redirect('Cms/bank');
-}
-        public function deletebank($id)
-        {
-            $this->load->model('M_bank');
-            $data['donasi'] = $this->M_bank->bankWhere(['id_bank' => $this->uri->segment(3)])->row_array();
-            $where = array('id_bank' => $id);
-            $this->M_bank->delete_bank($where, 'bank');
-            $this->session->set_flashdata('user-delete', 'berhasil');
-            redirect('Cms/bank');
-        }
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim|min_length[4]', [
+            'required' => 'Harap isi kolom nama.',
+            'min_length' => 'Nama terlalu pendek.',
+        ]);
+
+        $this->form_validation->set_rules('bank', 'Bank', 'required', [
+            'required' => 'Harap isi kolom Bank.',
+        ]);
+
+        $this->form_validation->set_rules('norek', 'Norek', 'required|min_length[4]', [
+            'required' => 'Harap isi kolom Nomor Rekening.',
+            'min_length' => 'Nomor Rekening terlalu pendek.',
+        ]);
+
+
+
+
+        if ($this->form_validation->run() == false) {
+           
+            $this->load->view('Admin/cms/bank/bank',$data);
+        } else {
+        $hasil = [
+            'bank' => $this->input->post('bank'),
+            'nama_bank' => $this->input->post('nama'),
+            'norek' => $this->input->post('norek'),
+
+        ];
+
+        $this->db->insert('bank', $hasil);
+        $this->session->set_flashdata('success-input', 'berhasil');
+        redirect('Cms/bank');
+    }
+    }
+    public function deletebank($id)
+    {
+        $this->load->model('M_bank');
+        $data['donasi'] = $this->M_bank->bankWhere(['id_bank' => $this->uri->segment(3)])->row_array();
+        $where = array('id_bank' => $id);
+        $this->M_bank->delete_bank($where, 'bank');
+        $this->session->set_flashdata('user-delete', 'berhasil');
+        redirect('Cms/bank');
+    }
+
+
+
+
+    public function ubahbank()
+    {
+        $this->load->model('M_bank');
+        $data['title'] = 'Ubah Bank';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['bank'] = $this->M_bank->bankWhere(['id_bank' => $this->uri->segment(3)])->row_array();
+        $this->load->view('admin/cms/bank/ubahbank', $data);
+    }
+    public function ubahbankAct()
+    {
+        $this->load->model('M_bank');
+        
+        $id = $this->input->post('id',true);
+        $bank = $this->input->post('bank');
+        $nama = $this->input->post('nama');
+        $norek = $this->input->post('norek');
+
+        $data['bank'] = $this->M_bank->bankWhere(['id_bank' => $id])->row_array();
+
+        $where = array(
+            'id_bank' => $id,
+        );
+
+        $data = array(
+            'id_bank' => $id,
+            'bank' => $bank,
+            'nama_bank' => $nama,
+            'norek' => $norek,            
+
+        );
+
+        $this->M_bank->update_data($where, $data, 'bank');
+        $this->session->set_flashdata('success-edit', 'berhasil');
+        redirect('cms/bank');
+    }
 
 
 }

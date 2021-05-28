@@ -6,7 +6,7 @@
 <body>
   <div id="app">
     <div class="main-wrapper">
-      
+
 
       <?php
       function limit_words($string, $word_limit){
@@ -14,16 +14,16 @@
         return implode(" ",array_splice($words,0,$word_limit));
       } ?>
 
-       <?php 
+      <?php 
 
-        function rupiah($angka){
-  
+      function rupiah($angka){
+
         $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
         return $hasil_rupiah;
- 
-        }
+        
+      }
 
-        ?>
+      ?>
       
 
 
@@ -43,20 +43,20 @@
                 <div class="card-body">
                   <div class="table-responsive">
                     <table border="0" cellspacing="5" cellpadding="5">
-        <tbody><tr>
-            <td>Minimum date:</td>
-            <td><input type="text" id="min" name="min"></td>
-        </tr>
-        <tr>
-            <td>Maximum date:</td>
-            <td><input type="text" id="max" name="max"></td>
-        </tr>
-    </tbody></table>
+                      <tbody><tr>
+                        <td>Minimum date:</td>
+                        <td><input type="text" id="min" name="min"></td>
+                      </tr>
+                      <tr>
+                        <td>Maximum date:</td>
+                        <td><input type="text" id="max" name="max"></td>
+                      </tr>
+                    </tbody></table>
                     <table class="table table-bordered table-md" id="myTable">
                       <thead>
                         <tr>
                           <th>#</th>
-                                     
+                          
                           <th>Tanggal Donasi</th>
                           <th>Nama</th>
                           <th>NO WA</th>
@@ -71,7 +71,7 @@
                         <?php foreach ($donasi as $d) { ?>
                           <tr>
                             <td><?= $d['id_donasi'] ?></td>
-                            <td><?= strftime("%A %d-%h-%Y %T", strtotime($d['tanggal'])) ?></td>
+                            <td><?= date('d-M-Y', strtotime($d['tanggal'])) ?></td>
                             <td><?= $d['nama'] ?></td>
                             <td><?= $d['nowa'] ?></td>
                             <td><?= rupiah($d['jumlah']) ?></td>
@@ -80,81 +80,81 @@
                             <!-- <td><img style="width: 200px" src="<?= base_url('assets/images/donasi/') . $d['bukti'] ?>"></td> -->
                             <td> <a href="<?= base_url('Donasi/konfirmasi/'). $d['id_donasi'] ?>" class="btn btn-success">Konfirmasi</a> <a href="<?= base_url('Donasi/deletedonasi/') . $d['id_donasi'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a>   </td>
 
-              </tr>
-            <?php } ?>
-          </tbody>
-        </table>
+                          </tr>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
+
     </div>
 
-  </div>
-</div>
-</div>
-</section>
-</div>
 
-</div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title text-center" id="exampleModalLabel">Tambah DONASI</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+           <?php echo form_open_multipart('donasi/tambahdonasiAct'); ?>
+           <div class="form-group">
+            <label>Nama</label>
+            <input type="" name="nama" class="form-control" required="">
+          </div>
 
-
- <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header text-center">
-              <h5 class="modal-title text-center" id="exampleModalLabel">Tambah DONASI</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-             <?php echo form_open_multipart('cms/tambahdonasiAct'); ?>
-             <div class="form-group">
-                      <label>Nama</label>
-                      <input type="" name="nama" class="form-control" required="">
-                    </div>
-
-                    <div class="form-group">
-                      <label>No Wa</label>
-                      <input type="" name="nowa" class="form-control" required="">
-                    </div>
+          <div class="form-group">
+            <label>No Wa</label>
+            <input type="" name="nowa" class="form-control" required="">
+          </div>
 
 
-                    <div class="form-group">
-                      <label>Jumlah</label>
-                      <input type="" name="jumlah" class="form-control">
-                    </div>
+          <div class="form-group">
+            <label>Jumlah</label>
+            <input type="" name="jumlah" class="form-control">
+          </div>
 
-                    <div class="form-group">
-              <label>Bank</label>
-              <select name ="bank" class="form-control">
-                <option selected>Pilih Bank</option>
-                <?php foreach ($bank as $b) { ?>
-                  <option value="<?= $b['id_bank'] ?>"><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama'] ?></option>
-                <?php } ?>
-              </select>
-
-            </div>
-
-
-
-                    <div class="form-group">
-                      <label>Bukti Donasi</label>
-                      <input type="file" name="filebukti" class="form-control">
-                    </div>
+          <div class="form-group">
+            <label>Bank</label>
+            <select name ="bank" class="form-control">
+              <option selected>Pilih Bank</option>
+              <?php foreach ($bank as $b) { ?>
+                <option value="<?= $b['id_bank'] ?>"><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama'] ?></option>
+              <?php } ?>
+            </select>
 
           </div>
-          <div class="modal-footer">
-            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-            <button type="submit" class="btn btn-primary">Simpan</button>
-            <?php echo form_close() ?>
+
+
+
+          <div class="form-group">
+            <label>Bukti Donasi</label>
+            <input type="file" name="filebukti" class="form-control">
           </div>
-        </form>
-      </div>
+
+        </div>
+        <div class="modal-footer">
+          <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+          <button type="submit" class="btn btn-primary">Simpan</button>
+          <?php echo form_close() ?>
+        </div>
+      </form>
     </div>
   </div>
+</div>
 
 
-  <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <?php if ($this->session->flashdata('success-konfirmasi')): ?>
   <script>
@@ -186,83 +186,83 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('#myTable').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            {
+      dom: 'Bfrtip',
+      buttons: [
+      {
         extend: 'excel',
         text: 'excel',
         className: 'btn btn-primary',
         exportOptions: {
-            columns: ':not(.notexport)'
+          columns: ':not(.notexport)'
         }
-        },
+      },
 
-        {
+      {
         extend: 'pdf',
         text: 'pdf',
         className: 'btn btn-primary',
         exportOptions: {
-            columns: ':not(.notexport)'
+          columns: ':not(.notexport)'
         }
-        },
+      },
 
-        {
+      {
         extend: 'csv',
         text: 'csv',
         className: 'btn btn-primary',
         exportOptions: {
-            columns: ':not(.notexport)'
+          columns: ':not(.notexport)'
         }
-        }
+      }
 
 
 
 
-        ]
+      ]
 
     } );
-} );
+  } );
 </script>
 
 <script type="text/javascript">
   var minDate, maxDate;
- 
+  
 // Custom filtering function which will search data in column four between two values
 $.fn.dataTable.ext.search.push(
-    function( settings, data, dataIndex ) {
-        var min = minDate.val();
-        var max = maxDate.val();
-        var date = new Date( data[1] );
- 
-        if (
-            ( min === null && max === null ) ||
-            ( min === null && date <= max ) ||
-            ( min <= date   && max === null ) ||
-            ( min <= date   && date <= max )
-        ) {
-            return true;
-        }
-        return false;
-    }
+  function( settings, data, dataIndex ) {
+    var min = minDate.val();
+    var max = maxDate.val();
+    var date = new Date( data[1] );
+    
+    if (
+      ( min === null && max === null ) ||
+      ( min === null && date <= max ) ||
+      ( min <= date   && max === null ) ||
+      ( min <= date   && date <= max )
+      ) {
+      return true;
+  }
+  return false;
+}
 );
- 
+
 $(document).ready(function() {
     // Create date inputs
     minDate = new DateTime($('#min'), {
-        format: 'DD MMMM YYYY'
+      format: 'D MMM YYYY'
     });
     maxDate = new DateTime($('#max'), {
-        format: 'DD MMMM YYYY'
+      format: 'D MMM YYYY'
     });
- 
+    
     // DataTables initialisation
     var table = $('#myTable').DataTable();
- 
+    
     // Refilter the table
     $('#min, #max').on('change', function () {
-        table.draw();
+      table.draw();
     });
-});
+  });
 </script>
 
 

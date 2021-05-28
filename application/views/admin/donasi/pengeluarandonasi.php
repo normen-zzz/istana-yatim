@@ -36,6 +36,7 @@
                           <th>Tanggal Dibuat</th>
                           <th>Judul Pengeluaran</th>
                           <th>Jumlah Pengeluaran</th>
+                          <th>Foto</th>
                           <th>Ket</th>
                           <th>Action</th>
                         </tr>
@@ -45,7 +46,7 @@
                         <?php foreach ($pengeluaran as $p) { ?>
                         <tr>
                           <td><?= $p['id_pengeluaran'] ?></td>
-                          <td><?= strftime("%A %d-%h-%Y %T", strtotime($p['tanggal'])) ?></td>
+                          <td><?= strftime("%A %d-%h-%Y %T", strtotime($p['tanggal_pengeluaran'])) ?></td>
                           <td><?= $p['judul_pengeluaran'] ?></td>
                           <td><?= $p['jumlah_pengeluaran'] ?></td>
                           <td><?= limit_words($p['ket'],15) ?> .........</td>

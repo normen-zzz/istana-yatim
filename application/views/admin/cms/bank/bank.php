@@ -22,7 +22,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <a style="margin-bottom: 20px" href="<?= base_url('Cms/tambahbank') ?>" class="btn btn-primary">Tambah Bank</a>
+              <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Bank</button>
               <div class="card">
                 <div class="card-header">
                   <h4>List Bank</h4>
@@ -68,6 +68,50 @@
 
 </div>
 
+
+<!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title text-center" id="exampleModalLabel">Tambah Bank</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <?php echo form_open_multipart('cms/tambahbankAct'); ?>
+
+              <div class="form-group">
+                      <label>Nama bank</label>
+                      <input type="text" name="bank" class="form-control" required="">
+                      <?= form_error('bank', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Atas Nama</label>
+                      <input type="text" name="nama" class="form-control" required="">
+                      <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+
+                    <div class="form-group">
+                      <label>No Rekening</label>
+                      <input type="text" name="norek" class="form-control" required="">
+                      <?= form_error('norek', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+
+          </div>
+          <div class="modal-footer">
+            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <?php echo form_close() ?>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- END MODAL -->
+
 <?php $this->load->view('admin/template/footer') ?>
 <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></script> -->
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
@@ -76,6 +120,12 @@
   $(document).ready( function () {
     $('#myTable').DataTable();
   } );
+</script>
+
+<script type="text/javascript">
+    $(window).on('load', function() {
+        <?= $modal; ?>
+    });
 </script>
 
 <script type="text/javascript">

@@ -11,6 +11,7 @@ class Donasi extends CI_Controller {
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->library('upload');
         $this->session->set_flashdata('not-login', 'Gagal!');
         if (!$this->session->userdata('email')) {
             redirect('Auth/Admin');
@@ -58,7 +59,7 @@ class Donasi extends CI_Controller {
         $this->load->model('M_bank');
         $data['title'] = 'Donasi';
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-        $data['donasi'] = $this->M_donasi->joinBank(['konfirmasi' =>'1'])->result_array();
+        $data['donasi'] = $this->M_donasi->joinBank(['konfirmasi' => 1])->result_array();
         $data['bank'] = $this->M_bank->tampil_data()->result_array();
 
         $this->load->view('admin/donasi/sudahkonfirmasi',$data);
@@ -72,6 +73,8 @@ class Donasi extends CI_Controller {
 
     public function tambahdonasiAct()
     {
+
+        $penjumlahan = $data['update_donasi']['jumlah_update'] + $data['donasi']['jumlah'];
         $config['upload_path'] = './assets/images/donasi/'; //path folder
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
             $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
@@ -97,15 +100,17 @@ class Donasi extends CI_Controller {
                     $data = [
                         'nama' => $this->input->post('nama'),
                         'nowa' => $this->input->post('nowa',TRUE),
+                        'id_bank' => $this->input->post('bank'),
                         'jumlah' => $this->input->post('jumlah',TRUE),
                         'tanggal' => date("Y-m-d H:i:s"),
                         'bukti' => $gambar,
+                        'konfirmasi' => 1,
                         
                     ];
 
                     $this->db->insert('donasi', $data);
                     $this->session->set_flashdata('success-input', 'berhasil');
-                    redirect('donasi');
+                    redirect($_SERVER['HTTP_REFERER']);
                 }else{  
                     redirect('donasi/tambahdonasi');
                 }
@@ -144,16 +149,46 @@ class Donasi extends CI_Controller {
             $this->load->model('M_donasi');
             $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
             $penjumlahan = $data['update_donasi']['jumlah_update'] - $this->input->post('jumlah_pengeluaran');
+
+            $config['upload_path'] = './assets/images/pengeluarandonasi/'; //path folder
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+            $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
+
+            $this->upload->initialize($config);
+            if(!empty($_FILES['foto_pengeluaran']['name'])){
+                if ($this->upload->do_upload('foto_pengeluaran')){
+                    $gbr = $this->upload->data();
+                    //Compress Image
+                    $config['image_library']='gd2';
+                    $config['source_image']='./assets/images/pengeluarandonasi/'.$gbr['file_name'];
+                    $config['create_thumb']= FALSE;
+                    $config['maintain_ratio']= FALSE;
+                    $config['quality']= '60%';
+                    $config['width']= 710;
+                    $config['height']= 420;
+                    $config['new_image']= './assets/images/pengeluarandonasi/'.$gbr['file_name'];
+                    $this->load->library('image_lib', $config);
+                    $this->image_lib->resize();
+
+                    $gambar=$gbr['file_name'];
             $tambah = [
                 'judul_pengeluaran' => $this->input->post('judul_pengeluaran'),
                 'jumlah_pengeluaran' => $this->input->post('jumlah_pengeluaran'),
                 'ket' => $this->input->post('ket'),
-                'tanggal'=>date("Y-m-d H:i:s")
+                'img_pengeluaran' => $gambar,
+                'tanggal_pengeluaran'=>date("Y-m-d H:i:s")
             ];
 
             $this->db->insert('pengeluaran_donasi', $tambah);
             $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
             $this->session->set_flashdata('success-input', 'berhasil');
             redirect('donasi/pengeluaran_donasi');
+            }else{  
+                    redirect('donasi/tambahpengeluaran');
+                }
+
+            }else{
+                redirect('donasi/tambahpengeluaran');
+            }
 }
 }
