@@ -11,33 +11,38 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Bank</h1>
+            <h1>Pengeluaran</h1>
           </div>
           <div class="row">
               <div class="col">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Tambah Bank</h4>
+                    <h4>Tambah Pengeluaran</h4>
                   </div>
                   
                   <div class="card-body">
 
-                    <form method="POST" id="myForm" action="<?= base_url('Cms/tambahbankAct') ?>" enctype="multipart/form-data">
+                    <form method="POST" id="myForm" action="<?= base_url('Donasi/tambahpengeluaranAct') ?>" enctype="multipart/form-data">
 
                     <div class="form-group">
-                      <label>Nama Bank</label>
-                      <input type="" name="bank" class="form-control" required="">
+                      <label>Judul</label>
+                      <input type="" name="judul_pengeluaran" class="form-control" required="">
                     </div>
 
                     <div class="form-group">
-                      <label>Atas Nama</label>
-                      <input type="" name="nama" class="form-control" required="">
+                      <label>Jumlah</label>
+                      <input type="" name="jumlah_pengeluaran" class="form-control" required="">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Foto</label>
+                      <input type="file" name="foto_pengeluaran" class="form-control" required="">
                     </div>
 
 
                     <div class="form-group">
-                      <label>No Rekening</label>
-                      <input type="" name="norek" class="form-control">
+                      <label>Keterangan</label>
+                      <input type="" name="ket" class="form-control">
                     </div>
                     
 

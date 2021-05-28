@@ -15,7 +15,7 @@
           </div>
           <div class="row">
               <div class="col">
-                <a style="margin-bottom: 20px" href="<?= base_url('Acara/tambahacara') ?>" class="btn btn-primary">Tambah Acara</a>
+               <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Acara</button>
                 <div class="card">
                   <div class="card-header">
                     <h4>List Acara</h4>
@@ -38,10 +38,10 @@
                           <td><?= $a['id_acara'] ?></td>
                           <td><?= $a['nama_acara'] ?></td>
                           <td><?= $a['tema_acara'] ?></td>
-                          <td><?= $a['tgl_acara'] ?></td>
+                          <td><?= strftime("%A | %d %h %Y %T", strtotime($a['tgl_acara'])) ?></td>
                           <td><?= $a['slug_acara'] ?></td>
                           <td><img style="width: 200px" src="<?= base_url('assets/images/acara/'). $a['img_acara'] ?>"></td>
-                          <td><a href="<?= base_url('Form/tampilform/'). $a['id_acara'] ?>" class="btn btn-primary">Form</a> <a href="" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>
+                          <td><a href="<?= base_url('Form/tampilform/'). $a['id_acara'] ?>" class="btn btn-primary">Form</a> <a href="<?= base_url('acara/ubahacara/'). $a['id_acara'] ?>" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>
                         </tr>
                      <?php } ?>
                         
@@ -76,7 +76,55 @@
 
   
 
+<!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title text-center" id="exampleModalLabel">Tambah Acara</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <?php echo form_open_multipart('Acara/tambahacaraAct'); ?>
 
+              <div class="form-group">
+                      <label>Nama Acara</label>
+                      <input type="text" name="nama" class="form-control">
+                    </div>
+
+                   <div class="form-group">
+                      <label>Tanggal dan Waktu</label>
+                      <input type="datetime-local" name="date" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Tema</label>
+                      <input type="text" name="tema" class="form-control">
+                    </div>
+
+
+             <div class="alert alert-info">
+                      <b>Perhatian!</b> Harap Masukan Foto Dengan Maksimal Ukuran 1,8MB.
+                    </div>
+             <div class="form-group">
+                      <label>Poster</label>
+                      <input type="file" name="fileposter" class="form-control">
+                    </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <?php echo form_close() ?>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- END MODAL -->
 
 
 

@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
+setlocale(LC_TIME, 'id-ID');
+
 
 class Berkah extends CI_Controller {
 
@@ -172,14 +174,14 @@ class Berkah extends CI_Controller {
 
 
 
-    public function deleteartikel($slug)
+    public function deleteberkah($slug)
     {
         $this->load->model('M_berkah');
         $data['berkah'] = $this->M_berkah->berkahWhere(['slug_berkah' => $this->uri->segment(3)])->row_array();
         $gambar_lama = $data['berkah']['img_berkah'];
         unlink(FCPATH . 'assets/images/berkah/' . $gambar_lama);
         $where = array('slug_berkah' => $slug);
-        $this->M_berkah->delete_artikel($where, 'berkah');
+        $this->M_berkah->delete_berkah($where, 'berkah');
         $this->session->set_flashdata('user-delete', 'berhasil');
         redirect('berkah');
     }

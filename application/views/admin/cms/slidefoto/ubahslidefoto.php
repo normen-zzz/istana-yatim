@@ -31,12 +31,13 @@
                     <div class="form-group">
 
                       <label>File</label>
-                      <input type="file" name="filefoto" class="form-control">
+                      <input type="file" name="filefoto" class="form-control" required>
                     </div>
                   </div>
                   <div class="card-footer text-right">
+                    <a href="<?= base_url('Cms') ?>" class="btn btn-secondary" type="reset">Cancel</a>
                     <button class="btn btn-primary mr-1" type="submit">Submit</button>
-                    <button class="btn btn-secondary" type="reset">Reset</button>
+                    
                   </div>
                 </div>
               </div>

@@ -50,7 +50,7 @@
                             <td><?= $b['judul_berkah'] ?></td>
                             <td><?= limit_words($b['isi_berkah'],15) ?> .........</td>
                             <td><img style="width: 200px" src="<?= base_url('assets/images/berkah/') . $b['img_berkah'] ?>"></td>
-                            <td><?= $b['tgl_berkah'] ?></td>
+                            <td><?= strftime("%A | %d %h %Y %T", strtotime($b['tgl_berkah'])) ?></td>
                             <td><?= $b['jenis_berkah'] ?></td>
                             <td><?= $b['penulis_berkah'] ?></td>
                             <td><a href="<?= base_url('berkah/ubahberkah/'). $b['slug_berkah'] ?>" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>

@@ -1,7 +1,7 @@
 <?php $this->load->view('admin/template/header') ?>
 <?php $this->load->view('admin/template/topbar') ?>
 
-<body>
+<body style="background: rgb(244,243,243);">
   <div id="app">
     <div class="main-wrapper">
       

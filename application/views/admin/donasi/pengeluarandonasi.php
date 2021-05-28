@@ -18,14 +18,14 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Cerita Santri</h1>
+            <h1>Pengeluaran Donasi</h1>
           </div>
           <div class="row">
               <div class="col">
-                <a style="margin-bottom: 20px" href="<?= base_url('Ceritasantri/tambahceritasantri') ?>" class="btn btn-primary">Tambah Cerita Santri</a>
+                <a style="margin-bottom: 20px" href="<?= base_url('Donasi/tambahpengeluaran') ?>" class="btn btn-primary">Tambah Pengeluaran</a>
                 <div class="card">
                   <div class="card-header">
-                    <h4>List Cerita Santri</h4>
+                    <h4>List Pengeluaran</h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -33,29 +33,27 @@
                         <thead>
                         <tr>
                           <th>#</th>
-                          <th>Judul</th>
-                          <th>isi</th>
-                          <th>Foto</th>
                           <th>Tanggal Dibuat</th>
-                          <th>Jenis Cerita Santri</th>
-                          <th>Penulis Cerita Santri</th>
+                          <th>Judul Pengeluaran</th>
+                          <th>Jumlah Pengeluaran</th>
+                          <th>Foto</th>
+                          <th>Ket</th>
                           <th>Action</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        <?php foreach ($ceritasantri as $c) { ?>
+                        <?php foreach ($pengeluaran as $p) { ?>
                         <tr>
-                          <td><?= $c['id_ceritasantri'] ?></td>
-                          <td><?= $c['judul_ceritasantri'] ?></td>
-                          <td><?= limit_words($c['isi_ceritasantri'],15) ?> .........</td>
-                          <td><img style="width: 200px" src="<?= base_url('assets/images/ceritasantri/') . $c['img_ceritasantri'] ?>"></td>
-                          <td><?= strftime("%A | %d %h %Y %T", strtotime($c['tgl_ceritasantri'])) ?></td>
-                          <td><?= $c['jenis_ceritasantri'] ?></td>
-                          <td><?= $c['penulis_ceritasantri'] ?></td>
+                          <td><?= $p['id_pengeluaran'] ?></td>
+                          <td><?= strftime("%A %d-%h-%Y %T", strtotime($p['tanggal_pengeluaran'])) ?></td>
+                          <td><?= $p['judul_pengeluaran'] ?></td>
+                          <td><?= $p['jumlah_pengeluaran'] ?></td>
+                          <td><?= limit_words($p['ket'],15) ?> .........</td>
+                          
 
                           
-                          <td><a style="margin-bottom: 5px" href="<?= base_url('Ceritasantri/ubahceritasantri/') . $c['slug_ceritasantri'] ?>" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()" class="btn btn-danger">Hapus</a></td>
+                          <td><a style="margin-bottom: 5px" href="<?= base_url('Ceritasantri/ubahceritasantri/') . $p['id_pengeluaran'] ?>" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()" class="btn btn-danger">Hapus</a></td>
 
                           
                         </tr>

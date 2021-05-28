@@ -1,7 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+date_default_timezone_set('Asia/Jakarta');
+setlocale(LC_TIME, 'id-ID');
 class User extends CI_Controller {
+
 
 	public function __construct(){
 		parent::__construct();
@@ -11,8 +15,7 @@ class User extends CI_Controller {
 	}
 
 	public function index(){
-		$this->load->library('leaflet');
-		
+		$this->load->library('leaflet');		
 		$this->load->model('M_berkah');
 		$this->load->model('M_ceritasantri');
 		$this->load->model('M_acara');
@@ -147,38 +150,51 @@ class User extends CI_Controller {
 
 
 
-public function acara(){
-	$this->load->model('M_footer');
-	$this->load->model('M_acara');
-	$data['title'] = 'Acara';
-	$data['acara'] = $this->M_acara->tampil_data()->result_array();
-	$data['footer'] = $this->M_footer->tampil_data()->row_array();
-	$this->load->view('user/acara/acara',$data);
-}
+	public function acara(){
+		$this->load->model('M_footer');
+		$this->load->model('M_acara');
+		$data['title'] = 'Acara';
+		$data['acara'] = $this->M_acara->tampil_data()->result_array();
+		$data['footer'] = $this->M_footer->tampil_data()->row_array();
+		$this->load->view('user/acara/acara',$data);
+	}
 
-public function detailacara(){
-	$this->load->model('M_footer');
-	$this->load->model('M_acara');
-	$data['active'] = 'active';
-	$data['title'] = 'Acara';
-	$data['acara'] = $this->M_acara->acaraWhere(['slug_acara' => $this->uri->segment(3)])->row();
-	$data['footer'] = $this->M_footer->tampil_data()->row_array();
-	$this->load->view('user/acara/detailacara',$data);
-}
- 
 
-       private function rupiah($angka){
-  
-        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-        return $hasil_rupiah;
- 
-        }
+	public function detailacara(){
+		$this->load->model('M_footer');
+		$this->load->model('M_acara');
+		$data['active'] = 'active';
+		$data['title'] = 'Acara';
+		$data['acara'] = $this->M_acara->acaraWhere(['slug_acara' => $this->uri->segment(3)])->row();
+		$data['footer'] = $this->M_footer->tampil_data()->row_array();
+		$this->load->view('user/acara/detailacara',$data);
+	}
 
-        
 
-public function tambahdonasiAct()
-{
-	$this->load->model('Waapi');
+	private function rupiah($angka){
+
+		$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+		return $hasil_rupiah;
+
+	}
+
+
+//DONASI
+
+	public function infodonasi(){
+		$this->load->model('M_footer');
+		$this->load->model('M_acara');
+		$data['title'] = 'Info Donasi';
+		$data['footer'] = $this->M_footer->tampil_data()->row_array();
+		$data['infodonasi'] = $this->db->get('update_donasi')->row_array();
+		$data['pengeluarandonasi'] = $this->db->get('pengeluaran_donasi')->result_array();
+		$this->load->view('user/donasi/infodonasi',$data);
+	}
+
+
+	public function tambahdonasiAct()
+	{
+		$this->load->model('Waapi');
         $config['upload_path'] = './assets/images/donasi/'; //path folder
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
             $config['encrypt_name'] = TRUE; //nama yang terupload nantinya

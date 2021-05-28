@@ -25,7 +25,7 @@
 <body>
 
   <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" style="padding-bottom: 0px;padding-top: 0px; border-bottom-style: solid;border-bottom-color: #EBF2F7;">
-    <div class="container"><a class="navbar-brand" href="#"><img class="img-fluid pulse animated infinite" src="<?= base_url('assets/images/logo/') ?>istanayatim.png" style="width: 60px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <div class="container"><a class="navbar-brand" href="<?= base_url('User') ?>"><img class="img-fluid pulse animated infinite" src="<?= base_url('assets/images/logo/') ?>istanayatim.png" style="width: 60px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navcol-1">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item"></li>
@@ -88,8 +88,12 @@
                 </div>
 
 
+
+
             </div>
           </div>
+          <div id="donasi"></div>
+
         </section>
 
         
@@ -106,9 +110,8 @@
         }
 
         ?>
-
-        <section id="donasi" >
-        <div class="container-fluid" style="background: #1f7c4d;">
+        <section >
+        <div class="container-fluid" style=" margin-top: 70px; background: #1f7c4d;">
           <div class="row" data-aos="fade-up" data-aos-duration="800" style="background: rgba(31,124,77,0);">
             <div class="col text-center" style="color: rgb(255,255,255);padding: 73px 15px 0px;padding-top: 0px;">
               <marquee><?php foreach ($donasi as $d) {
@@ -122,11 +125,22 @@
             </div>
 
           </div>
-          <div class="row" data-aos="fade-up" data-aos-duration="800" style="padding-top: 0px;padding-bottom: 65px;">
+          <div class="row" data-aos="fade-up" data-aos-duration="800" style="padding-top: 0px;padding-bottom: 5px;">
             <div class="col text-center" style="padding-top: 35px;">
               <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
                 Konfirmasi Donasi
               </button>
+
+              <!-- <a href="#" style="border-style: solid;border-color: rgb(255,255,255);color: rgb(255,255,255);border-radius: 10px;padding: 3px;margin: 5px;">Yuk Donasi...</a> -->
+            </div>
+          </div>
+
+          <div class="row" data-aos="fade-up" data-aos-duration="800" style="padding-top: 0px;padding-bottom: 65px;">
+            <div class="col text-center" style="padding-top: 0px;">
+              <a class="btn btn-light" href="<?= base_url('User/infodonasi') ?>">
+                Info Donasi
+              </a>
+              
               <!-- <a href="#" style="border-style: solid;border-color: rgb(255,255,255);color: rgb(255,255,255);border-radius: 10px;padding: 3px;margin: 5px;">Yuk Donasi...</a> -->
             </div>
           </div>
@@ -243,14 +257,11 @@
         </div>
       </section>
       <footer class="footer-basic">
-        <div class="social"><a href="<?= $footer['link_instagram'] ?>"><i class="icon ion-social-instagram"></i></a><a href="<?= $footer['link_twitter'] ?>"><i class="icon ion-social-twitter"></i></a><a href="<?= $footer['link_facebook'] ?>"><i class="icon ion-social-facebook"></i></a></div>
+        <div class="social"><a target="_blank" href="<?= $footer['link_instagram'] ?>"><i class="icon ion-social-instagram"></i></a><a target="_blank" href="<?= $footer['link_twitter'] ?>"><i class="icon ion-social-twitter"></i></a><a target="_blank" href="<?= $footer['link_facebook'] ?>"><i class="icon ion-social-facebook"></i></a></div>
         <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Home</a></li>
-          <li class="list-inline-item"><a href="#">Services</a></li>
-          <li class="list-inline-item"><a href="#">About</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-        </ul>
+          <li class="list-inline-item"><a href="<?= base_url('User') ?>">Home</a></li>
+          <li class="list-inline-item"><a href="<?= base_url('User/infodonasi') ?>">Donasi</a></li>
+          <li class="list-inline-item"><a href="#">Tentang</a></li>
         <p class="copyright"><?= $footer['text_copyright'] ?></p>
       </footer>
 

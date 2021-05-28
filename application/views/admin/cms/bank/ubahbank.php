@@ -11,48 +11,39 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Footer</h1>
+            <h1>Bank</h1>
           </div>
           <div class="row">
               <div class="col">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Ubah Footer</h4>
+                    <h4>Ubah Bank</h4>
                   </div>
                   
                   <div class="card-body">
 
-                    <form method="POST" id="myForm" action="<?= base_url('Cms/ubahfooterAct') ?>" enctype="multipart/form-data">
-                      <input type="number" name="id" value="<?= $footer['id_footer'] ?>" hidden>
+                    <form method="POST" id="myForm" action="<?= base_url('Cms/ubahbankAct') ?>" enctype="multipart/form-data">
+                      <input type="number" name="id" value="<?= $bank['id_bank'] ?>" hidden>
                     <div class="form-group">
                     <div class="form-group">
-                      <label>Link Facebook</label>
-                      <input type="text" name="link_facebook" class="form-control" value="<?= $footer['link_facebook'] ?>" required>
+                      <label>Nama Bank</label>
+                      <input type="text" name="bank" class="form-control" value="<?= $bank['bank'] ?>" required>
                     </div>
 
                     <div class="form-group">
-                      <label>Link Twiiter</label>
-                      <input type="text" name="link_twitter" class="form-control" value="<?= $footer['link_twitter'] ?>" required>
+                      <label>Atas Nama</label>
+                      <input type="text" name="nama" class="form-control" value="<?= $bank['nama_bank'] ?>" required>
                     </div>
 
                     <div class="form-group">
-                      <label>Link Instagramr</label>
-                      <input type="text" name="link_instagram" class="form-control" value="<?= $footer['link_instagram'] ?>" required>
-                    </div>
-
-                    <div class="form-group">
-                      <label>Copyright</label>
-                      <input type="text" name="text_copyright" class="form-control" value="<?= $footer['text_copyright'] ?>" required>
-                    </div>
-
-
-                    
+                      <label>No Rekening</label>
+                      <input type="text" name="norek" class="form-control" value="<?= $bank['norek'] ?>" required>
+                    </div>                    
                     
                   </div>
                   <div class="card-footer text-right">
-                    <a href="<?= base_url('Cms/footer') ?>" class="btn btn-secondary">Cancel</a>
                     <button class="btn btn-primary mr-1" type="submit">Ubah</button>
-                    
+                    <!-- <button class="btn btn-secondary" type="reset">Reset</button> -->
                   </div>
                 </form>
                 </div>
@@ -64,7 +55,13 @@
   </div>
 
   <?php $this->load->view('admin/template/footer') ?>
- 
+  <script src="<?php echo base_url().'assets/ckeditor/ckeditor.js'?>"></script>
+    <script type="text/javascript">
+      $(function () {
+        CKEDITOR.replace('ckeditor');
+      });
+    </script>
+
    <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 
