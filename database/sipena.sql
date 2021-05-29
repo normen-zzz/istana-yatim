@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2021 at 05:19 PM
+-- Generation Time: May 29, 2021 at 10:56 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -260,7 +260,9 @@ INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `tanggal_pengeluaran`, `judu
 (4, '2021-05-26 22:30:07', 'mencoba', 250000, 'ca158fa16f1d64fa7d0e90b560d61b8b.jpg', 'coba aja'),
 (5, '2021-05-27 21:14:46', 'sbdjsbdjb', 10000, 'cf9e63e47064091c0cecdc511d044601.jpg', 'blabla'),
 (6, '2021-05-28 20:59:02', 'ttt', 10000, '285d1b39722a09b16d4d322bffd2cc0a.jpg', 'ttt'),
-(7, '2021-05-28 21:00:05', 'aaa', 20000, 'de064455c17ef56d935123f5c44383ad.jpg', 'aaaa');
+(7, '2021-05-28 21:00:05', 'aaa', 20000, 'de064455c17ef56d935123f5c44383ad.jpg', 'aaaa'),
+(8, '2021-05-28 22:58:49', 'tyftyctyhc', 30000, 'a4845c13811d0bb0cffedea2d1a88e2b.jpg', 'ggiuhuih'),
+(9, '2021-05-28 23:02:21', 'tyftyctyhchh', 50000, '9dc1ab1108efcec3de5c6589544a4d28.jpg', 'ggiuhuihjuj');
 
 -- --------------------------------------------------------
 
@@ -344,7 +346,28 @@ CREATE TABLE `update_donasi` (
 --
 
 INSERT INTO `update_donasi` (`id_update`, `jumlah_update`, `tanggal_update`) VALUES
-(1, 260000, '2021-05-22 11:49:11');
+(1, 180000, '2021-05-22 11:49:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `youtube`
+--
+
+CREATE TABLE `youtube` (
+  `id_youtube` int(11) NOT NULL,
+  `link_youtube` varchar(200) NOT NULL,
+  `ket_youtube` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `youtube`
+--
+
+INSERT INTO `youtube` (`id_youtube`, `link_youtube`, `ket_youtube`) VALUES
+(1, 'https://www.youtube.com/embed/HkpqGZaiWDI', 'Bocil Kematiaa'),
+(2, 'https://www.youtube.com/embed/cJ9SjbmNuJM', 'Yateammm'),
+(3, 'https://www.youtube.com/embed/LGIfJl9b1XI', 'CHUAAKKKSSS');
 
 --
 -- Indexes for dumped tables
@@ -441,6 +464,12 @@ ALTER TABLE `update_donasi`
   ADD PRIMARY KEY (`id_update`);
 
 --
+-- Indexes for table `youtube`
+--
+ALTER TABLE `youtube`
+  ADD PRIMARY KEY (`id_youtube`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -502,7 +531,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `pengeluaran_donasi`
 --
 ALTER TABLE `pengeluaran_donasi`
-  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `pengurus`
@@ -521,6 +550,12 @@ ALTER TABLE `santri`
 --
 ALTER TABLE `slidefoto`
   MODIFY `id_slidefoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `youtube`
+--
+ALTER TABLE `youtube`
+  MODIFY `id_youtube` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

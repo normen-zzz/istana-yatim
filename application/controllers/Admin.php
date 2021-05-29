@@ -131,6 +131,15 @@ class Admin extends CI_Controller {
         }
     }
 
+     public function ubahadmin()
+    {
+        $this->load->model('M_admin');
+        $data['title'] = 'Ubah admin';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['admin'] = $this->M_admin->adminWhere(['id_pengurus' => $this->uri->segment(3)])->row_array();
+        $this->load->view('admin/ubahadmin', $data);
+    }
+
 
     public function deleteadmin($id)
         {

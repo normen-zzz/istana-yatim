@@ -48,7 +48,7 @@
                             <td><?= $a['no_telp'] ?></td>
                             <td><?= $a['email_pengurus'] ?></td>
                             <td><img style="width: 200px" src="<?= base_url('assets/images/admin/') . $a['foto_pengurus'] ?>"></td>
-                            <td><a href="" class="btn btn-success">Ubah</a> <a href="<?= base_url('Admin/deleteadmin/'). $a['id_pengurus'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a></td>
+                            <td><!-- <a href="" class="btn btn-success">Ubah</a> --> <a href="<?= base_url('Admin/deleteadmin/'). $a['id_pengurus'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a></td>
 
                           </tr>
                         <?php } ?>

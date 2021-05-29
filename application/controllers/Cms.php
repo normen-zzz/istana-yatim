@@ -316,6 +316,54 @@ class Cms extends CI_Controller {
     }
 
 
+    //Youtube
+     public function youtube()
+    {
+        $this->load->model('M_youtube');
+        $data['title'] = 'Daftar Youtube';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['youtube'] = $this->M_youtube->tampil_data()->result_array();
+
+        $this->load->view('admin/cms/youtube/youtube',$data);
+    }
+
+     public function ubahyoutube()
+    {
+        $this->load->model('M_youtube');
+        $data['title'] = 'Ubah Bank';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['youtube'] = $this->M_youtube->youtubeWhere(['id_youtube' => $this->uri->segment(3)])->row_array();
+        $this->load->view('admin/cms/youtube/ubahyoutube', $data);
+    }
+
+    public function ubahyoutubeAct()
+    {
+        $this->load->model('M_youtube');
+        
+        $id = $this->input->post('id',true);
+        $youtube = $this->input->post('youtube');
+        $keterangan = $this->input->post('keterangan');
+
+
+        $data['youtube'] = $this->M_youtube->youtubeWhere(['id_youtube' => $id])->row_array();
+
+        $where = array(
+            'id_youtube' => $id,
+        );
+
+        $data = array(
+            'id_youtube' => $id,
+            'link_youtube' => $youtube,   
+            'ket_youtube' =>  $keterangan,  
+
+        );
+
+        $this->M_youtube->update_data($where, $data, 'youtube');
+        $this->session->set_flashdata('success-edit', 'berhasil');
+        redirect('cms/youtube');
+    }
+
+
 }
 
 

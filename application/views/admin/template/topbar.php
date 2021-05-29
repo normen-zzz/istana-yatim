@@ -26,8 +26,8 @@
             <img alt="image" src="<?= base_url('assets/images/admin/'). $user['foto_pengurus'] ?>" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block"><?= $user['nm_pengurus'] ?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="features-profile.html" class="dropdown-item has-icon">
-                <i class="far fa-user"></i> Profile
+              <a href="<?= base_url('Admin/ubahadmin/'). $user['id_pengurus'] ?>" class="dropdown-item has-icon">
+                <i class="far fa-user"></i> Ubah Profile
               </a>
               <div class="dropdown-divider"></div>
               <a onclick="return confirm('kamu yakin akan logout  ?');" href="<?= base_url('Auth/logout') ?>" class="dropdown-item has-icon text-danger">

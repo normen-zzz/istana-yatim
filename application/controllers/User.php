@@ -23,6 +23,7 @@ class User extends CI_Controller {
 		$this->load->model('M_slidefoto');
 		$this->load->model('M_footer');
 		$this->load->model('M_bank');
+		$this->load->model('M_youtube');
 		$config = array(
  		'center'         => '-0.959, 100.39716', // Center of the map
  		'zoom'           => 12, // Map zoom 
@@ -44,6 +45,9 @@ class User extends CI_Controller {
 		$data['hitungacara'] = $this->M_acara->hitung_acara();
 		$data['bank'] = $this->M_bank->tampil_data()->result_array();
 		$data['donasi'] = $this->M_donasi->joinBank(['konfirmasi' =>'1'])->result_array();
+		$data['youtube1'] = $this->M_youtube->youtubeWhere(['id_youtube' => 1])->row_array();
+		$data['youtube2'] = $this->M_youtube->youtubeWhere(['id_youtube' => 2])->row_array();
+		$data['youtube3'] = $this->M_youtube->youtubeWhere(['id_youtube' => 3])->row_array();
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();
 		$this->load->view('user/index',$data);
 	}
