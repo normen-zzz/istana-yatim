@@ -18,7 +18,7 @@ class M_pengeluaran extends CI_Model
         return $this->db->get_where('pengeluaran_donasi', $where);
     }
 
-    public function delete_bank($where, $table)
+    public function delete_pengeluaran($where, $table)
     {
         $this->db->where($where);
         $this->db->delete($table);

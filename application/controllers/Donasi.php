@@ -130,7 +130,7 @@ class Donasi extends CI_Controller {
             $this->session->set_flashdata('user-delete', 'berhasil');
             redirect($_SERVER['HTTP_REFERER']);
         }
-       public function pengeluaran_donasi()
+        public function pengeluaran_donasi()
         {
             $this->load->model('M_pengeluaran');
             $data['title'] = 'Pengeluaran Donasi';
@@ -145,6 +145,8 @@ class Donasi extends CI_Controller {
             $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
             $this->load->view('admin/donasi/tambahpengeluaran',$data);
         }
+
+
         public function tambahpengeluaranAct(){
             $this->load->model('M_donasi');
             $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
@@ -171,24 +173,119 @@ class Donasi extends CI_Controller {
                     $this->image_lib->resize();
 
                     $gambar=$gbr['file_name'];
-            $tambah = [
-                'judul_pengeluaran' => $this->input->post('judul_pengeluaran'),
-                'jumlah_pengeluaran' => $this->input->post('jumlah_pengeluaran'),
-                'ket' => $this->input->post('ket'),
-                'img_pengeluaran' => $gambar,
-                'tanggal_pengeluaran'=>date("Y-m-d H:i:s")
-            ];
+                    $tambah = [
+                        'judul_pengeluaran' => $this->input->post('judul_pengeluaran'),
+                        'jumlah_pengeluaran' => $this->input->post('jumlah_pengeluaran'),
+                        'ket' => $this->input->post('ket'),
+                        'img_pengeluaran' => $gambar,
+                        'tanggal_pengeluaran'=>date("Y-m-d H:i:s")
+                    ];
 
-            $this->db->insert('pengeluaran_donasi', $tambah);
-            $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
-            $this->session->set_flashdata('success-input', 'berhasil');
-            redirect('donasi/pengeluaran_donasi');
-            }else{  
+                    $this->db->insert('pengeluaran_donasi', $tambah);
+                    $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
+                    $this->session->set_flashdata('success-input', 'berhasil');
+                    redirect('donasi/pengeluaran_donasi');
+                }else{  
                     redirect('donasi/tambahpengeluaran');
                 }
 
             }else{
                 redirect('donasi/tambahpengeluaran');
             }
-}
+        }
+
+        public function ubahpengeluaran()
+        {
+            $this->load->model('M_pengeluaran');
+            $data['title'] = 'Tambah Pengeluaran Donasi';
+            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+            $data['pengeluaran'] = $this->M_pengeluaran->pengeluaranWhere(['id_pengeluaran' => $this->uri->segment(3)])->row_array();
+            $this->load->view('admin/donasi/ubahpengeluaran',$data);
+        }
+
+
+        public function ubahpengeluaranAct()
+        {
+            $this->load->model('M_pengeluaran');
+             $this->load->model('M_donasi');
+
+            $id = $this->input->post('id',true);
+            $judul = $this->input->post('judul');
+            $jumlah = $this->input->post('jumlah');
+            $keterangan = $this->input->post('keterangan');
+            $gambar = $_FILES['filefoto']['name'];
+
+            $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
+            $data['pengeluaran'] = $this->M_pengeluaran->pengeluaranWhere(['id_pengeluaran' => $id])->row_array();
+
+            $penjumlahan = ($data['update_donasi']['jumlah_update'] - $data['pengeluaran'] ['jumlah_pengeluaran']) + $this->input->post('jumlah');
+
+        $config['upload_path'] = './assets/images/pengeluarandonasi/'; //path folder
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+        $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
+
+        $this->upload->initialize($config);
+        $gambarLama = $data['pengeluaran']['img_pengeluaran'];
+        //berhasil
+        if ($this->upload->do_upload('fileposter')) {
+
+
+            unlink(FCPATH . 'assets/images/pengeluarandonasi/' . $gambarLama);
+            $gambarBaru = $this->upload->data();
+            // unlink(FCPATH . 'assets/images/pengeluaran/' . $gambar_lama);
+            $config['image_library']='gd2';
+            $config['source_image']='./assets/images/pengeluarandonasi/'.$gambarBaru['file_name'];
+            $config['create_thumb']= FALSE;
+            $config['maintain_ratio']= FALSE;
+            $config['quality']= '60%';
+            $config['width']= 710;
+            $config['height']= 420;
+            $config['new_image']= './assets/images/pengeluarandonasi/'.$gambarBaru['file_name'];
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
+            $gbr = $gambarBaru['file_name'];
+
+            
+        } 
+
+        else{
+            $gbr = $gambarLama;
+        }
+
+
+        $where = array(
+            'id_pengeluaran' => $id,
+        );
+
+        $data = array(
+            'id_pengeluaran' => $id,
+            'judul_pengeluaran' => $judul,
+            'img_pengeluaran' => $gbr,
+            'jumlah_pengeluaran' => $jumlah,
+            'ket' => $keterangan,
+
+        );
+
+        $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
+        $this->M_pengeluaran->update_data($where, $data, 'pengeluaran_donasi');
+        $this->session->set_flashdata('success-edit', 'berhasil');
+        redirect('Donasi/pengeluaran_donasi');
+    }
+
+    public function deletepengeluaran($id)
+        {
+            $this->load->model('M_pengeluaran');
+            $this->load->model('M_donasi');
+            $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
+            $data['pengeluaran'] = $this->M_pengeluaran->pengeluaranWhere(['id_pengeluaran' => $this->uri->segment(3)])->row_array();
+            $penjumlahan = $data['update_donasi']['jumlah_update'] + $data['pengeluaran']['jumlah_pengeluaran'];
+            $gambar_lama = $data['pengeluaran']['img_pengeluaran'];
+            unlink(FCPATH . 'assets/images/pengeluarandonasi/' . $gambar_lama);
+            $where = array('id_pengeluaran' => $this->uri->segment(3));
+
+            $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
+            $this->M_pengeluaran->delete_pengeluaran($where, 'pengeluaran_donasi');
+            $this->session->set_flashdata('user-delete', 'berhasil');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
 }
