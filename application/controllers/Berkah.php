@@ -90,34 +90,34 @@ class Berkah extends CI_Controller {
                 redirect('berkah/tambahberkah');
             }
 
-    }
+        }
 
 
-    public function ubahberkah()
-    {
-        $this->load->model('M_berkah');
-        $data['title'] = 'Ubah berkah';
-        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-        $data['berkah'] = $this->M_berkah->berkahWhere(['slug_berkah' => $this->uri->segment(3)])->row_array();
-        $this->load->view('admin/berkah/ubahberkah', $data);
-    }
+        public function ubahberkah()
+        {
+            $this->load->model('M_berkah');
+            $data['title'] = 'Ubah berkah';
+            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+            $data['berkah'] = $this->M_berkah->berkahWhere(['slug_berkah' => $this->uri->segment(3)])->row_array();
+            $this->load->view('admin/berkah/ubahberkah', $data);
+        }
 
-    public function ubahberkahAct()
-    {
-        $this->load->model('M_berkah');
-        
-        $id = $this->input->post('id',true);
-        $judul = $this->input->post('judul');
-        $title = trim(strtolower($judul));
-        $out = explode(" ",$title);
-        $slug = implode("-",$out);
-        $jenis = $this->input->post('jenis');
-        $penulis = $this->input->post('penulis');
-        $berkah = $this->input->post('berkah');
-        $gambar = $_FILES['filefoto']['name'];
-        $data['berkah'] = $this->M_berkah->berkahWhere(['id_berkah' => $id])->row_array();
+        public function ubahberkahAct()
+        {
+            $this->load->model('M_berkah');
+            
+            $id = $this->input->post('id',true);
+            $judul = $this->input->post('judul');
+            $title = trim(strtolower($judul));
+            $out = explode(" ",$title);
+            $slug = implode("-",$out);
+            $jenis = $this->input->post('jenis');
+            $penulis = $this->input->post('penulis');
+            $berkah = $this->input->post('berkah');
+            $gambar = $_FILES['filefoto']['name'];
+            $data['berkah'] = $this->M_berkah->berkahWhere(['id_berkah' => $id])->row_array();
 
-        
+            
 
         $config['upload_path'] = './assets/images/berkah/'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
@@ -133,16 +133,16 @@ class Berkah extends CI_Controller {
             $gambarBaru = $this->upload->data();
             // unlink(FCPATH . 'assets/images/berkah/' . $gambar_lama);
             $config['image_library']='gd2';
-                $config['source_image']='./assets/images/berkah/'.$gambarBaru['file_name'];
-                $config['create_thumb']= FALSE;
-                $config['maintain_ratio']= FALSE;
-                $config['quality']= '60%';
-                $config['width']= 710;
-                $config['height']= 420;
-                $config['new_image']= './assets/images/berkah/'.$gambarBaru['file_name'];
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
-                $gbr = $gambarBaru['file_name'];
+            $config['source_image']='./assets/images/berkah/'.$gambarBaru['file_name'];
+            $config['create_thumb']= FALSE;
+            $config['maintain_ratio']= FALSE;
+            $config['quality']= '60%';
+            $config['width']= 710;
+            $config['height']= 420;
+            $config['new_image']= './assets/images/berkah/'.$gambarBaru['file_name'];
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
+            $gbr = $gambarBaru['file_name'];
             // $this->db->set('artikel_img', $gambarBaru);
         } 
 

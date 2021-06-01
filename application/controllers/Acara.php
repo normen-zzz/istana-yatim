@@ -8,60 +8,57 @@ class Acara extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-        $this->load->helper('url');
-        $this->load->library('upload');
+        $this->load->helper('url'); 
+        $this->load->library('upload'); // memanggil library upload
         $this->session->set_flashdata('not-login', 'Gagal!');
-        if (!$this->session->userdata('email')) {
+        if (!$this->session->userdata('email')) { //pengecekan login atau tidak
             redirect('Auth/Admin');
         }
     }
 
-
+    // Menampilkan View Acara di Admin
     public function index()
     {
-        $this->load->model('M_acara');
-        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-        $data['title'] = 'Acara';
-        $data['acara'] = $this->M_acara->tampil_data()->result_array();
+        $this->load->model('M_acara'); // Memanggil Model Acara
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array(); //Mengambil data berdasarkan email dari tabel Pengurus
+        $data['title'] = 'Acara'; // Judul
+        $data['acara'] = $this->M_acara->tampil_data()->result_array(); // Mengambil Data dari Tabel Acara
 
         $this->load->view('admin/acara/acara',$data);
     }
 
-     public function tambahacara()
-    {
-        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-        $data['title'] = 'Tambah Acara';
 
-        $this->load->view('admin/acara/tambahacara',$data);
-    }
 
+    // Fungsi Menambahkan Acara
      public function tambahacaraAct()
     {
             $config['upload_path'] = './assets/images/acara/'; //path folder
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
             $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
 
-            $this->upload->initialize($config);
-            if(!empty($_FILES['fileposter']['name'])){
+            $this->upload->initialize($config); // Upload Data dengan settingan Config diatas
+            if(!empty($_FILES['fileposter']['name'])){ 
                 if ($this->upload->do_upload('fileposter')){
                     $gbr = $this->upload->data();
-                    //Compress Image
-                    $config['image_library']='gd2';
-                    $config['source_image']='./assets/images/acara/'.$gbr['file_name'];
+                    //Compress Gambar
+                    $config['image_library']='gd2'; //Memanggil Library image
+                    $config['source_image']='./assets/images/acara/'.$gbr['file_name']; //Menentukan Source gambar
                     $config['create_thumb']= FALSE;
                     $config['maintain_ratio']= FALSE;
-                    $config['quality']= '100%';
-                    $config['width']= 710;
-                    $config['height']= 420;
-                    $config['new_image']= './assets/images/acara/'.$gbr['file_name'];
+                    $config['quality']= '100%'; //Menetukan Kualitas
+                    $config['width']= 710; // Menentukan Lebar
+                    $config['height']= 420; // Menentukan Tinggi
+                    $config['new_image']= './assets/images/acara/'.$gbr['file_name']; //Menentukan Path Hasil Kompress
                     $this->load->library('image_lib', $config);
-                    $this->image_lib->resize();
+                    $this->image_lib->resize(); //Melakukan Resize
 
                     $gambar=$gbr['file_name'];
+
+
                     $namaacara = $this->input->post('nama');
                     $title = trim(strtolower($namaacara));
                     $out = explode(" ",$title);
-                    $slug = implode("-",$out);
+                    $slug = implode("-",$out); //Membuat Slug
 
                     $data = [
 
@@ -86,6 +83,7 @@ class Acara extends CI_Controller {
         }
 
 
+        // Menampilkan View Untuk Ubah Acara
         public function ubahacara()
     {
         $this->load->model('M_acara');
@@ -95,7 +93,7 @@ class Acara extends CI_Controller {
         $this->load->view('admin/acara/ubahacara', $data);
     }
 
-
+    // Fungsi Untuk Mengubah Acara
     public function ubahacaraAct()
     {
         $this->load->model('M_acara');
@@ -163,6 +161,7 @@ class Acara extends CI_Controller {
     }
 
 
+        // Fungsi Menghapus Acara
         public function deleteacara($id)
     {
         $this->load->model('M_acara');
