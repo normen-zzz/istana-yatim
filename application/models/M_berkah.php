@@ -63,4 +63,25 @@ class M_berkah extends CI_Model
         return $this->db->count_all_results('berkah');
     }
 
+
+    public function get_current_page($limit, $start) {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get('berkah');
+        $rows = $query->result();
+ 
+        if ($query->num_rows() > 0) {
+            foreach ($rows as $row) {
+                $data[] = $row;
+            }
+             
+            return $data;
+        }
+ 
+        return false;
+    }
+     
+    public function get_total() {
+        return $this->db->count_all('berkah');
+    }
+
 }

@@ -11,45 +11,36 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Pengeluaran</h1>
+            <h1>tentang</h1>
           </div>
           <div class="row">
               <div class="col">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Tambah Pengeluaran</h4>
+                    <h4>Ubah tentang</h4>
                   </div>
                   
                   <div class="card-body">
 
-                    <form method="POST" id="myForm" action="<?= base_url('Donasi/tambahpengeluaranAct') ?>" enctype="multipart/form-data">
+                    <form method="POST" id="myForm" action="<?= base_url('Cms/ubahtentangAct') ?>" enctype="multipart/form-data">
+                      <input type="number" name="id" value="<?= $tentang['id_tentang'] ?>" hidden>
 
                     <div class="form-group">
-                      <label>Judul</label>
-                      <input type="" name="judul_pengeluaran" class="form-control" required="">
+                      <label>isi</label>
+                      <textarea id="ckeditor" name="tentang" class="form-control" required=""  ><?= $tentang['text_tentang'] ?></textarea><br/ >
                     </div>
 
                     <div class="form-group">
-                      <label>Jumlah</label>
-                      <input type="" name="jumlah_pengeluaran" class="form-control" required="">
+                      <label>Foto tentang</label>
+                      <img width="200px" style="margin-bottom: 5px" src="<?= base_url('assets/images/tentang/'). $tentang['img_tentang'] ?>" required>
+                      <input type="file" name="filefoto" class="form-control">
                     </div>
 
-                    <div class="form-group">
-                      <label>Foto</label>
-                      <input type="file" name="foto_pengeluaran" class="form-control" required="">
-                    </div>
-
-
-                    <div class="form-group">
-                      <label>Keterangan</label>
-                      <input type="" name="ket" class="form-control">
-                    </div>
-                    
-
-                   
+                  </div>
                   <div class="card-footer text-right">
-                    <button class="btn btn-primary mr-1 tambah"  type="submit">Tambah</button>
-                    <!-- <button class="btn btn-secondary" type="reset">Reset</button> -->
+                    <a href="<?= base_url('Berkah') ?>" class="btn btn-secondary">Cancel</a>
+                    <button class="btn btn-primary mr-1 ubah"  type="submit">Ubah</button>
+                    
                   </div>
                 </form>
                 </div>
@@ -68,10 +59,10 @@
       });
     </script>
 
-     <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 
-  $('.tambah').click(function (e){
+  $('.ubah').click(function (e){
     e.preventDefault();
     let form = $(this).parents('form');
     swal({

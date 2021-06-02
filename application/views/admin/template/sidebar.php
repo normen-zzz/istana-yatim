@@ -15,6 +15,7 @@
           <!-- <li><a class="nav-link" href="<?= base_url('Cms/donasi') ?>">Donasi</a></li> -->
           <li><a class="nav-link" href="<?= base_url('Cms/bank') ?>">Bank</a></li>
            <li><a class="nav-link" href="<?= base_url('Cms/youtube') ?>">Youtube</a></li>
+           <li><a class="nav-link" href="<?= base_url('Cms/tentang') ?>">Tentang</a></li>
           <li><a class="nav-link" href="<?= base_url('Cms/footer') ?>">Footer</a></li>
         </ul>
       </li>
@@ -54,10 +55,6 @@
       <li><a class="nav-link" href="<?= base_url('Admin/listadmin') ?>"><i class="fas fa-pencil-ruler"></i> <span>Master Admin</span></a></li>
 
 
-      <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-        <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-          <i class="fas fa-rocket"></i> Documentation
-        </a>
-      </div>
+      
     </aside>
   </div>

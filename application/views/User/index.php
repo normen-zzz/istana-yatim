@@ -24,18 +24,7 @@
 
 <body>
 
-  <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" style="padding-bottom: 0px;padding-top: 0px; border-bottom-style: solid;border-bottom-color: #EBF2F7;">
-    <div class="container"><a class="navbar-brand" href="<?= base_url('User') ?>"><img class="img-fluid pulse animated infinite" src="<?= base_url('assets/images/logo/') ?>istanayatim.png" style="width: 60px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navcol-1">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item"></li>
-          <li class="nav-item"></li>
-          <li class="nav-item"></li>
-          <li class="nav-item"></li>
-        </ul><span class="navbar-text actions"> <a target="_blank" data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Masuk</a><a class="btn btn-light action-button pulse animated infinite action-button" role="button"  href="#donasi">Donasi</a></span>
-      </div>
-    </div>
-  </nav>
+  <?php $this->load->view('User/template/nav'); ?>
 
 
   
@@ -81,8 +70,8 @@
             </div>
 
             <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
-              <h3 style="padding-top: 20px;">Acara</h3>
-              <h4>"Paragraph"</h4>
+              <h3 style="padding-top: 20px;">ISI</h3>
+              <h4>"Informasi Seputar Istana Yatim"</h4>
               <p><?= $hitungacara ?> Acara Aktif</p>
               <a class="btn btn-light action-button" role="button" href="<?= base_url('User/Acara') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
             </div>
@@ -286,14 +275,7 @@
       </div>
     </div>
   </section>
-  <footer class="footer-basic">
-    <div class="social"><a target="_blank" href="<?= $footer['link_instagram'] ?>"><i class="icon ion-social-instagram"></i></a><a target="_blank" href="<?= $footer['link_twitter'] ?>"><i class="icon ion-social-twitter"></i></a><a target="_blank" href="<?= $footer['link_facebook'] ?>"><i class="icon ion-social-facebook"></i></a></div>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="<?= base_url('User') ?>">Home</a></li>
-      <li class="list-inline-item"><a href="<?= base_url('User/infodonasi') ?>">Donasi</a></li>
-      <li class="list-inline-item"><a href="#">Tentang</a></li>
-      <p class="copyright"><?= $footer['text_copyright'] ?></p>
-    </footer>
+  <?php $this->load->view('User/template/footer'); ?>
 
 
 

@@ -57,13 +57,34 @@ class Donasi extends CI_Controller {
     {
         $this->load->model('M_donasi');
         $this->load->model('M_bank');
+
         $data['title'] = 'Donasi';
+        $data['nama'] = '';
+        $data['tombol'] = '<button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Donasi</button>';
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
         $data['donasi'] = $this->M_donasi->joinBank(['konfirmasi' => 1])->result_array();
         $data['bank'] = $this->M_bank->tampil_data()->result_array();
 
         $this->load->view('admin/donasi/sudahkonfirmasi',$data);
     }
+
+    public function sudahkonfirmasifilter()
+    {
+        $this->load->model('M_donasi');
+        $this->load->model('M_bank');
+
+        $filter = $this->input->post('filter');
+
+        $data['title'] = 'Donasi';
+        $data['nama'] = 'Filter';
+        $data['tombol'] = '';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['donasi'] = $this->M_donasi->joinBankfilter(['konfirmasi' => 1], $filter)->result_array();
+        $data['bank'] = $this->M_bank->tampil_data()->result_array();
+
+        $this->load->view('admin/donasi/sudahkonfirmasi',$data);
+    }
+
     public function tambahdonasi()
     {
         $data['title'] = 'Tambah Donasi';
@@ -133,9 +154,22 @@ class Donasi extends CI_Controller {
         public function pengeluaran_donasi()
         {
             $this->load->model('M_pengeluaran');
+            $data['tombol'] = '';
             $data['title'] = 'Pengeluaran Donasi';
             $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
             $data['pengeluaran'] = $this->M_pengeluaran->tampil_data()->result_array();
+
+            $this->load->view('admin/donasi/pengeluarandonasi',$data);
+        }
+
+        public function pengeluaran_donasifilter()
+        {
+            $this->load->model('M_pengeluaran');
+             $filter = $this->input->post('filter');
+            $data['tombol'] = '';
+            $data['title'] = 'Pengeluaran Donasi';
+            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+            $data['pengeluaran'] = $this->M_pengeluaran->pengeluaranfilter($filter)->result_array();
 
             $this->load->view('admin/donasi/pengeluarandonasi',$data);
         }

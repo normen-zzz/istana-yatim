@@ -12,6 +12,7 @@ class Berkah extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('upload');
+        $this->load->library('pagination');
         $this->session->set_flashdata('not-login', 'Gagal!');
         if (!$this->session->userdata('email')) {
             redirect('Auth/Admin');
@@ -22,6 +23,13 @@ class Berkah extends CI_Controller {
     public function index()
     {
         $this->load->model('M_berkah');
+
+        
+
+
+
+
+
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
         $data['title'] = 'berkah';
         $data['berkah'] = $this->M_berkah->tampil_data()->result_array();
@@ -127,7 +135,7 @@ class Berkah extends CI_Controller {
         $gambarLama = $data['berkah']['img_berkah'];
         //berhasil
         if ($this->upload->do_upload('filefoto')) {
-            
+
 
             unlink(FCPATH . 'assets/images/berkah/' . $gambarLama);
             $gambarBaru = $this->upload->data();

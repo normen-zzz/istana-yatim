@@ -37,4 +37,12 @@ class M_pengeluaran extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+    public function pengeluaranfilter($where)
+    {
+        $this->db->select('*');
+        $this->db->from('pengeluaran_donasi');
+        $this->db->where("DATE_FORMAT(tanggal_pengeluaran,'%Y-%m')", $where);
+        return $this->db->get();
+    }
 }

@@ -38,18 +38,7 @@
         ?>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" style="padding-bottom: 0px;padding-top: 0px; border-bottom-style: solid;border-bottom-color: #EBF2F7;">
-    <div class="container"><a class="navbar-brand" href="<?= base_url('User') ?>"><img class="img-fluid pulse animated infinite" src="<?= base_url('assets/images/logo/') ?>istanayatim.png" style="width: 60px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navcol-1">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item"></li>
-          <li class="nav-item"></li>
-          <li class="nav-item"></li>
-          <li class="nav-item"></li>
-        </ul><span class="navbar-text actions"> <a target="_blank" data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Masuk</a><a class="btn btn-light action-button pulse animated infinite action-button" role="button"  href="#donasi">Donasi</a></span>
-      </div>
-    </div>
-  </nav>
+    <?php $this->load->view('User/template/nav'); ?>
     <div class="container" style="margin-top: 110px;">
         <h1 style="text-align: center;">Info Donasi</h1>
         <h3 style="text-align: center;">Saldo Donasi Terkini : <?= rupiah($infodonasi['jumlah_update']) ?></h3>
@@ -69,17 +58,7 @@
         <?php } ?>
         </div>
     </div>
-    <footer class="footer-basic">
-        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="#">Home</a></li>
-            <li class="list-inline-item"><a href="#">Services</a></li>
-            <li class="list-inline-item"><a href="#">About</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
-            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-        </ul>
-        <p class="copyright">Company Name © 2017</p>
-    </footer>
+    <?php $this->load->view('User/template/footer'); ?>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

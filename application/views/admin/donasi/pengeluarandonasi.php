@@ -13,11 +13,11 @@
     } ?>
 
 
-    <?php 
+     <?php 
 
       function rupiah($angka){
 
-        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        $hasil_rupiah = "Rp " . number_format($angka,2,'.',',');
         return $hasil_rupiah;
         
       }
@@ -34,23 +34,20 @@
           </div>
           <div class="row">
               <div class="col">
-                <a style="margin-bottom: 20px" href="<?= base_url('Donasi/tambahpengeluaran') ?>" class="btn btn-primary">Tambah Pengeluaran</a>
+                <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Pengeluaran</button>
                 <div class="card">
                   <div class="card-header">
                     <h4>List Pengeluaran</h4>
                   </div>
                   <div class="card-body">
+                    <form method="POST" id="myForm" action="<?= base_url('Donasi/pengeluaran_donasifilter') ?>" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label for="filter"> Bulan Dan Tahun </label>
+                      <input type="month" name="filter">
+                      <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                  </form>
                     <div class="table-responsive">
-                      <table border="0" cellspacing="5" cellpadding="5">
-                      <tbody><tr>
-                        <td>Minimum date:</td>
-                        <td><input type="text" id="min" name="min"></td>
-                      </tr>
-                      <tr>
-                        <td>Maximum date:</td>
-                        <td><input type="text" id="max" name="max"></td>
-                      </tr>
-                    </tbody></table>
                       <table class="table table-bordered table-md" id="myTable">
                         <thead>
                         <tr>
@@ -82,6 +79,15 @@
                         </tr>
                       <?php } ?>
                         </tbody>
+                        <tfoot>
+                        <tr>
+                          <th></th>
+                          <th></th>
+                          <th>Total:</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </tfoot>
                       </table>
                     </div>
                   </div>
@@ -91,8 +97,55 @@
             </div>
         </section>
       </div>
-      
   </div>
+
+
+  <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title text-center" id="exampleModalLabel">Tambah Pengeluaran</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <?php echo form_open_multipart('Donasi/tambahpengeluaranAct'); ?>
+
+              <div class="form-group">
+                      <label>Judul</label>
+                      <input type="" name="judul_pengeluaran" class="form-control" required="">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Jumlah</label>
+                      <input type="" name="jumlah_pengeluaran" class="form-control" required="">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Foto</label>
+                      <input type="file" name="foto_pengeluaran" class="form-control" required="">
+                    </div>
+
+
+                    <div class="form-group">
+                      <label>Keterangan</label>
+                      <input type="text" name="ket" class="form-control">
+                    </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <?php echo form_close() ?>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- END MODAL -->
 
   <?php $this->load->view('admin/template/footer') ?>
   <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></script> -->
@@ -107,8 +160,83 @@
 <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.0.3/js/dataTables.dateTime.min.js"></script>
 
 
+<script>
+$(document).ready(function() {
+    $('#myTable').DataTable( {
+      
+      dom: 'Bfrtip',
 
-<script type="text/javascript">
+
+      buttons: [
+      {
+
+        extend: 'excel',
+        footer: true,
+        text: 'excel',
+        className: 'btn btn-primary',
+        exportOptions: {
+          columns: ':not(.notexport)'
+          
+        }
+      },
+
+      {
+        extend: 'pdf',
+        text: 'pdf',
+        footer: true,
+        className: 'btn btn-primary',
+        exportOptions: {
+          columns: ':not(.notexport)'
+        }
+      },
+
+      {
+        extend: 'csv',
+        text: 'csv',
+        footer: true,
+        className: 'btn btn-primary',
+        exportOptions: {
+          columns: ':not(.notexport)'
+        }
+      }],
+      "pageLength": 10000,
+        "footerCallback": function ( row, data, start, end, display ) {
+            var api = this.api(), data;
+ 
+            // Remove the formatting to get integer data for summation
+            var intVal = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\Rp,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+ 
+            // Total over all pages
+            total = api
+                .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Total over this page
+            pageTotal = api
+                .column( 3, { page: 'current'} )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Update footer
+            $( api.column( 3 ).footer() ).html(
+                'Rp.'+ pageTotal 
+            );
+        }
+    } );
+} );
+</script>
+
+<!-- <script type="text/javascript">
   $(document).ready(function() {
     $('#myTable').DataTable( {
       dom: 'Bfrtip',
@@ -147,48 +275,7 @@
 
     } );
   } );
-</script>
-
-<script type="text/javascript">
-  var minDate, maxDate;
-  
-// Custom filtering function which will search data in column four between two values
-$.fn.dataTable.ext.search.push(
-  function( settings, data, dataIndex ) {
-    var min = minDate.val();
-    var max = maxDate.val();
-    var date = new Date( data[1] );
-    
-    if (
-      ( min === null && max === null ) ||
-      ( min === null && date <= max ) ||
-      ( min <= date   && max === null ) ||
-      ( min <= date   && date <= max )
-      ) {
-      return true;
-  }
-  return false;
-}
-);
-
-$(document).ready(function() {
-    // Create date inputs
-    minDate = new DateTime($('#min'), {
-      format: 'D MMM YYYY'
-    });
-    maxDate = new DateTime($('#max'), {
-      format: 'D MMM YYYY'
-    });
-    
-    // DataTables initialisation
-    var table = $('#myTable').DataTable();
-    
-    // Refilter the table
-    $('#min, #max').on('change', function () {
-      table.draw();
-    });
-  });
-</script>
+</script> -->
 
 
  

@@ -14,18 +14,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" style="padding-bottom: 0px;padding-top: 0px; border-bottom-style: solid;border-bottom-color: #EBF2F7;">
-    <div class="container"><a class="navbar-brand" href="#"><img class="img-fluid pulse animated infinite" src="<?= base_url('assets/images/logo/') ?>istanayatim.png" style="width: 60px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navcol-1">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item"></li>
-          <li class="nav-item"></li>
-          <li class="nav-item"></li>
-          <li class="nav-item"></li>
-        </ul><span class="navbar-text actions"> <a target="_blank" data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Masuk</a><a class="btn btn-light action-button pulse animated infinite action-button" role="button"  href="#donasi">Donasi</a></span>
-      </div>
-    </div>
-  </nav>
+   <?php $this->load->view('User/template/nav'); ?>
+
     <div class="container" style="margin-top: 41px;">
         <div class="row">
             <div class="col" style="padding-top: 1px;">
@@ -91,27 +81,13 @@
         <div class="row">
             <div class="col-xl-6 offset-xl-1" style="padding-top: 0px;">
                 <nav>
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                    </ul>
+                   <?php if(isset($links)){
+     echo $links; }?>
                 </nav>
             </div>
         </div>
     </div>
-    <footer class="footer-basic">
-        <div class="social"><a target="_blank" href="<?= $footer['link_instagram'] ?>"><i class="icon ion-social-instagram"></i></a><a target="_blank" href="<?= $footer['link_twitter'] ?>"><i class="icon ion-social-twitter"></i></a><a target="_blank" href="<?= $footer['link_facebook'] ?>"><i class="icon ion-social-facebook"></i></a></div>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Home</a></li>
-          <li class="list-inline-item"><a href="#">Donasi</a></li>
-          <li class="list-inline-item"><a href="#">Tentang</a></li>
-        <p class="copyright"><?= $footer['text_copyright'] ?></p>
-      </footer>
+    <?php $this->load->view('User/template/footer'); ?>
     <script src="<?= base_url('assets/user/') ?>js/jquery.min.js"></script>
     <script src="<?= base_url('assets/user/') ?>bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

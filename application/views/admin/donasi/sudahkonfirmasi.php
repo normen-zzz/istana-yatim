@@ -1,5 +1,4 @@
 <?php $this->load->view('admin/template/header') ?>
-
 <?php $this->load->view('admin/template/sidebar') ?>
 <?php $this->load->view('admin/template/topbar') ?>
 
@@ -7,18 +6,11 @@
   <div id="app">
     <div class="main-wrapper">
 
-
-      <?php
-      function limit_words($string, $word_limit){
-        $words = explode(" "  ,$string);
-        return implode(" ",array_splice($words,0,$word_limit));
-      } ?>
-
       <?php 
 
       function rupiah($angka){
 
-        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        $hasil_rupiah = "Rp " . number_format($angka,2,'.',',');
         return $hasil_rupiah;
         
       }
@@ -31,27 +23,26 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Donasi</h1>
+            <h1>Donasii</h1>
           </div>
           <div class="row">
             <div class="col">
-              <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Donasi</button>
+              <?= $tombol ?>
               <div class="card">
                 <div class="card-header">
-                  <h4>List Donasi Sudah Terkonfirmasi</h4>
+                  <h4>List Donasi Sudah Terkonfirmasi <?= $nama ?></h4>
                 </div>
+
+
                 <div class="card-body">
+                  <form method="POST" id="myForm" action="<?= base_url('Donasi/sudahkonfirmasifilter') ?>" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label for="filter"> Bulan Dan Tahun </label>
+                      <input type="month" name="filter">
+                      <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                  </form>
                   <div class="table-responsive">
-                    <table border="0" cellspacing="5" cellpadding="5">
-                      <tbody><tr>
-                        <td>Minimum date:</td>
-                        <td><input type="text" id="min" name="min"></td>
-                      </tr>
-                      <tr>
-                        <td>Maximum date:</td>
-                        <td><input type="text" id="max" name="max"></td>
-                      </tr>
-                    </tbody></table>
                     <table class="table table-bordered table-md" id="myTable">
                       <thead>
                         <tr>
@@ -59,7 +50,7 @@
                           
                           <th>Tanggal Donasi</th>
                           <th>Nama</th>
-                          <th>NO WA</th>
+                          <th>Nomor WA</th>
                           <th>Jumlah</th>
                           <th>Bank</th>
                           <th class='notexport'>Bukti Donasi</th>
@@ -78,11 +69,20 @@
                             <td><?= $d['bank'] ?></td>
                             <td><a href="" onclick="window.open('<?= base_url('assets/images/donasi/') . $d['bukti'] ?>','targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1090px, height=550px, top=25px left=120px'); return false;"><img style="width: 200px" src="<?= base_url('assets/images/donasi/') . $d['bukti'] ?>"></a> </td>
                             <!-- <td><img style="width: 200px" src="<?= base_url('assets/images/donasi/') . $d['bukti'] ?>"></td> -->
-                            <td> <a href="<?= base_url('Donasi/konfirmasi/'). $d['id_donasi'] ?>" class="btn btn-success">Konfirmasi</a> <a href="<?= base_url('Donasi/deletedonasi/') . $d['id_donasi'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a>   </td>
+                            <td> <!-- <a href="<?= base_url('Donasi/konfirmasi/'). $d['id_donasi'] ?>" class="btn btn-success">Konfirmasi</a> --> <a href="<?= base_url('Donasi/deletedonasi/') . $d['id_donasi'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a>   </td>
 
                           </tr>
                         <?php } ?>
                       </tbody>
+                      <tfoot>
+                        <tr>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th>Total:</th>
+                          <th></th>
+                        </tr>
+                      </tfoot>
                     </table>
                   </div>
                 </div>
@@ -152,6 +152,7 @@
     </div>
   </div>
 </div>
+</div>
 
 
 <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -183,7 +184,82 @@
 
 
 
-<script type="text/javascript">
+<script>
+$(document).ready(function() {
+    $('#myTable').DataTable( {
+      dom: 'Bfrtip',
+
+      buttons: [
+      {
+
+        extend: 'excel',
+        footer: true,
+        text: 'excel',
+        className: 'btn btn-primary',
+        exportOptions: {
+          columns: ':not(.notexport)'
+          
+        }
+      },
+
+      {
+        extend: 'pdf',
+        text: 'pdf',
+        footer: true,
+        className: 'btn btn-primary',
+        exportOptions: {
+          columns: ':not(.notexport)'
+        }
+      },
+
+      {
+        extend: 'csv',
+        text: 'csv',
+        footer: true,
+        className: 'btn btn-primary',
+        exportOptions: {
+          columns: ':not(.notexport)'
+        }
+      }],
+      "pageLength": 10000,
+        "footerCallback": function ( row, data, start, end, display ) {
+            var api = this.api(), data;
+ 
+            // Remove the formatting to get integer data for summation
+            var intVal = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\Rp,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+ 
+            // Total over all pages
+            total = api
+                .column( 7 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Total over this page
+            pageTotal = api
+                .column( 4, { page: 'current'} )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Update footer
+            $( api.column( 4 ).footer() ).html(
+                'Rp.'+ pageTotal 
+            );
+        }
+    } );
+} );
+</script>
+
+
+<!-- <script type="text/javascript">
   $(document).ready(function() {
     $('#myTable').DataTable( {
       dom: 'Bfrtip',
@@ -213,57 +289,13 @@
         exportOptions: {
           columns: ':not(.notexport)'
         }
-      }
+      }]
 
-
-
-
-      ]
-
-    } );
+    });
   } );
-</script>
+</script> -->
 
-<script type="text/javascript">
-  var minDate, maxDate;
-  
-// Custom filtering function which will search data in column four between two values
-$.fn.dataTable.ext.search.push(
-  function( settings, data, dataIndex ) {
-    var min = minDate.val();
-    var max = maxDate.val();
-    var date = new Date( data[1] );
-    
-    if (
-      ( min === null && max === null ) ||
-      ( min === null && date <= max ) ||
-      ( min <= date   && max === null ) ||
-      ( min <= date   && date <= max )
-      ) {
-      return true;
-  }
-  return false;
-}
-);
 
-$(document).ready(function() {
-    // Create date inputs
-    minDate = new DateTime($('#min'), {
-      format: 'D MMM YYYY'
-    });
-    maxDate = new DateTime($('#max'), {
-      format: 'D MMM YYYY'
-    });
-    
-    // DataTables initialisation
-    var table = $('#myTable').DataTable();
-    
-    // Refilter the table
-    $('#min, #max').on('change', function () {
-      table.draw();
-    });
-  });
-</script>
 
 
 
@@ -295,5 +327,8 @@ $(document).ready(function() {
       });
   }
 </script>
+
+
+
 
 

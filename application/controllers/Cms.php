@@ -364,6 +364,105 @@ class Cms extends CI_Controller {
     }
 
 
+      // Menampilkan View tentang di Admin
+    public function tentang()
+    {
+        $this->load->model('M_tentang'); // Memanggil Model tentang
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array(); //Mengambil data berdasarkan email dari tabel Pengurus
+        $data['title'] = 'tentang'; // Judul
+        $data['tentang'] = $this->M_tentang->tampil_data()->result_array(); // Mengambil Data dari Tabel tentang
+
+        $this->load->view('admin/cms/tentang/tentang',$data);
+    }
+
+
+
+    
+
+        // Menampilkan View Untuk Ubah tentang
+        public function ubahtentang()
+    {
+        $this->load->model('M_tentang');
+        $data['title'] = 'Ubah tentang';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['tentang'] = $this->M_tentang->tentangWhere(['id_tentang' => $this->uri->segment(3)])->row_array();
+        $this->load->view('admin/cms/tentang/ubahtentang', $data);
+    }
+
+    // Fungsi Untuk Mengubah tentang
+    public function ubahtentangAct()
+    {
+        $this->load->model('M_tentang');
+        
+        $id = $this->input->post('id',true);
+        $text = $this->input->post('tentang');
+        $gambar = $_FILES['filefoto']['name'];
+
+
+        $data['tentang'] = $this->M_tentang->tentangWhere(['id_tentang' => $id])->row_array();
+        $config['upload_path'] = './assets/images/tentang/'; //path folder
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+        $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
+
+        $this->upload->initialize($config);
+        $gambarLama = $data['tentang']['img_tentang'];
+        //berhasil
+        if ($this->upload->do_upload('filefoto')) {
+            
+
+            unlink(FCPATH . 'assets/images/tentang/' . $gambarLama);
+            $gambarBaru = $this->upload->data();
+            // unlink(FCPATH . 'assets/images/tentang/' . $gambar_lama);
+            $config['image_library']='gd2';
+                $config['source_image']='./assets/images/tentang/'.$gambarBaru['file_name'];
+                $config['create_thumb']= FALSE;
+                $config['maintain_ratio']= FALSE;
+                $config['quality']= '60%';
+                $config['width']= 710;
+                $config['height']= 420;
+                $config['new_image']= './assets/images/tentang/'.$gambarBaru['file_name'];
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
+                $gbr = $gambarBaru['file_name'];
+            // $this->db->set('artikel_img', $gambarBaru);
+        } 
+
+        else{
+            $gbr = $gambarLama;
+        }
+
+
+        $where = array(
+            'id_tentang' => $id,
+        );
+
+        $data = array(
+            'id_tentang' => $id,
+            'text_tentang' => $text,
+            'img_tentang' => $gbr,
+
+        );
+
+        $this->M_tentang->update_data($where, $data, 'tentang');
+        $this->session->set_flashdata('success-edit', 'berhasil');
+        redirect('Cms/tentang');
+    }
+
+
+        // Fungsi Menghapus tentang
+        public function deletetentang($id)
+    {
+        $this->load->model('M_tentang');
+        $data['tentang'] = $this->M_tentang->tentangWhere(['id_tentang' => $this->uri->segment(3)])->row_array();
+        $gambar_lama = $data['tentang']['img_tentang'];
+        unlink(FCPATH . 'assets/images/tentang/' . $gambar_lama);
+        $where = array('id_tentang' => $id);
+        $this->M_tentang->delete_tentang($where, 'tentang');
+        $this->session->set_flashdata('user-delete', 'berhasil');
+        redirect('Cms/tentang');
+    }
+
+
 }
 
 

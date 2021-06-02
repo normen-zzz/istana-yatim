@@ -44,7 +44,20 @@ class M_donasi extends CI_Model
         $this->db->select('*');
         $this->db->from('donasi');
         $this->db->where($where);
+
+        $this->db->join('bank','bank.id_bank = donasi.id_bank');
+        return $this->db->get();
+    }
+
+    public function joinBankfilter($where, $filter)
+    {
+        $this->db->select('*');
+        $this->db->from('donasi');
+        $this->db->where($where);
+        $this->db->where("DATE_FORMAT(tanggal,'%Y-%m')", $filter);
         $this->db->join('bank','bank.id_bank = donasi.id_bank');
         return $this->db->get();
     }
 }
+
+
