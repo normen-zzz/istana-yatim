@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2021 at 10:56 AM
+-- Generation Time: Jun 02, 2021 at 05:10 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -42,7 +42,7 @@ CREATE TABLE `acara` (
 --
 
 INSERT INTO `acara` (`id_acara`, `tgl_acara`, `nama_acara`, `tema_acara`, `img_acara`, `slug_acara`) VALUES
-(1, '2021-05-14 16:56:27', 'berkah dalam berzakat ya', 'meningkatkan iman dan taqwa', '9d29cb6d56f8997afa57129977d0b66e.jpeg', 'berkah-dalam-berzakat-ya');
+(1, '2021-06-02 15:36:00', 'Bangkitkan Semangat Bersedekah', 'Berkah', '42ca0c028d779b16d511a2d9fe98ee00.jpeg', 'bangkitkan-semangat-bersedekah');
 
 -- --------------------------------------------------------
 
@@ -137,11 +137,30 @@ CREATE TABLE `donasi` (
 --
 
 INSERT INTO `donasi` (`id_donasi`, `id_bank`, `tanggal`, `nama`, `nowa`, `jumlah`, `bukti`, `konfirmasi`) VALUES
-(1, 1, '2021-05-27 20:57:11', 'blbaa', '9876789098765', 100000, '0e2ed10d02e242ef446da471eb314928.jpg', 1),
-(2, 1, '2021-05-27 20:59:08', 'blabla', '0876789098765', 20000, '3eebd06b34d25fe4bbfe2ccd38571bcf.jpg', 1),
-(3, 1, '2021-05-27 21:01:00', 'sjdbsjbd', '098789098', 100000, 'de0f3c3fdd47f6e53fff2c28884bfa08.jpg', 1),
-(4, 1, '2021-05-27 21:03:35', 'udbuhsd', '098767890', 12345, '942f9760373dac4f7f1a6bddb2228932.jpg', 1),
-(5, 1, '2021-05-28 20:50:10', 'uisbsjdjsb', '56789097654', 2382372937, 'e7483ea11b4906574728d8fe42207d0e.jpeg', 1);
+(1, 1, '2021-08-01 13:35:27', 'Alif', '089656754367', 100000, 'e7d2d08fe76950c70e066608bc5052cb.jpeg', 1),
+(2, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(3, 1, '2021-08-01 13:35:27', 'Alif', '089656754367', 100000, 'e7d2d08fe76950c70e066608bc5052cb.jpeg', 1),
+(4, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(5, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(6, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(8, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(9, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(10, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(11, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(12, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(13, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(14, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(15, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(16, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(17, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(18, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(19, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(20, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(21, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(22, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(23, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(24, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
+(25, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1);
 
 -- --------------------------------------------------------
 
@@ -257,12 +276,8 @@ CREATE TABLE `pengeluaran_donasi` (
 --
 
 INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `tanggal_pengeluaran`, `judul_pengeluaran`, `jumlah_pengeluaran`, `img_pengeluaran`, `ket`) VALUES
-(4, '2021-05-26 22:30:07', 'mencoba', 250000, 'ca158fa16f1d64fa7d0e90b560d61b8b.jpg', 'coba aja'),
-(5, '2021-05-27 21:14:46', 'sbdjsbdjb', 10000, 'cf9e63e47064091c0cecdc511d044601.jpg', 'blabla'),
-(6, '2021-05-28 20:59:02', 'ttt', 10000, '285d1b39722a09b16d4d322bffd2cc0a.jpg', 'ttt'),
-(7, '2021-05-28 21:00:05', 'aaa', 20000, 'de064455c17ef56d935123f5c44383ad.jpg', 'aaaa'),
-(8, '2021-05-28 22:58:49', 'tyftyctyhc', 30000, 'a4845c13811d0bb0cffedea2d1a88e2b.jpg', 'ggiuhuih'),
-(9, '2021-05-28 23:02:21', 'tyftyctyhchh', 50000, '9dc1ab1108efcec3de5c6589544a4d28.jpg', 'ggiuhuihjuj');
+(1, '2021-05-30 16:36:49', 'test', 100000, '4abd28b10aff9a5db4118519dd5faf40.jpeg', 'test'),
+(2, '2021-06-01 16:34:56', 'test', 60000, '0a1ab4a76698712cb0eef8843aae78d8.jpeg', 'coba');
 
 -- --------------------------------------------------------
 
@@ -326,8 +341,26 @@ CREATE TABLE `slidefoto` (
 
 INSERT INTO `slidefoto` (`id_slidefoto`, `img_slidefoto`, `tgl_slidefoto`) VALUES
 (1, '4c5fbc3b5402aa9ae2d1ec77458813cc.png', '2021-05-28 16:38:04'),
-(2, '3658f0a573da4c6470a1fd66308d3118.png', '2021-05-24 14:04:14'),
-(3, 'c40e76f29485cc2c1c58991f37f4994c.jpeg', '2021-05-24 16:59:41');
+(2, '3658f0a573da4c6470a1fd66308d3118.png', '2021-05-24 14:04:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tentang`
+--
+
+CREATE TABLE `tentang` (
+  `id_tentang` int(11) NOT NULL,
+  `text_tentang` text NOT NULL,
+  `img_tentang` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tentang`
+--
+
+INSERT INTO `tentang` (`id_tentang`, `text_tentang`, `img_tentang`) VALUES
+(1, '<h2>What is Lorem Ipsum</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>\r\n', 'e6666ff6960cc4602fcacbb3a2e69470.jpeg');
 
 -- --------------------------------------------------------
 
@@ -346,7 +379,7 @@ CREATE TABLE `update_donasi` (
 --
 
 INSERT INTO `update_donasi` (`id_update`, `jumlah_update`, `tanggal_update`) VALUES
-(1, 180000, '2021-05-22 11:49:11');
+(1, 140000, '2021-05-22 11:49:11');
 
 -- --------------------------------------------------------
 
@@ -365,9 +398,9 @@ CREATE TABLE `youtube` (
 --
 
 INSERT INTO `youtube` (`id_youtube`, `link_youtube`, `ket_youtube`) VALUES
-(1, 'https://www.youtube.com/embed/HkpqGZaiWDI', 'Bocil Kematiaa'),
-(2, 'https://www.youtube.com/embed/cJ9SjbmNuJM', 'Yateammm'),
-(3, 'https://www.youtube.com/embed/LGIfJl9b1XI', 'CHUAAKKKSSS');
+(1, 'https://www.youtube.com/embed/CLBi2BImj9M', 'berkah'),
+(2, 'https://www.youtube.com/embed/ICp-CzqFF-g\"', 'jumat berkah'),
+(3, 'https://www.youtube.com/embed/ISp8YPYBXSI', 'Kegiatan');
 
 --
 -- Indexes for dumped tables
@@ -458,6 +491,12 @@ ALTER TABLE `slidefoto`
   ADD PRIMARY KEY (`id_slidefoto`);
 
 --
+-- Indexes for table `tentang`
+--
+ALTER TABLE `tentang`
+  ADD PRIMARY KEY (`id_tentang`);
+
+--
 -- Indexes for table `update_donasi`
 --
 ALTER TABLE `update_donasi`
@@ -501,7 +540,7 @@ ALTER TABLE `ceritasantri`
 -- AUTO_INCREMENT for table `donasi`
 --
 ALTER TABLE `donasi`
-  MODIFY `id_donasi` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_donasi` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `donatur`
@@ -531,7 +570,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `pengeluaran_donasi`
 --
 ALTER TABLE `pengeluaran_donasi`
-  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pengurus`
@@ -549,7 +588,13 @@ ALTER TABLE `santri`
 -- AUTO_INCREMENT for table `slidefoto`
 --
 ALTER TABLE `slidefoto`
-  MODIFY `id_slidefoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_slidefoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tentang`
+--
+ALTER TABLE `tentang`
+  MODIFY `id_tentang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `youtube`
