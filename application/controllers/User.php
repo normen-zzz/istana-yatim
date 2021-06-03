@@ -241,9 +241,13 @@ class User extends CI_Controller {
 	public function infodonasi(){
 		$this->load->model('M_footer');
 		$this->load->model('M_acara');
+		$this->load->model('M_donasi');
+		$this->load->model('M_pengeluaran');
 		$data['title'] = 'Info Donasi';
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();
 		$data['infodonasi'] = $this->db->get('update_donasi')->row_array();
+		$data['donasiperbulan'] = $this->M_donasi->donasiperbulan(['konfirmasi' => 1])->row();
+		$data['pengeluarandonasiperbulan'] = $this->M_pengeluaran->pengeluarandonasiperbulan()->row();
 		$data['pengeluarandonasi'] = $this->db->get('pengeluaran_donasi')->result_array();
 		$this->load->view('user/donasi/infodonasi',$data);
 	}

@@ -45,4 +45,12 @@ class M_pengeluaran extends CI_Model
         $this->db->where("DATE_FORMAT(tanggal_pengeluaran,'%Y-%m')", $where);
         return $this->db->get();
     }
+
+    public function pengeluarandonasiperbulan()
+    {
+     $this->db->select('sum(jumlah_pengeluaran) as total');
+     $this->db->from('pengeluaran_donasi');
+     $this->db->where("DATE_FORMAT(tanggal_pengeluaran,'%m')", date('m'));
+     return $this->db->get();
+ }
 }

@@ -39,7 +39,7 @@ class M_donasi extends CI_Model
     }
 
 
-     public function joinBank($where)
+    public function joinBank($where)
     {
         $this->db->select('*');
         $this->db->from('donasi');
@@ -58,6 +58,19 @@ class M_donasi extends CI_Model
         $this->db->join('bank','bank.id_bank = donasi.id_bank');
         return $this->db->get();
     }
+
+
+    public function donasiperbulan($where)
+    {
+     $this->db->select('sum(jumlah) as total');
+     $this->db->from('donasi');
+     $this->db->where($where);
+     $this->db->where("DATE_FORMAT(tanggal,'%m')", date('m'));
+     return $this->db->get();
+ }
+
+ 
+
 }
 
 
