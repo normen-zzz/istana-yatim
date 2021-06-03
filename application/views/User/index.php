@@ -55,22 +55,20 @@
         <div class="container">
           <div class="row" style="padding-top: 5px;">
 
-            <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
-              <h3 style="padding-top: 20px;">Berkah</h3>
-              <h4>"Bersemangat Sedekah"</h4>
+            <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/BERKAH.png') ?>" style="width: 150px;">
+        
+              <h4>"Bangkitkan Semangat Bersedekah"</h4>
               <p><?= $hitungberkah ?> berkah</p>
               <a class="btn btn-light action-button" role="button" href="<?= base_url('User/berkah') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
             </div>
 
-            <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
-              <h3 style="padding-top: 20px;">Cerri</h3>
+            <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/ce.png') ?>" style="width: 150px;">
               <h4>"Cerita Santri"</h4>
               <p><?= $hitungceritasantri ?> Cerita</p>
               <a class="btn btn-light action-button" role="button" href="<?= base_url('User/ceritasantri') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
             </div>
 
-            <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/artikel.png') ?>" style="width: 150px;">
-              <h3 style="padding-top: 20px;">ISI</h3>
+            <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/ISI.png') ?>" style="width: 150px;">
               <h4>"Informasi Seputar Istana Yatim"</h4>
               <p><?= $hitungacara ?> Acara Aktif</p>
               <a class="btn btn-light action-button" role="button" href="<?= base_url('User/Acara') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
