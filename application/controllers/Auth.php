@@ -8,6 +8,7 @@ class Auth extends CI_Controller
 
     public function admin()
     {
+        if (!$this->session->userdata('email')) {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
             'required' => 'Harap isi bidang email!',
             'valid_email' => 'Email tidak valid!',
@@ -20,6 +21,9 @@ class Auth extends CI_Controller
         } else {
             //validasi sukses
             $this->adminlogin();
+        }}
+        else{
+            redirect('Admin');
         }
     }
 
