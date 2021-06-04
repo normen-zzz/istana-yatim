@@ -248,7 +248,7 @@ class User extends CI_Controller {
 		$data['infodonasi'] = $this->db->get('update_donasi')->row_array();
 		$data['donasiperbulan'] = $this->M_donasi->donasiperbulan(['konfirmasi' => 1])->row();
 		$data['pengeluarandonasiperbulan'] = $this->M_pengeluaran->pengeluarandonasiperbulan()->row();
-		$data['pengeluarandonasi'] = $this->db->get('pengeluaran_donasi')->result_array();
+		$data['pengeluarandonasi'] = $this->M_pengeluaran->tampil_data()->result_array();
 		$this->load->view('user/donasi/infodonasi',$data);
 	}
 
