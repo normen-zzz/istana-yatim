@@ -142,13 +142,28 @@ class Donasi extends CI_Controller {
                 redirect('donasi/tambahdonasi');
             }
         }
-        public function deletedonasi($id)
+        public function deletedonasibelumkonfirmasi($id)
         {
             $this->load->model('M_donasi');
-            $data['donasi'] = $this->M_donasi->donasiWhere(['id_donasi' => $this->uri->segment(3)])->row_array();
+            $data['donasi'] = $this->M_donasi->donasiWhere(['id_donasi' => $this->uri->segment(3),'konfirmasi' => 0])->row_array();
             $gambar_lama = $data['donasi']['bukti'];
             unlink(FCPATH . 'assets/images/donasi/' . $gambar_lama);
             $where = array('id_donasi' => $this->uri->segment(3));
+            $this->M_donasi->delete_donasi($where, 'donasi');
+            $this->session->set_flashdata('user-delete', 'berhasil');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+         public function deletedonasisudahkonfirmasi($id)
+        {
+            $this->load->model('M_donasi');
+            $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
+            $data['donasi'] = $this->M_donasi->donasiWhere(['id_donasi' => $this->uri->segment(3),'konfirmasi' => 1])->row_array();
+            $penjumlahan = $data['update_donasi']['jumlah_update'] - $data['donasi']['jumlah'];
+            $gambar_lama = $data['donasi']['bukti'];
+            unlink(FCPATH . 'assets/images/donasi/' . $gambar_lama);
+            $where = array('id_donasi' => $this->uri->segment(3));
+            $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
             $this->M_donasi->delete_donasi($where, 'donasi');
             $this->session->set_flashdata('user-delete', 'berhasil');
             redirect($_SERVER['HTTP_REFERER']);
@@ -167,7 +182,7 @@ class Donasi extends CI_Controller {
         public function pengeluaran_donasifilter()
         {
             $this->load->model('M_pengeluaran');
-             $filter = $this->input->post('filter');
+            $filter = $this->input->post('filter');
             $data['tombol'] = '';
             $data['title'] = 'Pengeluaran Donasi';
             $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
@@ -243,7 +258,7 @@ class Donasi extends CI_Controller {
         public function ubahpengeluaranAct()
         {
             $this->load->model('M_pengeluaran');
-             $this->load->model('M_donasi');
+            $this->load->model('M_donasi');
 
             $id = $this->input->post('id',true);
             $judul = $this->input->post('judul');
@@ -309,19 +324,19 @@ class Donasi extends CI_Controller {
     }
 
     public function deletepengeluaran($id)
-        {
-            $this->load->model('M_pengeluaran');
-            $this->load->model('M_donasi');
-            $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
-            $data['pengeluaran'] = $this->M_pengeluaran->pengeluaranWhere(['id_pengeluaran' => $this->uri->segment(3)])->row_array();
-            $penjumlahan = $data['update_donasi']['jumlah_update'] + $data['pengeluaran']['jumlah_pengeluaran'];
-            $gambar_lama = $data['pengeluaran']['img_pengeluaran'];
-            unlink(FCPATH . 'assets/images/pengeluarandonasi/' . $gambar_lama);
-            $where = array('id_pengeluaran' => $this->uri->segment(3));
+    {
+        $this->load->model('M_pengeluaran');
+        $this->load->model('M_donasi');
+        $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
+        $data['pengeluaran'] = $this->M_pengeluaran->pengeluaranWhere(['id_pengeluaran' => $this->uri->segment(3)])->row_array();
+        $penjumlahan = $data['update_donasi']['jumlah_update'] + $data['pengeluaran']['jumlah_pengeluaran'];
+        $gambar_lama = $data['pengeluaran']['img_pengeluaran'];
+        unlink(FCPATH . 'assets/images/pengeluarandonasi/' . $gambar_lama);
+        $where = array('id_pengeluaran' => $this->uri->segment(3));
 
-            $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
-            $this->M_pengeluaran->delete_pengeluaran($where, 'pengeluaran_donasi');
-            $this->session->set_flashdata('user-delete', 'berhasil');
-            redirect($_SERVER['HTTP_REFERER']);
-        }
+        $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
+        $this->M_pengeluaran->delete_pengeluaran($where, 'pengeluaran_donasi');
+        $this->session->set_flashdata('user-delete', 'berhasil');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 }

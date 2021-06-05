@@ -66,7 +66,7 @@
                             <td><?= $d['bank'] ?></td>
                             <td><a href="" onclick="window.open('<?= base_url('assets/images/donasi/') . $d['bukti'] ?>','targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1090px, height=550px, top=25px left=120px'); return false;"><img style="width: 200px" src="<?= base_url('assets/images/donasi/') . $d['bukti'] ?>"></a> </td>
                             <!-- <td><img style="width: 200px" src="<?= base_url('assets/images/donasi/') . $d['bukti'] ?>"></td> -->
-                            <td> <a href="<?= base_url('Donasi/konfirmasi/'). $d['id_donasi'] ?>" class="btn btn-success" onclick="return confirm('kamu yakin akan Konfirmasi Donasi  ?');">Konfirmasi</a> <a href="<?= base_url('Donasi/deletedonasi/') . $d['id_donasi'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a>   </td>
+                            <td> <a href="<?= base_url('Donasi/konfirmasi/'). $d['id_donasi'] ?>" class="btn btn-success" onclick="return confirm('kamu yakin akan Konfirmasi Donasi  ?');">Konfirmasi</a> <a href="<?= base_url('Donasi/deletedonasibelumkonfirmasi/') . $d['id_donasi'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a>   </td>
 
               </tr>
             <?php } ?>
