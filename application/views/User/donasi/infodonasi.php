@@ -38,7 +38,7 @@ function rupiah($angka){
 ?>
 
 <body>
-    <?php $this->load->view('User/template/nav'); ?>
+    <?php $this->load->view('user/template/nav'); ?>
     <div class="container" style="margin-top: 110px;">
         <h1 style="text-align: center;">Info Donasi</h1>
 
@@ -62,7 +62,7 @@ function rupiah($angka){
             <?php } ?>
         </div>
     </div>
-    <?php $this->load->view('User/template/footer'); ?>
+    <?php $this->load->view('user/template/footer'); ?>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

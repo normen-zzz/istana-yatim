@@ -7,7 +7,7 @@ setlocale(LC_TIME, 'id-ID');
 class Donasi extends CI_Controller {
 
 
-	public function __construct()
+    public function __construct()
     {
         parent::__construct();
         $this->load->helper('url');
@@ -94,8 +94,9 @@ class Donasi extends CI_Controller {
 
     public function tambahdonasiAct()
     {
-
-        $penjumlahan = $data['update_donasi']['jumlah_update'] + $data['donasi']['jumlah'];
+        $this->load->model('M_donasi');
+        $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
+        $penjumlahan = $data['update_donasi']['jumlah_update'] + $this->input->post('jumlah',TRUE);
         $config['upload_path'] = './assets/images/donasi/'; //path folder
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
             $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
@@ -118,7 +119,7 @@ class Donasi extends CI_Controller {
 
                     $gambar=$gbr['file_name'];
 
-                    $data = [
+                    $tambah = [
                         'nama' => $this->input->post('nama'),
                         'nowa' => $this->input->post('nowa',TRUE),
                         'id_bank' => $this->input->post('bank'),
@@ -129,7 +130,8 @@ class Donasi extends CI_Controller {
                         
                     ];
 
-                    $this->db->insert('donasi', $data);
+                    $this->db->insert('donasi', $tambah);
+                    $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
                     $this->session->set_flashdata('success-input', 'berhasil');
                     redirect($_SERVER['HTTP_REFERER']);
                 }else{  

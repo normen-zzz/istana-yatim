@@ -24,7 +24,7 @@
         }
         return $text;
       } ?>
-    <?php $this->load->view('User/template/nav'); ?>
+    <?php $this->load->view('user/template/nav'); ?>
 
     <div class="container" style="margin-top: 41px;">
         <div class="row">
@@ -70,7 +70,7 @@
             </div>
         </div>
     </div>
-    <?php $this->load->view('User/template/footer'); ?>
+    <?php $this->load->view('user/template/footer'); ?>
     <script src="<?= base_url('assets/user/') ?>js/jquery.min.js"></script>
     <script src="<?= base_url('assets/user/') ?>bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
