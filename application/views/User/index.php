@@ -24,7 +24,7 @@
 
 <body>
 
-  <?php $this->load->view('User/template/nav'); ?>
+  <?php $this->load->view('user/template/nav'); ?>
 
 
   
@@ -59,19 +59,19 @@
         
               <h4>"Bangkitkan Semangat Bersedekah"</h4>
               <p><?= $hitungberkah ?> berkah</p>
-              <a class="btn btn-light action-button" role="button" href="<?= base_url('User/berkah') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
+              <a class="btn btn-light action-button" role="button" href="<?= base_url('Berkah-List') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
             </div>
 
-            <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/ce.png') ?>" style="width: 150px;">
+            <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/Ce.png') ?>" style="width: 150px;">
               <h4>"Cerita Santri"</h4>
               <p><?= $hitungceritasantri ?> Cerita</p>
-              <a class="btn btn-light action-button" role="button" href="<?= base_url('User/ceritasantri') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
+              <a class="btn btn-light action-button" role="button" href="<?= base_url('Ceritasantri-List') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
             </div>
 
             <div class="col text-center" style="padding-bottom: 20px;" data-aos="fade-up" data-aos-duration="850"><img src="<?= base_url('assets/images/menu/ISI.png') ?>" style="width: 150px;">
               <h4>"Informasi Seputar Istana Yatim"</h4>
               <p><?= $hitungacara ?> Acara Aktif</p>
-              <a class="btn btn-light action-button" role="button" href="<?= base_url('User/Acara') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
+              <a class="btn btn-light action-button" role="button" href="<?= base_url('Acara-List') ?>" style="background: rgb(53,204,95);border-radius: 18px;color: rgb(254,254,254);"><strong>Selengkapnya</strong></a>
             </div>
 
 
@@ -124,7 +124,7 @@
 
           <div class="row" data-aos="fade-up" data-aos-duration="800" style="padding-top: 0px;padding-bottom: 65px;">
             <div class="col text-center" style="padding-top: 0px;">
-              <a class="btn btn-light" href="<?= base_url('User/infodonasi') ?>">
+              <a class="btn btn-light" href="<?= base_url('Info-Donasi') ?>">
                 Info Donasi
               </a>
               
@@ -223,7 +223,7 @@
             </div>
           </div>
           <div class="row" style="padding-top: 0px;">
-            <div class="col" style="padding-top: 0px;text-align: center;padding-bottom: 15px;"><a class="btn btn-secondary" href="<?= base_url('User/detailberkah/'). $b['slug_berkah'] ?>" style="width: 168.5px;background: rgba(4,143,131,0);color: rgb(17,156,15);border: 1px solid rgb(17,156,15);box-shadow: 0px 0px 4px 0px;border-radius: 24px;">Selengkapnya</a></div>
+            <div class="col" style="padding-top: 0px;text-align: center;padding-bottom: 15px;"><a class="btn btn-secondary" href="<?= base_url('Berkah-Detail/'). $b['slug_berkah'] ?>" style="width: 168.5px;background: rgba(4,143,131,0);color: rgb(17,156,15);border: 1px solid rgb(17,156,15);box-shadow: 0px 0px 4px 0px;border-radius: 24px;">Selengkapnya</a></div>
           </div>
         </div>
         <!-- akhir -->
@@ -273,7 +273,7 @@
       </div>
     </div>
   </section>
-  <?php $this->load->view('User/template/footer'); ?>
+  <?php $this->load->view('user/template/footer'); ?>
 
 
 

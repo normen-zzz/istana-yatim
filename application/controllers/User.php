@@ -123,11 +123,11 @@ class User extends CI_Controller {
 		$this->load->model('M_berkah');
 		$data['active'] = 'active';
 		$data['title'] = 'berkah';
-		$data['berkah'] = $this->M_berkah->berkahWhere(['slug_berkah' => $this->uri->segment(3)])->row();
+		$data['berkah'] = $this->M_berkah->berkahWhere(['slug_berkah' => $this->uri->segment(2)])->row();
 		$data['berkahpopuler'] = $this->M_berkah->berkah_populer()->result_array();
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();
 		$this->load->view('user/berkah/detailberkah',$data);
-		$this->add_count($this->uri->segment(3));
+		$this->add_count($this->uri->segment(2));
 	}
 
 	// This is the counter function.. 
@@ -172,11 +172,11 @@ class User extends CI_Controller {
 		$this->load->model('M_ceritasantri');
 		$data['active'] = 'active';
 		$data['title'] = 'Cerita Santri';
-		$data['ceritasantri'] = $this->M_ceritasantri->ceritasantriWhere(['slug_ceritasantri' => $this->uri->segment(3)])->row();
+		$data['ceritasantri'] = $this->M_ceritasantri->ceritasantriWhere(['slug_ceritasantri' => $this->uri->segment(2)])->row();
 		$data['ceritasantripopuler'] = $this->M_ceritasantri->ceritasantri_populer()->result_array();
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();
 		$this->load->view('user/ceritasantri/detailceritasantri',$data);
-		$this->add_counting($this->uri->segment(3));
+		$this->add_counting($this->uri->segment(2));
 	}
 
 	// This is the counter function.. 
@@ -222,7 +222,7 @@ class User extends CI_Controller {
 		$this->load->model('M_acara');
 		$data['active'] = 'active';
 		$data['title'] = 'Acara';
-		$data['acara'] = $this->M_acara->acaraWhere(['slug_acara' => $this->uri->segment(3)])->row();
+		$data['acara'] = $this->M_acara->acaraWhere(['slug_acara' => $this->uri->segment(2)])->row();
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();
 		$this->load->view('user/acara/detailacara',$data);
 	}

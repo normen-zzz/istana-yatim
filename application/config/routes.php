@@ -52,3 +52,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'User';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
+
+
+//User
+$route['Info-Donasi'] = 'User/infodonasi'; // info donasi
+
+$route['Berkah-List'] = 'User/berkah'; //list berkah
+$route['Berkah-Detail/(:any)'] = 'User/detailberkah'; //Detail Berkah
+
+$route['Ceritasantri-List'] = 'User/ceritasantri'; //list Cerita Santri
+$route['Ceritasantri-Detail/(:any)'] = 'User/detailceritasantri'; //Detail Berkah
+
+$route['Acara-List'] = 'User/acara'; // List Acara
+$route['Acara-Detail/(:any)'] = 'User/detailacara';
+
+$route['Tentang'] = 'User/tentang'; // Tentang
+
+$route['Home'] = 'User';
+

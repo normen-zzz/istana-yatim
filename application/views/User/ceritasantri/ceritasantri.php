@@ -43,10 +43,10 @@
                 <div class="row"  style="padding-top: 10px;border-right: 2px solid rgb(172,174,177) ;">
                     <div class="col-xl-9 offset-xl-1" style="padding-top: 0px;">
                         <div class="card-group">
-                            <div class="card"><a href="<?= base_url('user/detailceritasantri/') . $c['slug_ceritasantri']  ?>"><img class="img-fluid card-img-top w-100 d-block" src="<?= base_url('assets/images/ceritasantri/') . $c['img_ceritasantri'] ?>" style="height: 247.797px;"></a>
+                            <div class="card"><a href="<?= base_url('Ceritasantri-Detail/') . $c['slug_ceritasantri']  ?>"><img class="img-fluid card-img-top w-100 d-block" src="<?= base_url('assets/images/ceritasantri/') . $c['img_ceritasantri'] ?>" style="height: 247.797px;"></a>
                                 <div class="card-body">
-                                    <a style="color: black" href="<?= base_url('user/detailceritasantri/') . $c['slug_ceritasantri']  ?>"><h4 class="card-title"><?= $c['judul_ceritasantri'] ?></h4></a>
-                                    <p class="d-xl-flex justify-content-xl-end card-text"><?= limit_text($c['isi_ceritasantri'], 30) ?><a style="color: grey;" href="<?= base_url('user/detailceritasantri/') . $c['slug_ceritasantri']  ?>">Selengkapnya</a></p><label class="d-xl-flex justify-content-xl-end align-items-xl-center" style="text-align: right;">Penulis: <?= $c['penulis_ceritasantri'] ?></label><label class="d-xl-flex justify-content-xl-end align-items-xl-center"> Dilihat <i class="fa fa-eye"></i>&nbsp; <?= $c['lihat_ceritasantri'] ?></label>
+                                    <a style="color: black" href="<?= base_url('Ceritasantri-Detail/') . $c['slug_ceritasantri']  ?>"><h4 class="card-title"><?= $c['judul_ceritasantri'] ?></h4></a>
+                                    <p class="d-xl-flex justify-content-xl-end card-text"><?= limit_text($c['isi_ceritasantri'], 30) ?><a style="color: grey;" href="<?= base_url('Ceritasantri-Detail//') . $c['slug_ceritasantri']  ?>">Selengkapnya</a></p><label class="d-xl-flex justify-content-xl-end align-items-xl-center" style="text-align: right;">Penulis: <?= $c['penulis_ceritasantri'] ?></label><label class="d-xl-flex justify-content-xl-end align-items-xl-center"> Dilihat <i class="fa fa-eye"></i>&nbsp; <?= $c['lihat_ceritasantri'] ?></label>
                                 </div>
                             </div>
                         </div>
