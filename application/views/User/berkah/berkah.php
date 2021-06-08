@@ -20,11 +20,11 @@
         <div class="row">
             <div class="col" style="padding-top: 1px;">
                 <h1 align="center">berkah</h1>
-                <form class="search-form">
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" placeholder="Saya Mencari..">
-                        <div class="input-group-append"><button class="btn btn-light" type="button" style="border-style: solid;border-color: rgb(136,144,152);">Cari</button></div>
-                    </div>
+                <form method="POST" class="search-form"  action="<?= base_url('Berkah-Search') ?>" enctype="multipart/form-data">
+                    <div class="input-group">                
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div>
+                        <input class="form-control" type="text" name="keyword" placeholder="Saya Mencari..">
+                        <div class="input-group-append"><button class="btn btn-light" type="submit" style="border-style: solid;border-color: rgb(136,144,152);">Cari</button></div>                    </div>
                 </form>
             </div>
         </div>
@@ -78,14 +78,12 @@
 
             </div>
         </div>
-        <div class="row">
-            <div class="col-xl-6 offset-xl-1" style="padding-top: 0px;">
-                <nav>
-                   <?php if(isset($links)){
-     echo $links; }?>
-                </nav>
-            </div>
+       <div class="row">
+        <div class="col">
+            <!--Tampilkan pagination-->
+            <?php echo $pagination; ?>
         </div>
+    </div>
     </div>
     <?php $this->load->view('user/template/footer'); ?>
     <script src="<?= base_url('assets/user/') ?>js/jquery.min.js"></script>

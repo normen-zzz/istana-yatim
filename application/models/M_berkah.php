@@ -7,6 +7,18 @@ class M_berkah extends CI_Model
         return $this->db->get('berkah');
     }
 
+    function tampil_datalimit($limit, $start){
+        return $this->db->get('berkah', $limit, $start);
+
+    }
+
+    public function search($keyword){
+            $this->db->select('*');
+            $this->db->from('berkah');
+            $this->db->like('judul_berkah',$keyword);
+            return $this->db->get();
+        }
+
     public function detail_berkah($id = null)
     {
         $query = $this->db->get_where('berkah', array('id' => $id))->row();

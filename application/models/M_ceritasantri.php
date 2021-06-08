@@ -7,6 +7,18 @@ class M_ceritasantri extends CI_Model
         return $this->db->get('ceritasantri');
     }
 
+    function tampil_datalimit($limit, $start){
+        return $this->db->get('ceritasantri', $limit, $start);
+
+    }
+
+    public function search($keyword){
+            $this->db->select('*');
+            $this->db->from('ceritasantri');
+            $this->db->like('judul_ceritasantri',$keyword);
+            return $this->db->get();
+                 }
+
     public function detail_ceritasantri($id = null)
     {
         $query = $this->db->get_where('ceritasantri', array('id' => $id))->row();

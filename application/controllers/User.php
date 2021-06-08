@@ -60,51 +60,37 @@ class User extends CI_Controller {
 		$this->load->model('M_berkah');
 
 
-		//set records per page
-        $limit_page = 1;
-        $page = ($this->uri->segment(4)) ? ($this->uri->segment(4) - 1) : 0;
-        $total = $this->M_berkah->get_total();
-
-        if ($total > 0) 
-        {
-            // get current page records
-            $data['results'] = $this->M_berkah->get_current_page($limit_page, $page * $limit_page);
-
-            $config['base_url'] = base_url() . 'User/Berkah';
-            $config['total_rows'] = $total;
-            $config['per_page'] = $limit_page;
-            $config['uri_segment'] = 3;
-
-            //paging configuration
-            $config['num_links'] = 2;
-            $config['use_page_numbers'] = TRUE;
-            $config['reuse_query_string'] = TRUE;
-            
-            //bootstrap pagination 
-            $config['full_tag_open'] = '<ul class="pagination">';
-            $config['full_tag_close'] = '</ul>'; 
-            $config['first_link'] = '&laquo; First';
-            $config['first_tag_open'] = '<li class="page-item"><a class="page-link">';
-            $config['first_tag_close'] = '</li>';
-            $config['last_link'] = 'Last &raquo';
-            $config['last_tag_open'] = '<li>';
-            $config['last_tag_close'] = '</li>';
-            $config['next_link'] = 'Next';
-            $config['next_tag_open'] = '<li>';
-            $config['next_tag_close'] = '<li>';
-            $config['prev_link'] = 'Prev';
-            $config['prev_tag_open'] = '<li>';
-            $config['prev_tag_close'] = '<li>';
-            $config['cur_tag_open'] = '<li class="active"><a href="#">';
-            $config['cur_tag_close'] = '</a></li>';
-            $config['num_tag_open'] = '<li>';
-            $config['num_tag_close'] = '</li>';
-
-            $this->pagination->initialize($config);
-
-            // build paging links
-            $data['links'] = $this->pagination->create_links();
-        }
+		//konfigurasi pagination
+        $config['base_url'] = site_url('Berkah-List'); //site url
+        $config['total_rows'] = $this->db->count_all('berkah'); //total row
+        $config['per_page'] = 5;  //show record per halaman
+        $config["uri_segment"] = 2;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+ 
+        // Membuat Style pagination untuk BootStrap v4
+      $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+ 
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+        $data['pagination'] = $this->pagination->create_links();
 
 
 
@@ -112,7 +98,22 @@ class User extends CI_Controller {
 
 		$data['active'] = 'active';
 		$data['title'] = 'berkah';
-		$data['berkah'] = $this->M_berkah->tampil_data()->result_array();
+		$data['berkah'] = $this->M_berkah->tampil_datalimit($config["per_page"], $data['page'])->result_array();
+		$data['berkahpopuler'] = $this->M_berkah->berkah_populer()->result_array();
+		$data['footer'] = $this->M_footer->tampil_data()->row_array();
+		$this->load->view('user/berkah/berkah',$data);
+	}
+
+	public function searchberkah(){
+		$this->load->model('M_footer');
+		$this->load->model('M_berkah');
+
+		$keyword = $this->input->post('keyword');
+
+        $data['pagination'] = '';
+		$data['active'] = 'active';
+		$data['title'] = 'berkah';
+		$data['berkah'] = $this->M_berkah->search($keyword)->result_array();
 		$data['berkahpopuler'] = $this->M_berkah->berkah_populer()->result_array();
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();
 		$this->load->view('user/berkah/berkah',$data);
@@ -159,9 +160,60 @@ class User extends CI_Controller {
 	public function ceritasantri(){
 		$this->load->model('M_footer');
 		$this->load->model('M_ceritasantri');
+
+		//konfigurasi pagination
+        $config['base_url'] = site_url('Ceritasantri-List'); //site url
+        $config['total_rows'] = $this->db->count_all('ceritasantri'); //total row
+        $config['per_page'] = 5;  //show record per halaman
+        $config["uri_segment"] = 2;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+ 
+        // Membuat Style pagination untuk BootStrap v4
+      $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+ 
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+        $data['pagination'] = $this->pagination->create_links();
+
+
+
+
 		$data['active'] = 'active';
 		$data['title'] = 'Cerita Santri';
-		$data['ceritasantri'] = $this->M_ceritasantri->tampil_data()->result_array();
+		$data['ceritasantri'] = $this->M_ceritasantri->tampil_datalimit($config["per_page"], $data['page'])->result_array();
+		$data['ceritasantripopuler'] = $this->M_ceritasantri->ceritasantri_populer()->result_array();
+		$data['footer'] = $this->M_footer->tampil_data()->row_array();
+		$this->load->view('user/ceritasantri/ceritasantri',$data);
+	}
+
+	public function searchceritasantri(){
+		$this->load->model('M_footer');
+		$this->load->model('M_ceritasantri');
+
+		
+		$keyword = $this->input->post('keyword');
+		$data['pagination'] = '';
+		$data['active'] = 'active';
+		$data['title'] = 'Cerita Santri';
+		$data['ceritasantri'] = $this->M_ceritasantri->search($keyword)->result_array();
 		$data['ceritasantripopuler'] = $this->M_ceritasantri->ceritasantri_populer()->result_array();
 		$data['footer'] = $this->M_footer->tampil_data()->row_array();
 		$this->load->view('user/ceritasantri/ceritasantri',$data);

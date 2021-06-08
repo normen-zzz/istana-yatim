@@ -57,11 +57,17 @@ $route['translate_uri_dashes'] = false;
 //User
 $route['Info-Donasi'] = 'User/infodonasi'; // info donasi
 
-$route['Berkah-List'] = 'User/berkah'; //list berkah
+$route['Berkah-List'] = 'User/berkah';
+$route['Berkah-List/(:num)'] = 'User/berkah'; //list berkah
 $route['Berkah-Detail/(:any)'] = 'User/detailberkah'; //Detail Berkah
+$route['Berkah-Search'] = 'User/searchberkah'; //Search Berkah
+
 
 $route['Ceritasantri-List'] = 'User/ceritasantri'; //list Cerita Santri
-$route['Ceritasantri-Detail/(:any)'] = 'User/detailceritasantri'; //Detail Berkah
+$route['Ceritasantri-List/(:num)'] = 'User/ceritasantri';
+$route['Ceritasantri-Detail/(:any)'] = 'User/detailceritasantri'; //Detail Ceritasantri
+$route['Ceritasantri-Search'] = 'User/searchceritasantri'; //Cari Cerita Santri
+
 
 $route['Acara-List'] = 'User/acara'; // List Acara
 $route['Acara-Detail/(:any)'] = 'User/detailacara';
