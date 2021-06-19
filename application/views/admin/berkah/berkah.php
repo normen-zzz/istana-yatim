@@ -53,7 +53,7 @@
                             <td><?= strftime("%A | %d %h %Y %T", strtotime($b['tgl_berkah'])) ?></td>
                             <td><?= $b['jenis_berkah'] ?></td>
                             <td><?= $b['penulis_berkah'] ?></td>
-                            <td><a href="<?= base_url('berkah/ubahberkah/'). $b['slug_berkah'] ?>" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>
+                            <td><a href="<?= base_url('berkah/ubahberkah/'). $b['slug_berkah'] ?>" class="btn btn-success">Ubah</a> <a href="<?= base_url('berkah/deleteberkah/') . $b['slug_berkah'] ?>" style="color: white" onclick="return confirm('kamu yakin akan menghapus  ?');"   class="btn btn-danger" >Hapus</a></td>
 
               </tr>
             <?php } ?>

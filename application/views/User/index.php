@@ -28,7 +28,7 @@
 
 
   
-  <div style="margin-top: 75px;" class="carousel slide" data-ride="carousel" data-interval="2000" data-pause="false" id="carousel-1">
+  <!-- <div style="margin-top: 75px;" class="carousel slide" data-ride="carousel" data-interval="2000" data-pause="false" id="carousel-1">
     <div class="carousel-inner">
       <?php $counter = 0; ?>
       <?php foreach ($slidefoto as $s) {?>
@@ -44,7 +44,27 @@
           <li data-target="#carousel-1" data-slide-to="$counterslide" class="<?= ($counter == 0) ? "active" : "" ?>"></li>
           <?php $counterslide++; } ?>
         </ol>
-      </div>
+      </div> -->
+
+
+
+<section style="margin-top: 54px;">
+      <div class="carousel slide" data-ride="carousel" data-interval="2000" data-pause="false" id="carousel-2">
+        <div class="carousel-inner" style="max-height: 600px;">
+          <?php $counter = 0; ?>
+      <?php foreach ($slidefoto as $s) {?>
+            <div class="carousel-item <?= ($counter == 0) ? "active" : "" ?>"><img class="w-100 d-block" src="<?= base_url('assets/images/slidefoto/'). $s['img_slidefoto'] ?>" alt="Slide Image" style="max-height: 600px;"></div>
+             <?php $counter++; } ?> 
+        </div>
+        <div><a class="carousel-control-prev" href="#carousel-2" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-2" role="button" data-slide="next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+        <ol class="carousel-indicators">
+          <?php $counterslide = 0; ?>
+        <?php foreach ($slidefoto as $a) { ?>
+            <li data-target="#carousel-2" data-slide-to="<?= $counterslide ?>" class="<?= ($counter == 0) ? "active" : "" ?>"></li>
+            <?php $counterslide++; } ?>
+          </ol>
+    </div>
+  </section>
 
 
 

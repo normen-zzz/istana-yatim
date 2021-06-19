@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
-setlocale(LC_TIME, 'id-ID');
+setlocale(LC_TIME, "id_ID.UTF8");
 
 
 class Cms extends CI_Controller {
@@ -45,16 +45,6 @@ class Cms extends CI_Controller {
          if(!empty($_FILES['filefoto']['name'])){
             if ($this->upload->do_upload('filefoto')){
                 $gbr = $this->upload->data();
-                    //Compress Image
-                $config['image_library']='gd2';
-                $config['source_image']='./assets/images/slidefoto/'.$gbr['file_name'];
-                $config['create_thumb']= FALSE;
-
-                $config['width']= 1159;
-                $config['height']= 500;
-                $config['new_image']= './assets/images/slidefoto/'.$gbr['file_name'];
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
 
                 $gambar=$gbr['file_name'];
 

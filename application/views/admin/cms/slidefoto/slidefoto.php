@@ -32,7 +32,7 @@
                         <?php foreach ($slidefoto as $s) {?>
                         <tr>
                           <td><?= $s['id_slidefoto'] ?></td>
-                          <td><?= strftime("%A | %d %h %Y %T", strtotime($s['tgl_slidefoto'])) ?></td>
+                          <td><?= strftime("%A | %d %B %Y %T", strtotime($s['tgl_slidefoto'])) ?></td>
                           <td><img style="width: 200px" src="<?= base_url('assets/images/slidefoto/') . $s['img_slidefoto'] ?>"></td>
                           <td><a href="<?= base_url('Cms/ubahslidefoto/') . $s['id_slidefoto'] ?>" class="btn btn-success">Ubah</a> <a href="<?= base_url('Cms/deleteslidefoto/') . $s['id_slidefoto'] ?>" class="btn btn-danger" onclick="return confirm('kamu yakin akan menghapus  ?');">Hapus</a></td>
                           

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>sipena</title>
+    <title><?=$berkah->judul_berkah ?></title>
     <link rel="stylesheet" href="<?= base_url('assets/user/') ?>bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="<?= base_url('assets/user/') ?>fonts/font-awesome.min.css">
@@ -44,9 +44,10 @@
                     </div>
                 </div><label>Share:&nbsp;</label>
                 <div class="row" style="padding-top: 10px;">
-                    <div class="col-xl-1" style="margin-top: 5px;"><a href="#"><img src="<?= base_url('assets/user/') ?>img/twitter.png" style="width: 41px;margin-top: 0px;"></a></div>
-                    <div class="col-xl-1" style="margin-top: 5px;"><a href="#"><img src="<?= base_url('assets/user/') ?>img/facebook.png" style="width: 41px;"></a></div>
-                    <div class="col-xl-1" style="margin-top: 5px;"><a href="#"><img src="<?= base_url('assets/user/') ?>img/ig.png" style="width: 41px;"></a></div>
+
+                     <div class="col-xl-1" style="margin-top: 5px;"><a target="_blank" href="http://www.facebook.com/sharer.php?s=100&p[url]=<?= base_url('Berkah-Detail/').$berkah->slug_berkah ?>&p[title]=<?= $berkah->judul_berkah ?>"><img src="<?= base_url('assets/user/') ?>img/facebook.png" style="width: 41px;"></a></div>
+                    <div class="col-xl-1" style="margin-top: 5px;"><a target="_blank" href="https://twitter.com/intent/tweet?url=<?= base_url('Berkah-Detail/'). $berkah->slug_berkah ?>"><img src="<?= base_url('assets/user/') ?>img/twitter.png" style="width: 41px;margin-top: 0px;"></a></div>
+                    <!-- <div class="col-xl-1" style="margin-top: 5px;"><a target="_blank" href=""><img src="<?= base_url('assets/user/') ?>img/ig.png" style="width: 41px;"></a></div> -->
                 </div>
             </div>
             <div class="col" style="padding-top: 0px">

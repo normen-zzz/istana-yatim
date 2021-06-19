@@ -38,7 +38,7 @@
                           <td><?= $a['id_acara'] ?></td>
                           <td><?= $a['nama_acara'] ?></td>
                           <td><?= $a['tema_acara'] ?></td>
-                          <td><?= strftime("%A | %d %h %Y %T", strtotime($a['tgl_acara'])) ?></td>
+                          <td><?= strftime("%A | %d %B %Y %T", strtotime($a['tgl_acara'])) ?></td>
                           <td><?= $a['slug_acara'] ?></td>
                           <td><img style="width: 200px" src="<?= base_url('assets/images/acara/'). $a['img_acara'] ?>"></td>
                           <td><a href="<?= base_url('Form/tampilform/'). $a['id_acara'] ?>" class="btn btn-primary">Form</a> <a href="<?= base_url('acara/ubahacara/'). $a['id_acara'] ?>" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>

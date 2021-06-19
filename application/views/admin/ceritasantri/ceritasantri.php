@@ -55,7 +55,7 @@
                           <td><?= $c['penulis_ceritasantri'] ?></td>
 
                           
-                          <td><a style="margin-bottom: 5px" href="<?= base_url('Ceritasantri/ubahceritasantri/') . $c['slug_ceritasantri'] ?>" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()" class="btn btn-danger">Hapus</a></td>
+                          <td><a style="margin-bottom: 5px" href="<?= base_url('Ceritasantri/ubahceritasantri/') . $c['slug_ceritasantri'] ?>" class="btn btn-success">Ubah</a> <a href="<?= base_url('Ceritasantri/deleteceritasantri/') . $c['slug_ceritasantri'] ?>" style="color: white" onclick="return confirm('kamu yakin akan menghapus  ?');" class="btn btn-danger">Hapus</a></td>
 
                           
                         </tr>

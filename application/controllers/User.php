@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 date_default_timezone_set('Asia/Jakarta');
-setlocale(LC_TIME, 'id-ID');
+setlocale(LC_TIME, "id_ID.UTF8");
 class User extends CI_Controller {
 
 
@@ -110,7 +110,7 @@ class User extends CI_Controller {
 
 		$keyword = $this->input->post('keyword');
 
-        $data['pagination'] = '';
+    $data['pagination'] = '';
 		$data['active'] = 'active';
 		$data['title'] = 'berkah';
 		$data['berkah'] = $this->M_berkah->search($keyword)->result_array();
@@ -363,5 +363,21 @@ class User extends CI_Controller {
 		$this->load->view('user/tentang/tentang',$data);
 	}
 
+	public function tambahformAct()
+    {
+        $this->load->model('Waapi');
+        $data = [
+           'nama_form' => $this->input->post('nama'),
+           'nomor_form' => $this->input->post('nomor', true),
+           'kelamin_form' => $this->input->post('kelamin'),
+           'acara_form' => $this->input->post('acara'),
+       ];
 
-    }
+       $this->db->insert('form', $data);
+       $this->Waapi->kirimWablas($this->input->post('nomor'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Mendaftar Event '. $this->input->post('judul'));
+       redirect('Acara-Detail/'. $this->input->post('slug'));
+
+   }
+
+
+ }

@@ -1,8 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
-setlocale(LC_TIME, 'id-ID');
-
+setlocale(LC_TIME, "id_ID.UTF8");
 
 class Ceritasantri extends CI_Controller {
 

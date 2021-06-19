@@ -26,7 +26,7 @@
             <div class="col-xl-8 offset-xl-2"><img class="img-fluid" src="<?= base_url('assets/images/acara/'). $acara->img_acara ?>">
                 <h1 class="text-center" style="padding-top: 21px;"><?= $acara->nama_acara ?></h1>
                 <p style="text-align: center;"><?= $acara->tema_acara ?> </p>
-                <p style="text-align: center;"><?= strftime("%A %d-%h-%Y %T", strtotime($acara->tgl_acara)) ?></p>
+                <p style="text-align: center;"><?= strftime("%A %d-%B-%Y %T", strtotime($acara->tgl_acara)) ?></p>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-xl-10 offset-xl-1">
                 <h1 class="text-center">Form Pendaftaran</h1>
-                <form method="post" action="<?= base_url('Form/tambahformAct') ?>" enctype="multipart/form-data" style="text-align: center;">
+                <form method="post" action="<?= base_url('User/tambahformAct') ?>" enctype="multipart/form-data" style="text-align: center;">
                     <input type="number" name="acara" value="<?= $acara->id_acara ?>" hidden>
                     <input type="text" name="judul" value="<?= $acara->tema_acara ?>" hidden>
                     <input type="text" name="slug" value="<?= $acara->slug_acara ?>" hidden>

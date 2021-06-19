@@ -42,9 +42,9 @@
                     </div>
                 </div><label>Share:&nbsp;</label>
                 <div class="row" style="padding-top: 10px;">
-                    <div class="col-xl-1" style="margin-top: 5px;"><a href="#"><img src="<?= base_url('assets/user/') ?>img/twitter.png" style="width: 41px;margin-top: 0px;"></a></div>
-                    <div class="col-xl-1" style="margin-top: 5px;"><a href="#"><img src="<?= base_url('assets/user/') ?>img/facebook.png" style="width: 41px;"></a></div>
-                    <div class="col-xl-1" style="margin-top: 5px;"><a href="#"><img src="<?= base_url('assets/user/') ?>img/ig.png" style="width: 41px;"></a></div>
+                     <div class="col-xl-1" style="margin-top: 5px;"><a target="_blank" href="http://www.facebook.com/sharer.php?s=100&p[url]=<?= base_url('Ceritasantri-Detail/').$ceritasantri->slug_ceritasantri ?>&p[title]=<?= $ceritasantri->judul_ceritasantri ?>"><img src="<?= base_url('assets/user/') ?>img/facebook.png" style="width: 41px;"></a></div>
+                    <div class="col-xl-1" style="margin-top: 5px;"><a target="_blank" href="https://twitter.com/intent/tweet?url=<?= base_url('Ceritasantri-Detail/'). $ceritasantri->slug_ceritasantri ?>"><img src="<?= base_url('assets/user/') ?>img/twitter.png" style="width: 41px;margin-top: 0px;"></a></div>
+                    <!-- <div class="col-xl-1" style="margin-top: 5px;"><a target="_blank" href=""><img src="<?= base_url('assets/user/') ?>img/ig.png" style="width: 41px;"></a></div> -->
                 </div>
             </div>
             <div class="col" style="padding-top: 0px">
