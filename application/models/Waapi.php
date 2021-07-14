@@ -8,7 +8,7 @@ class Waapi extends CI_Model
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-      CURLOPT_URL => 'https://whatsapp-norman.herokuapp.com/send-message',
+      CURLOPT_URL => 'https://whatsapp-istanayatim.herokuapp.com/send-message',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -27,10 +27,11 @@ class Waapi extends CI_Model
 
   public function kirimWablasfile($phone,$msg,$file){
 
+
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-      CURLOPT_URL => 'https://whatsapp-norman.herokuapp.com/send-media',
+      CURLOPT_URL => 'https://whatsapp-istanayatim.herokuapp.com/send-media',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -38,13 +39,24 @@ class Waapi extends CI_Model
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => 'POST',
-      CURLOPT_POSTFIELDS => array('number' => $phone,'caption' => $msg,'file' => $file),
+      CURLOPT_POSTFIELDS => array('number' => $phone,'caption' => $msg,'file' => 'https://istanayatim.000webhostapp.com/assets/images/wa/'.$file),
     ));
 
     $response = curl_exec($curl);
 
     curl_close($curl);
     return $response;
+
   }
+
+  private function custom_curl_file_create($filename, $mimetype = '', $postname = '')
+{
+    if($mimetype=='') {
+        $mimetype = mime_content_type($filename);
+    }
+    return "@$filename;filename="
+        . ($postname ?: basename($filename))
+        . ($mimetype ? ";type=$mimetype" : '');
+}
 
 }

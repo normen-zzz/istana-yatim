@@ -69,6 +69,13 @@ class M_donasi extends CI_Model
      return $this->db->get();
  }
 
+ public function duplikatdonasi()
+ {
+      $this->db->select('DISTINCT(nowa), nama,id_donasi');
+        $this->db->group_by('nowa'); 
+        return $this->db->get('donasi');
+ }
+
  
 
 }

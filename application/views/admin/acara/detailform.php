@@ -37,7 +37,7 @@
                           <td><?= $f['nama_form'] ?></td>
                           <td><?= $f['nomor_form'] ?></td>
                           <td><?= $f['kelamin_form'] ?></td>
-                          <td> <a href="" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>
+                          <td> <a href="" class="btn btn-success">Ubah</a> <a href="<?= base_url('Form/deleteform/') . $f['id_form'] ?>" style="color: white" onclick="return confirm('kamu yakin akan menghapus  ?');"   class="btn btn-danger" >Hapus</a></td>
                         </tr>
                      <?php } ?>
                         

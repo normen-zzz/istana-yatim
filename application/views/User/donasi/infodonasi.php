@@ -46,7 +46,7 @@ function rupiah($angka){
          <h4 style="text-align: center;">Pengeluaran Donasi Bulan Ini (<?= strftime('%B') ?>) : <?= rupiah($pengeluarandonasiperbulan->total) ?></h4>
 
         <h3 style="text-align: center;">Saldo Donasi Terkini : <?= rupiah($infodonasi['jumlah_update']) ?></h3>
-        <h5 style="text-align: center;color: rgb(151,153,156);font-family: Acme, sans-serif;"><?= strftime("%A %d %h %Y", strtotime($infodonasi['tanggal_update'])) ?></h5>
+        <h5 style="text-align: center;color: rgb(151,153,156);font-family: Acme, sans-serif;"><?= strftime("%A %d %h %Y") ?></h5>
         <div class="row" style="padding-left: 0px;margin-left: 0px;">
             <?php foreach ($pengeluarandonasi as $p) {
                 ?>

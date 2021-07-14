@@ -11,14 +11,15 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Acara</h1>
+            <h1>Form Donasi</h1>
           </div>
           <div class="row">
               <div class="col">
-               <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Acara</button>
+                <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Kirim Pemberitahuan</button>
+                <button style="margin-bottom: 20px" data-toggle="modal" data-target="#linkModal" class="btn btn-primary">Kirim Pemberitahuan + foto</button>
                 <div class="card">
                   <div class="card-header">
-                    <h4>List Acara</h4>
+                    <h4>List All Form Donasi</h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -26,22 +27,16 @@
                         <tr>
                           <th>#</th>
                           <th>Nama</th>
-                          <th>Tema</th>
-                          <th>Tanggal</th>
-                          <td>Slug</td>
-                          <th>Poster</th>
-                          <th>Action</th>
+                          <th>Nomor</th>
+                          <!-- <th>Action</th> -->
                         </tr>
                         
-                        <?php foreach ($acara as $a) { ?>
+                        <?php foreach ($donasi as $d) { ?>
                         <tr>
-                          <td><?= $a['id_acara'] ?></td>
-                          <td><?= $a['nama_acara'] ?></td>
-                          <td><?= $a['tema_acara'] ?></td>
-                          <td><?= strftime("%A | %d %B %Y %T", strtotime($a['tgl_acara'])) ?></td>
-                          <td><?= $a['slug_acara'] ?></td>
-                          <td><img style="width: 200px" src="<?= base_url('assets/images/acara/'). $a['img_acara'] ?>"></td>
-                          <td><a href="<?= base_url('Form/tampilform/'). $a['id_acara'] ?>" class="btn btn-primary">Form</a> <a href="<?= base_url('acara/ubahacara/'). $a['id_acara'] ?>" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>
+                          <td><?= $d['id_donasi'] ?></td>
+                          <td><?= $d['nama'] ?></td>
+                          <td><?= $d['nowa'] ?></td>
+                          <!-- <td> <a href="" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td> -->
                         </tr>
                      <?php } ?>
                         
@@ -74,39 +69,24 @@
   </div>
 
 
-  
 
-<!-- Modal -->
+  <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header text-center">
-              <h5 class="modal-title text-center" id="exampleModalLabel">Tambah Acara</h5>
+              <h5 class="modal-title text-center" id="exampleModalLabel">Pemberitahuan </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-             <?php echo form_open_multipart('Acara/tambahacaraAct'); ?>
-
-              <div class="form-group">
-                      <label>Nama Acara</label>
-                      <input type="text" name="nama" class="form-control">
-                    </div>
-
-                   <div class="form-group">
-                      <label>Tanggal dan Waktu</label>
-                      <input type="datetime-local" name="date" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                      <label>Tema</label>
-                      <input type="text" name="tema" class="form-control">
-                    </div>
-
+             <?php echo form_open_multipart('Form/pemberitahuandonasi'); ?>
+             
              <div class="form-group">
-                      <label>Poster</label>
-                      <input type="file" name="fileposter" class="form-control">
+                      <label>Teks</label>
+                      <p>Assalamu'alaikum warahmatullahi wabarakatuh, Yang terhormat Bp/ibu (nama)</p>
+                      <textarea style="height: 200px" name="text" class="form-control" placeholder="isi disini" ></textarea><br/>
                     </div>
 
 
@@ -120,9 +100,47 @@
       </div>
     </div>
   </div>
-  <!-- END MODAL -->
+
+   <!-- Modal -->
+      <div class="modal fade" id="linkModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title text-center" id="exampleModalLabel">Pemberitahuan </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <?php echo form_open_multipart('Form/pemberitahuanfiledonasi'); ?>
+             
+             <div class="form-group">
+                      <label>Pesan</label>
+                      <p>Assalamu'alaikum warahmatullahi wabarakatuh, Yang terhormat Bp/ibu (nama)</p>
+                      <textarea style="height: 200px" name="pesan" class="form-control" placeholder="isi disini" ></textarea><br/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="filefoto">Masukan Foto</label>
+                      <input type="file" name="filefoto">
+                    </div>
+
+             <!--  <div class="form-group">
+                      <label>Link Foto</label>
+                      <input type="text" name="link" placeholder="Http://...." class="form-control">
+                    </div> -->
 
 
+          </div>
+          <div class="modal-footer">
+            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <?php echo form_close() ?>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <?php $this->load->view('admin/template/footer') ?>
 
@@ -140,7 +158,7 @@
         swal({ title: "Hapus Data Berhasil",
           icon: "success"}).then(okay => {
             if (okay) {
-              window.location.href = "<?= base_url('Acara/deleteacara/') . $a['id_acara'] ?>";
+              window.location.href = "<?= base_url('Form/deleteform/') . $f['id_form'] ?>";
             }
           });
 
@@ -154,3 +172,4 @@
       });
   }
 </script>
+

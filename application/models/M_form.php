@@ -53,4 +53,13 @@ class M_form extends CI_Model
         $this->db->group_by('nomor_form'); 
         return $this->db->get('form');
     }
+
+
+    public function duplikatFormall()
+    {
+        $this->db->select('DISTINCT(nomor_formall),nama_formall,id_formall');
+        $this->db->group_by('nomor_formall');
+        $this->db->order_by('id_formall');
+        return $this->db->get('formall');
+    }
 }

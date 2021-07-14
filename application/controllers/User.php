@@ -341,8 +341,9 @@ class User extends CI_Controller {
             		];
 
             		$this->db->insert('donasi', $data);
+            		$this->db->insert('formall',['nama_formall' => $this->input->post('nama'),'nomor_formall' => $this->input->post('nowa',TRUE)]);
             		$this->session->set_flashdata('success-donasi', 'berhasil');
-            		$this->Waapi->kirimWablas($this->input->post('nowa'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Melakukan Donasi Sebesar '. ("Rp " . number_format($this->input->post('jumlah'),2,',','.')));
+            		$this->Waapi->kirimWablas($this->input->post('nowa'), "Assalamu'alaikum warahmatullahi wabarakatuh, Yang terhormat Bp/ibu ".$this->input->post('nama').' Terima Kasih Anda Sudah Melakukan Donasi Sebesar '. ("Rp " . number_format($this->input->post('jumlah'),2,',','.')));
             		redirect('User');
             	}else{  
             		redirect('user');
@@ -374,6 +375,7 @@ class User extends CI_Controller {
        ];
 
        $this->db->insert('form', $data);
+       $this->db->insert('formall',['nama_formall' => $this->input->post('nama'),'nomor_formall' => $this->input->post('nomor',TRUE)]);
        $this->Waapi->kirimWablas($this->input->post('nomor'), 'Assalamualaikum '.$this->input->post('nama').' Terima Kasih Anda Sudah Mendaftar Event '. $this->input->post('judul'));
        redirect('Acara-Detail/'. $this->input->post('slug'));
 

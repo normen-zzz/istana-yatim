@@ -80,9 +80,7 @@
             </div>
             <div class="modal-body">
              <?php echo form_open_multipart('cms/tambahslidefotoAct'); ?>
-             <div class="alert alert-info">
-                      <b>Perhatian!</b> Harap Masukan Foto Dengan Maksimal Ukuran 1,8MB.
-                    </div>
+            
              <div class="form-group">
                       <label>File</label>
                       <input type="file" name="filefoto" class="form-control" required>

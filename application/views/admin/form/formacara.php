@@ -11,7 +11,7 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Form</h1>
+            <h1>Form Acara</h1>
           </div>
           <div class="row">
               <div class="col">
@@ -19,7 +19,7 @@
                 <button style="margin-bottom: 20px" data-toggle="modal" data-target="#linkModal" class="btn btn-primary">Kirim Pemberitahuan + foto</button>
                 <div class="card">
                   <div class="card-header">
-                    <h4>List All Form</h4>
+                    <h4>List Form</h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -29,7 +29,7 @@
                           <th>Nama</th>
                           <th>Nomor</th>
                           <th>Jenis Kelamin</th>
-                          <th>Action</th>
+                          <!-- <th>Action</th> -->
                         </tr>
                         
                         <?php foreach ($form as $f) { ?>
@@ -38,7 +38,7 @@
                           <td><?= $f['nama_form'] ?></td>
                           <td><?= $f['nomor_form'] ?></td>
                           <td><?= $f['kelamin_form'] ?></td>
-                          <td> <a href="" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td>
+                          <!-- <td> <a href="" class="btn btn-success">Ubah</a> <a style="color: white" onclick="confir()"   class="btn btn-danger" >Hapus</a></td> -->
                         </tr>
                      <?php } ?>
                         
@@ -87,6 +87,7 @@
              
              <div class="form-group">
                       <label>Teks</label>
+                      <p>Assalamu'alaikum warahmatullahi wabarakatuh, Yang terhormat Bp/ibu (nama)</p>
                       <textarea style="height: 200px" name="text" class="form-control" placeholder="isi disini" ></textarea><br/>
                     </div>
 
@@ -117,13 +118,19 @@
              
              <div class="form-group">
                       <label>Pesan</label>
-                      <input type="text" name="pesan" placeholder="Isi disini" class="form-control">
+                      <p>Assalamu'alaikum warahmatullahi wabarakatuh, Yang terhormat Bp/ibu (nama)</p>
+                      <textarea style="height: 200px" name="pesan" class="form-control" placeholder="isi disini" ></textarea><br/>
                     </div>
 
-              <div class="form-group">
+                    <div class="form-group">
+                      <label for="filefoto">Masukan Foto</label>
+                      <input type="file" name="filefoto">
+                    </div>
+
+             <!--  <div class="form-group">
                       <label>Link Foto</label>
                       <input type="text" name="link" placeholder="Http://...." class="form-control">
-                    </div>
+                    </div> -->
 
 
           </div>

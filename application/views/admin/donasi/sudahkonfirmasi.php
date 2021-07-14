@@ -129,7 +129,7 @@
             <select name ="bank" class="form-control">
               <option selected>Pilih Bank</option>
               <?php foreach ($bank as $b) { ?>
-                <option value="<?= $b['id_bank'] ?>"><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama'] ?></option>
+                <option value="<?= $b['id_bank'] ?>"><?= $b['bank'] ?> <?= $b['norek'] ?> A/n <?= $b['nama_bank'] ?></option>
               <?php } ?>
             </select>
 

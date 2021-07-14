@@ -20,7 +20,9 @@
              
             </div>
           </div>
+           <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Acara</button>
         </form>
+
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="<?= base_url('assets/images/admin/'). $user['foto_pengurus'] ?>" class="rounded-circle mr-1">

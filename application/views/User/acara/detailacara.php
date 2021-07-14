@@ -40,22 +40,25 @@
                     <input type="text" name="slug" value="<?= $acara->slug_acara ?>" hidden>
                     <label for="nama" style="margin-right: 5px;"><strong>Nama</strong>
                         <input class="form-control" type="text" name="nama"></label>
-                    <label for="kelamin" style="margin-right: 5px;"><strong>Jenis Kelamin</strong>
-                        <input class="form-control" type="text" name="kelamin"></label>
-                    <label for="nomor" style="margin-right: 5px;"><strong>No. Whatsapp</strong><br>
+                           <select name ="kelamin">
+                            <option selected>Pilih Jenis Kelamin</option>
+                                <option value="laki">Laki-Laki</option>
+                                <option value="perempuan">Perempuan</option>
+                      </select>
+                      <label for="nomor" style="margin-right: 5px;"><strong>No. Whatsapp</strong><br>
                         <input class="form-control" type="text" placeholder="08123445xxx" name="nomor"></label>
-                    <div class="form-row">
-                        <div class="col" style="padding-top: 9px;"><button class="btn btn-primary" type="submit">Tambah</button></div>
-                    </div>
-                </form>
+                        <div class="form-row">
+                            <div class="col" style="padding-top: 9px;"><button class="btn btn-primary" type="submit">Tambah</button></div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <?php $this->load->view('user/template/footer'); ?>
-    <script src="<?= base_url('assets/user/') ?>js/jquery.min.js"></script>
-    <script src="<?= base_url('assets/user/') ?>bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="<?= base_url('assets/user/') ?>js/script.min.js"></script>
-</body>
+        <?php $this->load->view('user/template/footer'); ?>
+        <script src="<?= base_url('assets/user/') ?>js/jquery.min.js"></script>
+        <script src="<?= base_url('assets/user/') ?>bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script src="<?= base_url('assets/user/') ?>js/script.min.js"></script>
+    </body>
 
-</html>
+    </html>

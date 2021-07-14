@@ -40,6 +40,7 @@
           <li><a class="nav-link" href="<?= base_url('donasi/sudahkonfirmasi') ?>">Sudah Terkonfirmasi</a></li>
           <!-- <li><a class="nav-link" href="#">Grafik</a></li> -->
           <li><a class="nav-link" href="<?= base_url('donasi/pengeluaran_donasi') ?>">Pengeluaran</a></li>
+
         </ul>
       </li>
 
@@ -48,7 +49,13 @@
 
       <li class="menu-header">Master Event</li>
       <li><a class="nav-link" href="<?= base_url('Acara') ?>"><i class="fas fa-pencil-ruler"></i> <span>Master Acara</span></a></li>
-      <li><a class="nav-link" href="<?= base_url('Form') ?>"><i class="fas fa-pencil-ruler"></i> <span>Master Form</span></a></li>
+      <!-- <li><a class="nav-link" href="<?= base_url('Form') ?>"><i class="fas fa-pencil-ruler"></i> <span>Master Form Acara</span></a></li> -->
+
+      <li class="menu-header">Master Form</li>
+      <li><a class="nav-link" href="<?= base_url('Form') ?>"><i class="fas fa-pencil-ruler"></i> <span>Master Form Acara</span></a></li>
+      <li><a class="nav-link" href="<?= base_url('Form/formdonasi') ?>"><i class="fas fa-pencil-ruler"></i> <span>Master Form Donasi</span></a></li>
+      <li><a class="nav-link" href="<?= base_url('Form/formall') ?>"><i class="fas fa-pencil-ruler"></i> <span>Master All Form</span></a></li>
+
 
 
       <li class="menu-header">Master Administrator</li>
