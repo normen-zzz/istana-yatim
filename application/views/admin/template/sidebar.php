@@ -1,10 +1,10 @@
  <div class="main-sidebar">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-      <a href="index.html">Sipena</a>
+      <a href="<?= base_url('Admin') ?>">Sipena</a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-      <a href="index.html">Sp</a>
+      <a href="<?= base_url('Admin') ?>">Sp</a>
     </div>
     <ul class="sidebar-menu">
       <li class="menu-header">Master CMS</li>

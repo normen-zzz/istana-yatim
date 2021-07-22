@@ -8,7 +8,7 @@ class Waapi extends CI_Model
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-      CURLOPT_URL => 'https://whatsapp-istanayatim.herokuapp.com/send-message',
+      CURLOPT_URL => 'https://whatsapp-istana-yatim.herokuapp.com/send-message',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -27,11 +27,10 @@ class Waapi extends CI_Model
 
   public function kirimWablasfile($phone,$msg,$file){
 
-
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-      CURLOPT_URL => 'https://whatsapp-istanayatim.herokuapp.com/send-media',
+      CURLOPT_URL => 'https://whatsapp-istana-yatim.herokuapp.com/send-media',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -39,7 +38,7 @@ class Waapi extends CI_Model
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => 'POST',
-      CURLOPT_POSTFIELDS => array('number' => $phone,'caption' => $msg,'file' => 'https://istanayatim.000webhostapp.com/assets/images/wa/'.$file),
+      CURLOPT_POSTFIELDS => array('number' => $phone,'caption' => $msg,'file' => './assets/images/wa/'.$file),
     ));
 
     $response = curl_exec($curl);

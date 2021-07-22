@@ -1,11 +1,13 @@
 <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
+
         <form class="form-inline mr-auto">
           <ul class="navbar-nav mr-3">
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
-          <div class="search-element">
+          <a href="https://whatsapp-istana-yatim.herokuapp.com/" target="_blank" class="btn-success" style="padding: 10px;">Whatsapp Api</a>
+          <!-- <div class="search-element">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             <div class="search-backdrop"></div>
@@ -19,8 +21,8 @@
               </div>
              
             </div>
-          </div>
-           <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Acara</button>
+          </div> -->
+           <!-- <button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Acara</button> -->
         </form>
 
         <ul class="navbar-nav navbar-right">
