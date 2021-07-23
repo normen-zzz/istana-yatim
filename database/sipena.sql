@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2021 at 05:10 PM
+-- Generation Time: Jul 23, 2021 at 09:12 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -113,7 +113,7 @@ CREATE TABLE `ceritasantri` (
 --
 
 INSERT INTO `ceritasantri` (`id_ceritasantri`, `tgl_ceritasantri`, `judul_ceritasantri`, `isi_ceritasantri`, `img_ceritasantri`, `jenis_ceritasantri`, `penulis_ceritasantri`, `lihat_ceritasantri`, `slug_ceritasantri`) VALUES
-(1, '2021-05-28 17:47:35', 'testing', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Why do we use it?</h2>\r\n\r\n<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\r\n', '4d71eeb89c83892791335eed313318e3.jpg', 'testing', 'testing', 0, 'testing');
+(1, '2021-05-28 17:47:35', 'testing', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Why do we use it?</h2>\r\n\r\n<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\r\n', '4d71eeb89c83892791335eed313318e3.jpg', 'testing', 'testing', 1, 'testing');
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ CREATE TABLE `donasi` (
   `tanggal` datetime NOT NULL,
   `nama` varchar(100) CHARACTER SET latin1 NOT NULL,
   `nowa` varchar(150) CHARACTER SET latin1 NOT NULL,
-  `jumlah` double NOT NULL,
+  `jumlah` int(20) NOT NULL,
   `bukti` varchar(100) CHARACTER SET latin1 NOT NULL,
   `konfirmasi` int(10) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -137,44 +137,12 @@ CREATE TABLE `donasi` (
 --
 
 INSERT INTO `donasi` (`id_donasi`, `id_bank`, `tanggal`, `nama`, `nowa`, `jumlah`, `bukti`, `konfirmasi`) VALUES
-(1, 1, '2021-08-01 13:35:27', 'Alif', '089656754367', 100000, 'e7d2d08fe76950c70e066608bc5052cb.jpeg', 1),
-(2, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(3, 1, '2021-08-01 13:35:27', 'Alif', '089656754367', 100000, 'e7d2d08fe76950c70e066608bc5052cb.jpeg', 1),
-(4, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(5, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(6, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(8, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(9, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(10, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(11, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(12, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(13, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(14, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(15, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(16, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(17, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(18, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(19, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(20, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(21, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(22, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(23, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(24, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1),
-(25, 1, '2021-06-01 13:44:31', 'Norman', '085697780467', 100000, '07581a72e52117aca57d6b84ffd5d3c2.png', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `donatur`
---
-
-CREATE TABLE `donatur` (
-  `id_donatur` int(8) NOT NULL,
-  `nama_donatur` varchar(20) NOT NULL,
-  `email_donatur` text NOT NULL,
-  `password_donatur` text NOT NULL,
-  `role` int(11) NOT NULL DEFAULT '2'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(1, 1, '2021-06-23 17:54:15', 'asep', '089630961982', 100000, 'df371091164a0e271a9cf1ae811a0c28.jpg', 1),
+(2, 1, '2021-06-23 17:54:59', 'asep', '089630961982', 100000, 'fc2fc8f38657fa126ea114f372d2ebda.jpg', 1),
+(3, 1, '2021-06-23 17:55:34', 'Normen', '085697780467', 100000, '9461ee916957d0e5ba0d0b708fef3fa5.jpg', 1),
+(4, 1, '2021-06-23 18:15:57', 'kateman', '085697780467', 100000, '111912cb460670bb1a882631f4884832.jpg', 1),
+(5, 1, '2021-06-23 18:16:23', 'kateman', '085697780467', 100000, '3c8a85bce28fafdf1cce7bbf9b2e5064.jpg', 1),
+(6, 1, '2021-06-23 18:20:20', 'kateman', '085697780467', 100000, '43511e3c868d6e65aaa97b4b83450515.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -216,34 +184,32 @@ CREATE TABLE `form` (
 --
 
 INSERT INTO `form` (`id_form`, `nama_form`, `nomor_form`, `kelamin_form`, `acara_form`) VALUES
-(1, 'normen', '085697780467', 'laki', 2),
-(2, 'norman', '085697780467', 'laki', 1),
-(3, 'assss', '085697780467', 'laki', 1);
+(1, 'asep', '089630961982', 'laki', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
+-- Table structure for table `formall`
 --
 
-CREATE TABLE `menu` (
-  `id_menu` int(11) NOT NULL,
-  `judul_menu` varchar(30) NOT NULL,
-  `text_menu` varchar(40) NOT NULL,
-  `tombol_menu` varchar(30) NOT NULL,
-  `link` varchar(30) NOT NULL,
-  `tgl_menu` datetime DEFAULT NULL,
-  `img_menu` varchar(100) NOT NULL
+CREATE TABLE `formall` (
+  `id_formall` int(11) NOT NULL,
+  `nama_formall` varchar(30) NOT NULL,
+  `nomor_formall` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `menu`
+-- Dumping data for table `formall`
 --
 
-INSERT INTO `menu` (`id_menu`, `judul_menu`, `text_menu`, `tombol_menu`, `link`, `tgl_menu`, `img_menu`) VALUES
-(1, 'Berkah', 'Bersemangat Sedekah', 'Selengkapnya', 'artikel', '2021-05-15 12:11:41', 'c409d756c49be45968754a89ed8d186f.png'),
-(2, 'Cerita Santri', 'Berisi Tentang Cerita Para Santri', 'Selengkapnya', '', '2021-04-16 13:44:47', '9d8f4fcb06e48abebe45cb60b0200205.png'),
-(3, 'Acara', 'Isinya Acara', 'Selengkapnya', 'acara', '2021-04-27 19:48:54', '9d8f4fcb06e48abebe45cb60b0200205.png');
+INSERT INTO `formall` (`id_formall`, `nama_formall`, `nomor_formall`) VALUES
+(1, 'asep', '089630961982'),
+(2, 'asep', '089630961982'),
+(3, 'asep', '089630961982'),
+(4, 'Normen', '085697780467'),
+(5, 'kateman', '085697780467'),
+(6, 'kateman', '085697780467'),
+(7, 'kateman', '085697780467');
 
 -- --------------------------------------------------------
 
@@ -270,14 +236,6 @@ CREATE TABLE `pengeluaran_donasi` (
   `img_pengeluaran` varchar(60) NOT NULL,
   `ket` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pengeluaran_donasi`
---
-
-INSERT INTO `pengeluaran_donasi` (`id_pengeluaran`, `tanggal_pengeluaran`, `judul_pengeluaran`, `jumlah_pengeluaran`, `img_pengeluaran`, `ket`) VALUES
-(1, '2021-05-30 16:36:49', 'test', 100000, '4abd28b10aff9a5db4118519dd5faf40.jpeg', 'test'),
-(2, '2021-06-01 16:34:56', 'test', 60000, '0a1ab4a76698712cb0eef8843aae78d8.jpeg', 'coba');
 
 -- --------------------------------------------------------
 
@@ -340,8 +298,8 @@ CREATE TABLE `slidefoto` (
 --
 
 INSERT INTO `slidefoto` (`id_slidefoto`, `img_slidefoto`, `tgl_slidefoto`) VALUES
-(1, '4c5fbc3b5402aa9ae2d1ec77458813cc.png', '2021-05-28 16:38:04'),
-(2, '3658f0a573da4c6470a1fd66308d3118.png', '2021-05-24 14:04:14');
+(1, '021d9d955ce12a2b3e6e81b723f5c808.png', '2021-06-14 04:52:33'),
+(2, '53c0c8227e658bd45408c9eb3c15d561.jpg', '2021-06-14 05:31:24');
 
 -- --------------------------------------------------------
 
@@ -379,7 +337,7 @@ CREATE TABLE `update_donasi` (
 --
 
 INSERT INTO `update_donasi` (`id_update`, `jumlah_update`, `tanggal_update`) VALUES
-(1, 140000, '2021-05-22 11:49:11');
+(1, 500000, '2021-05-22 11:49:11');
 
 -- --------------------------------------------------------
 
@@ -437,12 +395,6 @@ ALTER TABLE `donasi`
   ADD PRIMARY KEY (`id_donasi`);
 
 --
--- Indexes for table `donatur`
---
-ALTER TABLE `donatur`
-  ADD PRIMARY KEY (`id_donatur`);
-
---
 -- Indexes for table `footer`
 --
 ALTER TABLE `footer`
@@ -455,10 +407,10 @@ ALTER TABLE `form`
   ADD PRIMARY KEY (`id_form`);
 
 --
--- Indexes for table `menu`
+-- Indexes for table `formall`
 --
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id_menu`);
+ALTER TABLE `formall`
+  ADD PRIMARY KEY (`id_formall`);
 
 --
 -- Indexes for table `metode`
@@ -540,13 +492,7 @@ ALTER TABLE `ceritasantri`
 -- AUTO_INCREMENT for table `donasi`
 --
 ALTER TABLE `donasi`
-  MODIFY `id_donasi` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT for table `donatur`
---
-ALTER TABLE `donatur`
-  MODIFY `id_donatur` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_donasi` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `footer`
@@ -558,19 +504,19 @@ ALTER TABLE `footer`
 -- AUTO_INCREMENT for table `form`
 --
 ALTER TABLE `form`
-  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `menu`
+-- AUTO_INCREMENT for table `formall`
 --
-ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `formall`
+  MODIFY `id_formall` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pengeluaran_donasi`
 --
 ALTER TABLE `pengeluaran_donasi`
-  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pengurus`
