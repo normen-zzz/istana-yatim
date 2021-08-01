@@ -181,16 +181,19 @@
              <div class="form-group">
               <label>Nama</label>
               <input type="text" name="nama" class="form-control" required>
+              <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
             </div>
 
             <div class="form-group">
               <label>No Whatssapp</label>
               <input type="text" name="nowa" class="form-control" placeholder="" required>
+              <?= form_error('nowa', '<small class="text-danger">', '</small>'); ?>
             </div>
 
             <div class="form-group">
               <label>Jumlah</label>
               <input type="text" name="jumlah" class="form-control">
+              <?= form_error('jumlah', '<small class="text-danger">', '</small>'); ?>
             </div>
 
             <div class="form-group">
@@ -370,6 +373,14 @@
   </script>
 <?php endif;?>
 </body>
+<script type="text/javascript">
+<?php if( $modal == 'ada' ){
+?>
+    $('#exampleModal').modal('show');
+<?php 
+}
+?>
+</script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
