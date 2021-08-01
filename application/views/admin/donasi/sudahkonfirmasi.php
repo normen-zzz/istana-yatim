@@ -111,17 +111,20 @@
            <div class="form-group">
             <label>Nama</label>
             <input type="" name="nama" class="form-control" required="">
+            <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
           </div>
 
           <div class="form-group">
             <label>No Wa</label>
             <input type="" name="nowa" class="form-control" required="">
+            <?= form_error('nowa', '<small class="text-danger">', '</small>'); ?>
           </div>
 
 
           <div class="form-group">
             <label>Jumlah</label>
             <input type="" name="jumlah" class="form-control">
+            <?= form_error('jumlah', '<small class="text-danger">', '</small>'); ?>
           </div>
 
           <div class="form-group">
@@ -181,6 +184,15 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.0.3/js/dataTables.dateTime.min.js"></script>
+
+<script type="text/javascript">
+<?php if( $modal == 'ada' ){
+?>
+    $('#exampleModal').modal('show');
+<?php 
+}
+?>
+</script>
 
 
 

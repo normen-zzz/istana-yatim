@@ -85,19 +85,45 @@ class Donasi extends CI_Controller {
         $this->load->view('admin/donasi/sudahkonfirmasi',$data);
     }
 
-    public function tambahdonasi()
-    {
-        $data['title'] = 'Tambah Donasi';
-        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-        $this->load->view('admin/donasi/tambahdonasi',$data);
-    }
+
 
     public function tambahdonasiAct()
     {
         $this->load->model('M_donasi');
         $this->load->model('Waapi');
+
+        $this->load->model('M_bank');
+        $data['title'] = 'Tambah Donasi';
+        $data['nama'] = '';
+        $data['tombol'] = '<button style="margin-bottom: 20px" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Tambah Donasi</button>';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['donasi'] = $this->M_donasi->joinBank(['konfirmasi' => 1])->result_array();
+        $data['bank'] = $this->M_bank->tampil_data()->result_array();
         $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
-        $penjumlahan = $data['update_donasi']['jumlah_update'] + $this->input->post('jumlah',TRUE);
+        $data['modal'] = 'ada';
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim|min_length[4]', [
+            'required' => 'Harap isi kolom nama.',
+            'min_length' => 'Nama terlalu pendek.',
+        ]);
+
+        $this->form_validation->set_rules('nowa', 'Nowa', 'required|numeric|xss_clean', [
+            'required' => 'Harap isi kolom nowa.',
+            'numeric' => 'Harap Isi dengan Angka'
+        ]);
+
+        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|numeric|xss_clean', [
+            'required' => 'Harap isi kolom jumlah.',
+            'numeric' => 'Harap Isi dengan Angka'
+        ]);
+
+
+
+        if ($this->form_validation->run() == false) {
+
+            $this->load->view('admin/donasi/sudahkonfirmasi', $data);
+        } else {
+            $penjumlahan = $data['update_donasi']['jumlah_update'] + $this->input->post('jumlah',TRUE);
         $config['upload_path'] = './assets/images/donasi/'; //path folder
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
             $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
@@ -145,65 +171,90 @@ class Donasi extends CI_Controller {
                 redirect('donasi/tambahdonasi');
             }
         }
-        public function deletedonasibelumkonfirmasi($id)
-        {
-            $this->load->model('M_donasi');
-            $data['donasi'] = $this->M_donasi->donasiWhere(['id_donasi' => $this->uri->segment(3),'konfirmasi' => 0])->row_array();
-            $gambar_lama = $data['donasi']['bukti'];
-            unlink(FCPATH . 'assets/images/donasi/' . $gambar_lama);
-            $where = array('id_donasi' => $this->uri->segment(3));
-            $this->M_donasi->delete_donasi($where, 'donasi');
-            $this->session->set_flashdata('user-delete', 'berhasil');
-            redirect($_SERVER['HTTP_REFERER']);
-        }
+    }
+    public function deletedonasibelumkonfirmasi($id)
+    {
+        $this->load->model('M_donasi');
+        $data['donasi'] = $this->M_donasi->donasiWhere(['id_donasi' => $this->uri->segment(3),'konfirmasi' => 0])->row_array();
+        $gambar_lama = $data['donasi']['bukti'];
+        unlink(FCPATH . 'assets/images/donasi/' . $gambar_lama);
+        $where = array('id_donasi' => $this->uri->segment(3));
+        $this->M_donasi->delete_donasi($where, 'donasi');
+        $this->session->set_flashdata('user-delete', 'berhasil');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 
-         public function deletedonasisudahkonfirmasi($id)
-        {
-            $this->load->model('M_donasi');
-            $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
-            $data['donasi'] = $this->M_donasi->donasiWhere(['id_donasi' => $this->uri->segment(3),'konfirmasi' => 1])->row_array();
-            $penjumlahan = $data['update_donasi']['jumlah_update'] - $data['donasi']['jumlah'];
-            $gambar_lama = $data['donasi']['bukti'];
-            unlink(FCPATH . 'assets/images/donasi/' . $gambar_lama);
-            $where = array('id_donasi' => $this->uri->segment(3));
-            $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
-            $this->M_donasi->delete_donasi($where, 'donasi');
-            $this->session->set_flashdata('user-delete', 'berhasil');
-            redirect($_SERVER['HTTP_REFERER']);
-        }
-        public function pengeluaran_donasi()
-        {
-            $this->load->model('M_pengeluaran');
-            $data['tombol'] = '';
-            $data['title'] = 'Pengeluaran Donasi';
-            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-            $data['pengeluaran'] = $this->M_pengeluaran->tampil_data()->result_array();
+    public function deletedonasisudahkonfirmasi($id)
+    {
+        $this->load->model('M_donasi');
+        $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
+        $data['donasi'] = $this->M_donasi->donasiWhere(['id_donasi' => $this->uri->segment(3),'konfirmasi' => 1])->row_array();
+        $penjumlahan = $data['update_donasi']['jumlah_update'] - $data['donasi']['jumlah'];
+        $gambar_lama = $data['donasi']['bukti'];
+        unlink(FCPATH . 'assets/images/donasi/' . $gambar_lama);
+        $where = array('id_donasi' => $this->uri->segment(3));
+        $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
+        $this->M_donasi->delete_donasi($where, 'donasi');
+        $this->session->set_flashdata('user-delete', 'berhasil');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function pengeluaran_donasi()
+    {
+        $this->load->model('M_pengeluaran');
+        $data['tombol'] = '';
+        $data['title'] = 'Pengeluaran Donasi';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['pengeluaran'] = $this->M_pengeluaran->tampil_data()->result_array();
 
-            $this->load->view('admin/donasi/pengeluarandonasi',$data);
-        }
+        $this->load->view('admin/donasi/pengeluarandonasi',$data);
+    }
 
-        public function pengeluaran_donasifilter()
-        {
-            $this->load->model('M_pengeluaran');
-            $filter = $this->input->post('filter');
-            $data['tombol'] = '';
-            $data['title'] = 'Pengeluaran Donasi';
-            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-            $data['pengeluaran'] = $this->M_pengeluaran->pengeluaranfilter($filter)->result_array();
+    public function pengeluaran_donasifilter()
+    {
+        $this->load->model('M_pengeluaran');
+        $filter = $this->input->post('filter');
+        $data['tombol'] = '';
+        $data['title'] = 'Pengeluaran Donasi';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['pengeluaran'] = $this->M_pengeluaran->pengeluaranfilter($filter)->result_array();
 
-            $this->load->view('admin/donasi/pengeluarandonasi',$data);
-        }
-        public function tambahpengeluaran()
-        {
-            $data['title'] = 'Tambah Pengeluaran Donasi';
-            $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
-            $this->load->view('admin/donasi/tambahpengeluaran',$data);
-        }
+        $this->load->view('admin/donasi/pengeluarandonasi',$data);
+    }
+    public function tambahpengeluaran()
+    {
+        $data['title'] = 'Tambah Pengeluaran Donasi';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $this->load->view('admin/donasi/tambahpengeluaran',$data);
+    }
 
 
-        public function tambahpengeluaranAct(){
-            $this->load->model('M_donasi');
-            $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
+    public function tambahpengeluaranAct(){
+        $this->load->model('M_donasi');
+        $this->load->model('M_pengeluaran');
+        $data['tombol'] = '';
+        $data['title'] = 'Pengeluaran Donasi';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['pengeluaran'] = $this->M_pengeluaran->tampil_data()->result_array();
+        $data['update_donasi'] = $this->db->get('update_donasi')->row_array();
+        $data['modal'] = 'ada';
+        
+
+        $this->form_validation->set_rules('judul_pengeluaran', 'Judul_pengeluaran', 'required|trim|min_length[4]', [
+            'required' => 'Harap isi kolom judul.',
+            'min_length' => 'judul terlalu pendek.',
+        ]);
+
+        $this->form_validation->set_rules('jumlah_pengeluaran', 'Jumlah_pengeluaran', 'required|numeric|xss_clean', [
+            'required' => 'Harap isi kolom jumlah.',
+            'numeric' => 'Harap Isi dengan Angka'
+        ]);
+
+
+
+        if ($this->form_validation->run() == false) {
+
+            $this->load->view('admin/donasi/pengeluarandonasi', $data);
+        } else {
             $penjumlahan = $data['update_donasi']['jumlah_update'] - $this->input->post('jumlah_pengeluaran');
 
             $config['upload_path'] = './assets/images/pengeluarandonasi/'; //path folder
@@ -246,6 +297,7 @@ class Donasi extends CI_Controller {
             }else{
                 redirect('donasi/tambahpengeluaran');
             }
+        }
         }
 
         public function ubahpengeluaran()

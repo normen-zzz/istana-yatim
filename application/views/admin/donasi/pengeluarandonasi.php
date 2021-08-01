@@ -116,11 +116,13 @@
               <div class="form-group">
                       <label>Judul</label>
                       <input type="" name="judul_pengeluaran" class="form-control" required="">
+                      <?= form_error('judul_pengeluaran', '<small class="text-danger">', '</small>'); ?>
                     </div>
 
                     <div class="form-group">
                       <label>Jumlah</label>
                       <input type="" name="jumlah_pengeluaran" class="form-control" required="">
+                      <?= form_error('jumlah_pengeluaran', '<small class="text-danger">', '</small>'); ?>
                     </div>
 
                     <div class="form-group">
@@ -158,6 +160,15 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.0.3/js/dataTables.dateTime.min.js"></script>
+
+<script type="text/javascript">
+<?php if( $modal == 'ada' ){
+?>
+    $('#exampleModal').modal('show');
+<?php 
+}
+?>
+</script>
 
 
 <script>
