@@ -58,9 +58,9 @@ class Admin extends CI_Controller {
             'min_length' => 'Alamat terlalu pendek.',
         ]);
 
-        $this->form_validation->set_rules('nomor', 'Nomor', 'required|trim|min_length[10]', [
-            'required' => 'Harap isi kolom Nomor Telepon.',
-            'min_length' => 'Nomor Telepon terlalu pendek.',
+         $this->form_validation->set_rules('nomor', 'Nomor', 'required|regex_match[/^[0-9]{13}$/]', [
+            'required' => 'Harap isi kolom Nomor.',
+            'regex_match' => 'Nomor tidak Valid'
         ]);
 
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[pengurus.email_pengurus]', [
@@ -138,6 +138,76 @@ class Admin extends CI_Controller {
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
         $data['admin'] = $this->M_admin->adminWhere(['id_pengurus' => $this->uri->segment(3)])->row_array();
         $this->load->view('admin/ubahadmin', $data);
+    }
+
+    public function ubahadminAct()
+        {
+            $this->load->model('M_admin');
+            
+            $id = $this->input->post('id',true);
+            $judul = $this->input->post('judul');
+            $title = trim(strtolower($judul));
+            $out = explode(" ",$title);
+            $slug = implode("-",$out);
+            $jenis = $this->input->post('jenis');
+            $penulis = $this->input->post('penulis');
+            $berkah = $this->input->post('berkah');
+            $gambar = $_FILES['filefoto']['name'];
+            $data['berkah'] = $this->M_berkah->berkahWhere(['id_berkah' => $id])->row_array();
+
+            
+
+        $config['upload_path'] = './assets/images/admin/'; //path folder
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+        $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
+
+        $this->upload->initialize($config);
+        $gambarLama = $data['berkah']['img_berkah'];
+        //berhasil
+        if ($this->upload->do_upload('filefoto')) {
+
+
+            unlink(FCPATH . 'assets/images/berkah/' . $gambarLama);
+            $gambarBaru = $this->upload->data();
+            // unlink(FCPATH . 'assets/images/berkah/' . $gambar_lama);
+            $config['image_library']='gd2';
+            $config['source_image']='./assets/images/berkah/'.$gambarBaru['file_name'];
+            $config['create_thumb']= FALSE;
+            $config['maintain_ratio']= FALSE;
+            $config['quality']= '60%';
+            $config['width']= 710;
+            $config['height']= 420;
+            $config['new_image']= './assets/images/berkah/'.$gambarBaru['file_name'];
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
+            $gbr = $gambarBaru['file_name'];
+            // $this->db->set('artikel_img', $gambarBaru);
+        } 
+
+        else{
+            $gbr = $gambarLama;
+        }
+
+
+        $where = array(
+            'id_berkah' => $id,
+        );
+
+        $data = array(
+            'id_berkah' => $id,
+            'tgl_berkah' => date("Y-m-d H:i:s"),
+            'judul_berkah' => $judul,
+            'isi_berkah' => $berkah,
+            'img_berkah' => $gbr,
+            'jenis_berkah' => $jenis,
+            'penulis_berkah' => $penulis,
+            'slug_berkah' => $slug,
+
+        );
+
+        $this->M_berkah->update_data($where, $data, 'berkah');
+        $this->session->set_flashdata('success-edit', 'berhasil');
+        redirect('berkah');
     }
 
 

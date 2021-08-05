@@ -216,6 +216,31 @@ public function pemberitahuanfile()
 
      public function tambahformallAct()
     {
+
+        $this->load->model('M_donasi');
+        $this->load->model('M_form');
+        $data['title'] = 'Form Acara';
+        $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array();
+        $data['donasi'] = $this->M_donasi->duplikatdonasi()->result_array();
+        $data['form'] = $this->M_form->duplikatFormall()->result_array();
+        $data['modal'] = 'ada';
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim|min_length[4]', [
+            'required' => 'Harap isi kolom nama.',
+            'min_length' => 'nama terlalu pendek.',
+        ]);
+
+        $this->form_validation->set_rules('nomor', 'Nomor', 'required|regex_match[/^[0-9]{13}$/]', [
+            'required' => 'Harap isi kolom Nomor.',
+            'regex_match' => 'Nomor tidak Valid'
+        ]);
+
+
+
+        if ($this->form_validation->run() == false) {
+
+            $this->load->view('admin/form/formall', $data);
+        } else {
         $data = [
            'nama_formall' => $this->input->post('nama'),
            'nomor_formall' => $this->input->post('nomor', true),
@@ -226,6 +251,7 @@ public function pemberitahuanfile()
        redirect($_SERVER['HTTP_REFERER']);
 
    }
+}
 
 
     public function pemberitahuanall()

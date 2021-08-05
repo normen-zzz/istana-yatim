@@ -103,12 +103,14 @@
        <div class="form-group">
         <label>Nama</label>
         <input type="text" name="nama" class="form-control" required="">
+        <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
 
       </div>
 
       <div class="form-group">
         <label>Nomor</label>
         <input type="text" name="nomor" class="form-control" required="">
+        <?= form_error('nomor', '<small class="text-danger">', '</small>'); ?>
 
       </div>
 
@@ -194,5 +196,14 @@
                   }
                 });
             }
+          </script>
+
+          <script type="text/javascript">
+            <?php if( $modal == 'ada' ){
+              ?>
+              $('#tambahformall').modal('show');
+              <?php 
+            }
+            ?>
           </script>
 
