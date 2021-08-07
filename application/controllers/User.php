@@ -349,9 +349,9 @@ class User extends CI_Controller {
             'min_length' => 'nama terlalu pendek.',
         ]);
 
-        $this->form_validation->set_rules('nowa', 'Nowa', 'required|regex_match[/^[0-9]{13}$/]', [
+        $this->form_validation->set_rules('nowa', 'Nowa', 'required|numeric', [
             'required' => 'Harap isi kolom Nomor.',
-            'regex_match' => 'Nomor tidak Valid'
+            'numeric' => 'Nomor tidak Valid'
         ]);
 
          $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|numeric|xss_clean', [
@@ -437,9 +437,9 @@ class User extends CI_Controller {
             'min_length' => 'nama terlalu pendek.',
         ]);
 
-        $this->form_validation->set_rules('nomor', 'Nomor', 'required|regex_match[/^[0-9]{13}$/]', [
+        $this->form_validation->set_rules('nomor', 'Nomor', 'required|numeric', [
             'required' => 'Harap isi kolom Nomor.',
-            'regex_match' => 'Nomor tidak Valid'
+            'numeric' => 'Nomor tidak Valid'
         ]);
 
 
