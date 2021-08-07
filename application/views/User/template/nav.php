@@ -7,7 +7,7 @@
           <li class="nav-item"></li>
           <li class="nav-item"></li>
         </ul><span class="navbar-text actions"> 
-        <!-- <a target="_blank" data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Masuk</a> -->
+        <a target="_blank" data-bss-hover-animate="pulse" class="login" href="<?= base_url('Auth/admin') ?>">Masuk</a>
         <a class="btn btn-light action-button pulse animated infinite action-button" role="button"  href="<?= base_url('Home#donasi') ?>">Donasi</a></span>
       </div>
     </div>
