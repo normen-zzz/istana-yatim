@@ -54,6 +54,9 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
 
 
+// Admin
+$route['192.168.0.35'] = 'Auth/admin';
+
 //User
 $route['Info-Donasi'] = 'User/infodonasi'; // info donasi
 
