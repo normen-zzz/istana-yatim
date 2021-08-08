@@ -58,11 +58,10 @@ class Admin extends CI_Controller {
             'min_length' => 'Alamat terlalu pendek.',
         ]);
 
-         $this->form_validation->set_rules('nomor', 'Nomor', 'required|regex_match[/^[0-9]{13}$/]', [
+          /*$this->form_validation->set_rules('no_telp', 'No_telp', 'required|numeric', [
             'required' => 'Harap isi kolom Nomor.',
-            'regex_match' => 'Nomor tidak Valid'
-        ]);
-
+            'numeric' => 'Nomor tidak Valid' 
+        ]); */
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[pengurus.email_pengurus]', [
             'is_unique' => 'Email ini telah digunakan!',
             'required' => 'Harap isi kolom email.',
@@ -145,15 +144,14 @@ class Admin extends CI_Controller {
             $this->load->model('M_admin');
             
             $id = $this->input->post('id',true);
-            $judul = $this->input->post('judul');
-            $title = trim(strtolower($judul));
-            $out = explode(" ",$title);
-            $slug = implode("-",$out);
-            $jenis = $this->input->post('jenis');
-            $penulis = $this->input->post('penulis');
-            $berkah = $this->input->post('berkah');
+            $nama = $this->input->post('nama');
+            $tanggal = $this->input->post('tanggal');
+            $alamat = $this->input->post('alamat');
+            $nomor = $this->input->post('nomor');
             $gambar = $_FILES['filefoto']['name'];
-            $data['berkah'] = $this->M_berkah->berkahWhere(['id_berkah' => $id])->row_array();
+            $email=htmlspecialchars($email);
+            $password =password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+            $data['pengurus'] = $this->M_admin->adminWhere(['id_pengurus' => $id])->row_array();
 
             
 
@@ -162,22 +160,22 @@ class Admin extends CI_Controller {
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
 
         $this->upload->initialize($config);
-        $gambarLama = $data['berkah']['img_berkah'];
+        $gambarLama = $data['pengurus']['foto_pengurus'];
         //berhasil
         if ($this->upload->do_upload('filefoto')) {
 
 
-            unlink(FCPATH . 'assets/images/berkah/' . $gambarLama);
+            unlink(FCPATH . 'assets/images/admin/' . $gambarLama);
             $gambarBaru = $this->upload->data();
             // unlink(FCPATH . 'assets/images/berkah/' . $gambar_lama);
             $config['image_library']='gd2';
-            $config['source_image']='./assets/images/berkah/'.$gambarBaru['file_name'];
+            $config['source_image']='./assets/images/admin/'.$gambarBaru['file_name'];
             $config['create_thumb']= FALSE;
             $config['maintain_ratio']= FALSE;
             $config['quality']= '60%';
             $config['width']= 710;
             $config['height']= 420;
-            $config['new_image']= './assets/images/berkah/'.$gambarBaru['file_name'];
+            $config['new_image']= './assets/images/admin/'.$gambarBaru['file_name'];
             $this->load->library('image_lib', $config);
             $this->image_lib->resize();
             $gbr = $gambarBaru['file_name'];
@@ -190,24 +188,24 @@ class Admin extends CI_Controller {
 
 
         $where = array(
-            'id_berkah' => $id,
-        );
+            'id_pengurus' => $id,
+        );      
 
         $data = array(
-            'id_berkah' => $id,
-            'tgl_berkah' => date("Y-m-d H:i:s"),
-            'judul_berkah' => $judul,
-            'isi_berkah' => $berkah,
-            'img_berkah' => $gbr,
-            'jenis_berkah' => $jenis,
-            'penulis_berkah' => $penulis,
-            'slug_berkah' => $slug,
+            'id_pengurus' => $id,
+            'nm_pengurus' => $nama,
+            'tgllahir_pengurus' => $tanggal,
+            'alamat_pengurus' => $alamat,
+            'foto_pengurus' => $gbr,
+            'no_telp' => $nomor,
+            'email_pengurus' => $email,
+            'password_pengurus' => $password,
 
         );
 
-        $this->M_berkah->update_data($where, $data, 'berkah');
+        $this->M_admin->update_data($where, $data, 'pengurus');
         $this->session->set_flashdata('success-edit', 'berhasil');
-        redirect('berkah');
+        redirect('admin/listadmin');
     }
 
 

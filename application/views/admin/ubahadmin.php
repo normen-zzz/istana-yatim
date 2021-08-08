@@ -45,10 +45,7 @@
                     <input type="text" name="nomor" value="<?= $admin['no_telp'] ?>" class="form-control">
                   </div>
 
-                  <div class="form-group">
-                    <label>Alamat</label>
-                    <input type="text" name="alamat" value="<?= $admin['alamat_pengurus'] ?>" class="form-control">
-                  </div>
+                 
                   
 
                   <div class="form-group">
@@ -62,10 +59,7 @@
                     <input type="email" name="email" value="<?= $admin['email_pengurus'] ?>" class="form-control">
                   </div>
 
-                  <div class="form-group">
-                    <label>Alamat</label>
-                    <input type="text" name="alamat" value="<?= $admin['alamat_pengurus'] ?>" class="form-control">
-                  </div>
+                  
 
                   <div class="alert alert-info">
                       <b>Perhatian!</b> Kosongkan Password Jika Tidak Ingin Mengubah Password.
