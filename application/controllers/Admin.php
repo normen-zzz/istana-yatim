@@ -142,16 +142,22 @@ class Admin extends CI_Controller {
     public function ubahadminAct()
         {
             $this->load->model('M_admin');
-            
             $id = $this->input->post('id',true);
+            $data['pengurus'] = $this->M_admin->adminWhere(['id_pengurus' => $id])->row_array();
             $nama = $this->input->post('nama');
             $tanggal = $this->input->post('tanggal');
             $alamat = $this->input->post('alamat');
             $nomor = $this->input->post('nomor');
             $gambar = $_FILES['filefoto']['name'];
-            $email=htmlspecialchars($email);
-            $password =password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-            $data['pengurus'] = $this->M_admin->adminWhere(['id_pengurus' => $id])->row_array();
+            $email=$this->input->post('email');
+            if (!empty($this->input->post('password'))) {
+                $password =password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+            }
+
+        else {
+            $password = $data['pengurus']['password_pengurus'];
+        }
+            
 
             
 
@@ -198,14 +204,13 @@ class Admin extends CI_Controller {
             'alamat_pengurus' => $alamat,
             'foto_pengurus' => $gbr,
             'no_telp' => $nomor,
-            'email_pengurus' => $email,
+            'email_pengurus' => htmlspecialchars($email),
             'password_pengurus' => $password,
-
         );
 
         $this->M_admin->update_data($where, $data, 'pengurus');
         $this->session->set_flashdata('success-edit', 'berhasil');
-        redirect('admin/listadmin');
+        redirect('Admin/listadmin');
     }
 
 
