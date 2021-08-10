@@ -118,8 +118,8 @@ class Admin extends CI_Controller {
 
             // $this->_sendEmail($token, 'verify');
 
-            $this->session->set_flashdata('success-reg', 'Berhasil!');
-            redirect(base_url('admin'));
+            $this->session->set_flashdata('success-input', 'Berhasil!');
+            redirect(base_url('Admin/listadmin'));
             }else{  
                     redirect($_SERVER['HTTP_REFERER']);
                 }
@@ -179,8 +179,8 @@ class Admin extends CI_Controller {
             $config['create_thumb']= FALSE;
             $config['maintain_ratio']= FALSE;
             $config['quality']= '60%';
-            $config['width']= 710;
-            $config['height']= 420;
+            $config['width']= 700;
+            $config['height']= 700;
             $config['new_image']= './assets/images/admin/'.$gambarBaru['file_name'];
             $this->load->library('image_lib', $config);
             $this->image_lib->resize();

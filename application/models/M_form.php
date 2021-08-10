@@ -62,4 +62,13 @@ class M_form extends CI_Model
         $this->db->order_by('id_formall');
         return $this->db->get('formall');
     }
+
+    public function duplikatFormWhere($where){
+        $this->db->select('*');
+        $this->db->from('form');
+        $this->db->where($where);
+        $this->db->join('acara','acara.id_acara = form.acara_form'); 
+        $this->db->group_by('nomor_form');
+        return $this->db->get();
+    }
 }

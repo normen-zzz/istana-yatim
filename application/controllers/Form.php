@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
-
+setlocale(LC_TIME, "id_ID.UTF8");
 class Form extends CI_Controller {
 
 	public function __construct()
@@ -71,11 +71,13 @@ public function reminder()
     $this->load->model('M_form');
     $this->load->model('Waapi');
 
-    $orang = $this->db->get_where('form',['acara_form' => $this->uri->segment(3)])->result_array();
+    $orang = $this->M_form->duplikatFormWhere(['acara_form' => $this->uri->segment(3)])->result_array();
 
     foreach ($orang as $o) {
-        $this->Waapi->kirimWablas($o['nomor_form'], "Assalamu'alaikum warahmatullahi wabarakatuh, Yang terhormat Bp/ibu ".$o['nama_form'].' DIingatkan kembali untuk acara ');
+        $this->Waapi->kirimWablas($o['nomor_form'], "Assalamu'alaikum warahmatullahi wabarakatuh, Yang terhormat Bp/ibu ".$o['nama_form'].' Di ingatkan kembali untuk acara '. $o['nama_acara']. ' pada tanggal '. strftime("%A %d-%B-%Y %T", strtotime($o['tgl_acara'])). '. Diharapkan kehadiran dari Bp/ibu, Terima kasih atas perhatiannya Wassalamualaikum Warahmatullahi Wabarakatuh');
     }
+    $this->session->set_flashdata('success-input', 'berhasil');
+    redirect($_SERVER['HTTP_REFERER']);
 }
 
 

@@ -107,5 +107,22 @@
   <script src="<?= base_url('assets/') ?>js/custom.js"></script>
 
   <!-- Page Specific JS File -->
+
+  <!-- Sweetalert -->
+
+  <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <?php if ($this->session->flashdata('fail-login')): ?>
+  <script>
+    swal({
+      icon: 'error',
+      title: 'Gagal',
+      text: 'Username Atau Password salah',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  </script>
+<?php endif;?>
+
 </body>
 </html>
