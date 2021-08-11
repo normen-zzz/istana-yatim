@@ -217,7 +217,7 @@ class Admin extends CI_Controller {
     public function deleteadmin($id)
         {
             $this->load->model('M_admin');
-            $data['donasi'] = $this->M_admin->adminWhere(['id_pengurus' => $this->uri->segment(3)])->row_array();
+            $data['pengurus'] = $this->M_admin->adminWhere(['id_pengurus' => $this->uri->segment(3)])->row_array();
             $gambar_lama = $data['pengurus']['foto_pengurus'];
             unlink(FCPATH . 'assets/images/admin/' . $gambar_lama);
             $where = array('id_pengurus' => $this->uri->segment(3));
