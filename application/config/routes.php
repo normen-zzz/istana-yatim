@@ -57,7 +57,7 @@ $route['translate_uri_dashes'] = false;
 // Admin
 $route['192.168.0.35'] = 'admin/auth/admin';
 $route['auth'] = 'admin/auth/admin';
-$route['(:any)'] = 'admin/auth/admin';
+
 //User
 $route['info-donasi'] = 'user/infodonasi'; // info donasi
 
@@ -76,7 +76,6 @@ $route['ceritasantri-search'] = 'user/searchceritasantri'; //Cari Cerita Santri
 $route['acara-list'] = 'user/acara'; // List Acara
 $route['acara-detail/(:any)'] = 'user/detailacara';
 
-$route['tentang'] = 'user/tentang'; // Tentang
 
 $route['home'] = 'user';
 

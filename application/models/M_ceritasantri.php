@@ -7,6 +7,11 @@ class M_ceritasantri extends CI_Model
         return $this->db->get('ceritasantri');
     }
 
+    public function get_data()
+    {
+        return $this->db->get('ceritasantri')->result();
+    }
+
     function tampil_datalimit($limit, $start){
         return $this->db->get('ceritasantri', $limit, $start);
 

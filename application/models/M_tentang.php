@@ -7,6 +7,11 @@ class M_tentang extends CI_Model
         return $this->db->get('tentang');
     }
 
+    public function get_data()
+    {
+        return $this->db->get('tentang')->row();
+    }
+
     public function detail_tentang($id = null)
     {
         $query = $this->db->get_where('tentang', array('id' => $id))->row();
