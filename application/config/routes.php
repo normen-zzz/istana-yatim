@@ -49,33 +49,34 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:    my-controller/index    -> my_controller/index
 |        my-controller/my-method    -> my_controller/my_method
  */
-$route['default_controller'] = 'User';
+$route['default_controller'] = 'Home_page';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
 
 
 // Admin
-$route['192.168.0.35'] = 'Auth/admin';
-
+$route['192.168.0.35'] = 'admin/auth/admin';
+$route['auth'] = 'admin/auth/admin';
+$route['(:any)'] = 'admin/auth/admin';
 //User
-$route['Info-Donasi'] = 'User/infodonasi'; // info donasi
+$route['info-donasi'] = 'user/infodonasi'; // info donasi
 
-$route['Berkah-List'] = 'User/berkah';
-$route['Berkah-List/(:num)'] = 'User/berkah'; //list berkah
-$route['Berkah-Detail/(:any)'] = 'User/detailberkah'; //Detail Berkah
-$route['Berkah-Search'] = 'User/searchberkah'; //Search Berkah
-
-
-$route['Ceritasantri-List'] = 'User/ceritasantri'; //list Cerita Santri
-$route['Ceritasantri-List/(:num)'] = 'User/ceritasantri';
-$route['Ceritasantri-Detail/(:any)'] = 'User/detailceritasantri'; //Detail Ceritasantri
-$route['Ceritasantri-Search'] = 'User/searchceritasantri'; //Cari Cerita Santri
+$route['berkah-list'] = 'user/berkah';
+$route['berkah-list/(:num)'] = 'user/berkah'; //list berkah
+$route['berkah-detail/(:any)'] = 'user/detailberkah'; //Detail Berkah
+$route['berkah-search'] = 'user/searchberkah'; //Search Berkah
 
 
-$route['Acara-List'] = 'User/acara'; // List Acara
-$route['Acara-Detail/(:any)'] = 'User/detailacara';
+$route['ceritasantri-list'] = 'user/ceritasantri'; //list Cerita Santri
+$route['ceritasantri-list/(:num)'] = 'user/ceritasantri';
+$route['ceritasantri-detail/(:any)'] = 'user/detailceritasantri'; //Detail Ceritasantri
+$route['ceritasantri-search'] = 'user/searchceritasantri'; //Cari Cerita Santri
 
-$route['Tentang'] = 'User/tentang'; // Tentang
 
-$route['Home'] = 'User';
+$route['acara-list'] = 'user/acara'; // List Acara
+$route['acara-detail/(:any)'] = 'user/detailacara';
+
+$route['tentang'] = 'user/tentang'; // Tentang
+
+$route['home'] = 'user';
 

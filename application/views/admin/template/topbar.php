@@ -34,7 +34,7 @@
                 <i class="far fa-user"></i> Ubah Profile
               </a>
               <div class="dropdown-divider"></div>
-              <a onclick="return confirm('kamu yakin akan logout  ?');" href="<?= base_url('Auth/logout') ?>" class="dropdown-item has-icon text-danger">
+              <a onclick="return confirm('kamu yakin akan logout  ?');" href="<?= base_url('admin/auth/logout') ?>" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt" ></i> Logout
               </a>
             </div>

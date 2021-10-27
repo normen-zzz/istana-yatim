@@ -1,0 +1,189 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+:root {
+  --primary: #4e9f3d;
+}
+
+/* Navbar */
+#navbar {
+  padding: 20px 0px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  width: 100%;
+}
+
+#navbar .bt {
+  color: #000;
+}
+#navbar.scrolled {
+  background-color: #fff;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.bt:hover {
+  color: var(--primary) !important;
+  text-decoration: underline;
+}
+.active {
+  color: var(--primary) !important;
+}
+/* Navbar End */
+
+/* Hero */
+#hero {
+  color: var(--primary);
+}
+.hero-kiri {
+  background-image: url('../img/hero/Desain\ tanpa\ judul.svg');
+  background-size: cover;
+}
+#hero img {
+  background-size: cover;
+  height: 100%;
+  width: 80%;
+}
+.btn-kiri {
+  background-color: var(--primary);
+  color: #fff;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.btn-kiri:hover {
+  background-color: #fff;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.btn-kanan {
+  background-color: #fff;
+  color: var(--primary);
+  border-color: var(--primary);
+  font-weight: 500;
+  transition: 0.3s;
+}
+.btn-kanan:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+/* Hero End */
+
+/* Content */
+.judul {
+  color: var(--primary);
+}
+#content img,
+#content2 img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+.dropdown-content {
+  border: none;
+}
+/* Content End */
+
+/* Cerita */
+.card-cerita {
+  border-radius: 10px !important;
+  transition: 0.5s;
+}
+.card-cerita:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+/* Patner */
+#patner img {
+  width: 100%;
+  filter: grayscale(60%);
+  transition: 0.5s;
+}
+#patner img:hover {
+  filter: grayscale(0);
+}
+/* Patner End */
+
+/* Kontak */
+#kontak .bg-kontak {
+  background-image: url('../img/landing page/kontak/Rectangle\ 52.jpg');
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+#kontak .bg-kontak img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+/* Kontak End */
+
+@media only screen and (max-width: 991px) {
+  #hero img {
+    display: none;
+  }
+  .hero-kiri {
+    background-image: none;
+  }
+  .pembungkus-card {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .card-cerita p {
+    font-size: 12px;
+  }
+  .bg-cerita2,
+  .cerita2 {
+    padding: 7px !important;
+  }
+  .pembungkus-patner {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  #kontak img {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .pembungkus-card {
+    display: grid;
+    grid-template-columns: auto;
+  }
+}
+
+/* TAMPILAN TENTANG */
+#tentang img {
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-width: 400px) {
+  #tentang h1 {
+    font-size: 18px;
+  }
+  #tentang p {
+    font-size: 12px;
+  }
+}
+/* TAMPILAN TENTANG END */
+
+/* TAMPILAN ARTIKEL */
+.artikel-img {
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-width: 400px) {
+  #artikel {
+    padding: 0 !important;
+  }
+  #artikel h1 {
+    font-size: 18px;
+  }
+  #artikel p {
+    font-size: 12px;
+  }
+}
+/* TAMPILAN ARTIKEL END */
