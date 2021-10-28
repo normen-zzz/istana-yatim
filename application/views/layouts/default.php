@@ -42,7 +42,7 @@
                         <a class="nav-link bt" href="<?= base_url('tentang') ?>">Tentang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link bt" href="">Donasi</a>
+                        <a class="nav-link bt" href="<?= base_url('donasi') ?>">Donasi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link bt" href="<?= base_url('ceritasantri') ?>">Cerita santri</a>

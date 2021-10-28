@@ -142,7 +142,8 @@
                       <h2>Mereka <span class="judul">Butuh</span> Bantuanmu</h2>
                   </div>
               </div>
-              <div class="row pembungkus-card pt-5">
+              <?php foreach($ceritasantri as $data) { ?> 
+                <div class="row pembungkus-card pt-5">
                   <div class="col-lg-4 my-2">
                       <div class="card card-cerita">
                           <img src="<?= base_url('assets/frontend/') ?>img/landing page/cerita/Rectangle 41 (1).jpg" class="card-img-top" alt="..." />
@@ -159,39 +160,8 @@
                           </div>
                       </div>
                   </div>
-                  <div class="col-lg-4 my-2">
-                      <div class="card card-cerita">
-                          <img src="<?= base_url('assets/frontend/') ?>img/landing page/cerita/Rectangle 41.jpg" class="card-img-top" alt="..." />
-                          <div class="card-body">
-                              <p class="card-text text-secondary">19 Desember 2021</p>
-                              <h5 class="card-title">Norman dan mimpinya</h5>
-                              <p class="card-text text-secondary">
-                                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium officia nisi, obcaecati quidem earum itaque, maxime error nihil ducimus accusamus sint molestias repellat veritatis hic atque nemo amet blanditiis
-                                  inventore.
-                              </p>
-                              <div class="d-grid gap-2">
-                                  <a href="#" class="btn btn-kanan">Baca Cerita</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-4 my-2">
-                      <div class="card card-cerita">
-                          <img src="<?= base_url('assets/frontend/') ?>img/landing page/cerita/Rectangle 42 (1).jpg" class="card-img-top" alt="..." />
-                          <div class="card-body">
-                              <p class="card-text text-secondary">19 Desember 2021</p>
-                              <h5 class="card-title">Norman dan mimpinya</h5>
-                              <p class="card-text text-secondary">
-                                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium officia nisi, obcaecati quidem earum itaque, maxime error nihil ducimus accusamus sint molestias repellat veritatis hic atque nemo amet blanditiis
-                                  inventore.
-                              </p>
-                              <div class="d-grid gap-2">
-                                  <a href="#" class="btn btn-kanan">Baca Cerita</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
               </div>
+              <?php } ?>
               <div class="row pt-5">
                   <div class="col text-center">
                       <button type="button" class="btn btn-kiri px-5 py-2">Selengkapnya</button>

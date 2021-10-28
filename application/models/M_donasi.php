@@ -7,6 +7,11 @@ class M_donasi extends CI_Model
         return $this->db->get('donasi');
     }
 
+    public function get_data() //menampilkan data
+    {
+        return $this->db->get('donasi')->result();
+    }
+
     public function detail_donasi($id = null)
     {
         $query = $this->db->get_where('donasi', array('id' => $id))->row();
