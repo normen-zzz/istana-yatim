@@ -6,8 +6,8 @@
                       <h1 class="display-1" style="font-weight: 500">Yayasan moslem the castilla</h1>
                       <p>Asrama istana yatim.</p>
                       <div class="btn-group" role="group" aria-label="Basic example">
-                          <button type="button" class="btn btn-kiri me-3 px-5 py-2">Donasi</button>
-                          <button type="button" class="btn btn-kanan px-5 py-2">Konfirmasi</button>
+                          <button type="button" class="btn btn-kiri me-3 px-5 py-2" data-bs-toggle="modal" data-bs-target="#modalDonasi">Donasi</button>
+                          <button type="button" class="btn btn-kanan px-5 py-2" data-bs-toggle="modal" data-bs-target="#modalKonfirmasi">Konfirmasi</button>
                       </div>
                   </div>
                   <div class="col-6 py-4">
@@ -124,12 +124,12 @@
                       </div>
                   <? } ?>
               </div>
-            </div>
-            <div class="row pt-5">
-                <div class="col text-center">
-                    <a href="<?= base_url('ceritasantri') ?>"><button type="button" class="btn btn-kiri px-5 py-2">Selengkapnya</button></a>
-                </div>
-            </div>
+          </div>
+          <div class="row pt-5">
+              <div class="col text-center">
+                  <a href="<?= base_url('ceritasantri') ?>"><button type="button" class="btn btn-kiri px-5 py-2">Selengkapnya</button></a>
+              </div>
+          </div>
       </section>
       <!-- Cerita End -->
 
@@ -178,3 +178,95 @@
           </div>
       </section>
       <!-- Kontak End -->
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="modalDonasi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDonasiLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="modalDonasiLabel">Ayo donasi!</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <h2>Rekening donasi : </h2>
+                      <h6>
+                          Bank Syariah Indonesia 7054384909 A/n Yayasan Moslem The Castilla
+                      </h6>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-kiri" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-kanan" data-bs-toggle="modal" data-bs-target="#modalKonfirmasi">Konfirmasi</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- End modal donasi -->
+
+      <!-- Modal konfirmasi -->
+      <div class="modal fade" id="modalKonfirmasi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalKonfirmasiLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header text-center">
+                      <h5 class="modal-title text-center" id="exampleModalLabel">AYO DONASI</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <?php echo form_open_multipart('user/tambahdonasiAct'); ?>
+                      <div class="form-group">
+                          <label>Nama</label>
+                          <input type="text" name="nama" class="form-control" required>
+                          <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
+                      </div>
+
+                      <div class="form-group">
+                          <label>No Whatssapp</label>
+                          <input type="text" name="nowa" class="form-control" placeholder="" required>
+                          <?= form_error('nowa', '<small class="text-danger">', '</small>'); ?>
+                      </div>
+
+                      <div class="form-group">
+                          <label>Jumlah</label>
+                          <input type="text" name="jumlah" class="form-control">
+                          <?= form_error('jumlah', '<small class="text-danger">', '</small>'); ?>
+                      </div>
+
+                      <div class="form-group">
+                          <label>Bank</label>
+                          <select name="bank" class="form-control">
+                              <option selected>Pilih Bank</option>
+                              <?php foreach ($bank as $data) { ?>
+                                  <option value="<?= $data['id_bank'] ?>"><?= $data['bank'] ?> <?= $data['norek'] ?> A/n <?= $data['nama_bank'] ?></option>
+                              <?php } ?>
+                          </select>
+
+                      </div>
+
+                      <div class="form-group">
+                          <label>Bukti Donasi</label>
+                          <input type="file" name="filebukti" class="form-control">
+                      </div>
+
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-kiri" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-kanan">Simpan</button>
+                      <?php echo form_close() ?>
+                  </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <!-- End modal konfirmasi -->
+
+      <?php if ($this->session->flashdata('success-donasi')) : ?>
+          <script>
+              swal({
+                  icon: 'success',
+                  title: 'Anda berhasil Donasi',
+                  text: 'Anda Berhasil Melakukan Donasi',
+                  showConfirmButton: false,
+                  timer: 2500
+              })
+          </script>
+      <?php endif; ?>
