@@ -14,43 +14,63 @@ function rupiah($angka)
         <div class="row">
             <div class="col pt-5">
                 <h1>Terimakasih <span class="judul">Orang-orang baik</span></h1>
-                <p class="text-secondary">Berikut hasil donasi yang kami terima pada bulan oktober 2021 :</p>
+                <p class="text-secondary">Berikut hasil donasi yang kami terima pada bulan <?= strftime('%B') ?> :</p>
             </div>
         </div>
-        <?php foreach ($pengeluarandonasi as $data) { ?>
-            <div class="row">
-                <div class="col-md-2">
-                    <p>Tanggal Pengeluaran</p>
-                </div>
-                <div class="col-md">
-                    <p><?= $data->tanggal_pengeluaran ?></p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-2">
-                    <p>Judul Pengeluaran</p>
-                </div>
-                <div class="col-md">
-                    <p><?= $data->judul_pengeluaran ?></p>
-                </div>
-            </div>
-
-            <div class="row mt-2">
-                <div class="col-md-2">
-                    <p>Jumlah pengeluaran:</p>
-                </div>
-                <div class="col-md">
-                    <p><?= $data->jumlah_pengeluaran ?></p>
-                </div>
-            </div>
-            <hr>
-
-        <?php } ?>
         <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-kiri px-5 py-2 mt-4">Donasi</button>
+            <div class="col-md-6">
+                <p>Jumlah Pengeluaran bulan ini (<?= strftime('%B') ?>)</p>
+            </div>
+            <div class="col-md">
+                <p> <?= rupiah($donasiperbulan->total) ?></p>
             </div>
         </div>
+
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <p>Pengeluaran Donasi Bulan Ini :</p>
+            </div>
+            <div class="col-md">
+                <p><?= rupiah($pengeluarandonasiperbulan->total) ?></p>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <p>Saldo Donasi Terkini :</p>
+            </div>
+            <div class="col-md">
+                <p> <?= rupiah($infodonasi['jumlah_update']) ?></p>
+            </div>
+        </div>
+
+        <section id="cerita">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col text-center">
+                        <h4 class="text-prirmary">Pengeluaran bulan ini</h4>
+                    </div>
+                </div>
+                <div class="row pembungkus-card pt-5">
+                    <?php foreach ($pengeluarandonasi as $data) { ?>
+                        <div class="col-lg-4 my-2">
+                            <div class="card card-cerita">
+                                <img src="<?= base_url('assets/images/pengeluarandonasi/') . $data['img_pengeluaran'] ?>" class="card-img-top" alt="..." />
+                                <div class="card-body">
+                                    <p class="card-text text-secondary"><?= $data['judul_pengeluaran'] ?></p>
+                                    <h5 class="card-title"><?= strftime("%A %d %h %Y", strtotime($data['tanggal_pengeluaran'])) ?></h5>
+                                    <!-- <p class="card-text text-secondary">
+                                        <?= $data->tema_donasi ?>
+                                    </p> -->
+                                    <div class="d-grid gap-2">
+                                        <a href="#" class="btn btn-kiri">Donasi</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <? } ?>
+                </div>
+            </div>
+        </section>
     </div>
 </section>

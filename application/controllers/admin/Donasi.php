@@ -375,7 +375,7 @@ class Donasi extends CI_Controller {
         $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
         $this->M_pengeluaran->update_data($where, $data, 'pengeluaran_donasi');
         $this->session->set_flashdata('success-edit', 'berhasil');
-        redirect('admin/donasi/pengeluaran_donasi');
+        redirect('admin/onasi/pengeluaran_donasi');
     }
 
     public function deletepengeluaran($id)

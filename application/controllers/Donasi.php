@@ -19,15 +19,16 @@ class Donasi extends CI_Controller {
         $data = [
             'title' => 'Donasi',
             'donasi' => $this->donasi->get_data(),
-            'pengeluarandonasi' => $this->pengeluaran->get_data()
         ];
 
-        // $data['infodonasi'] = $this->db->get('update_donasi')->result();
-        // $data['donasiperbulan'] = $this->donasi->donasiperbulan(['konfirmasi' => 1])->row();
-        // $data['pengeluarandonasiperbulan'] = $this->pengeluaran->pengeluarandonasiperbulan()->row();
+        $data['infodonasi'] = $this->db->get('update_donasi')->row_array();
+        $data['donasiperbulan'] = $this->donasi->donasiperbulan(['konfirmasi' => 1])->row();
+        $data['pengeluarandonasiperbulan'] = $this->pengeluaran->pengeluarandonasiperbulan()->row();
+        $data['pengeluarandonasi'] = $this->pengeluaran->tampil_data()->result_array();
 
         $this->frontend->default('donasi', $data);
     }
+
 
 }
 
