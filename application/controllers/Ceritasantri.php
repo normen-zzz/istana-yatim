@@ -23,6 +23,16 @@ class Ceritasantri extends CI_Controller {
         $this->frontend->default('ceritasantri', $data);
     }
 
+    public function detailceritasantri()
+    {
+        $data = [
+            'title' => 'Cerita Santri',
+            'ceritasantri' => $this->cerita->get_data(),
+        ];
+
+        $this->frontend->default('detailceritasantri', $data);
+    }
+
 }
 
 /* End of file Ceritasantri.php */
