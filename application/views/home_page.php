@@ -122,7 +122,7 @@
                               </div>
                           </div>
                       </div>
-                  <? } ?>
+                  <?php } ?>
               </div>
           </div>
           <div class="row pt-5">
