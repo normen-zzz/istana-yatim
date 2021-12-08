@@ -20,7 +20,8 @@
 
     <!-- My CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/frontend/') ?>/css/style.css" />
-
+    <!-- <?= $data['template']['css'] = []; ?>
+    <?= $data['template']['js'] = []; ?> -->
     <title><?= $title; ?></title>
 </head>
 

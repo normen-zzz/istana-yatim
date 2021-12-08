@@ -12,6 +12,8 @@ class Frontend
     {
         $data['template']['body'] = $this->_ci->load->view($content, $data, TRUE);
         $data['template']['metadata'] = '';
+        $data['template']['css'] = [];
+        $data['template']['js'] = [];
         $this->_ci->load->view('layouts/default', $data);
     }
 }

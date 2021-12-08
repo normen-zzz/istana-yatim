@@ -81,6 +81,9 @@ class Home_page extends CI_Controller {
 
                     ];
 
+                    var_dump($data);
+                    exit();
+
                     $this->db->insert('donasi', $data);
                     $this->db->insert('formall', ['nama_formall' => $this->input->post('nama'), 'nomor_formall' => $this->input->post('nowa', TRUE)]);
                     $this->session->set_flashdata('success-donasi', 'berhasil');
