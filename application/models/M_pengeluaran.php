@@ -7,6 +7,11 @@ class M_pengeluaran extends CI_Model
         return $this->db->get('pengeluaran_donasi');
     }
 
+    public function get_data()
+    {
+        return $this->db->get('pengeluaran_donasi')->result();
+    }
+
     public function detail_bank($id = null)
     {
         $query = $this->db->get_where('pengeluaran_donasi', array('id' => $id))->row();

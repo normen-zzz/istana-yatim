@@ -22,7 +22,7 @@
                   
                   <div class="card-body">
 
-                    <form method="POST" id="myForm" action="<?= base_url('donasi/ubahpengeluaranAct') ?>" enctype="multipart/form-data">
+                    <form method="POST" id="myForm" action="<?= base_url('admin/donasi/ubahpengeluaranAct') ?>" enctype="multipart/form-data">
                       <input type="number" name="id" value="<?= $pengeluaran['id_pengeluaran'] ?>" hidden>
                     <div class="form-group">
                       <label>Judul Pengeluaran</label>

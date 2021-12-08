@@ -22,7 +22,7 @@
                   
                   <div class="card-body">
 
-                    <form method="POST" id="myForm" action="<?= base_url('Cms/tambahdonasiAct') ?>" enctype="multipart/form-data">
+                    <form method="POST" id="myForm" action="<?= base_url('admin/cms/tambahdonasiAct') ?>" enctype="multipart/form-data">
 
                     <div class="form-group">
                       <label>Nama</label>

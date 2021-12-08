@@ -121,7 +121,7 @@
                           <p class="pb-3">
                               Asrama istana yatim adalah asrama bagi adik-adik yang kurang beruntung, khususnya anak yatim. Di Yayasan Moslem Keluarga Castilla, nantinya anak-anak ini akan dipandu demi menggapai masa depan yang lebih baik.
                           </p>
-                          <a href="#" class="text-dark">Cek hasil donasi</a>
+                          <a href="<?= base_url('donasi') ?>" class="text-dark">Cek hasil donasi</a>
                       </div>
                       <div class="btn-group pt-5" role="group" aria-label="Basic example">
                           <button type="button" class=" btn btn-kiri me-3 px-5 py-2">Donasi</button>

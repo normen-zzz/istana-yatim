@@ -10,7 +10,7 @@ class Donasi extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('M_donasi', 'donasi');
-        
+        $this->load->model('M_pengeluaran', 'pengeluaran');
     }
     
 
@@ -18,8 +18,13 @@ class Donasi extends CI_Controller {
     {
         $data = [
             'title' => 'Donasi',
-            'donasi' => $this->donasi->get_data()
-        ];  
+            'donasi' => $this->donasi->get_data(),
+            'pengeluarandonasi' => $this->pengeluaran->get_data()
+        ];
+
+        // $data['infodonasi'] = $this->db->get('update_donasi')->result();
+        // $data['donasiperbulan'] = $this->donasi->donasiperbulan(['konfirmasi' => 1])->row();
+        // $data['pengeluarandonasiperbulan'] = $this->pengeluaran->pengeluarandonasiperbulan()->row();
 
         $this->frontend->default('donasi', $data);
     }

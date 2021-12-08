@@ -1,10 +1,10 @@
 <?php
 
-class M_acara extends CI_Model
+class M_event extends CI_Model
 {
-    public function tampil_data()
+    public function get_data()
     {
-        return $this->db->get('acara');
+        return $this->db->get('acara')->result();
     }
 
     public function detail_acara($id = null)

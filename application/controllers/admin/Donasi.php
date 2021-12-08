@@ -14,7 +14,7 @@ class Donasi extends CI_Controller {
         $this->load->library('upload');
         $this->session->set_flashdata('not-login', 'Gagal!');
         if (!$this->session->userdata('email')) {
-            redirect('Auth/Admin');
+            redirect('auth/Admin');
         }
         
     }
@@ -36,7 +36,7 @@ class Donasi extends CI_Controller {
         $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
 
         $this->session->set_flashdata('user-konfirmasi', 'berhasil');
-        redirect('Donasi/belumkonfirmasi');
+        redirect('admin/donasi/belumkonfirmasi');
     }
 
     public function belumkonfirmasi()
@@ -164,11 +164,11 @@ class Donasi extends CI_Controller {
                     $this->session->set_flashdata('success-input', 'berhasil');
                     redirect($_SERVER['HTTP_REFERER']);
                 }else{  
-                    redirect('donasi/tambahdonasi');
+                    redirect('admin/donasi/tambahdonasi');
                 }
 
             }else{
-                redirect('donasi/tambahdonasi');
+                redirect('admin/donasi/tambahdonasi');
             }
         }
     }
@@ -289,13 +289,13 @@ class Donasi extends CI_Controller {
                     $this->db->insert('pengeluaran_donasi', $tambah);
                     $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
                     $this->session->set_flashdata('success-input', 'berhasil');
-                    redirect('donasi/pengeluaran_donasi');
+                    redirect('admin/donasi/pengeluaran_donasi');
                 }else{  
-                    redirect('donasi/tambahpengeluaran');
+                    redirect('admin/donasi/tambahpengeluaran');
                 }
 
             }else{
-                redirect('donasi/tambahpengeluaran');
+                redirect('admin/donasi/tambahpengeluaran');
             }
         }
         }
@@ -375,7 +375,7 @@ class Donasi extends CI_Controller {
         $this->M_donasi->update_data(['id_update' => 1], ['jumlah_update' => $penjumlahan],'update_donasi');
         $this->M_pengeluaran->update_data($where, $data, 'pengeluaran_donasi');
         $this->session->set_flashdata('success-edit', 'berhasil');
-        redirect('Donasi/pengeluaran_donasi');
+        redirect('admin/donasi/pengeluaran_donasi');
     }
 
     public function deletepengeluaran($id)

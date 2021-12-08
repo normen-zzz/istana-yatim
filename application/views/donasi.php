@@ -17,27 +17,39 @@ function rupiah($angka)
                 <p class="text-secondary">Berikut hasil donasi yang kami terima pada bulan oktober 2021 :</p>
             </div>
         </div>
-        <?php foreach ($donasi as $data) { ?>
+        <?php foreach ($pengeluarandonasi as $data) { ?>
             <div class="row">
                 <div class="col-md-2">
-                    <p><?= $data->judul_pengeluaran; ?></p>
+                    <p>Tanggal Pengeluaran</p>
                 </div>
                 <div class="col-md">
-                    <p>Rp. 20.000.000</p>
+                    <p><?= $data->tanggal_pengeluaran ?></p>
                 </div>
             </div>
+
             <div class="row">
+                <div class="col-md-2">
+                    <p>Judul Pengeluaran</p>
+                </div>
+                <div class="col-md">
+                    <p><?= $data->judul_pengeluaran ?></p>
+                </div>
+            </div>
+
+            <div class="row mt-2">
                 <div class="col-md-2">
                     <p>Jumlah pengeluaran:</p>
                 </div>
                 <div class="col-md">
-                    <p>Rp. 9.000.000</p>
+                    <p><?= $data->jumlah_pengeluaran ?></p>
                 </div>
             </div>
+            <hr>
+
         <?php } ?>
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-kiri px-5 py-2">Download report</button>
+                <button type="button" class="btn btn-kiri px-5 py-2 mt-4">Donasi</button>
             </div>
         </div>
     </div>
