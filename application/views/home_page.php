@@ -212,7 +212,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                      <?php echo form_open_multipart('user/tambahdonasiAct'); ?>
+                      <?php echo form_open_multipart('home_page/tambahdonasi'); ?>
                       <div class="form-group">
                           <label>Nama</label>
                           <input type="text" name="nama" class="form-control" required>
