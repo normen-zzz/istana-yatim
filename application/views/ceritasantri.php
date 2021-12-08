@@ -19,7 +19,7 @@
                                   <?= substr($data->isi_ceritasantri, 0, 90) ?>
                               </p>
                               <div class="d-grid gap-2">
-                                  <a href="#" class="btn btn-kiri">Baca Cerita</a>
+                                  <a href="<?= site_url('ceritasantri/view/' . $data->slug_ceritasantri); ?>" class="btn btn-kiri">Baca Cerita</a>
                               </div>
                           </div>
                       </div>

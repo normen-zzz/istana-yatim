@@ -2,6 +2,19 @@
 
 class M_ceritasantri extends CI_Model
 {
+
+    public function get_ceritasantri($slug = FALSE)
+    {
+        if ($slug === FALSE) {
+
+            return $this->db->get('ceritasantri')->result();
+        }
+
+        $this->db->select('ceritasantri.*');
+        $query = $this->db->get_where('ceritasantri', array('slug_ceritasantri' => $slug));
+        return $query->row();
+    }
+
     public function tampil_data()
     {
         return $this->db->get('ceritasantri');

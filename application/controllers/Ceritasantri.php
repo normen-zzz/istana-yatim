@@ -23,12 +23,20 @@ class Ceritasantri extends CI_Controller {
         $this->frontend->default('ceritasantri', $data);
     }
 
-    public function detailceritasantri()
+    public function view($slug = NULL)
     {
-        $data = [
+        $ceritasantri =  $this->cerita->get_ceritasantri($slug);
+       
+        $data =  [
             'title' => 'Cerita Santri',
-            'ceritasantri' => $this->cerita->get_data(),
+            'ceritasantri' => $this->cerita->get_ceritasantri(),
+            'ceritasantri_item' => $ceritasantri,
         ];
+
+        if (empty($data['ceritasantri_item'])) {
+
+            redirect('ceritasantri', 'refresh');
+        }
 
         $this->frontend->default('detailceritasantri', $data);
     }
