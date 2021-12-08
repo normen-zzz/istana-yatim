@@ -65,43 +65,6 @@
       </section>
       <!-- Content End -->
 
-      <!-- Cerita -->
-      <section id="cerita">
-          <div class="container py-5">
-              <div class="row">
-                  <div class="col text-center">
-                      <p class="text-secondary">Cerita santri</p>
-                      <h2>Mereka <span class="judul">Butuh</span> Bantuanmu</h2>
-                  </div>
-              </div>
-              <div class="row pembungkus-card pt-5">
-                  <?php foreach ($ceritasantri as $data) { ?>
-                      <div class="col-lg-4 my-2">
-                          <div class="card card-cerita">
-                              <img src="<?= base_url('assets/images/ceritasantri/' . $data->img_ceritasantri) ?>" class="card-img-top" alt="..." />
-                              <div class="card-body">
-                                  <p class="card-text text-secondary"><?= $data->tgl_ceritasantri ?></p>
-                                  <h5 class="card-title"><?= $data->judul_ceritasantri ?></h5>
-                                  <p class="card-text text-secondary">
-                                      <?= substr($data->isi_ceritasantri, 0, 90) ?>
-                                  </p>
-                                  <div class="d-grid gap-2">
-                                      <a href="#" class="btn btn-kanan">Baca Cerita</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  <? } ?>
-              </div>
-              <div class="row">
-                  <div class="col text-end">
-                      <a href="#" class="judul">Lihat semua <i class="bi bi-arrow-right"></i></a>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!-- Cerita End -->
-
       <!-- Content-2 -->
       <section id="content2">
           <div class="container py-5">
@@ -134,7 +97,7 @@
       <!-- Content-2 End -->
 
       <!-- Cerita -->
-      <section id="cerita-santri">
+      <section id="cerita">
           <div class="container py-5">
               <div class="row">
                   <div class="col text-center">
@@ -142,32 +105,31 @@
                       <h2>Mereka <span class="judul">Butuh</span> Bantuanmu</h2>
                   </div>
               </div>
-              <?php foreach($ceritasantri as $data) { ?> 
-                <div class="row pembungkus-card pt-5">
-                  <div class="col-lg-4 my-2">
-                      <div class="card card-cerita">
-                          <img src="<?= base_url('assets/frontend/') ?>img/landing page/cerita/Rectangle 41 (1).jpg" class="card-img-top" alt="..." />
-                          <div class="card-body">
-                              <p class="card-text text-secondary">19 Desember 2021</p>
-                              <h5 class="card-title">Norman dan mimpinya</h5>
-                              <p class="card-text text-secondary">
-                                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium officia nisi, obcaecati quidem earum itaque, maxime error nihil ducimus accusamus sint molestias repellat veritatis hic atque nemo amet blanditiis
-                                  inventore.
-                              </p>
-                              <div class="d-grid gap-2">
-                                  <a href="#" class="btn btn-kanan">Baca Cerita</a>
+              <div class="row pembungkus-card pt-5">
+                  <?php foreach ($ceritasantri as $data) { ?>
+                      <div class="col-lg-4 my-2">
+                          <div class="card card-cerita">
+                              <img src="<?= base_url('assets/images/ceritasantri/' . $data->img_ceritasantri) ?>" class="card-img-top" alt="..." />
+                              <div class="card-body">
+                                  <p class="card-text text-secondary"><?= $data->tgl_ceritasantri ?></p>
+                                  <h5 class="card-title"><?= $data->judul_ceritasantri ?></h5>
+                                  <p class="card-text text-secondary">
+                                      <?= substr($data->isi_ceritasantri, 0, 90) ?>
+                                  </p>
+                                  <div class="d-grid gap-2">
+                                      <a href="#" class="btn btn-kanan">Baca Cerita</a>
+                                  </div>
                               </div>
                           </div>
                       </div>
-                  </div>
+                  <? } ?>
               </div>
-              <?php } ?>
-              <div class="row pt-5">
-                  <div class="col text-center">
-                      <button type="button" class="btn btn-kiri px-5 py-2">Selengkapnya</button>
-                  </div>
-              </div>
-          </div>
+            </div>
+            <div class="row pt-5">
+                <div class="col text-center">
+                    <a href="<?= base_url('ceritasantri') ?>"><button type="button" class="btn btn-kiri px-5 py-2">Selengkapnya</button></a>
+                </div>
+            </div>
       </section>
       <!-- Cerita End -->
 
