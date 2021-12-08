@@ -68,7 +68,7 @@ function rupiah($angka)
                                 </div>
                             </div>
                         </div>
-                    <? } ?>
+                    <?php } ?>
                 </div>
             </div>
         </section>
