@@ -7,6 +7,12 @@ class M_event extends CI_Model
         return $this->db->get('acara')->result();
     }
 
+    public function getDataArray()
+    {
+        return $this->db->get('acara')->result_array();
+    }
+
+
     public function detail_acara($id = null)
     {
         $query = $this->db->get_where('acara', array('id' => $id))->row();

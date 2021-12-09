@@ -53,7 +53,7 @@
 
       <li class="menu-header">Master Form</li>
       <li><a class="nav-link" href="<?= base_url('admin/form') ?>"><i class="fas fa-pencil-ruler"></i> <span>Master Form Acara</span></a></li>
-      <li><a class="nav-link" href="<?= base_url('admin/orm/formdonasi') ?>"><i class="fas fa-pencil-ruler"></i> <span>Master Form Donasi</span></a></li>
+      <li><a class="nav-link" href="<?= base_url('admin/form/formdonasi') ?>"><i class="fas fa-pencil-ruler"></i> <span>Master Form Donasi</span></a></li>
       <li><a class="nav-link" href="<?= base_url('admin/form/formall') ?>"><i class="fas fa-pencil-ruler"></i> <span>Master All Form</span></a></li>
 
 

@@ -44,7 +44,7 @@ class Auth extends CI_Controller
 
                 ];
                 $this->session->set_userdata($data);
-                redirect(base_url('Donasi/belumkonfirmasi'));
+                redirect(base_url('admin/Donasi/belumkonfirmasi'));
             } else {
 
                 $this->session->set_flashdata('fail-login', 'Gagal!');
@@ -62,7 +62,7 @@ class Auth extends CI_Controller
     {
         $this->session->unset_userdata('email');
         $this->session->set_flashdata('success-logout', 'Berhasil!');
-        redirect(base_url('user'));
+        redirect(base_url('Home_page'));
     }
 
 

@@ -19,10 +19,10 @@ class Acara extends CI_Controller {
     // Menampilkan View Acara di Admin
     public function index()
     {
-        $this->load->model('M_acara'); // Memanggil Model Acara
+        $this->load->model('M_event'); // Memanggil Model Acara
         $data['user'] = $this->db->get_where('pengurus', ['email_pengurus' =>$this->session->userdata('email')])->row_array(); //Mengambil data berdasarkan email dari tabel Pengurus
         $data['title'] = 'Acara'; // Judul
-        $data['acara'] = $this->M_acara->tampil_data()->result_array(); // Mengambil Data dari Tabel Acara
+        $data['acara'] = $this->M_event->getDataArray(); // Mengambil Data dari Tabel Acara
 
         $this->load->view('admin/acara/acara',$data);
     }
