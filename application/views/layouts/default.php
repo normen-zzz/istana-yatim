@@ -45,6 +45,9 @@
                         <a class="nav-link bt" href="<?= base_url('donasi') ?>">Donasi</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link bt" href="<?= base_url('berkah') ?>">Berkah</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link bt" href="<?= base_url('ceritasantri') ?>">Cerita santri</a>
                     </li>
                     <li class="nav-item">

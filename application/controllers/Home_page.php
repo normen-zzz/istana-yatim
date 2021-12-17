@@ -10,6 +10,7 @@ class Home_page extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('M_ceritasantri', 'ceritasantri');
+        $this->load->model('M_berkah', 'berkah');
         
     }
     
@@ -18,6 +19,7 @@ class Home_page extends CI_Controller {
         $data = [
             'title' => 'Asrama Istana Yatim, Yayasan Keluarga Muslim The Castilla',
             'ceritasantri' => $this->ceritasantri->get_data(),
+            'berkah' => $this->berkah->get_data(),
             'bank' => $this->db->get('bank')->result_array()
         ];
         $this->frontend->default('home_page', $data);

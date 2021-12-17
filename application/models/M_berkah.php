@@ -2,6 +2,24 @@
 
 class M_berkah extends CI_Model
 {
+
+    public function get_berkah($slug = FALSE)
+    {
+        if ($slug === FALSE) {
+
+            return $this->db->get('berkah')->result();
+        }
+
+        $this->db->select('berkah.*');
+        $query = $this->db->get_where('berkah', array('slug_berkah' => $slug));
+        return $query->row();
+    }
+
+    public function get_data()
+    {
+        return $this->db->get('berkah')->result();
+    }
+
     public function tampil_data()
     {
         return $this->db->get('berkah');
